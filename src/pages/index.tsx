@@ -1,9 +1,12 @@
+import IntroduceService from "@/Components/Shared/HomeUi/IntroduceServices/IntroduceService";
 import React from "react";
 
 const HomePage = () => {
   return (
-    <div>
-      <h1>Hello World</h1>
+    <div className="px-5 lg:px-0">
+      <div className="mt-8">
+        <IntroduceService />
+      </div>
     </div>
   );
 };

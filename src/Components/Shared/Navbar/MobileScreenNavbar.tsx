@@ -33,7 +33,7 @@ const MobileScreenNavbar = () => {
           <h2 className="  text-white">LAUNDRY HUB</h2>
           <button
             onClick={toggleMobileDropdown}
-            className="px-4 ease-in-out duration-300"
+            className="px-4 ease-in-out duration-300 "
           >
             {isMobileDropdown ? (
               <DownOutlined className="text-3xl" />
@@ -43,7 +43,7 @@ const MobileScreenNavbar = () => {
           </button>
         </div>
         {isMobileDropdown && (
-          <div className="flex flex-col gap-2 mt-5">
+          <div className="flex flex-col gap-2  mt-5 ">
             <Link
               className="flex items-center hover:text-amber-500 "
               href="/services"
