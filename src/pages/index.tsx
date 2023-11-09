@@ -1,21 +1,17 @@
 import AboutSection from "@/Components/Shared/HomeUi/AboutSection";
 import IntroduceService from "@/Components/Shared/HomeUi/IntroduceServices/IntroduceService";
-import Image from "next/image";
-import logo from "../../public/logo-2.png";
-
-import {
-  FaClipboardCheck,
-  FaBagShopping,
-  FaClock,
-  FaLocationDot,
-  FaCar,
-} from "react-icons/fa6";
 import HowItsWorkSectiont from "@/Components/Shared/HomeUi/HowItsWorkSection";
+import {
+  FaCar,
+  FaMoneyBill1Wave,
+  FaMedal,
+  FaLeaf,
+  FaStreetView,
+  FaHandHoldingDollar,
+} from "react-icons/fa6";
+import ChooseSection from "@/Components/Shared/HomeUi/ChooseSection";
 
 const HomePage = () => {
-  const boxShadowStyle = {
-    boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.35)",
-  };
   return (
     <div className=" lg:px-0">
       {/* introduce-section  */}
@@ -30,6 +26,11 @@ const HomePage = () => {
       {/* how to work section  */}
       <div>
         <HowItsWorkSectiont />
+      </div>
+
+      {/* why choose use section*/}
+      <div>
+        <ChooseSection />
       </div>
     </div>
   );
