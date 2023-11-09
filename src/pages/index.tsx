@@ -1,8 +1,21 @@
 import AboutSection from "@/Components/Shared/HomeUi/AboutSection";
 import IntroduceService from "@/Components/Shared/HomeUi/IntroduceServices/IntroduceService";
-import { FileDoneOutlined } from "@ant-design/icons";
+import Image from "next/image";
+import logo from "../../public/logo-2.png";
+
+import {
+  FaClipboardCheck,
+  FaBagShopping,
+  FaClock,
+  FaLocationDot,
+  FaCar,
+} from "react-icons/fa6";
+import HowItsWorkSectiont from "@/Components/Shared/HomeUi/HowItsWorkSection";
 
 const HomePage = () => {
+  const boxShadowStyle = {
+    boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.35)",
+  };
   return (
     <div className=" lg:px-0">
       {/* introduce-section  */}
@@ -15,18 +28,8 @@ const HomePage = () => {
         <AboutSection />
       </div>
       {/* how to work section  */}
-      <div className="mt-10 flex justify-center items-center">
-        <table className="w-[500px]">
-          <tbody>
-            <tr className="">
-              <td className="  shadow-lg p-2 w-[200px]">Alfreds Futterkiste</td>
-              <td className="w-[60px] h-[60px]  rounded-full bg-blue-500  flex items-center  justify-center ">
-                <FileDoneOutlined className="text-4xl bg-white" />
-              </td>
-              <td className="  shadow-lg p-2 w-[200px]">Alfreds Futterkiste</td>
-            </tr>
-          </tbody>
-        </table>
+      <div>
+        <HowItsWorkSectiont />
       </div>
     </div>
   );
