@@ -29,6 +29,7 @@ const ContactUs = () => {
                 type="text"
                 id="name"
                 name="name"
+                placeholder="Your name"
                 className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                 required
               />
@@ -45,6 +46,7 @@ const ContactUs = () => {
                 id="email"
                 name="email"
                 className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+                placeholder="example@gmail.com"
                 required
               />
             </div>
@@ -58,6 +60,7 @@ const ContactUs = () => {
               <textarea
                 id="message"
                 name="message"
+                placeholder="Write your message or Feedback"
                 className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                 rows={4}
                 required
