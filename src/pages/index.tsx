@@ -4,17 +4,12 @@ import HowItsWorkSectiont from "@/Components/Shared/HomeUi/HowItsWorkSection";
 import ChooseSection from "@/Components/Shared/HomeUi/ChooseSection";
 import Image from "next/image";
 import contactBanner from "../../public/assets/contact_us-two.jpg";
-import { useForm, SubmitHandler } from "react-hook-form";
+
 import ReviewSection from "@/Components/Shared/HomeUi/ReviewSection";
 import StarRating from "@/Components/Shared/HomeUi/StarRating";
+import ContactUs from "@/Components/Shared/HomeUi/ContactUs";
 
 const HomePage = ({ reviews }: any) => {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
   return (
     <div className=" lg:px-0 mx-auto">
       {/* introduce-section  */}
@@ -36,19 +31,9 @@ const HomePage = ({ reviews }: any) => {
         <ChooseSection />
       </div>
 
-      {/* Contact us Section  */}
+      {/* review and rating section */}
 
-      {/* <div className="container mx-auto">
-        <div className=" flex justify-center mt-32">
-          <h2 className="lg:text-4xl mb-5 text-3xl text-blue-500 font-bold border-b-4 border-blue-500 inline-block">
-            Contact Us
-          </h2>
-        </div>
-
-        <hr className="text-bold text-blue-500 " />
-      </div> */}
-
-      <div className="mx-auto    py-10">
+      <div className="mx-auto py-10">
         <div className="flex justify-center">
           <h2 className="inline-block border-b-4 border-blue-500 font-bold lg:text-5xl text-3xl my-20">
             Review & Rating
@@ -57,6 +42,11 @@ const HomePage = ({ reviews }: any) => {
         <div className="container mx-auto">
           <ReviewSection reviews={reviews.data} />
         </div>
+      </div>
+
+      {/* contact us section  */}
+      <div className="container mx-auto ">
+        <ContactUs />
       </div>
     </div>
   );
