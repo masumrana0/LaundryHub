@@ -12,6 +12,7 @@ const ChooseSection = () => {
     boxShadow:
       "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;",
   };
+
   return (
     <div className="container mx-auto mt-32">
       <div className="flex justify-center lg:mb-20  mb-10">
@@ -21,8 +22,8 @@ const ChooseSection = () => {
       </div>
 
       {/* card  */}
-      <div className=" flex justify-center flex-wrap gap-20">
-        <div style={boxShadowStyle} className="w-[350px] border p-6">
+      <div className=" flex justify-center flex-wrap gap-20  ">
+        <div style={boxShadowStyle} className="w-[350px] border p-6 ">
           <div className="flex justify-center">
             <FaStreetView className="text-6xl text-blue-400  " />
           </div>
