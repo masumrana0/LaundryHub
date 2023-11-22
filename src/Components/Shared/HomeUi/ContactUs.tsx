@@ -12,7 +12,7 @@ const ContactUs = () => {
     <div className=" ">
       <div className=" mx-auto mt-8 p-6 bg-white rounded-md shadow-lg">
         <div className="flex justify-center py-5 my-3">
-          <h2 className="text-3xl text-center font-bold mb-4 inline-block border-b-4 border-blue-500">
+          <h2 className="inline-block border-b-4 border-blue-500 font-bold lg:text-5xl text-3xl my-10">
             Contact Us
           </h2>
         </div>

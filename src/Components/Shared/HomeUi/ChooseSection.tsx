@@ -16,7 +16,7 @@ const ChooseSection = () => {
   return (
     <div className="container mx-auto mt-32">
       <div className="flex justify-center lg:mb-20  mb-10">
-        <h2 className="text-center font-bold lg:text-4xl text-2xl text-blue-500 border-b-4 border-blue-500  inline-block ">
+        <h2 className="inline-block border-b-4 border-blue-500 font-bold lg:text-4xl text-3xl ">
           Why We&apos;re Your Top Choice
         </h2>
       </div>

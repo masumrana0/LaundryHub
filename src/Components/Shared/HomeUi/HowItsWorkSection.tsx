@@ -17,7 +17,7 @@ const HowItsWorkSectiont = () => {
     <div className="container mx-auto">
       <div>
         <div className="text-center mt-20">
-          <h2 className="text-center border-b-2 text-blue-400 border-blue-400 inline-block  text-4xl font-bold ">
+          <h2 className="inline-block border-b-4 border-blue-500 font-bold lg:text-5xl text-3xl my-20">
             How It&apos;s work
           </h2>
         </div>
