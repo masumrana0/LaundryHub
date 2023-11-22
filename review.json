@@ -55,4 +55,21 @@
     "photoUrl": "https://img.freepik.com/free-photo/young-beautiful-girl-posing-black-leather-jacket-park_1153-8104.jpg?size=626&ext=jpg&ga=GA1.1.570659266.1696241015&semt=ais",
     "review": "I love the laundry hub! It's a stress-free way to tackle laundry. The facilities are modern, the prices are competitive, and my clothes have never looked better. Highly recommended!"
   }
+  
+],
+
+
+
+[
+  {
+    "title": "bookTitle",
+    "price": "89",
+    "writer": "writerName",
+    "publisher": "PublisherName",
+    "genre": "Romantic",
+    "publicationDate": "01/04/2023",
+    "bookUrl": "bookrul",
+    "review": []
+  },
+ 
 ]

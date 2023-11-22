@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logo from "../../../../public/logo-2.png";
+import logo from "../../../../public/logo.png";
 import Link from "next/link";
 import { useState } from "react";
 import { UserOutlined, SettingOutlined, HomeOutlined } from "@ant-design/icons";

@@ -4,7 +4,6 @@ import HowItsWorkSectiont from "@/Components/Shared/HomeUi/HowItsWorkSection";
 import ChooseSection from "@/Components/Shared/HomeUi/ChooseSection";
 import Image from "next/image";
 import contactBanner from "../../public/assets/contact_us-two.jpg";
-
 import ReviewSection from "@/Components/Shared/HomeUi/ReviewSection";
 import StarRating from "@/Components/Shared/HomeUi/StarRating";
 import ContactUs from "@/Components/Shared/HomeUi/ContactUs";
@@ -18,7 +17,7 @@ const HomePage = ({ reviews }: any) => {
       </div>
 
       {/* about Section  */}
-      <div className=" bg-[#5cb8ff] lg:p-20 mt-10 p-5  lg:pt-0  ">
+      <div id="about" className=" bg-[#5cb8ff] lg:p-20 mt-10 p-5  lg:pt-0  ">
         <AboutSection />
       </div>
       {/* how to work section  */}
