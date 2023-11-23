@@ -1,5 +1,5 @@
 import {
-  FaMobileRetro,
+  FaPhoneVolume,
   FaEnvelopeOpen,
   FaFacebookF,
   FaInstagram,
@@ -88,8 +88,8 @@ const ContactUs = () => {
               towards a brighter, cleaner, and more convenient tomorrow for all
               who entrust their clothes to us.
             </p>
-            <div className="flex   items-center text-xl my-2 text-blue-500">
-              <FaMobileRetro />
+            <div className="flex   items-center text-xl my-2 gap-2 text-blue-500">
+              <FaPhoneVolume />
               <p>+8801644626735</p>
             </div>
             <div className="flex   items-center text-xl  gap-2 text-blue-500">

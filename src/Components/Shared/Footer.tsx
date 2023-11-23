@@ -2,13 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "../../../public/logo.png";
 import {
-  FaMobileRetro,
-  FaEnvelopeOpen,
   FaFacebookF,
   FaInstagram,
   FaYoutube,
   FaLinkedin,
-  FaPhoneVolume,
 } from "react-icons/fa6";
 
 const Footer = () => {
@@ -19,7 +16,7 @@ const Footer = () => {
         <div className="lg:w-[35%]">
           <div className="flex items-center gap-2  mb-4">
             <Image src={logo} width="50" height="50" alt="logo" />
-            <h2 className="font-bold text-2xl">LaundryHub</h2>
+            <h2 className="font-bold text-2xl">LAUNDRY HUB</h2>
           </div>
           <p className="">
             Our Wash & Iron service is designed to make your life easier and

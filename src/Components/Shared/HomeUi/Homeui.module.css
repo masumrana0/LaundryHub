@@ -1,0 +1,17 @@
+/* YourComponent.module.css */
+.icon {
+  font-size: 50px;
+}
+
+.card:hover .icon {
+  transform: scale(2);
+  transition: transform 900ms ease-in-out;
+}
+
+/* .card {
+  transition: all 300ms ease-in-out;
+} */
+.card:hover .circle {
+  background: rgb(255, 246, 176);
+  transition: background 1000ms ease-in-out;
+}

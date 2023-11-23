@@ -1,3 +1,4 @@
+import style from "./Homeui.module.css";
 import {
   FaCar,
   FaMoneyBill1Wave,
@@ -22,10 +23,15 @@ const ChooseSection = () => {
       </div>
 
       {/* card  */}
-      <div className=" flex justify-center flex-wrap gap-20  ">
-        <div style={boxShadowStyle} className="w-[350px] border p-6 ">
-          <div className="flex justify-center">
-            <FaStreetView className="text-6xl text-blue-400  " />
+      <div className={`flex justify-center flex-wrap gap-20  `}>
+        <div
+          style={boxShadowStyle}
+          className={`w-[350px] border p-6  ${style.card}`}
+        >
+          <div
+            className={`flex justify-center items-center w-[105px] h-[110px] mx-auto rounded-full  bg-gray-100  ${style.circle}`}
+          >
+            <FaStreetView className={`  text-blue-400 ${style.icon}`} />
           </div>
           <h2 className="text-2xl my-3 font-semibold">Clean and Sanitary</h2>
           <p className="text-gray-600">
@@ -35,9 +41,14 @@ const ChooseSection = () => {
           </p>
         </div>
 
-        <div style={boxShadowStyle} className="w-[350px] border p-6">
-          <div className="flex justify-center">
-            <FaCar className="text-6xl text-blue-400  " />
+        <div
+          style={boxShadowStyle}
+          className={`w-[350px] border p-6 ${style.card}`}
+        >
+          <div
+            className={`flex justify-center items-center w-[105px] h-[110px] mx-auto rounded-full  bg-gray-100  ${style.circle}`}
+          >
+            <FaCar className={`  text-blue-400 ${style.icon}`} />
           </div>
           <h2 className="text-2xl my-3 font-semibold  ">
             Free Pickup & Delivery
@@ -48,9 +59,14 @@ const ChooseSection = () => {
           </p>
         </div>
 
-        <div style={boxShadowStyle} className="w-[350px] border p-6">
-          <div className="flex justify-center">
-            <FaHandHoldingDollar className="text-6xl text-blue-400  " />
+        <div
+          style={boxShadowStyle}
+          className={`w-[350px] border p-6 ${style.card}`}
+        >
+          <div
+            className={`flex justify-center items-center w-[105px] h-[110px] mx-auto rounded-full  bg-gray-100  ${style.circle}`}
+          >
+            <FaHandHoldingDollar className={`  text-blue-400 ${style.icon}`} />
           </div>
           <h2 className="text-2xl my-3 font-semibold">Affordable</h2>
           <p className="text-gray-600">
@@ -60,9 +76,14 @@ const ChooseSection = () => {
           </p>
         </div>
 
-        <div style={boxShadowStyle} className="w-[350px] border p-6">
-          <div className="flex justify-center">
-            <FaMoneyBill1Wave className="text-6xl text-blue-400  " />
+        <div
+          style={boxShadowStyle}
+          className={`w-[350px] border p-6 ${style.card}`}
+        >
+          <div
+            className={`flex justify-center items-center w-[105px] h-[110px] mx-auto rounded-full  bg-gray-100  ${style.circle}`}
+          >
+            <FaMoneyBill1Wave className={` text-blue-400 ${style.icon}`} />
           </div>
           <h2 className="text-2xl my-3 font-semibold">Honest Pricing</h2>
           <p className="text-gray-600">
@@ -72,20 +93,30 @@ const ChooseSection = () => {
           </p>
         </div>
 
-        <div style={boxShadowStyle} className="w-[350px] border p-6">
-          <div className="flex justify-center">
-            <FaLeaf className="text-6xl text-blue-400  " />
+        <div
+          style={boxShadowStyle}
+          className={`w-[350px] border p-6 ${style.card}`}
+        >
+          <div
+            className={`flex justify-center items-center w-[105px] h-[110px] mx-auto rounded-full  bg-gray-100  ${style.circle}`}
+          >
+            <FaLeaf className={`  text-blue-400 ${style.icon}`} />
           </div>
-          <h2 className="text-2xl my-3 font-semibold">Eco-Conscious</h2>
+          <h2 className={`text-2xl my-3 font-semibold `}>Eco-Conscious</h2>
           <p className="text-gray-600">
             This version clarifies the relationship between local residents, the
             laundry services, and the positive sentiment.
           </p>
         </div>
 
-        <div style={boxShadowStyle} className="w-[350px] border p-6">
-          <div className="flex justify-center">
-            <FaMedal className="text-6xl text-blue-400  " />
+        <div
+          style={boxShadowStyle}
+          className={`w-[350px] border p-6 ${style.card}`}
+        >
+          <div
+            className={`flex justify-center items-center w-[105px] h-[110px] mx-auto rounded-full  bg-gray-100  ${style.circle}`}
+          >
+            <FaMedal className={` text-blue-400 ${style.icon}`} />
           </div>
           <h2 className="text-2xl my-3 font-semibold">
             Satisfaction Guarantee
