@@ -15,3 +15,14 @@
   background: rgb(255, 246, 176);
   transition: background 1000ms ease-in-out;
 }
+
+.homeEmojiCircle{
+  
+  right: 30px;
+  transition: right ease-in 0.6s;
+}
+
+.servicesCard:hover .homeEmojiCircle {
+  right: 80px;
+   
+}

@@ -39,7 +39,7 @@ const ReviewSection = ({ reviews }: any) => {
         modules={[Pagination]}
         className="mySwiper"
       >
-        {reviews.map((review: any) => (
+        {reviews?.map((review: any) => (
           <SwiperSlide key={review?._id}>
             <div
               style={boxShadowStyle}
