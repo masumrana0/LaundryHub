@@ -10,7 +10,8 @@ import StarRating from "@/Components/Shared/HomeUi/StarRating";
 import ContactUs from "@/Components/Shared/HomeUi/ContactUs";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect } from "react";
+import { ReactElement, useEffect } from "react";
+import RootLayout from "@/Components/Layout/RootLayout";
 
 const HomePage = ({ reviews }: any) => {
   useEffect(() => {
@@ -93,3 +94,9 @@ export async function getStaticProps() {
 
   return { props: { reviews } };
 }
+
+HomePage.getLayout = function getLayout(page: ReactElement) {
+  return <RootLayout>{page}</RootLayout>;
+};
+
+ 

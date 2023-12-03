@@ -5,7 +5,7 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import { FaFaceSmile } from "react-icons/fa6";
-import style from "./style/Homeui.module.css";
+import style from "../../style/Homeui.module.css";
 
 const ServicesSection = () => {
   return (

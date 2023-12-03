@@ -1,4 +1,4 @@
-import style from "./style/Homeui.module.css";
+import style from "../../style/Homeui.module.css";
 import {
   FaCar,
   FaMoneyBill1Wave,
