@@ -12,8 +12,13 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { ReactElement, useEffect } from "react";
 import RootLayout from "@/Components/Layout/RootLayout";
+import { useSelector } from "react-redux";
+import { RootState } from "@/Redux/store";
 
 const HomePage = ({ reviews }: any) => {
+  // const loginState = useSelector((state: RootState) => console.log(state));
+  // console.log(loginState);
+
   useEffect(() => {
     AOS.init();
     AOS.refresh();
@@ -98,5 +103,3 @@ export async function getStaticProps() {
 HomePage.getLayout = function getLayout(page: ReactElement) {
   return <RootLayout>{page}</RootLayout>;
 };
-
- 

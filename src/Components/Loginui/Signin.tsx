@@ -2,6 +2,8 @@ import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import style from "../style/Loginui.module.css";
+import { useSelector } from "react-redux";
+import { RootState } from "@/Redux/store";
 
 type ISigninData = {
   email: string;
@@ -9,6 +11,12 @@ type ISigninData = {
 };
 
 const Signin = () => {
+  const loginState = useSelector(
+    (state: RootState) => state.loginState.loginState
+  );
+
+  // console.log(loginState);
+
   const [isViewPass, setIsViewPass] = useState(false);
   const [password, setPassword] = useState("");
   const {
@@ -22,16 +30,16 @@ const Signin = () => {
     setIsViewPass(!isViewPass);
   };
 
-  const onSubmit = (data: ISigninData) => {
-    console.log(data);
-  };
+  const onSubmit = (data: ISigninData) => {};
   return (
     <div
-      className={`border absolute right-40 top-52 my-10 rounded-lg shadow-lg ${style.form} p-24`}
+      className={`border absolute ${
+        loginState ? "right-[-2000px]" : "right-40"
+      }  top-52 my-10 rounded-lg shadow-lg ${style.form} p-24   `}
     >
       <h2 className="font-bold text-3xl text-center mb-5 ">Sign In</h2>
 
-      <div className="   ">
+      <div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
             <div className="mb-3">
