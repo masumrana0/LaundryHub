@@ -10,6 +10,13 @@ import { RootState, store } from "@/Redux/store";
 import { loginStateCore } from "@/Redux/features/login/loginSlice";
 import Signup from "@/Components/Loginui/Signup";
 
+//  width: 70%;
+//   height: 1300px;
+//   border-radius: 100%;
+//   position: absolute;
+//   left: -300px;
+//   top: -200px;
+
 const Login = () => {
   const dispatch = useDispatch();
   const [isSignup, setSignup] = useState(false);
@@ -21,14 +28,18 @@ const Login = () => {
     <div>
       <div className={`${style.main}`}>
         <div
-          className={` bg-blue-500  flex justify-end items-center   ${
-            loginState ? style.afiterClickCircle : style.circle
+          className={` bg-blue-500 w-[500px] h-[500px] lg:w-[70%] lg:h-[1300px]  rounded-full absolute  lg:top-[-200px]  flex justify-center items-start lg:justify-end lg:items-center ${
+            loginState
+              ? "top-[550px] right-[-60px]  lg:right-[-300px]"
+              : "top-[450px] left-[-60px]  lg:left-[-300px] "
           }`}
         >
           {loginState ? (
             <div className="flex items-center">
               <div className="text-center text-white lg:me-[100px] lg:mt-[50px]">
-                <h2 className="font-bold lg:text-4xl">Sigin</h2>
+                <h2 className="font-bold text-2xl mt-1 lg:mt-0 lg:text-4xl">
+                  Sign in
+                </h2>
                 <p className="lg:text-2xl">Already have an account</p>
                 <button
                   onClick={() => dispatch(loginStateCore())}
@@ -42,14 +53,22 @@ const Login = () => {
                 width={500}
                 height={100}
                 alt="signin-img"
-                className="lg:me-96"
+                className=" hidden lg:block lg:me-96"
               />
             </div>
           ) : (
-            <div className="flex items-center lg:gap-6 ">
-              <Image src={signup} width={600} height={100} alt="signup-img" />
+            <div className="flex items-center  lg:gap-6 ">
+              <Image
+                src={signup}
+                width={600}
+                height={100}
+                alt="signup-img"
+                className=" hidden lg:block lg:me-50"
+              />
               <div className="text-center text-white lg:me-[100px] lg:mt-[50px]">
-                <h2 className="font-bold lg:text-4xl">New Here !</h2>
+                <h2 className="font-bold text-2xl mt-10 lg:mt-0 lg:text-4xl">
+                  New Here !
+                </h2>
                 <p className="lg:text-2xl">Welcome to LaundryHub</p>
                 <button
                   onClick={() => dispatch(loginStateCore())}

@@ -1,6 +1,7 @@
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
+import { useEffect } from "react";
 import style from "../style/Loginui.module.css";
 import { useSelector } from "react-redux";
 import { RootState } from "@/Redux/store";
@@ -15,10 +16,9 @@ const Signin = () => {
     (state: RootState) => state.loginState.loginState
   );
 
-  // console.log(loginState);
-
   const [isViewPass, setIsViewPass] = useState(false);
   const [password, setPassword] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -30,12 +30,14 @@ const Signin = () => {
     setIsViewPass(!isViewPass);
   };
 
+  console.log(loginState);
+
   const onSubmit = (data: ISigninData) => {};
   return (
     <div
-      className={`border absolute ${
-        loginState ? "right-[-2000px]" : "right-40"
-      }  top-52 my-10 rounded-lg shadow-lg ${style.form} p-24   `}
+      className={`border lg:absolute ${
+        loginState ? "right-[-2000px] hidden lg:block" : "right-40 "
+      }  top-52 my-10 rounded-lg shadow-lg  lg:p-24 lg:w-[30%] w-[90%] mx-auto p-10`}
     >
       <h2 className="font-bold text-3xl text-center mb-5 ">Sign In</h2>
 
@@ -44,7 +46,7 @@ const Signin = () => {
           <div>
             <div className="mb-3">
               <h3 className="text-xl">Email</h3>
-              <div className="border hover:border-blue-400 py-2  px-4   rounded-lg focus:border-blue-500 focus:outline-none m">
+              <div className="border hover:border-blue-400 py-2  px-4   rounded-lg focus:border-blue-500 focus:outline-none ">
                 <input
                   {...register("email", { required: "email is required" })}
                   className="  w-full  outline-none focus:outline-none"
@@ -64,7 +66,7 @@ const Signin = () => {
                   {...register("password", {
                     required: "password is required",
                   })}
-                  className="  w-full py-2    outline-none focus:outline-none   "
+                  className="w-full py-2 outline-none focus:outline-none"
                   type={isViewPass ? "text" : "password"}
                   name="password"
                   placeholder="enter your password"

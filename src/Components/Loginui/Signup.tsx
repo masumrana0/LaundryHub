@@ -4,6 +4,7 @@ import { useState } from "react";
 import style from "../style/Loginui.module.css";
 import { useSelector } from "react-redux";
 import { RootState } from "@/Redux/store";
+import { log } from "console";
 
 type ISignupData = {
   firstName: string;
@@ -19,6 +20,7 @@ const Signup = () => {
   );
   const [isViewPass, setIsViewPass] = useState(false);
   const [password, setPassword] = useState("");
+  const [conPassword, setConPassword] = useState("");
   const {
     register,
     handleSubmit,
@@ -35,18 +37,22 @@ const Signup = () => {
   };
   return (
     <div
-      className={`border absolute  ${
-        loginState ? "left-40" : "left-[-2000px]"
-      }  top-10 my-10 rounded-lg shadow-lg ${style.form} p-16`}
+      className={`border lg:absolute  ${
+        loginState ? "left-40" : "left-[-2000px] hidden lg:block"
+      }  lg:top-10  lg:my-10 rounded-lg shadow-lg ${
+        style.form
+      } w-[90%] mx-auto  lg:w-[30%] lg:p-16 p-5 `}
     >
-      <h2 className="font-bold text-3xl text-center mb-5 ">Sign Up</h2>
+      <h2 className="font-bold text-2xl lg:text-3xl text-center lg:mb-5 ">
+        Sign Up
+      </h2>
 
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
             {/* firstName  */}
-            <div className="mb-3">
-              <h3 className="text-xl">First Name</h3>
+            <div className="lg:mb-3">
+              <h3 className="lg:text-xl text-md">First Name</h3>
               <div className="border hover:border-blue-400 py-2  px-4   rounded-lg focus:border-blue-500 focus:outline-none m">
                 <input
                   {...register("firstName", {
@@ -63,8 +69,8 @@ const Signup = () => {
             </div>
 
             {/* lastName  */}
-            <div className="mb-3">
-              <h3 className="text-xl">Last Name</h3>
+            <div className="lg:mb-3">
+              <h3 className="lg:text-xl text-md">Last Name</h3>
               <div className="border hover:border-blue-400 py-2  px-4   rounded-lg focus:border-blue-500 focus:outline-none m">
                 <input
                   {...register("lastName")}
@@ -79,8 +85,8 @@ const Signup = () => {
             </div>
 
             {/* emial  */}
-            <div className="mb-3">
-              <h3 className="text-xl">Email</h3>
+            <div className="lg:mb-3">
+              <h3 className="lg:text-xl text-md">Email</h3>
               <div className="border hover:border-blue-400 py-2  px-4   rounded-lg focus:border-blue-500 focus:outline-none m">
                 <input
                   {...register("email", { required: "email is required" })}
@@ -95,7 +101,7 @@ const Signup = () => {
             </div>
 
             {/* password  */}
-            <div className="mb-3">
+            <div className="lg:mb-3">
               <h3 className="text-xl">Password</h3>
               <div className="flex items-center  border rounded-lg px-3 hover:border-blue-500 ">
                 <input
@@ -122,7 +128,7 @@ const Signup = () => {
             </div>
 
             {/* confirmPassword  */}
-            <div className="mb-3">
+            <div className="lg:mb-3">
               <h3 className="text-xl">Confirm Password</h3>
               <div className="flex items-center  border rounded-lg px-3 hover:border-blue-500 ">
                 <input
@@ -134,8 +140,8 @@ const Signup = () => {
                   name="conPassword"
                   placeholder="enter your confirm password"
                   id="conPassword"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={conPassword}
+                  onChange={(e) => setConPassword(e.target.value)}
                 />
                 <button type="button" onClick={togglePasswordVisibility}>
                   {isViewPass ? (
@@ -148,7 +154,7 @@ const Signup = () => {
               <p className="text-red-500 ms-2">{errors.conPassword?.message}</p>
             </div>
 
-            <div className="flex justify-center  mt-5">
+            <div className="flex justify-center  lg:mt-5">
               <button
                 type="submit"
                 className="border px-10 rounded-lg bg-blue-400 text-white font-bold  py-2 hover:bg-blue-500"

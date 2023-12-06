@@ -7,26 +7,9 @@
 }
 
 .circle {
-  width: 70%;
-  height: 1300px;
-  border-radius: 100%;
-  position: absolute;
-  left: -300px;
-  top: -200px;
-  right: 0;
-  transition: right ease-in 2ms;
+ 
 }
 
 .afiterClickCircle {
-  width: 70%;
-  height: 1300px;
-  border-radius: 100%;
-  position: absolute;
-  /* left: 0px; */
-  top: -200px;
-  right: -300px;
-  transition: right ease-in-out 0.10ms;
-}
-.form {
-  width: 30%;
+  ;
 }
