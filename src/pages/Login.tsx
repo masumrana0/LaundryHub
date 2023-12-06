@@ -16,7 +16,7 @@ const Login = () => {
   const loginState = useSelector(
     (state: RootState) => state.loginState.loginState
   );
-  console.log(loginState);
+
   return (
     <div>
       <div className={`${style.main}`}>

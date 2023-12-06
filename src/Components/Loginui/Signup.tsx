@@ -7,19 +7,16 @@ import { RootState } from "@/Redux/store";
 
 type ISignupData = {
   firstName: string;
-  lastName: string;
+  lastName?: string;
   email: string;
   password: string;
-  confirmPass: string;
+  conPassword: string;
 };
 
 const Signup = () => {
   const loginState = useSelector(
     (state: RootState) => state.loginState.loginState
   );
-
-  console.log(loginState);
-  loginState ? console.log("left-50") : console.log("left-[-500px]");
   const [isViewPass, setIsViewPass] = useState(false);
   const [password, setPassword] = useState("");
   const {
@@ -33,7 +30,9 @@ const Signup = () => {
     setIsViewPass(!isViewPass);
   };
 
-  const onSubmit = (data: ISignupData) => {};
+  const onSubmit = (data: ISignupData) => {
+    console.log(data);
+  };
   return (
     <div
       className={`border absolute  ${
@@ -45,6 +44,7 @@ const Signup = () => {
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
+            {/* firstName  */}
             <div className="mb-3">
               <h3 className="text-xl">First Name</h3>
               <div className="border hover:border-blue-400 py-2  px-4   rounded-lg focus:border-blue-500 focus:outline-none m">
@@ -59,24 +59,26 @@ const Signup = () => {
                   id="firstName"
                 />
               </div>
-              <p className="text-red-500 ms-2">{errors.email?.message}</p>
+              <p className="text-red-500 ms-2">{errors.firstName?.message}</p>
             </div>
 
+            {/* lastName  */}
             <div className="mb-3">
               <h3 className="text-xl">Last Name</h3>
               <div className="border hover:border-blue-400 py-2  px-4   rounded-lg focus:border-blue-500 focus:outline-none m">
                 <input
-                  {...register("lastName", { required: false })}
+                  {...register("lastName")}
                   className="  w-full  outline-none focus:outline-none"
                   type="text"
-                  name="LastName"
+                  name="lastName"
                   placeholder="enter your lastName"
-                  id="email"
+                  id="lastName"
                 />
               </div>
-              <p className="text-red-500 ms-2">{errors.email?.message}</p>
+              <p className="text-red-500 ms-2">{errors.lastName?.message}</p>
             </div>
 
+            {/* emial  */}
             <div className="mb-3">
               <h3 className="text-xl">Email</h3>
               <div className="border hover:border-blue-400 py-2  px-4   rounded-lg focus:border-blue-500 focus:outline-none m">
@@ -92,6 +94,7 @@ const Signup = () => {
               <p className="text-red-500 ms-2">{errors.email?.message}</p>
             </div>
 
+            {/* password  */}
             <div className="mb-3">
               <h3 className="text-xl">Password</h3>
               <div className="flex items-center  border rounded-lg px-3 hover:border-blue-500 ">
@@ -118,18 +121,19 @@ const Signup = () => {
               <p className="text-red-500 ms-2">{errors.password?.message}</p>
             </div>
 
+            {/* confirmPassword  */}
             <div className="mb-3">
               <h3 className="text-xl">Confirm Password</h3>
               <div className="flex items-center  border rounded-lg px-3 hover:border-blue-500 ">
                 <input
-                  {...register("password", {
-                    required: "password is required",
+                  {...register("conPassword", {
+                    required: "Confirm password is required",
                   })}
                   className="  w-full py-2    outline-none focus:outline-none   "
                   type={isViewPass ? "text" : "password"}
-                  name="password"
-                  placeholder="enter your password"
-                  id="password"
+                  name="conPassword"
+                  placeholder="enter your confirm password"
+                  id="conPassword"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
@@ -141,7 +145,7 @@ const Signup = () => {
                   )}
                 </button>
               </div>
-              <p className="text-red-500 ms-2">{errors.password?.message}</p>
+              <p className="text-red-500 ms-2">{errors.conPassword?.message}</p>
             </div>
 
             <div className="flex justify-center  mt-5">
