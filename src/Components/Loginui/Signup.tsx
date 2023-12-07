@@ -1,10 +1,12 @@
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import style from "../style/Loginui.module.css";
 import { useSelector } from "react-redux";
 import { RootState } from "@/Redux/store";
-import { log } from "console";
+
+import userSignupSchema from "@/Schema/Schema";
 
 type ISignupData = {
   firstName: string;
@@ -24,15 +26,14 @@ const Signup = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
-  } = useForm<ISignupData>();
+  } = useForm({ resolver: yupResolver(userSignupSchema) });
 
   const togglePasswordVisibility = () => {
     setIsViewPass(!isViewPass);
   };
 
-  const onSubmit = (data: ISignupData) => {
+  const onSubmit = (data: any) => {
     console.log(data);
   };
   return (
@@ -55,17 +56,17 @@ const Signup = () => {
               <h3 className="lg:text-xl text-md">First Name</h3>
               <div className="border hover:border-blue-400 py-2  px-4   rounded-lg focus:border-blue-500 focus:outline-none m">
                 <input
-                  {...register("firstName", {
-                    required: "FirstName is required",
-                  })}
+                  {...register("name.firstName")}
                   className="  w-full  outline-none focus:outline-none"
                   type="text"
-                  name="firstName"
+                  name="name.firstName"
                   placeholder="enter your firstName"
                   id="firstName"
                 />
               </div>
-              <p className="text-red-500 ms-2">{errors.firstName?.message}</p>
+              <p className="text-red-500 ms-2">
+                {errors.name?.firstName?.message}
+              </p>
             </div>
 
             {/* lastName  */}
@@ -73,15 +74,17 @@ const Signup = () => {
               <h3 className="lg:text-xl text-md">Last Name</h3>
               <div className="border hover:border-blue-400 py-2  px-4   rounded-lg focus:border-blue-500 focus:outline-none m">
                 <input
-                  {...register("lastName")}
+                  {...register("name.lastName")}
                   className="  w-full  outline-none focus:outline-none"
                   type="text"
-                  name="lastName"
+                  name="name.lastName"
                   placeholder="enter your lastName"
                   id="lastName"
                 />
               </div>
-              <p className="text-red-500 ms-2">{errors.lastName?.message}</p>
+              <p className="text-red-500 ms-2">
+                {errors.name?.lastName?.message}
+              </p>
             </div>
 
             {/* emial  */}
@@ -89,7 +92,7 @@ const Signup = () => {
               <h3 className="lg:text-xl text-md">Email</h3>
               <div className="border hover:border-blue-400 py-2  px-4   rounded-lg focus:border-blue-500 focus:outline-none m">
                 <input
-                  {...register("email", { required: "email is required" })}
+                  {...register("email")}
                   className="  w-full  outline-none focus:outline-none"
                   type="email"
                   name="email"
@@ -105,9 +108,7 @@ const Signup = () => {
               <h3 className="text-xl">Password</h3>
               <div className="flex items-center  border rounded-lg px-3 hover:border-blue-500 ">
                 <input
-                  {...register("password", {
-                    required: "password is required",
-                  })}
+                  {...register("password")}
                   className="  w-full py-2    outline-none focus:outline-none   "
                   type={isViewPass ? "text" : "password"}
                   name="password"
@@ -132,14 +133,12 @@ const Signup = () => {
               <h3 className="text-xl">Confirm Password</h3>
               <div className="flex items-center  border rounded-lg px-3 hover:border-blue-500 ">
                 <input
-                  {...register("conPassword", {
-                    required: "Confirm password is required",
-                  })}
-                  className="  w-full py-2    outline-none focus:outline-none   "
+                  {...register("confirmPassword")}
+                  className="w-full py-2  outline-none focus:outline-none"
                   type={isViewPass ? "text" : "password"}
-                  name="conPassword"
+                  name="confirmPassword"
                   placeholder="enter your confirm password"
-                  id="conPassword"
+                  id="confirmPassword"
                   value={conPassword}
                   onChange={(e) => setConPassword(e.target.value)}
                 />
@@ -151,7 +150,9 @@ const Signup = () => {
                   )}
                 </button>
               </div>
-              <p className="text-red-500 ms-2">{errors.conPassword?.message}</p>
+              <p className="text-red-500 ms-2">
+                {errors.confirmPassword?.message}
+              </p>
             </div>
 
             <div className="flex justify-center  lg:mt-5">

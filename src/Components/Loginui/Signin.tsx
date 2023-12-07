@@ -32,7 +32,9 @@ const Signin = () => {
 
   console.log(loginState);
 
-  const onSubmit = (data: ISigninData) => {};
+  const onSubmit = (data: ISigninData) => {
+    console.log(data);
+  };
   return (
     <div
       className={`border lg:absolute ${
