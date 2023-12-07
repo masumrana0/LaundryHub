@@ -1,3 +1,11 @@
+/**
+ * Title: 'Signup Form'
+ * Description: 'This Login page Component.'
+ * Author: 'Masum Rana'
+ * Date: 07-12-2023
+ *
+ */
+
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -8,21 +16,18 @@ import { RootState } from "@/Redux/store";
 
 import userSignupSchema from "@/Schema/Schema";
 
-type ISignupData = {
-  firstName: string;
-  lastName?: string;
-  email: string;
-  password: string;
-  conPassword: string;
-};
-
 const Signup = () => {
+  // Login State come to redux store
   const loginState = useSelector(
     (state: RootState) => state.loginState.loginState
   );
+
+  // essential Component state
   const [isViewPass, setIsViewPass] = useState(false);
   const [password, setPassword] = useState("");
   const [conPassword, setConPassword] = useState("");
+
+  // React Form hook handler
   const {
     register,
     handleSubmit,

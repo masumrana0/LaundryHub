@@ -10,13 +10,6 @@ import { RootState, store } from "@/Redux/store";
 import { loginStateCore } from "@/Redux/features/login/loginSlice";
 import Signup from "@/Components/Loginui/Signup";
 
-//  width: 70%;
-//   height: 1300px;
-//   border-radius: 100%;
-//   position: absolute;
-//   left: -300px;
-//   top: -200px;
-
 const Login = () => {
   const dispatch = useDispatch();
   const [isSignup, setSignup] = useState(false);

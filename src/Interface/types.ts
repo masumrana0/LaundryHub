@@ -1,9 +1,6 @@
-import { UseFormRegisterReturn } from "react-hook-form";
-export interface IFormInput {
+export type ICloth = {
+  _id: string;
+  category: "men" | "woman" | "home";
   name: string;
-  type: "text" | "password" | "email" | "number" | "etc"; // Define the specific types you'll use
-  placeholder?: string;
-  register: UseFormRegisterReturn;
-  label: string;
-  errorMessage: string;
-}
+  price: number;
+};
