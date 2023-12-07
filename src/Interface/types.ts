@@ -4,3 +4,11 @@ export type ICloth = {
   name: string;
   price: number;
 };
+
+export interface AccordionItem {
+  id: number;
+  isOpen: boolean;
+  title: string;
+  imgUrl: string;
+  contents: any;
+}
