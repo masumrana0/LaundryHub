@@ -8,7 +8,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     <div>
       <Provider store={store}>
         <Navbar />
-        <div style={{ height: "100vh" }}>{children}</div>
+        <div>{children}</div>
         <Footer />
       </Provider>
     </div>

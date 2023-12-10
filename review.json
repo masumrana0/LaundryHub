@@ -1,75 +1,14 @@
-[
-  {
-    "userName": "Mohammad Rahman",
-    "star": "4",
-    "profession": "student",
-    "photoUrl": "https://img.freepik.com/free-photo/studio-shot-emotive-man-has-displeased-expression-blows-cheeks-has-eyes-popped-out_273609-44096.jpg?w=1060&t=st=1699683272~exp=1699683872~hmac=4041da2a9716a44b932161205ba31640ef4476482765ea59b22439daf76471bf",
-    "review": "Exceptional service! My clothes have never been cleaner. Quick turnaround, friendly staff, and top-notch facilities. I'm a satisfied customer!"
-  },
-  {
-    "userName": "Farhan Khan",
-    "star": "5",
-    "profession": "lecturer",
-    "photoUrl": "https://img.freepik.com/free-photo/photo-serious-handsome-guy-posing-against-white-wall_273609-20462.jpg?size=626&ext=jpg&ga=GA1.1.386372595.1698796800&semt=ais",
-    "review": "Five stars! The convenience of the laundry hub is unbeatable. No more wasting time at home doing laundry. Clean and efficient – highly recommend!"
-  },
-  {
-    "userName": "Ayesha Ahmed",
-    "profession": "Manger",
-    "star": "5",
-    "photoUrl": "https://img.freepik.com/free-photo/waist-up-shot-happy-unshaven-man-gives-handshake-greets-with-someone-smiles-sincerely_273609-44101.jpg?w=1060&t=st=1699683305~exp=1699683905~hmac=d9666e25bdbe575eed84726f27c32b23abab71943147eb6ae5c25392280b55c4",
-    "review": "Impressed with the quality and speed of service. My clothes are treated with care, and the hub's modern equipment makes the laundry experience enjoyable."
-  },
-  {
-    "userName": "Akash Ahmed",
-    "profession": "Officer",
-    "star": "3",
-    "photoUrl": "https://img.freepik.com/free-photo/portrait-young-cute-businessman_186202-828.jpg?size=626&ext=jpg&ga=GA1.1.570659266.1696241015&semt=ais",
-    "review": "The laundry hub is a game-changer! Affordable, easy to use, and my clothes come out looking brand new. Can't imagine going back to traditional laundry."
-  },
-  {
-    "userName": "Salahuddin Khan",
-    "profession": "lecturer",
-    "star": "3",
-    "photoUrl": "https://img.freepik.com/free-photo/handsome-man-isolated-white-background_1368-4264.jpg?w=740&t=st=1699683464~exp=1699684064~hmac=a03eba1c99dc42e34ef9e4f2947d57b43cfaeb7da5a8033ada8273a538804345",
-    "review": "Excellent customer service! The staff goes above and beyond to ensure a smooth experience. Clean environment and advanced technology – a must-try!"
-  },
-  {
-    "userName": "Shahidul Islam",
-    "profession": "student",
-    "star": "5",
-    "photoUrl": "https://img.freepik.com/free-photo/young-successful-businessman-thinking-with-hand-chin_176420-1128.jpg?w=360&t=st=1699683494~exp=1699684094~hmac=46ab87306c31bb36b684e37b199e4d195bcd4e5a6f95c353a5046c88b3ed58c9",
-    "review": "Finally, a laundry service that fits my busy schedule. The laundry hub is a lifesaver, and my clothes have never been this fresh and clean. Highly recommend!"
-  },
-  {
-    "userName": "Kamal Hossain",
-    "profession": "student",
-    "star": "4",
-    "photoUrl": "https://img.freepik.com/free-photo/portrait-successful-young-businessman-with-his-arms-crossed-looking-camera_23-2148176207.jpg?size=626&ext=jpg&ga=GA1.1.570659266.1696241015&semt=ais",
-    "review": "Efficient and eco-friendly! I appreciate the commitment to sustainability. My clothes are spotless, and I feel good knowing I'm using a green laundry service."
-  },
-  {
-    "userName": "Sabina Yasmin",
-    "profession": "lecturer",
-    "star": "5",
-    "photoUrl": "https://img.freepik.com/free-photo/young-beautiful-girl-posing-black-leather-jacket-park_1153-8104.jpg?size=626&ext=jpg&ga=GA1.1.570659266.1696241015&semt=ais",
-    "review": "I love the laundry hub! It's a stress-free way to tackle laundry. The facilities are modern, the prices are competitive, and my clothes have never looked better. Highly recommended!"
-  }
-  
-],
-
-
-
-[
-  {
-    "title": "bookTitle",
-    "price": "89",
-    "writer": "writerName",
-    "publisher": "PublisherName",
-    "genre": "Romantic",
-    "publicationDate": "01/04/2023",
-    "bookUrl": "bookrul",
-    "review": []
-  },
- 
-]
+{
+  "user": "reference id",
+  "services": [
+    {
+      "service": "Wash & Iron Service",
+      "laundryProduct": "referenceId",
+      "laundryProductItem": 2
+    }
+  ],
+  "grandPrice": 35,
+  "OrderTime": "12/12/2023",
+  "deliveryTime": "15/12/2023",
+  "isDeliveried": false
+}
