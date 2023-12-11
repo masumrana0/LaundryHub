@@ -22,7 +22,7 @@ import {
   removeOneToOrder,
 } from "@/Redux/features/order/orderSlice";
 
-const Accordion = () => {
+const Accordion = ({ service }: { service: string }) => {
   //  redux
   const dispath = useAppDispatch();
 
@@ -62,10 +62,7 @@ const Accordion = () => {
 
   //  data fetching with CSR
   useEffect(() => {
-    fetchData(`http://localhost:4000/api/v1/cloth`, setData).catch((e) => {
-      // handle the error as needed
-      console.error("An error occurred while fetching the data: ", e);
-    });
+    fetchData(`http://localhost:4000/api/v1/cloth`, setData);
   }, []);
 
   // accordion's data
@@ -115,7 +112,8 @@ const Accordion = () => {
       [order?._id]: (productQuantities[order?._id] || 0) + 1,
     };
     setProductQuantity(updatedPrductQuantities);
-    dispath(addToOrder(order));
+    const orderdata = { ...order, service: service };
+    dispath(addToOrder(orderdata));
   };
 
   // Function to handle removing a product from the order with its quantity
@@ -159,7 +157,7 @@ const Accordion = () => {
             className={`overflow-y-auto transition-height duration-300 ease-in-out ${
               accordion.isOpen ? "h-auto" : "h-0"
             }`}
-            style={{ maxHeight: accordion.isOpen ? "450px" : "0px" }}
+            style={{ maxHeight: accordion.isOpen ? "500px" : "0px" }}
           >
             {accordion.contents.map((content: ICloth) => (
               <div
@@ -178,10 +176,18 @@ const Accordion = () => {
                     </span>
                   </p>
 
-                  <div className="shadow-lg border border-blue-500 flex gap-10 text-xl   px-2 py-1 rounded-full">
-                    <button onClick={() => handleAddToOrder(content)}>+</button>
+                  <div className="shadow-lg border border-blue-500 flex  items-center gap-6 text-xl   px-2 py-1 rounded-full">
+                    <button
+                      className="font-extrabold text-xl"
+                      onClick={() => handleAddToOrder(content)}
+                    >
+                      +
+                    </button>
                     <span>{productQuantities[content?._id] || 0}</span>
-                    <button onClick={() => handleRemoveFromOrder(content)}>
+                    <button
+                      className="font-extrabold text-xl"
+                      onClick={() => handleRemoveFromOrder(content)}
+                    >
                       -
                     </button>
                   </div>

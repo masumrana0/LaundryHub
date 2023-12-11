@@ -9,6 +9,7 @@ interface ILaundryProduct {
   category: "men" | "woman" | "home";
   name: string;
   price: number;
+  service?: string;
   quntity?: number;
 }
 

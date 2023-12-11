@@ -15,6 +15,7 @@ import React, { useState, useEffect, ReactElement } from "react";
 const Laundry = () => {
   const [service, setService] = useState("Wash & Iron Service");
   const { laundryProducts } = useAppSelector((state) => state.order);
+  
 
   return (
     <div className="container mx-auto">
@@ -48,31 +49,53 @@ const Laundry = () => {
       </div>
 
       {/* Botom page oƒ the laundry page  */}
-      <div className="flex justify-center gap-10">
+      <div className="flex justify-center  gap-10">
         {/* accordian section */}
-        <div className="lg:w-[65%]">
+        <div className="lg:w-[65%]  p-10">
           {" "}
-          <Accordion />
+          <Accordion service={service} />
         </div>
 
         {/* order section  */}
-        <div
-          className={` lg:w-[33%] overflow-y-auto transition-height duration-300 ease-in-out h-auto border shadow-lg p-10 `}
-        >
-          <div className="text-center border-b-2 mb-10 ">
-            <h2 className="font-bold text-blue-400 text-3xl">Your Order</h2>
-            <p className="mb-2 text-gray-500">Total Item: 0</p>
+        <div className="lg:w-[35%] shadow-lg  ">
+          <div className="text-center border-b-2 mb-1  bg-gray-400 py-6 text-white ">
+            <h2 className="font-bold   text-3xl">Your Order</h2>
+            <p className="mb-2 text-lg">Total Item: 0</p>
           </div>
 
-          <div>
-            {laundryProducts.map((laundryProduct) => (
-              <div className="border rounded" key={laundryProduct._id}>
-                <h2>{laundryProduct.name}</h2>
-              </div>
-            ))}
+          <div
+            className={`  overflow-y-auto h-[500px]   transition-height duration-300 ease-in-out   border  `}
+          >
+            <div>
+              {laundryProducts?.map((laundryProduct) => (
+                <div
+                  className="border rounded   border-blue-500 mb-2"
+                  key={laundryProduct._id}
+                >
+                  <p className="text-center font-semibold text-lg text-gray-600">
+                    {laundryProduct.service}
+                  </p>
+                  <div className="py-2 px-4 flex justify-between item-center">
+                    <h2 className="font-semibold lg:text-xl ">
+                      {laundryProduct.name}
+                    </h2>
+                    <p>
+                      <span className="text-xl font-extrabold  text-blue-400">
+                        &#2547;
+                        <span className="font-semibold text-md">
+                          {" "}
+                          {laundryProduct?.price}
+                        </span>
+                      </span>
+                    </p>
+                  </div>
+
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div>
+          <div className=" p-10 ">
             <div className="">
               <div className="flex justify-between items-center mb-5 ">
                 <h3 className="font-bold">Sub Total</h3>
