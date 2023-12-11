@@ -15,7 +15,6 @@ import React, { useState, useEffect, ReactElement } from "react";
 const Laundry = () => {
   const [service, setService] = useState("Wash & Iron Service");
   const { laundryProducts } = useAppSelector((state) => state.order);
-  // console.log(laundryProducts);
 
   return (
     <div className="container mx-auto">
@@ -65,29 +64,39 @@ const Laundry = () => {
             <p className="mb-2 text-gray-500">Total Item: 0</p>
           </div>
 
-          <div className="">
-            <div className="flex justify-between items-center mb-5 ">
-              <h3 className="font-bold">Sub Total</h3>
-              <span className="text-lg font-extrabold text-blue-400">
-                &#2547;
-                <span className="font-semibold text-md"> 0</span>
-              </span>
-            </div>
+          <div>
+            {laundryProducts.map((laundryProduct) => (
+              <div className="border rounded" key={laundryProduct._id}>
+                <h2>{laundryProduct.name}</h2>
+              </div>
+            ))}
+          </div>
 
-            <div className="flex justify-between items-center mb-5 ">
-              <h3 className="font-bold">Delivery Charge</h3>
-              <span className="text-lg font-extrabold text-blue-400">
-                &#2547;
-                <span className="font-semibold text-md"> 0</span>
-              </span>
-            </div>
+          <div>
+            <div className="">
+              <div className="flex justify-between items-center mb-5 ">
+                <h3 className="font-bold">Sub Total</h3>
+                <span className="text-lg font-extrabold text-blue-400">
+                  &#2547;
+                  <span className="font-semibold text-md"> 0</span>
+                </span>
+              </div>
 
-            <div className="flex justify-between  items-center">
-              <h3 className="font-bold">Grand Total</h3>{" "}
-              <span className="text-lg font-extrabold text-blue-400">
-                &#2547;
-                <span className="font-semibold text-md"> 0</span>
-              </span>
+              <div className="flex justify-between items-center mb-5 ">
+                <h3 className="font-bold">Delivery Charge</h3>
+                <span className="text-lg font-extrabold text-blue-400">
+                  &#2547;
+                  <span className="font-semibold text-md"> 0</span>
+                </span>
+              </div>
+
+              <div className="flex justify-between  items-center">
+                <h3 className="font-bold">Grand Total</h3>{" "}
+                <span className="text-lg font-extrabold text-blue-400">
+                  &#2547;
+                  <span className="font-semibold text-md"> 0</span>
+                </span>
+              </div>
             </div>
           </div>
         </div>
