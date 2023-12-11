@@ -17,6 +17,10 @@ import menImg from "../../../public/laundrypageimg/men.png";
 import womenImg from "../../../public/laundrypageimg/woman.png";
 import homeImg from "../../../public/laundrypageimg/home.png";
 import { useAppDispatch, useAppSelector } from "@/Redux/hook";
+import {
+  addToOrder,
+  removeOneToOrder,
+} from "@/Redux/features/order/orderSlice";
 
 const Accordion = () => {
   //  redux
@@ -99,6 +103,33 @@ const Accordion = () => {
     setAccordions(updatedAccordions);
   };
 
+  // State to track the quantity of each product in the order
+  const [productQuantities, setProductQuantity] = useState<{
+    [key: string]: number;
+  }>({});
+
+  // Function to handle adding a product to the order with its quantity
+  const handleAddToOrder = (order: ICloth): void => {
+    const updatedPrductQuantities = {
+      ...productQuantities,
+      [order?._id]: (productQuantities[order?._id] || 0) + 1,
+    };
+    setProductQuantity(updatedPrductQuantities);
+    dispath(addToOrder(order));
+  };
+
+  // Function to handle removing a product from the order with its quantity
+  const handleRemoveFromOrder = (order: ICloth): void => {
+    if (productQuantities[order?._id] && productQuantities[order?._id] > 0) {
+      const updatedPrductQuantities = {
+        ...productQuantities,
+        [order?._id]: productQuantities[order?._id] - 1,
+      };
+      setProductQuantity(updatedPrductQuantities);
+    }
+    dispath(removeOneToOrder(order));
+  };
+
   return (
     <div>
       {accordions.map((accordion) => (
@@ -131,7 +162,10 @@ const Accordion = () => {
             style={{ maxHeight: accordion.isOpen ? "450px" : "0px" }}
           >
             {accordion.contents.map((content: ICloth) => (
-              <div className="p-4 bg-white border   border-b-2 border-blue-200">
+              <div
+                key={content?._id}
+                className="p-4 bg-white border   border-b-2 border-blue-200"
+              >
                 <h2 className="text-lg font-semibold ">{content.name}</h2>
                 <div className="mt-4 flex justify-between items-center">
                   <p>
@@ -145,9 +179,11 @@ const Accordion = () => {
                   </p>
 
                   <div className="shadow-lg border border-blue-500 flex gap-10 text-xl   px-2 py-1 rounded-full">
-                    <button>+</button>
-                    <span>3</span>
-                    <button>-</button>
+                    <button onClick={() => handleAddToOrder(content)}>+</button>
+                    <span>{productQuantities[content?._id] || 0}</span>
+                    <button onClick={() => handleRemoveFromOrder(content)}>
+                      -
+                    </button>
                   </div>
                 </div>
               </div>

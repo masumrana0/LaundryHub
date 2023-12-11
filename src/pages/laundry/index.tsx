@@ -5,7 +5,6 @@
  * Date: 07-12-2023
  *
  */
-
 import Accordion from "@/Components/Laundryui/Accordian";
 import RootLayout from "@/Components/Layout/RootLayout";
 import { ICloth } from "@/Interface/types";
@@ -15,7 +14,8 @@ import React, { useState, useEffect, ReactElement } from "react";
 
 const Laundry = () => {
   const [service, setService] = useState("Wash & Iron Service");
-  const { laundryProduct } = useAppSelector((state) => state.order);
+  const { laundryProducts } = useAppSelector((state) => state.order);
+  // console.log(laundryProducts);
 
   return (
     <div className="container mx-auto">
