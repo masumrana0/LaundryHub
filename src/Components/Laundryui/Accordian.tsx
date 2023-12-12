@@ -25,6 +25,17 @@ import {
 const Accordion = ({ service }: { service: string }) => {
   //  redux
   const dispath = useAppDispatch();
+  const { laundryProducts } = useAppSelector((state) => state.order);
+  const isExistData = (order: ICloth) => {
+    const isExistData = laundryProducts.find(
+      (data: ICloth) => data._id === order._id
+    );
+    if (isExistData) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   // data collections
   const [datas, setData] = useState<ICloth[] | null>(null);
@@ -176,21 +187,30 @@ const Accordion = ({ service }: { service: string }) => {
                     </span>
                   </p>
 
-                  <div className="shadow-lg border border-blue-500 flex  items-center gap-6 text-xl   px-2 py-1 rounded-full">
+                  {isExistData(content) ? (
+                    <div className="shadow-lg border border-blue-500 flex  items-center gap-6 text-xl   px-2 py-1 rounded-full">
+                      <button
+                        className="font-extrabold text-xl"
+                        onClick={() => handleAddToOrder(content)}
+                      >
+                        +
+                      </button>
+                      <span>{productQuantities[content?._id] || 0}</span>
+                      <button
+                        className="font-extrabold text-xl"
+                        onClick={() => handleRemoveFromOrder(content)}
+                      >
+                        -
+                      </button>
+                    </div>
+                  ) : (
                     <button
-                      className="font-extrabold text-xl"
                       onClick={() => handleAddToOrder(content)}
+                      className="border px-3 py-2 rounded-lg bg-blue-500  hover:bg-blue-900 text-white font-bold"
                     >
-                      +
+                      Add To order
                     </button>
-                    <span>{productQuantities[content?._id] || 0}</span>
-                    <button
-                      className="font-extrabold text-xl"
-                      onClick={() => handleRemoveFromOrder(content)}
-                    >
-                      -
-                    </button>
-                  </div>
+                  )}
                 </div>
               </div>
             ))}

@@ -15,7 +15,6 @@ import React, { useState, useEffect, ReactElement } from "react";
 const Laundry = () => {
   const [service, setService] = useState("Wash & Iron Service");
   const { laundryProducts } = useAppSelector((state) => state.order);
-  
 
   return (
     <div className="container mx-auto">
@@ -58,9 +57,9 @@ const Laundry = () => {
 
         {/* order section  */}
         <div className="lg:w-[35%] shadow-lg  ">
-          <div className="text-center border-b-2 mb-1  bg-gray-400 py-6 text-white ">
+          <div className="text-center border-b-2 mb-1  bg-blue-400 py-6 text-white ">
             <h2 className="font-bold   text-3xl">Your Order</h2>
-            <p className="mb-2 text-lg">Total Item: 0</p>
+            <p className="mb-2 text-lg">Total Item: {laundryProducts.length}</p>
           </div>
 
           <div
@@ -69,7 +68,7 @@ const Laundry = () => {
             <div>
               {laundryProducts?.map((laundryProduct) => (
                 <div
-                  className="border rounded   border-blue-500 mb-2"
+                  className="border-2 rounded shadow-lg shadow-blue-400    mb-2"
                   key={laundryProduct._id}
                 >
                   <p className="text-center font-semibold text-lg text-gray-600">
@@ -89,7 +88,6 @@ const Laundry = () => {
                       </span>
                     </p>
                   </div>
-
                 </div>
               ))}
             </div>
@@ -120,6 +118,21 @@ const Laundry = () => {
                   <span className="font-semibold text-md"> 0</span>
                 </span>
               </div>
+
+              {
+                <div className="flex justify-center mt-5 ">
+                  <button
+                    disabled={laundryProducts.length === 0}
+                    className={`border px-4 py-3  font-bold text-white rounded-lg ${
+                      laundryProducts.length === 0
+                        ? " bg-gray-500"
+                        : "bg-blue-400"
+                    }`}
+                  >
+                    Check Out Your Order
+                  </button>
+                </div>
+              }
             </div>
           </div>
         </div>
