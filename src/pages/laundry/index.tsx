@@ -7,7 +7,7 @@
  */
 import Accordion from "@/Components/Laundryui/Accordian";
 import RootLayout from "@/Components/Layout/RootLayout";
-import { ICloth } from "@/Interface/types";
+
 import { useAppSelector } from "@/Redux/hook";
 import fetchData from "@/fetchData(CSR)/fetchData";
 import React, { useState, useEffect, ReactElement } from "react";
@@ -125,7 +125,7 @@ const Laundry = () => {
                     disabled={laundryProducts.length === 0}
                     className={`border px-4 py-3  font-bold text-white rounded-lg ${
                       laundryProducts.length === 0
-                        ? " bg-gray-500"
+                        ? " bg-gray-500 text-gray-300"
                         : "bg-blue-400"
                     }`}
                   >

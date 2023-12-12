@@ -6,10 +6,8 @@
  *
  */
 
-import { AccordionItem, ICloth } from "@/Interface/types";
+import { IAccordionItem, ILaundryProduct } from "@/Interface/types";
 import fetchData from "@/fetchData(CSR)/fetchData";
-import { ManOutlined } from "@ant-design/icons";
-import Icon from "@ant-design/icons/lib/components/Icon";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
@@ -21,85 +19,23 @@ import {
   addToOrder,
   removeOneToOrder,
 } from "@/Redux/features/order/orderSlice";
+import { AccrodianContent } from "@/utilities/LaundryPageAccordianUtilites";
+import { isExistedData } from "@/utilities/common/common";
 
 const Accordion = ({ service }: { service: string }) => {
+  // State to track the quantity of each product in the order
+  const [productQuantities, setProductQuantity] = useState<{
+    [key: string]: number;
+  }>({});
+
+  // accordion's data
+  const [accordions, setAccordions] = useState<IAccordionItem[]>(
+    AccrodianContent()
+  );
+
   //  redux
   const dispath = useAppDispatch();
   const { laundryProducts } = useAppSelector((state) => state.order);
-  const isExistData = (order: ICloth) => {
-    const isExistData = laundryProducts.find(
-      (data: ICloth) => data._id === order._id
-    );
-    if (isExistData) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
-  // data collections
-  const [datas, setData] = useState<ICloth[] | null>(null);
-  const [menCollection, setMenCollection] = useState<ICloth[]>([]);
-  const [womanCollection, setWomanCollection] = useState<ICloth[]>([]);
-  const [homeCollection, setHomeCollection] = useState<ICloth[]>([]);
-
-  // create new separte data collections
-  if (datas) {
-    datas?.map((data: ICloth) => {
-      if (data?.category === "men") {
-        const doesExist = menCollection.find(
-          (isExist) => isExist?._id == data?._id
-        );
-        if (!doesExist) {
-          return menCollection.push(data);
-        }
-      } else if (data?.category === "woman") {
-        const doesExist = womanCollection.find(
-          (isExist) => isExist?._id == data?._id
-        );
-        if (!doesExist) {
-          return womanCollection.push(data);
-        }
-      } else {
-        const doesExist = homeCollection.find(
-          (isExist) => isExist?._id == data?._id
-        );
-        if (!doesExist) {
-          return homeCollection.push(data);
-        }
-      }
-    });
-  }
-
-  //  data fetching with CSR
-  useEffect(() => {
-    fetchData(`http://localhost:4000/api/v1/cloth`, setData);
-  }, []);
-
-  // accordion's data
-  const [accordions, setAccordions] = useState<AccordionItem[]>([
-    {
-      id: 1,
-      isOpen: false,
-      title: "Men's Cloths",
-      imgUrl: menImg,
-      contents: menCollection,
-    },
-    {
-      id: 2,
-      isOpen: false,
-      title: "Woman's Cloth",
-      imgUrl: womenImg,
-      contents: womanCollection,
-    },
-    {
-      id: 3,
-      isOpen: false,
-      title: "Household & Accessories",
-      imgUrl: homeImg,
-      contents: homeCollection,
-    },
-  ]);
 
   // Toogle Accrodian
   const toggleAccordion = (id: number) => {
@@ -111,16 +47,11 @@ const Accordion = ({ service }: { service: string }) => {
     setAccordions(updatedAccordions);
   };
 
-  // State to track the quantity of each product in the order
-  const [productQuantities, setProductQuantity] = useState<{
-    [key: string]: number;
-  }>({});
-
   // Function to handle adding a product to the order with its quantity
-  const handleAddToOrder = (order: ICloth): void => {
+  const handleAddToOrder = (order: ILaundryProduct): void => {
     const updatedPrductQuantities = {
       ...productQuantities,
-      [order?._id]: (productQuantities[order?._id] || 0) + 1,
+      [order?._id!]: (productQuantities[order?._id!] || 0) + 1,
     };
     setProductQuantity(updatedPrductQuantities);
     const orderdata = { ...order, service: service };
@@ -128,11 +59,11 @@ const Accordion = ({ service }: { service: string }) => {
   };
 
   // Function to handle removing a product from the order with its quantity
-  const handleRemoveFromOrder = (order: ICloth): void => {
-    if (productQuantities[order?._id] && productQuantities[order?._id] > 0) {
+  const handleRemoveFromOrder = (order: ILaundryProduct): void => {
+    if (productQuantities[order?._id!] && productQuantities[order?._id!] > 0) {
       const updatedPrductQuantities = {
         ...productQuantities,
-        [order?._id]: productQuantities[order?._id] - 1,
+        [order?._id!]: productQuantities[order?._id!] - 1,
       };
       setProductQuantity(updatedPrductQuantities);
     }
@@ -141,7 +72,7 @@ const Accordion = ({ service }: { service: string }) => {
 
   return (
     <div>
-      {accordions.map((accordion) => (
+      {accordions?.map((accordion) => (
         <div
           key={accordion.id}
           className="border rounded-md mb-4 overflow-hidden"
@@ -170,7 +101,7 @@ const Accordion = ({ service }: { service: string }) => {
             }`}
             style={{ maxHeight: accordion.isOpen ? "500px" : "0px" }}
           >
-            {accordion.contents.map((content: ICloth) => (
+            {accordion.contents.map((content: ILaundryProduct) => (
               <div
                 key={content?._id}
                 className="p-4 bg-white border   border-b-2 border-blue-200"
@@ -187,7 +118,7 @@ const Accordion = ({ service }: { service: string }) => {
                     </span>
                   </p>
 
-                  {isExistData(content) ? (
+                  {isExistedData(content, laundryProducts).status ? (
                     <div className="shadow-lg border border-blue-500 flex  items-center gap-6 text-xl   px-2 py-1 rounded-full">
                       <button
                         className="font-extrabold text-xl"
@@ -195,7 +126,7 @@ const Accordion = ({ service }: { service: string }) => {
                       >
                         +
                       </button>
-                      <span>{productQuantities[content?._id] || 0}</span>
+                      <span>{productQuantities[content?._id!] || 0}</span>
                       <button
                         className="font-extrabold text-xl"
                         onClick={() => handleRemoveFromOrder(content)}

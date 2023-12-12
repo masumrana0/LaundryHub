@@ -1,17 +1,7 @@
+import { ILaundryProduct } from "@/Interface/types";
 import Laundry from "@/pages/laundry";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import latestVersion from "latest-version";
-import { number } from "yup";
-
-interface ILaundryProduct {
-  _id: string;
-  category: "men" | "woman" | "home";
-  name: string;
-  price: number;
-  service?: string;
-  quntity?: number;
-}
 
 interface IinitialState {
   laundryProducts: ILaundryProduct[];
@@ -29,7 +19,7 @@ const orderSlice = createSlice({
       const doesExist = state.laundryProducts.find(
         (product: ILaundryProduct) => product?._id === action.payload?._id
       );
-      // console.log(doesExist);
+
       if (doesExist && doesExist.quntity! >= 1) {
         doesExist.quntity = doesExist.quntity! + 1;
         doesExist.price = doesExist.price + action.payload.price;
