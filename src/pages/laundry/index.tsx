@@ -19,7 +19,7 @@ const Laundry = () => {
   return (
     <div className="container mx-auto">
       {/* Heading of the page  */}
-      <div className="lg:my-10 my-5 flex flex-col-reverse lg:flex-row lg:justify-between items-center ">
+      <div className="lg:my-10 my-5 flex flex-col lg:flex-row lg:justify-between items-center ">
         <div>
           <p className="mt-5 font-semibold text-lg text-blue-500">
             We Clean Eeverything
@@ -48,22 +48,22 @@ const Laundry = () => {
       </div>
 
       {/* Botom page oƒ the laundry page  */}
-      <div className="flex justify-center  gap-10">
+      <div className="flex flex-col lg:flex-row justify-center  gap-10">
         {/* accordian section */}
-        <div className="lg:w-[65%]  p-10">
+        <div className="lg:w-[65%] p-5  lg:p-10">
           {" "}
           <Accordion service={service} />
         </div>
 
         {/* order section  */}
-        <div className="lg:w-[35%] shadow-lg  ">
+        <div className="lg:w-[35%] shadow-lg p-4 lg:p-0   ">
           <div className="text-center border-b-2 mb-1  bg-blue-400 py-6 text-white ">
             <h2 className="font-bold   text-3xl">Your Order</h2>
             <p className="mb-2 text-lg">Total Item: {laundryProducts.length}</p>
           </div>
 
           <div
-            className={`  overflow-y-auto h-[500px]   transition-height duration-300 ease-in-out   border  `}
+            className={`  overflow-y-auto h-[300px] lg:h-[400px]   transition-height duration-300 ease-in-out   border  `}
           >
             <div>
               {laundryProducts?.map((laundryProduct) => (
@@ -93,7 +93,7 @@ const Laundry = () => {
             </div>
           </div>
 
-          <div className=" p-10 ">
+          <div className=" p-10   ">
             <div className="">
               <div className="flex justify-between items-center mb-5 ">
                 <h3 className="font-bold">Sub Total</h3>
