@@ -1,15 +1,11 @@
 import { ILaundryProduct } from "@/Interface/types";
 
 export const isExistedData = (
-  data: ILaundryProduct | any,
-  AllData: ILaundryProduct[] | any
-): { status: boolean; isExistedData: ILaundryProduct } => {
-  const isExistData = AllData?.find(
-    (data: ILaundryProduct) => data._id === data._id
+  dataToCheck: ILaundryProduct | any,
+  allData: ILaundryProduct[] | any
+): boolean => {
+  const isExistData = allData?.find(
+    (data: ILaundryProduct) => data._id === dataToCheck._id
   );
-  if (isExistData) {
-    return { status: true, isExistedData: isExistData };
-  } else {
-    return { status: false, isExistedData: isExistData };
-  }
+  return !!isExistData; // Convert to boolean
 };

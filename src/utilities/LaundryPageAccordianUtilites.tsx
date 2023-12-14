@@ -12,7 +12,14 @@ import { useEffect, useState } from "react";
 import menImg from "../../public/laundrypageimg/men.png";
 import womenImg from "../../public/laundrypageimg/woman.png";
 import homeImg from "../../public/laundrypageimg/home.png";
-import { useAppSelector } from "@/Redux/hook";
+
+/**
+ * Title: 'Filter Laundry product data  and provide to Accrodian'
+ * Description: ''
+ * Author: 'Masum Rana'
+ * Date: 14-12-2023
+ *
+ */
 
 export const AccrodianContent = () => {
   // data collections
@@ -82,4 +89,3 @@ export const AccrodianContent = () => {
 
   return accordionContent;
 };
-

@@ -118,7 +118,7 @@ const Accordion = ({ service }: { service: string }) => {
                     </span>
                   </p>
 
-                  {isExistedData(content, laundryProducts).status ? (
+                  {isExistedData(content, laundryProducts) ? (
                     <div className="shadow-lg border border-blue-500 flex  items-center gap-6 text-xl   px-2 py-1 rounded-full">
                       <button
                         className="font-extrabold text-xl"
