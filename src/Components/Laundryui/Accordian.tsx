@@ -28,7 +28,7 @@ const Accordion = ({ service }: { service: string }) => {
     [key: string]: number;
   }>({});
 
-  // accordion's data
+  //  accordion's data /content
   const [accordions, setAccordions] = useState<IAccordionItem[]>(
     AccrodianContent()
   );

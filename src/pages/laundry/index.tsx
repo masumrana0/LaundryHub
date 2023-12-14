@@ -6,6 +6,7 @@
  *
  */
 import Accordion from "@/Components/Laundryui/Accordian";
+import OrderSection from "@/Components/Laundryui/OrderSection";
 import RootLayout from "@/Components/Layout/RootLayout";
 
 import { useAppSelector } from "@/Redux/hook";
@@ -57,84 +58,7 @@ const Laundry = () => {
 
         {/* order section  */}
         <div className="lg:w-[35%] shadow-lg p-4 lg:p-0   ">
-          <div className="text-center border-b-2 mb-1  bg-blue-400 py-6 text-white ">
-            <h2 className="font-bold   text-3xl">Your Order</h2>
-            <p className="mb-2 text-lg">Total Item: {laundryProducts.length}</p>
-          </div>
-
-          <div
-            className={`  overflow-y-auto h-[300px] lg:h-[400px]   transition-height duration-300 ease-in-out   border  `}
-          >
-            <div>
-              {laundryProducts?.map((laundryProduct) => (
-                <div
-                  className="border-2 rounded shadow-lg shadow-blue-400    mb-2"
-                  key={laundryProduct._id}
-                >
-                  <p className="text-center font-semibold text-lg text-gray-600">
-                    {laundryProduct.service}
-                  </p>
-                  <div className="py-2 px-4 flex justify-between item-center">
-                    <h2 className="font-semibold lg:text-xl ">
-                      {laundryProduct.name}
-                    </h2>
-                    <p>
-                      <span className="text-xl font-extrabold  text-blue-400">
-                        &#2547;
-                        <span className="font-semibold text-md">
-                          {" "}
-                          {laundryProduct?.price}
-                        </span>
-                      </span>
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className=" p-10   ">
-            <div className="">
-              <div className="flex justify-between items-center mb-5 ">
-                <h3 className="font-bold">Sub Total</h3>
-                <span className="text-lg font-extrabold text-blue-400">
-                  &#2547;
-                  <span className="font-semibold text-md"> 0</span>
-                </span>
-              </div>
-
-              <div className="flex justify-between items-center mb-5 ">
-                <h3 className="font-bold">Delivery Charge</h3>
-                <span className="text-lg font-extrabold text-blue-400">
-                  &#2547;
-                  <span className="font-semibold text-md"> 0</span>
-                </span>
-              </div>
-
-              <div className="flex justify-between  items-center">
-                <h3 className="font-bold">Grand Total</h3>{" "}
-                <span className="text-lg font-extrabold text-blue-400">
-                  &#2547;
-                  <span className="font-semibold text-md"> 0</span>
-                </span>
-              </div>
-
-              {
-                <div className="flex justify-center mt-5 ">
-                  <button
-                    disabled={laundryProducts.length === 0}
-                    className={`border px-4 py-3  font-bold text-white rounded-lg ${
-                      laundryProducts.length === 0
-                        ? " bg-gray-500 text-gray-300"
-                        : "bg-blue-400"
-                    }`}
-                  >
-                    Check Out Your Order
-                  </button>
-                </div>
-              }
-            </div>
-          </div>
+          <OrderSection />
         </div>
       </div>
     </div>
