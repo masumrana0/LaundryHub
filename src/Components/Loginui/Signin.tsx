@@ -30,8 +30,6 @@ const Signin = () => {
     setIsViewPass(!isViewPass);
   };
 
-  console.log(loginState);
-
   const onSubmit = (data: ISigninData) => {
     console.log(data);
   };
