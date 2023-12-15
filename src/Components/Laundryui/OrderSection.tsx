@@ -82,7 +82,7 @@ const OrderSection = () => {
             <h3 className="font-bold">Grand Total</h3>{" "}
             <span className="text-lg font-extrabold text-blue-400">
               &#2547;
-              <span className="font-semibold text-md"> {grandTotal}</span>
+              <span className="font-semibold text-md"> 0</span>
             </span>
           </div>
 

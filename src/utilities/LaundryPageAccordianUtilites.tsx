@@ -13,14 +13,6 @@ import menImg from "../../public/laundrypageimg/men.png";
 import womenImg from "../../public/laundrypageimg/woman.png";
 import homeImg from "../../public/laundrypageimg/home.png";
 
-/**
- * Title: 'Filter Laundry product data  and provide to Accrodian'
- * Description: ''
- * Author: 'Masum Rana'
- * Date: 14-12-2023
- *
- */
-
 export const AccrodianContent = () => {
   // data collections
   const [datas, setData] = useState<ILaundryProduct[] | null>(null);

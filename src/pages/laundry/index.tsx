@@ -6,21 +6,26 @@
  *
  */
 import Accordion from "@/Components/Laundryui/Accordian";
+import UserAddressSection from "@/Components/Laundryui/OrderAddress";
 import OrderSection from "@/Components/Laundryui/OrderSection";
 import RootLayout from "@/Components/Layout/RootLayout";
-
 import { useAppSelector } from "@/Redux/hook";
 import fetchData from "@/fetchData(CSR)/fetchData";
 import React, { useState, useEffect, ReactElement } from "react";
 
 const Laundry = () => {
-  const [service, setService] = useState("Wash & Iron Service");
+  const [service, setService] = useState<string>("Wash & Iron Service");
+  const [isAccordian, setAccordions] = useState<boolean>(true);
   const { laundryProducts } = useAppSelector((state) => state.order);
 
   return (
     <div className="container mx-auto">
       {/* Heading of the page  */}
-      <div className="lg:my-10 my-5 flex flex-col lg:flex-row lg:justify-between items-center ">
+      <div
+        className={`lg:my-10 my-5 flex flex-col lg:flex-row lg:justify-between items-center ${
+          isAccordian ? "" : "hidden"
+        } `}
+      >
         <div>
           <p className="mt-5 font-semibold text-lg text-blue-500">
             We Clean Eeverything
@@ -52,12 +57,24 @@ const Laundry = () => {
       <div className="flex flex-col lg:flex-row justify-center  gap-10">
         {/* accordian section */}
         <div className="lg:w-[65%] p-5  lg:p-10">
-          {" "}
-          <Accordion service={service} />
+          {isAccordian ? (
+            <Accordion service={service} />
+          ) : (
+            <UserAddressSection />
+          )}
+
+          <div className={`mt-5 ${isAccordian ? "" : "hidden"}`}>
+            <button
+              onClick={() => setAccordions(!isAccordian)}
+              className="rounded  px-4 py-1 bg-blue-400 hover:bg-blue-600 text-white font-semibold"
+            >
+              Next
+            </button>
+          </div>
         </div>
 
         {/* order section  */}
-        <div className="lg:w-[35%] shadow-lg p-4 lg:p-0   ">
+        <div className="lg:w-[35%] shadow-lg p-4 lg:p-0 mt-5  ">
           <OrderSection />
         </div>
       </div>
