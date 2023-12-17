@@ -16,9 +16,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/Redux/store";
 
 const HomePage = ({ reviews }: any) => {
-  // const loginState = useSelector((state: RootState) => console.log(state));
-  // console.log(loginState);
-
   useEffect(() => {
     AOS.init();
     AOS.refresh();
