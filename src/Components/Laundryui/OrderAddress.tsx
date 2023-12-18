@@ -1,5 +1,13 @@
-import { FaLocationDot, FaCar } from "react-icons/fa6";
+import { FaLocationDot, FaCar, FaMoneyBill1 } from "react-icons/fa6";
 import { useForm, SubmitHandler } from "react-hook-form";
+
+/**
+ * Title: 'UserAddressSection'
+ * Description: ''
+ * Author: 'Masum Rana'
+ * Date: 18-12-2023
+ *
+ */
 
 const UserAddressSection = () => {
   return (
@@ -12,6 +20,7 @@ const UserAddressSection = () => {
         <hr />
       </div>
 
+      {/* order pickup to delivery date section */}
       <div>
         <div className="mb-5">
           <h2 className="flex items-center text-xl gap-2 font-bold text-blue-500 mb-5 border-b-2">
@@ -42,8 +51,9 @@ const UserAddressSection = () => {
           </div>
         </div>
       </div>
+
       {/* address section  */}
-      <div>
+      <div className="mb-10">
         <h2 className="flex items-center text-xl gap-2 font-bold text-blue-500 mb-5 border-b-2">
           <FaLocationDot /> Address
         </h2>
@@ -83,6 +93,20 @@ const UserAddressSection = () => {
             ></textarea>
           </div>
         </form>
+      </div>
+
+      {/* payment method section */}
+      <div>
+        <h2 className="flex items-center text-xl gap-2 font-bold text-blue-500 mb-5 border-b-2">
+          <FaMoneyBill1 /> Payment Method
+        </h2>
+        <p className="text-sm text-gray-500 mb-4 ">
+          Expert will collect your payment after delivery your order
+        </p>
+        <div className="flex gap-5">
+          <input type="radio" name="" id="" className="" checked />{" "}
+          <h3 className="font-bold">Cash on delivery</h3>
+        </div>
       </div>
     </div>
   );
