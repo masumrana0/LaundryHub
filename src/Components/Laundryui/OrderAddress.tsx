@@ -14,10 +14,9 @@ const UserAddressSection = () => {
     <div>
       {/* header section  */}
       <div className="mb-10">
-        <h2 className="text-center font-bold lg:text-lg mb-1  ">
+        <h2 className="text-center font-bold lg:text-xl mb-1 border-b-4 border-blue-500  pb-3   ">
           Modify Pickup & Drop-off Information
         </h2>
-        <hr />
       </div>
 
       {/* order pickup to delivery date section */}
@@ -38,7 +37,7 @@ const UserAddressSection = () => {
             <input
               type="date"
               id="datePicker"
-              className=" border-b-2 border-blue-500 rounded pb-2"
+              className="    border-b-2 border-blue-500   rounded pb-2"
             />
           </div>
           <div>

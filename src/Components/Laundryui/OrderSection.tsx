@@ -15,6 +15,7 @@ const OrderSection = ({
 
   const grandTotal = subTotal + deliveryCost;
 
+  // for service chages  Calculation
   useEffect(() => {
     // Run this logic whenever laundryProducts length changes
     if (laundryProducts.length === 1) {
