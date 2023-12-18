@@ -1,7 +1,11 @@
 import { useAppSelector } from "@/Redux/hook";
 import { useEffect, useState } from "react";
 
-const OrderSection = () => {
+const OrderSection = ({
+  isOrderUserDettails,
+}: {
+  isOrderUserDettails: boolean;
+}) => {
   const [deliveryCost, setDeliveryCost] = useState(0);
   const { laundryProducts } = useAppSelector((state) => state.order);
   const subTotal = laundryProducts.reduce(
@@ -30,7 +34,7 @@ const OrderSection = () => {
       </div>
 
       <div
-        className={`  overflow-y-auto h-[300px] lg:h-[400px]   transition-height duration-300 ease-in-out   border  `}
+        className={`  overflow-y-auto   h-[300px] lg:h-[400px]   transition-height duration-300 ease-in-out   border  `}
       >
         <div>
           {laundryProducts?.map((laundryProduct) => (

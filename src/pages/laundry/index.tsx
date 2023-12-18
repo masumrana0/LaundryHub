@@ -15,7 +15,7 @@ import React, { useState, useEffect, ReactElement } from "react";
 
 const Laundry = () => {
   const [service, setService] = useState<string>("Wash & Iron Service");
-  const [isAccordian, setAccordions] = useState<boolean>(true);
+  const [isOrderUserDettails, setOrderUserDettails] = useState<boolean>(false);
   const { laundryProducts } = useAppSelector((state) => state.order);
 
   return (
@@ -23,7 +23,7 @@ const Laundry = () => {
       {/* Heading of the page  */}
       <div
         className={`lg:my-10 my-5 flex flex-col lg:flex-row lg:justify-between items-center ${
-          isAccordian ? "" : "hidden"
+          isOrderUserDettails ? "hidden" : ""
         } `}
       >
         <div>
@@ -56,16 +56,20 @@ const Laundry = () => {
       {/* Botom page oƒ the laundry page  */}
       <div className="flex flex-col lg:flex-row justify-center  gap-10">
         {/* accordian section */}
-        <div className="lg:w-[65%] p-5  lg:p-10">
-          {isAccordian ? (
-            <Accordion service={service} />
-          ) : (
+        <div
+          className={`${
+            isOrderUserDettails ? "lg:w-[50%]" : "lg:w-[65%]"
+          }     p-5  lg:p-10`}
+        >
+          {isOrderUserDettails ? (
             <UserAddressSection />
+          ) : (
+            <Accordion service={service} />
           )}
 
-          <div className={`mt-5 ${isAccordian ? "" : "hidden"}`}>
+          <div className={`mt-5 ${isOrderUserDettails ? "hidden" : " "}`}>
             <button
-              onClick={() => setAccordions(!isAccordian)}
+              onClick={() => setOrderUserDettails(!isOrderUserDettails)}
               className="rounded  px-4 py-1 bg-blue-400 hover:bg-blue-600 text-white font-semibold"
             >
               Next
@@ -74,8 +78,12 @@ const Laundry = () => {
         </div>
 
         {/* order section  */}
-        <div className="lg:w-[35%] shadow-lg p-4 lg:p-0 mt-5  ">
-          <OrderSection />
+        <div
+          className={`${
+            isOrderUserDettails ? "lg:w-[55%]" : "lg:w-[35%]"
+          }  shadow-lg p-4 lg:p-0 mt-5  `}
+        >
+          <OrderSection isOrderUserDettails={isOrderUserDettails} />
         </div>
       </div>
     </div>
