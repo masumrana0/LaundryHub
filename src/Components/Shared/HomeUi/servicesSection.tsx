@@ -9,7 +9,7 @@ import style from "../../style/Homeui.module.css";
 
 const ServicesSection = () => {
   return (
-    <>
+    <div id="service">
       <div className="text-center font-semibold text-xl mt-32 mb-10 ">
         <p>We Clean Everything</p>
         <h2 className="text-4xl font-normal ">
@@ -213,7 +213,7 @@ const ServicesSection = () => {
           </SwiperSlide>
         </div>
       </Swiper>
-    </>
+    </div>
   );
 };
 

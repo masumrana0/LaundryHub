@@ -1,6 +1,7 @@
 import Image from "next/image";
 import logo from "../../../../public/logo.png";
 import Link from "next/link";
+
 import { useState } from "react";
 import { UserOutlined, SettingOutlined, HomeOutlined } from "@ant-design/icons";
 import { Avatar, Space } from "antd";
@@ -23,20 +24,35 @@ const DesktopScreenNavbar = () => {
           <h2 className="text-2xl  text-white">LAUNDRY HUB</h2>
         </div>
         <div className="flex justify-between items-center gap-5 text-lg">
-          <Link
-            className="flex items-center hover:text-amber-500 "
-            href="/services"
-          >
+          <Link className="flex items-center hover:text-amber-500 " href="/">
             {" "}
             <HomeOutlined /> HOME
           </Link>
           <Link
             className="flex items-center hover:text-amber-500 "
-            href="/services"
+            href="/#service"
+            scroll={false}
           >
             {" "}
             <SettingOutlined className="animate-spin  " /> SERVICES
           </Link>
+          <Link
+            className="flex items-center hover:text-amber-500 "
+            href="/laundry"
+            scroll={false}
+          >
+            {" "}
+            LAUNDRY
+          </Link>
+          <Link
+            className="flex items-center hover:text-amber-500 "
+            href="/login"
+            scroll={false}
+          >
+            {" "}
+            LOGIN
+          </Link>
+
           <div className="relative inline-block text-left">
             <button
               onClick={toggleDropdown}
