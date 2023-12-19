@@ -5,15 +5,16 @@ import signup from "../../public/login/signup.png";
 import { useState } from "react";
 import Signin from "@/Components/Loginui/Signin";
 import { FaLessThanEqual } from "react-icons/fa6";
-import { Provider, useDispatch, useSelector } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import { RootState, store } from "@/Redux/store";
 import { loginStateCore } from "@/Redux/features/login/loginSlice";
 import Signup from "@/Components/Loginui/Signup";
+import { useAppDispatch, useAppSelector } from "@/Redux/hook";
 
 const Login = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [isSignup, setSignup] = useState(false);
-  const loginState = useSelector(
+  const loginState = useAppSelector(
     (state: RootState) => state.loginState.loginState
   );
 

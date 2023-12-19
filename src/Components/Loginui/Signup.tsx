@@ -13,14 +13,18 @@ import { useState } from "react";
 import style from "../style/Loginui.module.css";
 import { useSelector } from "react-redux";
 import { RootState } from "@/Redux/store";
-
 import userSignupSchema from "@/Schema/Schema";
+import { useUserSignupMutation } from "@/Redux/api/authApi";
+import { useAppDispatch } from "@/Redux/hook";
+import { loginStateCore } from "@/Redux/features/login/loginSlice";
 
 const Signup = () => {
   // Login State come to redux store
+  const dispatch = useAppDispatch();
   const loginState = useSelector(
     (state: RootState) => state.loginState.loginState
   );
+  const [userSignup] = useUserSignupMutation();
 
   // essential Component state
   const [isViewPass, setIsViewPass] = useState(false);
@@ -38,8 +42,14 @@ const Signup = () => {
     setIsViewPass(!isViewPass);
   };
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const onSubmit = async (data: any) => {
+    const res = await userSignup(data).unwrap();
+    if (res?.statusCode == 200) {
+      dispatch(loginStateCore());
+      alert(
+        "User Signup Successful. Please Signin enter your gmail and password"
+      );
+    }
   };
   return (
     <div
