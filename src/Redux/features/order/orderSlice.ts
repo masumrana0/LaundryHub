@@ -42,9 +42,23 @@ const orderSlice = createSlice({
         state.laundryProducts = removeProduct;
       }
     },
+
+    removeToOrder: (state, action: PayloadAction<ILaundryProduct>) => {
+      const doesExist = state.laundryProducts.find(
+        (product) => product?._id === action.payload?._id
+      );
+
+      if (doesExist) {
+        const removeProduct = state.laundryProducts.filter(
+          (product) => product?._id !== action.payload?._id
+        );
+        state.laundryProducts = removeProduct;
+      }
+    },
   },
 });
 
-export const { addToOrder, removeOneToOrder } = orderSlice.actions;
+export const { addToOrder, removeOneToOrder, removeToOrder } =
+  orderSlice.actions;
 
 export default orderSlice.reducer;

@@ -66,15 +66,6 @@ const Laundry = () => {
           ) : (
             <Accordion service={service} />
           )}
-
-          <div className={`mt-5 ${isOrderUserDettails ? "hidden" : " "}`}>
-            <button
-              onClick={() => setOrderUserDettails(!isOrderUserDettails)}
-              className="rounded  px-4 py-1 bg-blue-400 hover:bg-blue-600 text-white font-semibold"
-            >
-              Next
-            </button>
-          </div>
         </div>
 
         {/* order section  */}
@@ -83,7 +74,10 @@ const Laundry = () => {
             isOrderUserDettails ? "lg:w-[55%]" : "lg:w-[35%]"
           }  shadow-lg p-4 lg:p-0 mt-5  `}
         >
-          <OrderSection isOrderUserDettails={isOrderUserDettails} />
+          <OrderSection
+            setOrderUserDettails={setOrderUserDettails}
+            isOrderUserDettails={isOrderUserDettails}
+          />
         </div>
       </div>
     </div>

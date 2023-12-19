@@ -1,11 +1,17 @@
-import { useAppSelector } from "@/Redux/hook";
+import { removeToOrder } from "@/Redux/features/order/orderSlice";
+import { useAppDispatch, useAppSelector } from "@/Redux/hook";
 import { useEffect, useState } from "react";
+import { FaTrashCan } from "react-icons/fa6";
 
 const OrderSection = ({
   isOrderUserDettails,
+  setOrderUserDettails,
 }: {
   isOrderUserDettails: boolean;
+  setOrderUserDettails: (arg0: boolean) => void;
 }) => {
+  const dispatch = useAppDispatch();
+
   const [deliveryCost, setDeliveryCost] = useState(0);
   const { laundryProducts } = useAppSelector((state) => state.order);
   const subTotal = laundryProducts.reduce(
@@ -46,10 +52,19 @@ const OrderSection = ({
               <p className="text-center font-semibold text-lg text-gray-600">
                 {laundryProduct.service}
               </p>
+
               <div className="py-2 px-4 flex justify-between item-center">
-                <h2 className="font-semibold lg:text-xl ">
-                  {laundryProduct.name}
-                </h2>
+                <div className="flex items-center gap-4">
+                  <button
+                    onClick={() => dispatch(removeToOrder(laundryProduct))}
+                  >
+                    {" "}
+                    <FaTrashCan className="text-xl hover:text-red-500  " />
+                  </button>
+                  <h2 className="font-semibold lg:text-xl ">
+                    {laundryProduct.name}
+                  </h2>
+                </div>
                 <p>
                   <span className="text-xl font-extrabold  text-blue-400">
                     &#2547;
@@ -92,16 +107,21 @@ const OrderSection = ({
           </div>
 
           {
-            <div className="flex justify-center mt-5 ">
+            <div
+              className={`mt-5 ${
+                isOrderUserDettails ? "hidden" : " "
+              } flex justify-center`}
+            >
               <button
                 disabled={laundryProducts.length === 0}
-                className={`border px-4 py-3  font-bold text-white rounded-lg ${
+                className={`border px-9 py-2  font-bold text-white rounded-lg ${
                   laundryProducts.length === 0
                     ? " bg-gray-500 text-gray-300"
                     : "bg-blue-400"
                 }`}
+                onClick={() => setOrderUserDettails(!isOrderUserDettails)}
               >
-                Check Out Your Order
+                Next
               </button>
             </div>
           }
