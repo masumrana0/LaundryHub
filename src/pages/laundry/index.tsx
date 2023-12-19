@@ -54,11 +54,11 @@ const Laundry = () => {
       </div>
 
       {/* Botom page oƒ the laundry page  */}
-      <div className="flex flex-col lg:flex-row justify-center  gap-10">
+      <div className="flex flex-col lg:flex-row justify-center  gap-5">
         {/* accordian section */}
         <div
           className={`${
-            isOrderUserDettails ? "lg:w-[50%]" : "lg:w-[65%]"
+            isOrderUserDettails ? "lg:w-[50%]" : "lg:w-[55%]"
           }     p-5  lg:p-10`}
         >
           {isOrderUserDettails ? (
@@ -71,7 +71,7 @@ const Laundry = () => {
         {/* order section  */}
         <div
           className={`${
-            isOrderUserDettails ? "lg:w-[55%]" : "lg:w-[35%]"
+            isOrderUserDettails ? "lg:w-[55%]" : "lg:w-[45%]"
           }  shadow-lg p-4 lg:p-0 mt-5  `}
         >
           <OrderSection

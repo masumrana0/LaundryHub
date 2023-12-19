@@ -30,8 +30,10 @@ const OrderSection = ({
       setDeliveryCost(60); // Reset delivery cost if not equal to 1
     } else if (3 < laundryProducts.length) {
       setDeliveryCost(100);
+    } else if (laundryProducts.length === 0) {
+      setOrderUserDettails(false);
     }
-  }, [laundryProducts]); // Run the effect when laundryProducts changes
+  }, [laundryProducts]);
 
   return (
     <div>
@@ -59,7 +61,7 @@ const OrderSection = ({
                     onClick={() => dispatch(removeToOrder(laundryProduct))}
                   >
                     {" "}
-                    <FaTrashCan className="text-xl hover:text-red-500  " />
+                    <FaTrashCan className="text-2xl hover:text-red-500  " />
                   </button>
                   <h2 className="font-semibold lg:text-xl ">
                     {laundryProduct.name}
