@@ -11,12 +11,22 @@ import OrderSection from "@/Components/Laundryui/OrderSection";
 import RootLayout from "@/Components/Layout/RootLayout";
 import { useAppSelector } from "@/Redux/hook";
 import fetchData from "@/fetchData(CSR)/fetchData";
+import { isLoggedIn } from "@/services/auth.service";
+import { useRouter } from "next/navigation";
 import React, { useState, useEffect, ReactElement } from "react";
 
 const Laundry = () => {
+  const router = useRouter();
   const [service, setService] = useState<string>("Wash & Iron Service");
   const [isOrderUserDettails, setOrderUserDettails] = useState<boolean>(false);
   const { laundryProducts } = useAppSelector((state) => state.order);
+
+  useEffect(() => {
+    const isLogged = isLoggedIn();
+    if (!isLogged) {
+      router.push("/login");
+    }
+  }, [router]);
 
   return (
     <div className="container mx-auto">

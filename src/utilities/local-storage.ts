@@ -7,9 +7,16 @@ export const setLocalStorage = (key: string, value: string) => {
 };
 
 export const getFromLocalStorage = (key: string) => {
-  return localStorage.getItem(key);
+  if (!key || typeof window === "undefined") {
+    return "";
+  }
+  const authToken = localStorage.getItem(key);
+  return authToken;
 };
 
 export const removeFromLocalStorage = (key: string) => {
+  if (!key || typeof window === "undefined") {
+    return "";
+  }
   return localStorage.removeItem(key);
 };

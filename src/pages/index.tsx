@@ -16,10 +16,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/Redux/store";
 
 const HomePage = ({ reviews }: any) => {
-  useEffect(() => {
-    AOS.init();
-    AOS.refresh();
-  }, []);
   return (
     <div className="">
       {/* introduce-section  */}

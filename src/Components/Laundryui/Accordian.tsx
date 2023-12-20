@@ -32,7 +32,6 @@ const Accordion = ({ service }: { service: string }) => {
   const [accordions, setAccordions] = useState<IAccordionItem[]>(
     AccrodianContent()
   );
-  console.log(accordions[0].contents);
 
   //  redux
   const dispath = useAppDispatch();

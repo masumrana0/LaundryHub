@@ -7,8 +7,13 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/Redux/store";
 import { useUserSigninMutation } from "@/Redux/api/authApi";
 import CheckableTag from "antd/es/tag/CheckableTag";
-import { setLocalStorage } from "@/utilities/local-storage";
-import { storeUserInfo } from "@/services/auth.service";
+
+import {
+  getUserInfo,
+  isLoggedIn,
+  storeUserInfo,
+} from "@/services/auth.service";
+import { useRouter } from "next/navigation";
 
 type ISigninData = {
   email: string;
@@ -24,6 +29,7 @@ const Signin = () => {
 
   const [isViewPass, setIsViewPass] = useState(false);
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
   const {
     register,
@@ -38,6 +44,9 @@ const Signin = () => {
 
   const onSubmit = async (data: ISigninData) => {
     const res = await userSignin(data).unwrap();
+    if (res?.data?.accessToken) {
+      router.push("/");
+    }
     storeUserInfo(res?.data?.accessToken);
   };
   return (
