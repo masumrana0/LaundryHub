@@ -16,6 +16,7 @@ import homeImg from "../../public/laundrypageimg/home.png";
 export const AccrodianContent = () => {
   // data collections
   const [datas, setData] = useState<ILaundryProduct[] | null>(null);
+
   const [menCollection, setMenCollection] = useState<ILaundryProduct[]>([]);
   const [womanCollection, setWomanCollection] = useState<ILaundryProduct[]>([]);
   const [homeCollection, setHomeCollection] = useState<ILaundryProduct[]>([]);

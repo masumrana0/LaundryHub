@@ -14,6 +14,7 @@ const fetchData = async (url: string, setData: (arg0: any) => void) => {
   }
   const result = await response.json();
   const DataCollection = result?.data;
+  console.log(DataCollection);
   setData(DataCollection);
 };
 

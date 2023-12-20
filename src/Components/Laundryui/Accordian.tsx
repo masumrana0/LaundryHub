@@ -32,6 +32,7 @@ const Accordion = ({ service }: { service: string }) => {
   const [accordions, setAccordions] = useState<IAccordionItem[]>(
     AccrodianContent()
   );
+  console.log(accordions[0].contents);
 
   //  redux
   const dispath = useAppDispatch();
@@ -77,6 +78,7 @@ const Accordion = ({ service }: { service: string }) => {
           key={accordion.id}
           className="border rounded-md mb-4 overflow-hidden"
         >
+          {/* accrodian head  */}
           <div
             className="flex items-center justify-between p-4 bg-blue-200 cursor-pointer"
             onClick={() => toggleAccordion(accordion.id)}
@@ -95,6 +97,8 @@ const Accordion = ({ service }: { service: string }) => {
               {accordion.isOpen ? <FaAngleDown /> : <FaAngleUp />}
             </span>
           </div>
+
+          {/* accoridan content  */}
           <div
             className={`overflow-y-auto transition-height duration-300 ease-in-out ${
               accordion.isOpen ? "h-auto" : "h-0"

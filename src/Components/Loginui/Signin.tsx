@@ -5,6 +5,10 @@ import { useEffect } from "react";
 import style from "../style/Loginui.module.css";
 import { useSelector } from "react-redux";
 import { RootState } from "@/Redux/store";
+import { useUserSigninMutation } from "@/Redux/api/authApi";
+import CheckableTag from "antd/es/tag/CheckableTag";
+import { setLocalStorage } from "@/utilities/local-storage";
+import { storeUserInfo } from "@/services/auth.service";
 
 type ISigninData = {
   email: string;
@@ -12,6 +16,8 @@ type ISigninData = {
 };
 
 const Signin = () => {
+  // redux
+  const [userSignin] = useUserSigninMutation();
   const loginState = useSelector(
     (state: RootState) => state.loginState.loginState
   );
@@ -30,8 +36,9 @@ const Signin = () => {
     setIsViewPass(!isViewPass);
   };
 
-  const onSubmit = (data: ISigninData) => {
-    console.log(data);
+  const onSubmit = async (data: ISigninData) => {
+    const res = await userSignin(data).unwrap();
+    storeUserInfo(res?.data?.accessToken);
   };
   return (
     <div
