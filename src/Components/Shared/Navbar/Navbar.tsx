@@ -11,7 +11,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="bg-[#396bb7] text-white ease-in-out duration-300">
+    <nav className="bg-green-100 text-black ease-in-out duration-300">
       {isClient && (
         <>
           <div className="hidden lg:block">

@@ -28,6 +28,5 @@ export const isLoggedIn = () => {
 };
 
 export const logOut = () => {
-  const logOuting = removeFromLocalStorage(authKey);
-  return console.log("logouting");
+  return removeFromLocalStorage(authKey);
 };
