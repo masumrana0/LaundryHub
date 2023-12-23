@@ -26,7 +26,7 @@ const ThirdSwiperData = () => {
   };
 
   return (
-    <div className="container mx-auto font-sans" style={imageStyle}>
+    <div className="  font-sans" style={imageStyle}>
       <div className="absolute top-40 right-32">
         <p className="lg:text-5xl tracking-tighter font-thin   mb-3">
           The Better Solution

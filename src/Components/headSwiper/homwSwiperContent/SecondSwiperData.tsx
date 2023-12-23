@@ -5,7 +5,7 @@
  * Date: 23-12-2023
  *
  */
- 
+
 import Image from "next/image";
 import icon1 from "../../../../public/HeaderSwiper/icons/slide-icon1.png";
 import icon2 from "../../../../public/HeaderSwiper/icons/slide-icon2.png";
@@ -26,7 +26,7 @@ const SecondSwiperData = () => {
   };
 
   return (
-    <div className="container mx-auto font-sans" style={imageStyle}>
+    <div className="  font-sans" style={imageStyle}>
       <div className="absolute top-40 left-52">
         <p className="lg:text-5xl tracking-tighter font-thin   mb-3">
           Providing an environment

@@ -23,7 +23,7 @@ const FirstSwiperData = () => {
   };
 
   return (
-    <div className="container mx-auto" style={imageStyle}>
+    <div className="   " style={imageStyle}>
       <div className="absolute top-72 left-52">
         <p className="lg:text-5xl tracking-tighter font-thin text-white mb-3">
           The Best Cleaning Service

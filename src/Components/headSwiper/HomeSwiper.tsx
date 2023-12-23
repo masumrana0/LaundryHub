@@ -17,7 +17,7 @@ import FirstSwiperData from "./homwSwiperContent/FirstSwiperData";
 
 export default function HomeHeaderSwiper() {
   return (
-    <div className="container">
+    <div className="container px-0  mx-auto">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
