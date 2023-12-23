@@ -14,14 +14,15 @@ import { ReactElement, useEffect } from "react";
 import RootLayout from "@/Components/Layout/RootLayout";
 import { useSelector } from "react-redux";
 import { RootState } from "@/Redux/store";
-import FirstSwiperData from "@/Components/headSwiper/FirstSwiperData";
+import SecondSwiperData from "@/Components/headSwiper/SecondSwiperData";
+ 
 
 const HomePage = ({ reviews }: any) => {
   return (
     <div>
       {/* introduce-section  */}
       <div>
-        <FirstSwiperData />
+        <SecondSwiperData/>
       </div>
 
       <div
