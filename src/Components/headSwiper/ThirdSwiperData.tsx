@@ -1,6 +1,6 @@
 /**
  * Title: 'Home Header Swiper content-3'
- * Description: 'This is I used LaundryHub home Header Swiper Content'
+ * Description: 'This is I used LaundryHub home Header Swiper Content.'
  * Author: 'Masum Rana'
  * Date: 23-12-2023
  *
