@@ -34,15 +34,7 @@ const DesktopScreenNavbar = () => {
 
   // logOut();
   return (
-    <div className="hidden lg:block container mx-auto px-10 bg-[#edfaff]">
-      {/* <div className=" container mx-auto flex justify-between items-center py-4  ">
-       
-        <div className="flex justify-between items-center gap-5 text-lg">
-        
-          
-        </div>
-      </div> */}
-
+    <div className="hidden lg:block container mx-auto   bg-[#edfaff]">
       <div className=" border-b-2  py-3">
         <div className="flex justify-between">
           <div className="flex">

@@ -14,11 +14,16 @@ import { ReactElement, useEffect } from "react";
 import RootLayout from "@/Components/Layout/RootLayout";
 import { useSelector } from "react-redux";
 import { RootState } from "@/Redux/store";
+import FirstSwiperData from "@/Components/headSwiper/FirstSwiperData";
 
 const HomePage = ({ reviews }: any) => {
   return (
-    <div className="">
+    <div>
       {/* introduce-section  */}
+      <div>
+        <FirstSwiperData />
+      </div>
+
       <div
         className="mt-8 px-5"
         data-aos="zoom-in-right"
