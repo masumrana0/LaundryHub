@@ -5,11 +5,11 @@
  * Date: 23-12-2023
  *
  */
-
+ 
 import Image from "next/image";
-import icon1 from "../../../public/HeaderSwiper/icons/slide-icon1.png";
-import icon2 from "../../../public/HeaderSwiper/icons/slide-icon2.png";
-import icon3 from "../../../public/HeaderSwiper/icons/slide-icon3.png";
+import icon1 from "../../../../public/HeaderSwiper/icons/slide-icon1.png";
+import icon2 from "../../../../public/HeaderSwiper/icons/slide-icon2.png";
+import icon3 from "../../../../public/HeaderSwiper/icons/slide-icon3.png";
 
 const SecondSwiperData = () => {
   const imageStyle: React.CSSProperties = {
@@ -41,7 +41,7 @@ const SecondSwiperData = () => {
         <div className="mt-12">
           {/* first  */}
           <div className="flex  items-center gap-2 mb-5">
-            <Image src={icon1} alt="Photo 7" />
+            <Image src={icon1} alt="icon" />
             <div>
               <p className="lg:text-lg tracking-tighter text-gray-700">
                 Optimize Your Clothing's Cleanliness with

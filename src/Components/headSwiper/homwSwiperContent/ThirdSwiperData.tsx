@@ -7,9 +7,9 @@
  */
 
 import Image from "next/image";
-import icon1 from "../../../public/HeaderSwiper/icons/slide-icon4.png";
-import icon2 from "../../../public/HeaderSwiper/icons/slide-icon5.png";
-import icon3 from "../../../public/HeaderSwiper/icons/slide-icon6.png";
+import icon1 from "../../../../public/HeaderSwiper/icons/slide-icon4.png";
+import icon2 from "../../../../public/HeaderSwiper/icons/slide-icon5.png";
+import icon3 from "../../../../public/HeaderSwiper/icons/slide-icon6.png";
 
 const ThirdSwiperData = () => {
   const imageStyle: React.CSSProperties = {
