@@ -1,6 +1,6 @@
 /**
  * Title: 'Home Header Swiper content-2'
- * Description: ''
+ * Description: 'This is I used LaundryHub home Header Swiper Content'
  * Author: 'Masum Rana'
  * Date: 23-12-2023
  *
@@ -28,7 +28,7 @@ const SecondSwiperData = () => {
   return (
     <div className="container mx-auto font-sans" style={imageStyle}>
       <div className="absolute top-40 left-52">
-        <p className="lg:text-5xl tracking-tighter font-sans   mb-3">
+        <p className="lg:text-5xl tracking-tighter font-thin   mb-3">
           Providing an environment
         </p>
         <p className="font-bold  text-3xl font-sans mb-3">

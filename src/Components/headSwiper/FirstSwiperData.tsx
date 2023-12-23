@@ -1,12 +1,10 @@
 /**
- * Title: 'This is Home Swiper Content'
- * Description: ''
+ * Title: 'Home Header Swiper content-1'
+ * Description: 'This is I used LaundryHub home Header Swiper Content'
  * Author: 'Masum Rana'
  * Date: 23-12-2023
  *
  */
-
-import Image from "next/image";
 
 const FirstSwiperData = () => {
   const imageStyle: React.CSSProperties = {
@@ -21,14 +19,13 @@ const FirstSwiperData = () => {
     backgroundSize: "cover",
     backgroundPosition: "top center",
     backgroundRepeat: "no-repeat",
-    // backgroundAttachment: "fixed",
-    borderRadius: "5px",
+    borderEndEndRadius: "5px",
   };
 
   return (
     <div className="container mx-auto" style={imageStyle}>
       <div className="absolute top-72 left-52">
-        <p className="lg:text-5xl tracking-tighter text-white mb-3">
+        <p className="lg:text-5xl tracking-tighter font-thin text-white mb-3">
           The Best Cleaning Service
         </p>
         <p className="font-bold text-white text-3xl mb-3">
@@ -37,8 +34,6 @@ const FirstSwiperData = () => {
             EcoDrive<span className="text-black">&trade;</span>
           </span>
         </p>
-
-        <div>{/* <Image src={photo7} alt="Photo 7" /> */}</div>
 
         <div className="bottom-0 border-b-4 border-green-400 w-20 mb-4 "></div>
         <button className="rounded px-10 py-2 shadow-lg font-semibold  transition-colors duration-300 bg-green-500  text-white hover:bg-green-700 ">
