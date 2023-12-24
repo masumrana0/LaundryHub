@@ -10,6 +10,7 @@ import Image from "next/image";
 import icon1 from "../../../../public/HeaderSwiper/icons/slide-icon1.png";
 import icon2 from "../../../../public/HeaderSwiper/icons/slide-icon2.png";
 import icon3 from "../../../../public/HeaderSwiper/icons/slide-icon3.png";
+import { useEffect } from "react";
 
 const SecondSwiperData = () => {
   const imageStyle: React.CSSProperties = {
@@ -24,6 +25,40 @@ const SecondSwiperData = () => {
     backgroundRepeat: "no-repeat",
     borderRadius: "5px",
   };
+  // seting moving animation
+  // useEffect(() => {
+  //   // text1
+  //   gsap.to(".text1", {
+  //     duration: 2,
+  //     x: -475,
+  //     delay: 2,
+  //     display: "block",
+  //   });
+
+  //   // text1
+  //   gsap.to(".text2", {
+  //     duration: 2,
+  //     x: 500,
+  //     delay: 1,
+  //     display: "block",
+  //   });
+
+  //   // icons
+  //   gsap.to(".icons", {
+  //     duration: 2,
+  //     y: -50,
+  //     display: "block",
+  //     delay: 3,
+  //   });
+
+  //   // botom text
+  //   gsap.to(".bottomText", {
+  //     duration: 2,
+  //     x: -250,
+  //     display: "block",
+  //     delay: 4,
+  //   });
+  // }, []);
 
   return (
     <div className="  font-sans" style={imageStyle}>
