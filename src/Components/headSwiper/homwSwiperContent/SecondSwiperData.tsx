@@ -12,21 +12,10 @@ import icon2 from "../../../../public/HeaderSwiper/icons/slide-icon2.png";
 import icon3 from "../../../../public/HeaderSwiper/icons/slide-icon3.png";
 import { gsap } from "gsap";
 import { useEffect, useState } from "react";
+import { secondSwiperConentStyle as imageStyle } from "../styles";
 
 const SecondSwiperData = ({ isActive }: { isActive: boolean }) => {
-  const imageStyle: React.CSSProperties = {
-    position: "relative",
-    height: "80vh",
-    backgroundImage: `
-      linear-gradient(to right, rgba(222, 217, 219, 0.90), rgba(0, 150, 255, 0.5)),
-      url("/HeaderSwiper/photo-1.jpg")
-    `,
-    backgroundSize: "cover",
-    backgroundPosition: "top center",
-    backgroundRepeat: "no-repeat",
-    borderRadius: "5px",
-  };
-  // seting moving animation
+  // for text animation
   useEffect(() => {
     if (isActive) {
       // C means Conent

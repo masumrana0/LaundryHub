@@ -17,6 +17,7 @@ import { RootState } from "@/Redux/store";
 import ThirdSwiperData from "@/Components/headSwiper/homwSwiperContent/ThirdSwiperData";
 import HomeHeaderSwiper from "@/Components/headSwiper/HomeSwiper";
 import SecondSwiperData from "@/Components/headSwiper/homwSwiperContent/SecondSwiperData";
+import FirstSwiperData from "@/Components/headSwiper/homwSwiperContent/FirstSwiperData";
 
 const HomePage = ({ reviews }: any) => {
   return (
@@ -25,7 +26,8 @@ const HomePage = ({ reviews }: any) => {
       <div className="container">
         {/* <SecondSwiperData /> */}
         {/* <ThirdSwiperData /> */}
-        <HomeHeaderSwiper />
+        <FirstSwiperData isActive={true} />
+        {/* <HomeHeaderSwiper /> */}
       </div>
 
       <div

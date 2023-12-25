@@ -29,7 +29,7 @@ const ThirdSwiperData = ({ isActive }: { isActive: boolean }) => {
 
       gsap.to(".bottomCTextSecond", {
         duration: 3,
-        x: -755,
+        x: -725,
         delay: 2,
         display: "block",
       });

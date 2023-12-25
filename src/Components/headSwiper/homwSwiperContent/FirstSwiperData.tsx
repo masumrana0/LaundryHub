@@ -7,48 +7,66 @@
  */
 
 import React, { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import { firstSwiperConentStyle as imageStyle } from "../styles";
+import { gsap } from "gsap";
 
 const FirstSwiperData = ({ isActive }: { isActive: boolean }) => {
-  //  css
-  const imageStyle: React.CSSProperties = {
-    position: "relative",
-    // width: "100vw",
-    height: "80vh",
-    backgroundImage: `
-      linear-gradient(to left, rgba(10, 1, 1, 0.475), rgba(100, 100,0.5)),
-      url("/HeaderSwiper/photo-7.jpg")
-    `,
+  useEffect(() => {
+    if (isActive) {
+      gsap.to(".firstCFirstText", {
+        duration: 1,
+        y: 250,
+        display: "block",
+      });
 
-    backgroundSize: "cover",
-    backgroundPosition: "top center",
-    backgroundRepeat: "no-repeat",
-    borderEndEndRadius: "5px",
-  };
+      gsap.to(".firstCSecondText", {
+        duration: 2,
+        x: -525,
+        delay: 1,
+        display: "block",
+      });
 
+      gsap.to(".firstCUnderLine", {
+        duration: 1,
+        y: -45,
+        display: "block",
+        delay: 3,
+      });
+
+      gsap.to(".firstCBottomText", {
+        duration: 1,
+        x: -200,
+        display: "block",
+        delay: 3,
+      });
+
+      gsap.to(".firstCButton", {
+        duration: 1,
+        y: -45,
+        display: "block",
+        delay: 4,
+      });
+    }
+  }, [isActive]);
   return (
     <div style={imageStyle}>
-      <div className="absolute top-72 left-52">
-        <p
-          data-aos="zoom-out-right"
-          className="lg:text-5xl tracking-tighter font-thin text-white mb-3"
-        >
+      <div className="">
+        <p className="firstCFirstText absolute top-[1rem] left-[7rem]  lg:text-5xl tracking-tighter font-thin text-white mb-3 hidden">
           We provide Best Cleaning Services
         </p>
-        <p className="font-bold text-white text-3xl mb-3">
+        <p className="firstCSecondText absolute top-[21rem] left-[40rem] font-bold text-white text-3xl mb-3 hidden">
           with{" "}
           <span className="text-green-400">
             EcoDrive<span className="text-black">&trade;</span>
           </span>
         </p>
 
-        <div className="bottom-0 border-b-4 border-green-400 w-20 mb-4 "></div>
+        <div className="firstCUnderLine absolute top-[27rem] left-[7.4rem] border-b-4 border-green-400 w-20 mb-4 hidden "></div>
 
-        <h3 className="text-3xl text-white font-bold mb-5">
+        <h3 className="firstCBottomText absolute top-[25rem] left-[20rem] text-3xl text-white font-bold mb-5 hidden">
           Call us @ <span className="text-blue-400">01644626735</span>
         </h3>
-        <button className="rounded px-10 py-2 shadow-lg font-semibold  transition-colors duration-300 bg-green-500  text-white hover:bg-green-700 ">
+        <button className="firstCButton absolute top-[31rem] left-[7.5rem] rounded px-10 py-2 shadow-lg font-semibold  transition-colors duration-300 bg-green-500  text-white hover:bg-green-700  hidden">
           Get Clean
         </button>
       </div>
