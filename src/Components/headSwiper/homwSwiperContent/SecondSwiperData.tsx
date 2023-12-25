@@ -87,7 +87,7 @@ const SecondSwiperData = ({ isActive }: { isActive: boolean }) => {
           </p>
         </div>
 
-        <div className="mt-12">
+        <div className="  ">
           {/* first  */}
           <div className="flex  items-center gap-2 mb-5">
             <Image
