@@ -6,29 +6,36 @@
  *
  */
 
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import "./styles.ts";
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import ThirdSwiperData from "./homwSwiperContent/ThirdSwiperData";
 import SecondSwiperData from "./homwSwiperContent/SecondSwiperData";
 import FirstSwiperData from "./homwSwiperContent/FirstSwiperData";
+import { Col } from "antd";
+import { FaLessThanEqual } from "react-icons/fa6";
 
 export default function HomeHeaderSwiper() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isActive, setAcive] = useState(false);
+
   return (
     <div className="container px-0  mx-auto">
       <Swiper
-        spaceBetween={30}
+        onSlideChange={(swiper) => {
+          setActiveIndex(swiper.activeIndex);
+          //   setAcive(swiper?.enable);
+        }}
         centeredSlides={true}
-        // autoplay={{
-        //   delay: 4000,
-        //   disableOnInteraction: false,
-        // }}
+        autoplay={{
+          delay: 7000,
+          disableOnInteraction: true,
+        }}
         pagination={{
           clickable: true,
         }}
@@ -37,13 +44,13 @@ export default function HomeHeaderSwiper() {
         className="mySwiper"
       >
         <SwiperSlide>
-          <ThirdSwiperData />
+          <ThirdSwiperData isActive={activeIndex === 0} />
         </SwiperSlide>
         <SwiperSlide>
-          <SecondSwiperData />
+          <SecondSwiperData isActive={activeIndex === 1} />
         </SwiperSlide>
         <SwiperSlide>
-          <FirstSwiperData />
+          <FirstSwiperData isActive={activeIndex === 2} />
         </SwiperSlide>
       </Swiper>
     </div>

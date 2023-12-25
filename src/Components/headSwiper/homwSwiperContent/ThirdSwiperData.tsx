@@ -11,50 +11,55 @@ import { gsap } from "gsap";
 import icon1 from "../../../../public/HeaderSwiper/icons/slide-icon4.png";
 import icon2 from "../../../../public/HeaderSwiper/icons/slide-icon5.png";
 import icon3 from "../../../../public/HeaderSwiper/icons/slide-icon6.png";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { thirdSwiperImageStyle as imageStyle } from "../styles";
 
-const ThirdSwiperData = () => {
+const ThirdSwiperData = ({ isActive }: { isActive: boolean }) => {
+  const [isAnimated, setAnimation] = useState(false);
   // set gsap  animation
   useEffect(() => {
-    // text1
-    gsap.to(".text1", {
-      duration: 2,
-      x: -475,
-      delay: 2,
-      display: "block",
-    });
+    if (isActive && !isAnimated) {
+      // text1
+      gsap.to(".text1", {
+        duration: 2,
+        x: -475,
+        delay: 2,
+        display: "block",
+      });
 
-    // text1
-    gsap.to(".text2", {
-      duration: 2,
-      x: 500,
-      delay: 1,
-      display: "block",
-    });
+      // text1
+      gsap.to(".text2", {
+        duration: 2,
+        x: 500,
+        delay: 1,
+        display: "block",
+      });
 
-    // icons
-    gsap.to(".icons", {
-      duration: 2,
-      y: -50,
-      display: "block",
-      delay: 3,
-    });
+      // icons
+      gsap.to(".icons", {
+        duration: 2,
+        y: -50,
+        display: "block",
+        delay: 3,
+      });
 
-    // botom text
-    gsap.to(".bottomText", {
-      duration: 2,
-      x: -250,
-      display: "block",
-      delay: 4,
-    });
-  }, []);
+      // botom text
+      gsap.to(".bottomText", {
+        duration: 2,
+        x: -250,
+        display: "block",
+        delay: 4,
+      });
+    }
+
+    setAnimation(true);
+  }, [isActive]);
 
   return (
     <div className="  font-sans" style={imageStyle}>
       {/* top part  */}
       <div>
-        <p className="text1 hidden  absolute top-40 right-[-20rem]     lg:text-5xl tracking-tighter font-thin mb-3">
+        <p className="text1 hidden  absolute top-40 right-[-20rem]  lg:text-5xl tracking-tighter font-thin mb-3">
           The Better Solution
         </p>
         <p className=" text2 absolute top-56 right-[40rem] hidden  font-bold  lg:text-5xl  mb-3">
@@ -71,7 +76,7 @@ const ThirdSwiperData = () => {
             src={icon1}
             alt="icon"
           />
-          <div className="bottomText absolute top-[20rem] right-[-2rem] hidden ">
+          <div className="bottomText absolute top-[20rem] right-[-2rem] border-l-4 border-green-400 me-5 hidden ">
             <p className="lg:text-xl font-thin text-gray-200  ">
               01.So Fast Delivery
             </p>

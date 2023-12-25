@@ -16,13 +16,14 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/Redux/store";
 import ThirdSwiperData from "@/Components/headSwiper/homwSwiperContent/ThirdSwiperData";
 import HomeHeaderSwiper from "@/Components/headSwiper/HomeSwiper";
+import SecondSwiperData from "@/Components/headSwiper/homwSwiperContent/SecondSwiperData";
 
 const HomePage = ({ reviews }: any) => {
   return (
     <div>
       {/* introduce-section  */}
-      <div>
-        {/* <SecondSwiperData/> */}
+      <div className="container">
+        {/* <SecondSwiperData /> */}
         {/* <ThirdSwiperData /> */}
         <HomeHeaderSwiper />
       </div>

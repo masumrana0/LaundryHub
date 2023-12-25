@@ -10,13 +10,7 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-const FirstSwiperData = () => {
-  // for Initialize  AOS scroll animation
-  useEffect(() => {
-    AOS.init();
-    AOS.refresh();
-  }, []);
-
+const FirstSwiperData = ({ isActive }: { isActive: boolean }) => {
   //  css
   const imageStyle: React.CSSProperties = {
     position: "relative",
