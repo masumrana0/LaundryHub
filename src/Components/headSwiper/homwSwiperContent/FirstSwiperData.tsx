@@ -46,10 +46,18 @@ const FirstSwiperData = ({ isActive }: { isActive: boolean }) => {
         display: "block",
         delay: 4,
       });
+
+      gsap.to(".firstCsideBar", {
+        duration: 1,
+        x: 70,
+        display: "block",
+        delay: 4,
+      });
     }
   }, [isActive]);
   return (
     <div style={imageStyle}>
+      <div className="firstCsideBar absolute top-[16.5rem] left-5 w-2  h-[15rem]  bg-green-400 hidden"></div>
       <div className="">
         <p className="firstCFirstText absolute top-[1rem] left-[7rem]  lg:text-5xl tracking-tighter font-thin text-white mb-3 hidden">
           We provide Best Cleaning Services
