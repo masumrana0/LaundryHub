@@ -16,18 +16,29 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/Redux/store";
 import ThirdSwiperData from "@/Components/headSwiper/homwSwiperContent/ThirdSwiperData";
 import HomeHeaderSwiper from "@/Components/headSwiper/HomeSwiper";
-import SecondSwiperData from "@/Components/headSwiper/homwSwiperContent/SecondSwiperData";
-import FirstSwiperData from "@/Components/headSwiper/homwSwiperContent/FirstSwiperData";
+import HowItsWorkSectionTwo from "@/Components/Shared/HomeUi/HowItsWorkSectionTwo";
 
 const HomePage = ({ reviews }: any) => {
+  // const elementStyle = {
+  //  ".headText"{
+  //  display:"none"
+  //  }
+
+  //  ".img"{
+  //   display:"none",
+
+  //  }
+
+  // };
   return (
     <div>
       {/* introduce-section  */}
       <div className="container">
-        {/* <SecondSwiperData /> */}
-        {/* <ThirdSwiperData /> */}
-        <FirstSwiperData isActive={true} />
-        {/* <HomeHeaderSwiper /> */}
+        <HomeHeaderSwiper />
+      </div>
+
+      <div>
+        <HowItsWorkSectionTwo />
       </div>
 
       <div

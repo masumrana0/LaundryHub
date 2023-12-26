@@ -32,10 +32,10 @@ export default function HomeHeaderSwiper() {
           //   setAcive(swiper?.enable);
         }}
         centeredSlides={true}
-        // autoplay={{
-        //   delay: 7000,
-        //   disableOnInteraction: true,
-        // }}
+        autoplay={{
+          delay: 7000,
+          disableOnInteraction: true,
+        }}
         pagination={{
           clickable: true,
         }}
