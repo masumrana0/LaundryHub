@@ -13,10 +13,11 @@ import { useState } from "react";
 import style from "../style/Loginui.module.css";
 import { useSelector } from "react-redux";
 import { RootState } from "@/Redux/store";
-import userSignupSchema from "@/Schema/Schema";
+
 import { useUserSignupMutation } from "@/Redux/api/authApi";
 import { useAppDispatch } from "@/Redux/hook";
 import { loginStateCore } from "@/Redux/features/login/loginSlice";
+import { AuthValidations } from "@/Schema/Schema";
 
 const Signup = () => {
   // Login State come to redux store
@@ -36,7 +37,7 @@ const Signup = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(userSignupSchema) });
+  } = useForm({ resolver: yupResolver(AuthValidations.userSignupSchema) });
 
   const togglePasswordVisibility = () => {
     setIsViewPass(!isViewPass);
@@ -45,11 +46,12 @@ const Signup = () => {
   const onSubmit = async (data: any) => {
     const res = await userSignup(data).unwrap();
     if (res?.statusCode == 200) {
-      dispatch(loginStateCore());
+      // dispatch(loginStateCore());
       alert(
         "User Signup Successful. Please Signin enter your gmail and password"
       );
     }
+    // console.log(data);
   };
   return (
     <div
