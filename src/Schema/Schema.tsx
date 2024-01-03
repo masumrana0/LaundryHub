@@ -21,4 +21,13 @@ const userSignupSchema = yup.object({
     .oneOf([yup.ref("password")], "Password don't match."),
 });
 
-export default userSignupSchema;
+const userSigninSchema = yup.object({
+  email: yup.string().required("email is required").email("Invalid email"),
+
+  password: yup.string().required("Password is requred"),
+});
+
+const Validationschema = {
+  userSigninSchema,
+  userSignupSchema,
+};
