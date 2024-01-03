@@ -102,6 +102,22 @@ const Signup = () => {
               </p>
             </div>
 
+            {/* Phone Number  */}
+            <div className="lg:mb-3">
+              <h3 className="lg:text-xl text-md">Phone Number</h3>
+              <div className="border hover:border-blue-400 py-2  px-4   rounded-lg focus:border-blue-500 focus:outline-none m">
+                <input
+                  {...register("phoneNumber")}
+                  className="  w-full  outline-none focus:outline-none"
+                  type="number"
+                  name="phoneNumber"
+                  placeholder="phoneNumber"
+                  id="phoneNumber"
+                />
+              </div>
+              <p className="text-red-500 ms-2">{errors.phoneNumber?.message}</p>
+            </div>
+
             {/* emial  */}
             <div className="lg:mb-3">
               <h3 className="lg:text-xl text-md">Email</h3>

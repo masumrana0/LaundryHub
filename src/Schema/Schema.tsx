@@ -6,6 +6,7 @@ const userSignupSchema = yup.object({
     lastName: yup.string(),
   }),
   email: yup.string().required("email is required").email("Invalid email"),
+  phoneNumber: yup.string().required("phoneNumber is required"),
   password: yup
     .string()
     .required("Password is requred")

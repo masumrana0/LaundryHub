@@ -88,7 +88,7 @@ const HomePage = ({ reviews }: any) => {
           </h2>
         </div>
         <div className="container mx-auto">
-          <ReviewSection reviews={reviews.data} />
+          {/* <ReviewSection reviews={reviews.data} /> */}
         </div>
       </div>
 
@@ -108,12 +108,12 @@ const HomePage = ({ reviews }: any) => {
 
 export default HomePage;
 
-export async function getStaticProps() {
-  const res = await fetch(`http://localhost:4000/api/v1/reviews`);
-  const reviews = await res.json();
+// export async function getStaticProps() {
+//   const res = await fetch(`http://localhost:4000/api/v1/reviews`);
+//   const reviews = await res.json();
 
-  return { props: { reviews } };
-}
+//   return { props: { reviews } };
+// }
 
 HomePage.getLayout = function getLayout(page: ReactElement) {
   return <RootLayout>{page}</RootLayout>;

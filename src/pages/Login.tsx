@@ -23,7 +23,7 @@ const Login = () => {
     <div>
       <div className={`${style.main}`}>
         <div
-          className={` bg-blue-500 w-[500px] h-[500px] lg:w-[70%] lg:h-[1300px]  rounded-full absolute  lg:top-[-200px]  flex justify-center items-start lg:justify-end lg:items-center ${
+          className={` bg-green-500 w-[500px] h-[500px] lg:w-[70%] lg:h-[1300px]  rounded-full absolute  lg:top-[-200px]  flex justify-center items-start lg:justify-end lg:items-center ${
             loginState
               ? "top-[550px] right-[-60px]  lg:right-[-300px]"
               : "top-[450px] left-[-60px]  lg:left-[-300px] "
