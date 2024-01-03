@@ -104,7 +104,7 @@ const Signin = () => {
             <div className="flex justify-center  mt-5">
               <button
                 type="submit"
-                className="border px-10 rounded-lg bg-blue-400 text-white font-bold  py-2 hover:bg-blue-500"
+                className="border px-10 rounded bg-green-400 shadow-lg  shadow-green-200 hover:text-white font-semibold text-lg  py-2 hover:bg-green-500 transition-colors duration-300"
               >
                 SignIn
               </button>
