@@ -1,12 +1,22 @@
 import { useEffect, useState } from "react";
 import verificationimg from "public/login/verify.png";
-
 import Image from "next/image";
+import { useSendVerificationEmailQuery } from "@/Redux/api/authApi";
+
+import { authKey } from "@/constants/storageKey";
+import { getUseAbleToken } from "@/services/auth.service";
 
 const VerificationWaitingUi: React.FC = () => {
+  const usersenVerificationEmailQuery = useSendVerificationEmailQuery(null);
+
+  const reSendVerificationMail = () => {
+    usersenVerificationEmailQuery.refetch();
+  };
+
   const [message, setMessage] = useState<string>(
     "Please Check Your E-mail for Verification"
   );
+
   const [timeLeft, setTimeLeft] = useState<number>(120);
 
   useEffect(() => {
@@ -15,7 +25,9 @@ const VerificationWaitingUi: React.FC = () => {
     }, 1000); // Update every second
 
     const countdown = setTimeout(() => {
-      setMessage("Your message after 2 minute");
+      setMessage(
+        "Your verification link has expired. Please request a new email."
+      );
       clearInterval(timer);
     }, 120000);
 
@@ -45,7 +57,10 @@ const VerificationWaitingUi: React.FC = () => {
               {seconds.toString().padStart(2, "0")}
             </span>
           </p>
-          <button className="border-2 border-white rounded-xl px-5 py-2 shadow-lg shadow-gray-100 font-semibold bg-green-400 transition-colors duration-300 hover:bg-green-600 hover:text-white text-gray-600">
+          <button
+            onClick={reSendVerificationMail}
+            className="border-2 border-white rounded-xl px-5 py-2 shadow-lg shadow-gray-100 font-semibold bg-green-400 transition-colors duration-300 hover:bg-green-600 hover:text-white text-gray-600"
+          >
             Resend mail
           </button>
         </div>

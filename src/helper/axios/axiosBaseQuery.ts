@@ -1,3 +1,5 @@
+import { authKey } from "@/constants/storageKey";
+import { getUseAbleToken } from "@/services/auth.service";
 import type { BaseQueryFn } from "@reduxjs/toolkit/query";
 import axios from "axios";
 import type { AxiosRequestConfig, AxiosError } from "axios";
@@ -26,7 +28,7 @@ export const axiosBaseQuery =
         params,
         headers: {
           "Content-Type": contentType || "application/json",
-          // Authorization:{}
+          Authorization: getUseAbleToken(),
         },
       });
       return { data: result.data };

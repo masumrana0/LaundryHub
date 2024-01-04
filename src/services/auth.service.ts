@@ -20,6 +20,15 @@ export const getUserInfo = () => {
   }
 };
 
+export const getUseAbleToken = (): string => {
+  const accessToken = getFromLocalStorage(authKey);
+  if (!accessToken) {
+    return "";
+  }
+  const useAbleToken = accessToken.substring(1, accessToken.length - 1);
+  return useAbleToken;
+};
+
 export const isLoggedIn = () => {
   const accessToken = getFromLocalStorage(authKey);
   //   console.log(accessToken);

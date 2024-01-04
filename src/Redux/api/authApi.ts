@@ -18,8 +18,18 @@ const authApi = baseApi.injectEndpoints({
         data: signupData,
       }),
     }),
+    sendVerificationEmail: build.query({
+      query: () => ({
+        url: "/auth/verification/client",
+        method: "GET",
+      }),
+    }),
   }),
   overrideExisting: false,
 });
 
-export const { useUserSigninMutation, useUserSignupMutation } = authApi;
+export const {
+  useUserSigninMutation,
+  useUserSignupMutation,
+  useSendVerificationEmailQuery,
+} = authApi;
