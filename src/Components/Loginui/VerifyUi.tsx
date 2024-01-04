@@ -7,24 +7,32 @@ import { getUseAbleToken } from "@/services/auth.service";
 import toast from "react-hot-toast";
 import { useGetProfileQuery } from "@/Redux/api/profileApi";
 import { useRouter } from "next/navigation";
+import { useAppDispatch } from "@/Redux/hook";
+import { setIsLoading } from "@/Redux/features/Loading/loadingSlice";
 
 const VerificationWaitingUi: React.FC = () => {
   const router = useRouter();
+
   const [message, setMessage] = useState<string>(
     "Please Check Your E-mail for Verification"
   );
   const [timeLeft, setTimeLeft] = useState<number>(120);
 
   const usersendVerificationEmailRequest = useSendVerificationEmailQuery(null);
+  const dispath = useAppDispatch();
 
   const { data } = useGetProfileQuery({
     refetchOnMountOrArgChange: true,
     pollingInterval: 2000,
   });
+  // console.log(data);
 
-  if (data?.data?.isEmailVerified) {
-    router.push("/");
-  }
+  useEffect(() => {
+    if (data?.data?.isEmailVerified) {
+      dispath(setIsLoading(false));
+      router.push("/");
+    }
+  }, [data?.isEmailVerified]);
 
   useEffect(() => {
     if (usersendVerificationEmailRequest.data?.statusCode === 200) {

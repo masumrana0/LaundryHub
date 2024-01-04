@@ -6,7 +6,7 @@ interface IisLoading {
 }
 
 const initialState: IisLoading = {
-  isLoading: true,
+  isLoading: false,
 };
 
 const LoadingStateSlice = createSlice({
