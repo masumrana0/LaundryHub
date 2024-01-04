@@ -11,9 +11,10 @@ import CheckableTag from "antd/es/tag/CheckableTag";
 import {
   getUserInfo,
   isLoggedIn,
-  storeUserInfo,
+  storeLocalStorageInfo,
 } from "@/services/auth.service";
 import { useRouter } from "next/navigation";
+import { authKey } from "@/constants/storageKey";
 
 type ISigninData = {
   email: string;
@@ -47,7 +48,7 @@ const Signin = () => {
     if (res?.data?.accessToken) {
       router.push("/");
     }
-    storeUserInfo(res?.data?.accessToken);
+    storeLocalStorageInfo(authKey, res?.data?.accessToken);
   };
   return (
     <div

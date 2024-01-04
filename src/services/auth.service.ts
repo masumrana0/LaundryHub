@@ -6,8 +6,8 @@ import {
   setLocalStorage,
 } from "@/utilities/local-storage";
 
-export const storeUserInfo = (accessToken: string) => {
-  return setLocalStorage(authKey, accessToken as string);
+export const storeLocalStorageInfo = (key: string, accessToken: string) => {
+  return setLocalStorage(key, accessToken as string);
 };
 
 export const getUserInfo = () => {

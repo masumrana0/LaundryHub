@@ -13,20 +13,20 @@ import { useState } from "react";
 import style from "../style/Loginui.module.css";
 import { useSelector } from "react-redux";
 import { RootState } from "@/Redux/store";
-
 import { useUserSignupMutation } from "@/Redux/api/authApi";
-import { useAppDispatch } from "@/Redux/hook";
+import { useAppDispatch, useAppSelector } from "@/Redux/hook";
 import { loginStateCore } from "@/Redux/features/login/loginSlice";
 import { AuthValidations } from "@/Schema/Schema";
+import { storeLocalStorageInfo } from "@/services/auth.service";
+import { setIsLoading } from "@/Redux/features/Loading/loadingSlice";
+import clsx from "clsx";
 
 const Signup = () => {
   // Login State come to redux store
   const dispatch = useAppDispatch();
-  const loginState = useSelector(
-    (state: RootState) => state.loginState.loginState
-  );
-  const [userSignup] = useUserSignupMutation();
-
+  const loginState = useAppSelector((state) => state.loginState.loginState);
+  // const loadingState = useAppSelector((state) => state.loadingState.isLoading);
+  const [userSignup, { isLoading }] = useUserSignupMutation();
   // essential Component state
   const [isViewPass, setIsViewPass] = useState(false);
   const [password, setPassword] = useState("");
@@ -42,16 +42,12 @@ const Signup = () => {
   const togglePasswordVisibility = () => {
     setIsViewPass(!isViewPass);
   };
-
   const onSubmit = async (data: any) => {
     const res = await userSignup(data).unwrap();
     if (res?.statusCode == 200) {
-      // dispatch(loginStateCore());
-      alert(
-        "User Signup Successful. Please Signin enter your gmail and password"
-      );
+      dispatch(setIsLoading(true));
+      storeLocalStorageInfo("isEmailVerified", res?.data?.isEmailVerified);
     }
-    // console.log(data);
   };
   return (
     <div
@@ -190,6 +186,7 @@ const Signup = () => {
 
             <div className="flex justify-center  lg:mt-5">
               <button
+                // onClick={() => )}
                 type="submit"
                 className="border px-10 rounded bg-green-400 shadow-lg  shadow-green-200 hover:text-white font-semibold text-lg  py-2 hover:bg-green-500 transition-colors duration-300"
               >
