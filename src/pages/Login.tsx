@@ -16,11 +16,8 @@ import VerificationWaitingUi from "@/Components/Loginui/VerifyUi";
 const Login = () => {
   const dispatch = useAppDispatch();
   const [isSignup, setSignup] = useState(false);
-  const loginState = useAppSelector(
-    (state: RootState) => state.loginState.loginState
-  );
+  const loginState = useAppSelector((state) => state.loginState.loginState);
   const { isLoading } = useAppSelector((state) => state.loadingState);
-  console.log(isLoading)
 
   return (
     <div>

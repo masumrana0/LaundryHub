@@ -1,20 +1,16 @@
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import style from "../style/Loginui.module.css";
-import { useSelector } from "react-redux";
-import { RootState } from "@/Redux/store";
-import { useUserSigninMutation } from "@/Redux/api/authApi";
-import CheckableTag from "antd/es/tag/CheckableTag";
-
 import {
   getUserInfo,
   isLoggedIn,
   storeLocalStorageInfo,
 } from "@/services/auth.service";
+import { useUserSigninMutation } from "@/Redux/api/authApi";
 import { useRouter } from "next/navigation";
 import { authKey } from "@/constants/storageKey";
+import { useAppSelector } from "@/Redux/hook";
 
 type ISigninData = {
   email: string;
@@ -24,9 +20,7 @@ type ISigninData = {
 const Signin = () => {
   // redux
   const [userSignin] = useUserSigninMutation();
-  const loginState = useSelector(
-    (state: RootState) => state.loginState.loginState
-  );
+  const loginState = useAppSelector((state) => state.loginState.loginState);
 
   const [isViewPass, setIsViewPass] = useState(false);
   const [password, setPassword] = useState("");

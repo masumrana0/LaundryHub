@@ -19,7 +19,7 @@ import { loginStateCore } from "@/Redux/features/login/loginSlice";
 import { AuthValidations } from "@/Schema/Schema";
 import { storeLocalStorageInfo } from "@/services/auth.service";
 import { setIsLoading } from "@/Redux/features/Loading/loadingSlice";
-import clsx from "clsx";
+import { authKey } from "@/constants/storageKey";
 
 const Signup = () => {
   // Login State come to redux store
@@ -47,6 +47,7 @@ const Signup = () => {
     if (res?.statusCode == 200) {
       dispatch(setIsLoading(true));
       storeLocalStorageInfo("isEmailVerified", res?.data?.isEmailVerified);
+      storeLocalStorageInfo(authKey, res.data?.accessToken);
     }
   };
   return (
