@@ -5,6 +5,7 @@ import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 import { Provider } from "react-redux";
 import { store } from "@/Redux/store";
+import toast, { Toaster } from "react-hot-toast";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -22,6 +23,7 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     <Provider store={store}>
       {" "}
       <Component {...pageProps} />
+      <Toaster />
     </Provider>
   );
 }

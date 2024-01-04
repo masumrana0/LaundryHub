@@ -2,22 +2,44 @@ import { useEffect, useState } from "react";
 import verificationimg from "public/login/verify.png";
 import Image from "next/image";
 import { useSendVerificationEmailQuery } from "@/Redux/api/authApi";
-
 import { authKey } from "@/constants/storageKey";
 import { getUseAbleToken } from "@/services/auth.service";
+import toast from "react-hot-toast";
+import { useGetProfileQuery } from "@/Redux/api/profileApi";
+import { useRouter } from "next/navigation";
 
 const VerificationWaitingUi: React.FC = () => {
-  const usersenVerificationEmailQuery = useSendVerificationEmailQuery(null);
-
-  const reSendVerificationMail = () => {
-    usersenVerificationEmailQuery.refetch();
-  };
-
+  const router = useRouter();
   const [message, setMessage] = useState<string>(
     "Please Check Your E-mail for Verification"
   );
-
   const [timeLeft, setTimeLeft] = useState<number>(120);
+
+  const usersendVerificationEmailRequest = useSendVerificationEmailQuery(null);
+
+  const { data } = useGetProfileQuery({
+    refetchOnMountOrArgChange: true,
+    pollingInterval: 2000,
+  });
+
+  if (data?.data?.isEmailVerified) {
+    router.push("/");
+  }
+
+  useEffect(() => {
+    if (usersendVerificationEmailRequest.data?.statusCode === 200) {
+      toast.success("Check your Email and verify your account");
+    }
+  }, [usersendVerificationEmailRequest.data]);
+  // console.log(profile);
+  const reSendVerificationMail = () => {
+    usersendVerificationEmailRequest.refetch();
+    return;
+  };
+
+  // if (profile?.data?.isEmailVerified) {
+  //   Router.push("/");
+  // }
 
   useEffect(() => {
     const timer = setInterval(() => {
