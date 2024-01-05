@@ -20,6 +20,7 @@ import { AuthValidations } from "@/Schema/Schema";
 import { storeLocalStorageInfo } from "@/services/auth.service";
 import { setIsLoading } from "@/Redux/features/Loading/loadingSlice";
 import { authKey } from "@/constants/storageKey";
+import toast from "react-hot-toast";
 
 const Signup = () => {
   // Login State come to redux store
@@ -44,6 +45,7 @@ const Signup = () => {
   };
   const onSubmit = async (data: any) => {
     const res = await userSignup(data).unwrap();
+
     if (res?.statusCode == 200) {
       dispatch(setIsLoading(true));
       storeLocalStorageInfo("isEmailVerified", res?.data?.isEmailVerified);
