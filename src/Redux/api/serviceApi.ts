@@ -1,6 +1,7 @@
+import { IReview } from "@/Interface/service";
 import { baseApi } from "./baseApi";
 
-const profileApi = baseApi.injectEndpoints({
+const serviceApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     getAllService: build.query({
       query: () => ({
@@ -9,13 +10,24 @@ const profileApi = baseApi.injectEndpoints({
       }),
     }),
     getOneService: build.query({
-      query: (id) => ({
+      query: (id: string) => ({
         url: `/service/${id}`,
         method: "GET",
+      }),
+    }),
+    submitServiceReview: build.mutation({
+      query: ({ id, review }: { id: any; review: IReview }) => ({
+        url: `/service/review/${id}`,
+        method: "POST",
+        data: review,
       }),
     }),
   }),
   overrideExisting: false,
 });
 
-export const { useGetAllServiceQuery, useGetOneServiceQuery } = profileApi;
+export const {
+  useGetAllServiceQuery,
+  useGetOneServiceQuery,
+  useSubmitServiceReviewMutation,
+} = serviceApi;

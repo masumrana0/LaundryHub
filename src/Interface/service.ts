@@ -1,6 +1,8 @@
+import { IUser } from "./user";
+
 export type IReview = {
-  user?: string;
-  review?: string;
+  user?: IUser;
+  review: string;
 };
 
 type arrayOFString = string;

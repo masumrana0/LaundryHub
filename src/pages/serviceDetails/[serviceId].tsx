@@ -1,9 +1,14 @@
-import { IService } from "@/Interface/service";
-import { useGetOneServiceQuery } from "@/Redux/api/serviceApi";
+import RootLayout from "@/Components/Layout/RootLayout";
+import { IReview, IService } from "@/Interface/service";
+import {
+  useGetOneServiceQuery,
+  useSubmitServiceReviewMutation,
+} from "@/Redux/api/serviceApi";
+import { AwardIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { ReactElement, ReactHTML, useState } from "react";
 import { AiOutlineStar } from "react-icons/ai";
 import { BiLogoFacebook, BiSave, BiAddToQueue } from "react-icons/bi";
 import { FaRegStar, FaStar, FaCircleUser } from "react-icons/fa6";
@@ -11,10 +16,27 @@ import { FaRegStar, FaStar, FaCircleUser } from "react-icons/fa6";
 const ServiceDetails = () => {
   const router = useRouter();
   const id = router.query.serviceId;
+  const [reviewMutation] = useSubmitServiceReviewMutation();
+
   //   console.log(id);
-  const { data, isError, isLoading } = useGetOneServiceQuery(id);
+
+  const handleSubmitReview = async (event) => {
+    event.preventDefault();
+
+    const data = event.target.review.value;
+    const reviewData: IReview = {
+      review: data,
+    };
+
+    const res = await reviewMutation({ id, review: reviewData });
+    // console.log(res);
+  };
+
+  const { data, isError, isLoading } = useGetOneServiceQuery(id as string);
+
+  //   service
   const service = data?.data;
-  console.log(service);
+  //   console.log(service);
 
   const [star, setStar] = useState(0);
   const dummyservice = {
@@ -39,6 +61,7 @@ const ServiceDetails = () => {
 
   const [isReviewOpen, setReviewOpen] = useState(false);
   const [isDescriptionOpen, setDescriptionOpen] = useState(true);
+
   const handleDescriptionOpen = () => {
     setDescriptionOpen(true);
     setReviewOpen(false);
@@ -154,10 +177,10 @@ const ServiceDetails = () => {
               {/* submit reviews and rating */}
               <div className="flex items-center gap-10 mt-10 ">
                 <div className=" lg:w-1/2  ">
-                  <form>
+                  <form onSubmit={handleSubmitReview}>
                     <div className="h-48">
                       <textarea
-                        name="comment"
+                        name="review"
                         placeholder="Enter Your Opinion in this service"
                         className="w-full h-full  border  border-gray-300 bg-white rounded-md py-2 px-3"
                       ></textarea>
@@ -244,24 +267,6 @@ const ServiceDetails = () => {
 
 export default ServiceDetails;
 
-// SSG  Implementation
-// export async function getStaticPaths() {
-//   const res = await fetch(`http://localhost:3000/api/product`);
-//   const products = await res.json();
-//   const paths = products?.data?.map((product) => ({
-//     params: { productId: product._id },
-//   }));
-
-//   return { paths, fallback: false };
-// }
-
-// export async function getStaticProps(context) {
-//   const { params } = context;
-
-//   const res = await fetch(
-//     `http://localhost:4000/api/product/?id=${params.productId}`
-//   );
-//   const product = await res.json();
-
-//   return { props: { product } };
-// }
+ServiceDetails.getLayout = function getLayout(page: ReactElement) {
+  return <RootLayout>{page}</RootLayout>;
+};
