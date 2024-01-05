@@ -32,32 +32,15 @@ const ServiceDetails = () => {
     // console.log(res);
   };
 
-  const { data, isError, isLoading } = useGetOneServiceQuery(id as string);
+  const { data, isError, isLoading } = useGetOneServiceQuery(id as string, {
+    refetchOnMountOrArgChange: true,
+    pollingInterval: 2000,
+  });
 
   //   service
   const service = data?.data;
-  //   console.log(service);
 
   const [star, setStar] = useState(0);
-  const dummyservice = {
-    _id: "6594ef530b1c8bcff3026b22",
-    title: "Deep Wash",
-    images: [
-      "https://img.freepik.com/free-photo/lady-putting-laundry-washing-machine_23-2148387031.jpg?w=826&t=st=1704022659~exp=1704023259~hmac=20c97e59307f90e5c19e8b7a12eb04d75082e2f6c392511b8cc62fb09d44c043",
-      "https://img.freepik.com/free-photo/front-view-young-female-holding-clean-clothes-from-washing-machine-white-wall_140725-109331.jpg?w=360&t=st=1704022622~exp=1704023222~hmac=b7afdf5765af28d98c0743077b359b056030637deaffeeeb027fbed32344de3f",
-      "https://img.freepik.com/free-photo/textured-plaids-wicker-basket-gray-background_169016-18720.jpg?w=1060&t=st=1704022557~exp=1704023157~hmac=90218db27b3b6a93e58d95e9e6b04e4a4bab781a28bcdd74de7b7d1d75e8303d",
-    ],
-    details: [
-      "Our Deep Wash service at LaundryHub is a comprehensive cleaning process designed to revitalize your garments. It involves an in-depth cleaning approach that goes beyond regular washing, targeting embedded dirt, grime, and impurities in fabrics. This service is ideal for garments that require intensive cleaning to restore their freshness.",
-      "The Deep Wash service ensures a thorough and meticulous cleaning process for your garments. We utilize specialized techniques and detergents that penetrate deep into the fabric fibers, effectively removing accumulated dirt, oils, and stains that may not be eliminated through regular washing methods. Our goal is to deliver garments that feel and look rejuvenated.",
-      "Fabric care and enhancement are paramount in our Deep Wash service. While focusing on deep cleaning, we also prioritize maintaining the integrity of the fabric. Our process is tailored to different fabric types, ensuring that the cleaning agents used are gentle yet effective. Additionally, this service aims to enhance the fabric's appearance and feel, leaving your clothes refreshed and revitalized.",
-    ],
-    reviews: [],
-    createdAt: "2024-01-03T05:23:31.023Z",
-    updatedAt: "2024-01-03T05:23:31.023Z",
-    __v: 0,
-    id: "6594ef530b1c8bcff3026b22",
-  };
 
   const [isReviewOpen, setReviewOpen] = useState(false);
   const [isDescriptionOpen, setDescriptionOpen] = useState(true);
@@ -160,18 +143,26 @@ const ServiceDetails = () => {
                   Service Review
                 </h2>
                 <div className="py-10">
-                  <div className="shadaw-lg border-2  p-3 mx-5 rounded-lg shadow-lg  mb-3 bg-white ">
-                    <div className="flex items-center gap-2 mb-3">
-                      <span>
-                        <FaCircleUser className="text-4xl" />
-                      </span>
-                      <h3 className="font-bold text-xl ">Masum Rana</h3>
+                  {service.reviews?.map((Review: IReview) => (
+                    <div className="shadaw-lg border-2  p-3 mx-5 rounded-lg shadow-lg  mb-3 bg-white ">
+                      <div className="flex items-center gap-2 mb-3">
+                        {
+                          <span>
+                            <FaCircleUser className="text-4xl" />
+                          </span>
+                        }
+                        <h3 className="font-bold text-xl ">
+                          {Review?.user?.name?.firstName +
+                            " " +
+                            Review?.user?.name?.lastName}
+                        </h3>
+                      </div>
+                      <p className="text-gray-700 font-thin">
+                        {" "}
+                        {Review?.review}
+                      </p>
                     </div>
-                    <p className="text-gray-700 font-thin">
-                      {" "}
-                      its a good service
-                    </p>
-                  </div>
+                  ))}
                 </div>
               </div>
               {/* submit reviews and rating */}
