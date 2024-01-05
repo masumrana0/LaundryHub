@@ -1,3 +1,4 @@
+import { IUser } from "@/Interface/user";
 import { baseApi } from "./baseApi";
 
 const authApi = baseApi.injectEndpoints({
@@ -8,7 +9,7 @@ const authApi = baseApi.injectEndpoints({
         method: "POST",
         data: signInData,
       }),
-      // invalidatesTags: ["user"],
+      invalidatesTags: ["user"],
     }),
 
     userSignup: build.mutation({

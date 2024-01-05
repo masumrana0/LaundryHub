@@ -1,27 +1,23 @@
+import { useSendVerificationEmailQuery } from "@/Redux/api/authApi";
+import { useGetProfileQuery } from "@/Redux/api/profileApi";
+import { setIsLoading } from "@/Redux/features/Loading/loadingSlice";
+import { useAppDispatch } from "@/Redux/hook";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import verificationimg from "public/login/verify.png";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import verificationimg from "public/login/verify.png";
-import Image from "next/image";
-import { useSendVerificationEmailQuery } from "@/Redux/api/authApi";
-import { authKey } from "@/constants/storageKey";
-import { getUseAbleToken } from "@/services/auth.service";
-import { useGetProfileQuery } from "@/Redux/api/profileApi";
-import { useRouter } from "next/navigation";
-import { useAppDispatch } from "@/Redux/hook";
-import { setIsLoading } from "@/Redux/features/Loading/loadingSlice";
-import { set } from "react-hook-form";
 
 const VerificationWaitingUi: React.FC = () => {
   const router = useRouter();
   const dispath = useAppDispatch();
-  const [isEmailVerified, setEmailVerified] = useState(false);
-  console.log("fast", isEmailVerified);
+  // console.log("fast", isEmailVerified);
   const usersendVerificationEmailRequest = useSendVerificationEmailQuery(null);
-  const { data } = useGetProfileQuery({
+
+  const { data } = useGetProfileQuery(null, {
     refetchOnMountOrArgChange: true,
     pollingInterval: 2000,
   });
-  console.log(data)
 
   const [message, setMessage] = useState<string>(
     "Please Check Your E-mail for Verification"
@@ -29,16 +25,11 @@ const VerificationWaitingUi: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState<number>(120);
 
   useEffect(() => {
-    const intervel = setInterval(() => {
-      if (isEmailVerified) {
-        dispath(setIsLoading(false));
-        router.push("/");
-      }
-    }, 2000);
-    if (isEmailVerified) {
-      clearInterval(intervel);
+    if (data?.data?.isEmailVerified) {
+      dispath(setIsLoading(false));
+      router.push("/");
     }
-  }, [isEmailVerified]);
+  }, [data?.data?.isEmailVerified]);
 
   // for showing  toast
   useEffect(() => {
@@ -49,6 +40,7 @@ const VerificationWaitingUi: React.FC = () => {
 
   const reSendVerificationMail = () => {
     usersendVerificationEmailRequest.refetch();
+    setTimeLeft(120);
     return;
   };
 
@@ -56,11 +48,6 @@ const VerificationWaitingUi: React.FC = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft((prevTime) => prevTime - 1);
-      if (data?.statusCode === 200) {
-        setEmailVerified(data?.data?.isEmailVerified);
-      }
-      console.log(data?.data.isEmailVerified);
-      console.log("seting is emial verifiled ", isEmailVerified);
     }, 1000); // Update every second
 
     const countdown = setTimeout(() => {
@@ -75,7 +62,7 @@ const VerificationWaitingUi: React.FC = () => {
       clearTimeout(countdown);
     };
   }, []);
-  console.log("last", isEmailVerified);
+  // console.log("last", isEmailVerified);
 
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;

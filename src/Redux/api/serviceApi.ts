@@ -14,6 +14,7 @@ const serviceApi = baseApi.injectEndpoints({
         url: `/service/${id}`,
         method: "GET",
       }),
+      providesTags: ["service"],
     }),
     submitServiceReview: build.mutation({
       query: ({ id, review }: { id: any; review: IReview }) => ({
@@ -21,6 +22,7 @@ const serviceApi = baseApi.injectEndpoints({
         method: "POST",
         data: review,
       }),
+      invalidatesTags: ["service"],
     }),
   }),
   overrideExisting: false,

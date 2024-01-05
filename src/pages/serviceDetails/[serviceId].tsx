@@ -32,10 +32,7 @@ const ServiceDetails = () => {
     // console.log(res);
   };
 
-  const { data, isError, isLoading } = useGetOneServiceQuery(id as string, {
-    refetchOnMountOrArgChange: true,
-    pollingInterval: 2000,
-  });
+  const { data, isError, isLoading } = useGetOneServiceQuery(id as string);
 
   //   service
   const service = data?.data;
