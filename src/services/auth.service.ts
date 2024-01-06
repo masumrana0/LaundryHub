@@ -13,7 +13,6 @@ import {
   removeFromLocalStorage,
   setLocalStorage,
 } from "@/utilities/local-storage";
-import { runInThisContext } from "vm";
 
 export const storeLocalStorageInfo = (key: string, accessToken: string) => {
   return setLocalStorage(key, accessToken as string);
@@ -28,6 +27,15 @@ export const getUserInfo = () => {
     return " ";
   }
 };
+
+// export const storeVerificationStatus = (key: string, isVerified: boolean) => {
+//   if (key && typeof isVerified == "boolean") {
+//     const VerifiedStatus = {
+//       isVerified: isVerified,
+//     };
+//     return setLocalStorage(key, VerifiedStatus);
+//   }
+// };
 
 export const getUseAbleToken = (): string => {
   const accessToken = getFromLocalStorage(authKey);
@@ -44,14 +52,24 @@ export const isLoggedIn = () => {
   return !!accessToken;
 };
 
-export const isEmailVerified = () => {
-  const isEmailVerified = getFromLocalStorage(isVerifiedKey);
+interface IisEmailVerified {
+  isVerified: boolean;
+}
 
-  if (isEmailVerified) {
-    return true;
-  } else {
-    return false;
+export const isVerifiedUser = (): IisEmailVerified | "not-found" => {
+  const isEmailVerified = getFromLocalStorage(isVerifiedKey);
+  if (
+    isEmailVerified &&
+    typeof isEmailVerified === "object" &&
+    "isVerified" in isEmailVerified
+  ) {
+    const { isVerified } = isEmailVerified;
+    if (typeof isVerified === "boolean") {
+      return { isVerified };
+    }
   }
+
+  return "not-found";
 };
 
 export const logOut = () => {

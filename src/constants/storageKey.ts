@@ -1,2 +1,2 @@
 export const authKey = "accessToken";
-export const isVerifiedKey = "isEmailVerified";
+export const isVerifiedKey = "isUserVerified";

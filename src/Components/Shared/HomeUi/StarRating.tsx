@@ -3,14 +3,15 @@ import { FaStar, FaRegStar } from "react-icons/fa";
 
 interface StarRatingProps {
   stars: number;
+  starsize: string;
 }
 
-const StarRating: React.FC<StarRatingProps> = ({ stars }) => {
+const StarRating: React.FC<StarRatingProps> = ({ stars, starsize }) => {
   const filledStars = Array.from({ length: stars }, (index) => (
-    <FaStar key={index} color="#ffc107" />
+    <FaStar className={`${starsize}`} key={index} color="#ffc107" />
   ));
   const emptyStars = Array.from({ length: 5 - stars }, (index) => (
-    <FaRegStar key={index} color="#ffc107" />
+    <FaRegStar className={`${starsize}`} key={index} color="#ffc107" />
   ));
 
   return (

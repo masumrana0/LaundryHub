@@ -2,24 +2,24 @@ import style from "../Components/style/Loginui.module.css";
 import Image from "next/image";
 import signin from "../../public/login/signin.png";
 import signup from "../../public/login/signup.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Signin from "@/Components/Loginui/Signin";
 import { FaLessThanEqual } from "react-icons/fa6";
 import { Provider, useDispatch } from "react-redux";
 import { RootState, store } from "@/Redux/store";
-
 import Signup from "@/Components/Loginui/Signup";
 import { useAppDispatch, useAppSelector } from "@/Redux/hook";
-import { isLoggedIn } from "@/services/auth.service";
 import VerificationWaitingUi from "@/Components/Loginui/VerifyUi";
-import { setAuthState } from "@/Redux/features/auth/authSlice";
+import {
+  setAuthState,
+  setIsEmailVerified,
+} from "@/Redux/features/auth/authSlice";
 
 const Authentication = () => {
   const dispatch = useAppDispatch();
   const [isSignup, setSignup] = useState(false);
   const authState = useAppSelector((state) => state.auth.authState);
   const isEmailVerified = useAppSelector((state) => state.auth.isEmailVerified);
-  console.log(isEmailVerified, authState);
 
   return (
     <div>

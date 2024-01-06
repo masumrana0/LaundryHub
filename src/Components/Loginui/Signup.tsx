@@ -16,14 +16,17 @@ import { useUserSignupMutation } from "@/Redux/api/authApi";
 import { useAppDispatch, useAppSelector } from "@/Redux/hook";
 import { AuthValidations } from "@/Schema/Schema";
 import { storeLocalStorageInfo } from "@/services/auth.service";
-import { authKey } from "@/constants/storageKey";
-import { setAuthState } from "@/Redux/features/auth/authSlice";
+import { authKey, isVerifiedKey } from "@/constants/storageKey";
+import {
+  setAuthState,
+  setIsEmailVerified,
+} from "@/Redux/features/auth/authSlice";
+import { Turtle } from "lucide-react";
 
 const Signup = () => {
   // Login State come to redux store
   const dispatch = useAppDispatch();
   const authState = useAppSelector((state) => state.auth.authState);
-
   const [userSignup, { isLoading }] = useUserSignupMutation();
   // essential Component state
   const [isViewPass, setIsViewPass] = useState(false);
@@ -40,12 +43,16 @@ const Signup = () => {
   const togglePasswordVisibility = () => {
     setIsViewPass(!isViewPass);
   };
+
+  // handling registration
   const onSubmit = async (data: any) => {
     const res = await userSignup(data).unwrap();
+    console.log(res);
 
     if (res?.statusCode == 200) {
-      dispatch(setAuthState());
-      storeLocalStorageInfo("isEmailVerified", res?.data?.isEmailVerified);
+      if (!res.data?.isEmailVerified) {
+        dispatch(setIsEmailVerified(true));
+      }
       storeLocalStorageInfo(authKey, res.data?.accessToken);
     }
   };

@@ -1,4 +1,6 @@
 import RootLayout from "@/Components/Layout/RootLayout";
+import Ratings from "@/Components/ServiceDettails/Ratings";
+import StarRating from "@/Components/Shared/HomeUi/StarRating";
 import { IReview } from "@/Interface/service";
 import {
   useGetOneServiceQuery,
@@ -20,7 +22,7 @@ const ServiceDetails = () => {
   // redux
   const [reviewSubmitMutation] = useSubmitServiceReviewMutation();
   const { data: reviewDatas } = useGetReviewQuery(id);
-  console.log(reviewDatas);
+  // console.log(reviewDatas);
 
   // handle submition Review
   const handleSubmitReview = async (event: FormEvent<HTMLFormElement>) => {
@@ -45,8 +47,6 @@ const ServiceDetails = () => {
 
   //   service
   const service = data?.data;
-
-  const [star, setStar] = useState(0);
 
   const [isReviewOpen, setReviewOpen] = useState(false);
   const [isDescriptionOpen, setDescriptionOpen] = useState(true);
@@ -148,27 +148,37 @@ const ServiceDetails = () => {
                 <h2 className="text-3xl font-bold mb-2 text-white">
                   Service Review
                 </h2>
-                <div className="py-10">
-                  {reviewDatas?.data?.map((Review: IReview) => (
-                    <div className="shadaw-lg border-2  p-3 mx-5 rounded-lg shadow-lg  mb-3 bg-white ">
-                      <div className="flex items-center gap-2 mb-3">
-                        {
-                          <span>
-                            <FaCircleUser className="text-4xl" />
-                          </span>
-                        }
-                        <h3 className="font-bold text-xl ">
-                          {Review?.user?.name?.firstName +
-                            " " +
-                            Review?.user?.name?.lastName}
-                        </h3>
+                <div className="flex justify-center items-center">
+                  {/* reviews section */}
+                  <div className="lg:w-[65%]">
+                    {reviewDatas?.data?.map((Review: IReview) => (
+                      <div className="shadaw-lg border-2  p-3 mx-5 rounded-lg shadow-lg  mb-3 bg-white ">
+                        <div className="flex items-center gap-2 mb-3">
+                          {
+                            <span>
+                              <FaCircleUser className="text-4xl" />
+                            </span>
+                          }
+                          <h3 className="font-bold text-xl ">
+                            {Review?.user?.name?.firstName +
+                              " " +
+                              Review?.user?.name?.lastName}
+                          </h3>
+                        </div>
+                        <p className="text-gray-700 font-thin">
+                          {" "}
+                          {Review?.review}
+                        </p>
                       </div>
-                      <p className="text-gray-700 font-thin">
-                        {" "}
-                        {Review?.review}
-                      </p>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
+
+                  {/* ratings section */}
+
+                  <div className="lg:w-[35%]">
+                    <Ratings />
+                  </div>
+                  {/* end raing section  */}
                 </div>
               </div>
               {/* submit reviews and rating */}
@@ -191,69 +201,7 @@ const ServiceDetails = () => {
                   </form>
                 </div>
 
-                <div className="lg:w-1/2  ">
-                  <div className="shadow-lg bg-white h-48 px-5 py-6 ">
-                    <h3 className="text-center lg:text-4xl font-thin text-gray-600">
-                      How do you rate our in this Service
-                    </h3>
-                    <div className="flex justify-center gap-4 mt-2">
-                      <span
-                        className="cursor-pointer"
-                        onClick={() => setStar(1)}
-                      >
-                        {star >= 1 ? (
-                          <FaStar className="lg:text-5xl font-thin text-amber-400" />
-                        ) : (
-                          <FaRegStar className="lg:text-5xl font-thin text-amber-400" />
-                        )}
-                      </span>
-                      <span
-                        className="cursor-pointer"
-                        onClick={() => setStar(2)}
-                      >
-                        {star >= 2 ? (
-                          <FaStar className="lg:text-5xl font-thin  text-amber-400" />
-                        ) : (
-                          <FaRegStar className="lg:text-5xl font-thin text-amber-400" />
-                        )}
-                      </span>
-                      <span
-                        className="cursor-pointer"
-                        onClick={() => setStar(3)}
-                      >
-                        {star >= 3 ? (
-                          <FaStar className="lg:text-5xl font-thin text-amber-400" />
-                        ) : (
-                          <FaRegStar className="lg:text-5xl font-thin text-amber-400" />
-                        )}
-                      </span>
-                      <span
-                        className="cursor-pointer"
-                        onClick={() => setStar(4)}
-                      >
-                        {star >= 4 ? (
-                          <FaStar className="lg:text-5xl font-thin text-amber-400" />
-                        ) : (
-                          <FaRegStar className="lg:text-5xl font-thin text-amber-400" />
-                        )}
-                      </span>
-                      <span
-                        className="cursor-pointer"
-                        onClick={() => setStar(5)}
-                      >
-                        {star == 5 ? (
-                          <FaStar className="lg:text-5xl font-thin text-amber-400" />
-                        ) : (
-                          <FaRegStar className="lg:text-5xl font-thin text-amber-400" />
-                        )}
-                      </span>
-                    </div>
-                    <div className="flex justify-between mt-6">
-                      <h3 className="font-bold">Bad</h3>
-                      <h3 className="font-bold">Excellent</h3>
-                    </div>
-                  </div>
-                </div>
+                <div className="lg:w-1/2  "></div>
               </div>
             </div>
           )}
