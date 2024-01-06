@@ -9,10 +9,10 @@ const Ratings = () => {
       <div className="  bg-white shadow-4xl shadow-gray-200 p-10 rounded">
         {/* average rating */}
         <div>
-          <h2 className="lg:text-4xl text-3xl  font-thin text-center">
+          <h2 className="lg:text-4xl text-3xl font-bold font-momo text-center">
             Average Ratings
           </h2>
-          <div className="bg-gray-200 mx-5 rounded-xl shadow-lg py-1 mt-5 ">
+          <div className="bg-gray-100 mx-5 rounded-xl shadow-lg py-1 mt-5 ">
             <StarRating stars={3} starsize="text-5xl" />
           </div>
         </div>

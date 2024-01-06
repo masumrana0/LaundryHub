@@ -21,7 +21,7 @@ const ServiceDetails = () => {
 
   // redux
   const [reviewSubmitMutation] = useSubmitServiceReviewMutation();
-  const { data: reviewDatas } = useGetReviewQuery(id);
+
   // console.log(reviewDatas);
 
   // handle submition Review
@@ -112,7 +112,7 @@ const ServiceDetails = () => {
       </div>
 
       {/* lower part */}
-      <div className="my-20 w-full bg-green-200 h-[100vh]  p-5">
+      <div className=" w-full   h-[100vh]  p-5">
         <div className="container mx-auto">
           <div className="flex gap-5 py-3">
             <button
@@ -132,6 +132,7 @@ const ServiceDetails = () => {
               Review & Rating
             </button>
           </div>
+          <div className="w-full h-4 bg-green-400 rounded-xl"></div>
           {isDescriptionOpen ? (
             <div className="bg-white mt-5 p-5">
               <h2 className="text-3xl font-bold mb-6 ">Description</h2>
@@ -143,44 +144,18 @@ const ServiceDetails = () => {
               <p className="text-lg mt-3 ">{service?.details[2]}</p>
             </div>
           ) : (
-            <div>
-              <div className="h-96 overflow-y-auto  mx-auto bg-gray-500 mt-5 p-10 rounded-xl ">
-                <h2 className="text-3xl font-bold mb-2 text-white">
-                  Service Review
-                </h2>
+            <div className=" mx-auto bg-gray-100 mt-5  rounded-xl">
+              <div>
                 <div className="flex justify-center items-center">
-                  {/* reviews section */}
-                  <div className="lg:w-[65%]">
-                    {reviewDatas?.data?.map((Review: IReview) => (
-                      <div className="shadaw-lg border-2  p-3 mx-5 rounded-lg shadow-lg  mb-3 bg-white ">
-                        <div className="flex items-center gap-2 mb-3">
-                          {
-                            <span>
-                              <FaCircleUser className="text-4xl" />
-                            </span>
-                          }
-                          <h3 className="font-bold text-xl ">
-                            {Review?.user?.name?.firstName +
-                              " " +
-                              Review?.user?.name?.lastName}
-                          </h3>
-                        </div>
-                        <p className="text-gray-700 font-thin">
-                          {" "}
-                          {Review?.review}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-
+                 
                   {/* ratings section */}
-
                   <div className="lg:w-[35%]">
                     <Ratings />
                   </div>
                   {/* end raing section  */}
                 </div>
               </div>
+
               {/* submit reviews and rating */}
               <div className="flex items-center gap-10 mt-10 ">
                 <div className=" lg:w-1/2  ">
