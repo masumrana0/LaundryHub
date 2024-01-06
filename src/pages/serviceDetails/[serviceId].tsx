@@ -20,30 +20,6 @@ const ServiceDetails = () => {
   const router = useRouter();
   const id = router.query.serviceId;
 
-  // redux
-  const [reviewSubmitMutation] = useSubmitServiceReviewMutation();
-
-  // console.log(reviewDatas);
-
-  // handle submition Review
-  const handleSubmitReview = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    const form = event.target as HTMLFormElement;
-    const review = (event.target as HTMLFormElement)?.review?.value;
-
-    if (review) {
-      const reviewData = {
-        service: `${id}`,
-        review: review,
-      };
-
-      const res = await reviewSubmitMutation(reviewData);
-
-      form.reset();
-    }
-  };
-
   const { data, isError, isLoading } = useGetOneServiceQuery(id as string);
 
   //   service
@@ -151,37 +127,21 @@ const ServiceDetails = () => {
                   Review & Ratings
                 </h3>
                 <div className="flex justify-center  ">
+                  {/* review section */}
                   <div className="lg:w-[65%]">
                     <Review id={`${id}`} />
                   </div>
+
                   {/* ratings section */}
                   <div className="lg:w-[35%]">
                     <Ratings />
                   </div>
-                  {/* end raing section  */}
+                  {/* end   */}
                 </div>
               </div>
 
               {/* submit reviews and rating */}
               <div className="flex items-center gap-10 mt-10 ">
-                <div className=" lg:w-1/2  ">
-                  <form onSubmit={handleSubmitReview}>
-                    <div className="h-48">
-                      <textarea
-                        required
-                        name="review"
-                        placeholder="Enter Your Opinion in this service"
-                        className="w-full h-full  border  border-gray-300 bg-white rounded-md py-2 px-3"
-                      ></textarea>
-                      <div className="">
-                        <button className="btn btn-outline border border-white text-gray-500 rounded px-10 py-2 shadow-lg font-semibold bg-green-400 transition-colors duration-300 hover:bg-green-500 hover:text-white    shadow-white">
-                          Submit
-                        </button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-
                 <div className="lg:w-1/2  "></div>
               </div>
             </div>
