@@ -1,35 +1,44 @@
 import RootLayout from "@/Components/Layout/RootLayout";
-import { IReview, IService } from "@/Interface/service";
+import { IReview } from "@/Interface/service";
 import {
   useGetOneServiceQuery,
+  useGetReviewQuery,
   useSubmitServiceReviewMutation,
 } from "@/Redux/api/serviceApi";
 import { AwardIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { ReactElement, ReactHTML, useState } from "react";
-import { AiOutlineStar } from "react-icons/ai";
+import { FormEvent, ReactElement, ReactHTML, useState } from "react";
 import { BiLogoFacebook, BiSave, BiAddToQueue } from "react-icons/bi";
 import { FaRegStar, FaStar, FaCircleUser } from "react-icons/fa6";
 
 const ServiceDetails = () => {
   const router = useRouter();
   const id = router.query.serviceId;
-  const [reviewMutation] = useSubmitServiceReviewMutation();
 
-  //   console.log(id);
+  // redux
+  const [reviewSubmitMutation] = useSubmitServiceReviewMutation();
+  const { data: reviewDatas } = useGetReviewQuery(id);
+  console.log(reviewDatas);
 
-  const handleSubmitReview = async (event) => {
+  // handle submition Review
+  const handleSubmitReview = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const data = event.target.review.value;
-    const reviewData: IReview = {
-      review: data,
-    };
+    const form = event.target as HTMLFormElement;
+    const review = (event.target as HTMLFormElement)?.review?.value;
 
-    const res = await reviewMutation({ id, review: reviewData });
-    // console.log(res);
+    if (review) {
+      const reviewData = {
+        service: `${id}`,
+        review: review,
+      };
+
+      const res = await reviewSubmitMutation(reviewData);
+
+      form.reset();
+    }
   };
 
   const { data, isError, isLoading } = useGetOneServiceQuery(id as string);
@@ -140,7 +149,7 @@ const ServiceDetails = () => {
                   Service Review
                 </h2>
                 <div className="py-10">
-                  {service.reviews?.map((Review: IReview) => (
+                  {reviewDatas?.data?.map((Review: IReview) => (
                     <div className="shadaw-lg border-2  p-3 mx-5 rounded-lg shadow-lg  mb-3 bg-white ">
                       <div className="flex items-center gap-2 mb-3">
                         {
@@ -168,6 +177,7 @@ const ServiceDetails = () => {
                   <form onSubmit={handleSubmitReview}>
                     <div className="h-48">
                       <textarea
+                        required
                         name="review"
                         placeholder="Enter Your Opinion in this service"
                         className="w-full h-full  border  border-gray-300 bg-white rounded-md py-2 px-3"

@@ -8,10 +8,9 @@ const profileApi = baseApi.injectEndpoints({
         url: "/profile",
         method: "GET",
       }),
-      //   providesTags: ["user"],
+      providesTags: ["user"],
     }),
   }),
-  //   overrideExisting: false,
 });
 
 export const { useGetProfileQuery } = profileApi;

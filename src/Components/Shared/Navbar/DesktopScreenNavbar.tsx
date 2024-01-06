@@ -24,7 +24,6 @@ const DesktopScreenNavbar = () => {
 
   const closeDropdown = () => {
     setDropdownOpen(false);
-    console.log("hello");
   };
 
   const handleLogout = () => {
@@ -94,7 +93,7 @@ const DesktopScreenNavbar = () => {
           </Link>
           <Link
             className="relative flex items-center gap-0.5  text-md font-semibold transition-all duration-300 group"
-            href="/"
+            href="/service"
           >
             <span>
               <SettingOutlined className="animate-spin  " />
@@ -105,7 +104,7 @@ const DesktopScreenNavbar = () => {
 
           <Link
             className="relative flex items-center gap-0.5  text-md font-semibold transition-all duration-300 group"
-            href="/"
+            href="/laundry"
           >
             <span>{/* <FaBloggerB /> */}</span>
             LAUNDRY
@@ -133,18 +132,6 @@ const DesktopScreenNavbar = () => {
             CONTACT
             <span className="absolute bottom-0 top-6 left-0 w-full h-1 bg-green-400 transform scale-x-0 transition-transform group-hover:scale-x-100 duration-300"></span>
           </Link>
-
-          {/*  
-          
-           
-          <Link
-            className="flex items-center text-md  hover:text-green-400 font-semibold transition-colors duration-300 "
-            href="/laundry"
-            scroll={false}
-          >
-            {" "}
-            <FaPhone /> CONTACT
-          </Link> */}
         </div>
 
         {/* login part  / Avatar part */}

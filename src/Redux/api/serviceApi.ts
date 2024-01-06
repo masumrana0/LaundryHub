@@ -1,6 +1,5 @@
 import { IReview } from "@/Interface/service";
 import { baseApi } from "./baseApi";
-import { url } from "inspector";
 
 const serviceApi = baseApi.injectEndpoints({
   endpoints: (build) => ({

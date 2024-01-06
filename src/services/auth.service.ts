@@ -31,7 +31,7 @@ export const getUseAbleToken = (): string => {
 
 export const isLoggedIn = () => {
   const accessToken = getFromLocalStorage(authKey);
-  //   console.log(accessToken);
+    console.log(accessToken);
 
   return !!accessToken;
 };

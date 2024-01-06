@@ -1,6 +1,6 @@
 type IName = {
   firstName: string;
-  lastName: string;
+  lastName?: string;
 };
 
 export type IUser = {
@@ -20,26 +20,5 @@ export interface ProfileResponse {
   statusCode: number;
   success: boolean;
   message: string;
-  data: ProfileData;
-}
-
-interface ProfileData {
-  _id: string;
-  name: Name;
-  role: string;
-  email: string;
-  phoneNumber: string;
-  isEmailVerified: boolean;
-  isPasswordChanged: boolean;
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
-  id: string;
-}
-
-interface Name {
-  firstName: string;
-  lastName: string;
-  _id: string;
-  id: string;
+  data: IUser;
 }

@@ -12,9 +12,9 @@ export const getFromLocalStorage = (key: string) => {
   }
   const authToken = localStorage.getItem(key);
   if (!authToken) {
-    return "token not found";
+    return false;
   }
-  
+
   return authToken;
 };
 
