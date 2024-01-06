@@ -23,7 +23,7 @@ const Signup = () => {
   // Login State come to redux store
   const dispatch = useAppDispatch();
   const authState = useAppSelector((state) => state.auth.authState);
-  // const loadingState = useAppSelector((state) => state.loadingState.isLoading);
+
   const [userSignup, { isLoading }] = useUserSignupMutation();
   // essential Component state
   const [isViewPass, setIsViewPass] = useState(false);
