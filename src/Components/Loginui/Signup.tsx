@@ -47,7 +47,6 @@ const Signup = () => {
   // handling registration
   const onSubmit = async (data: any) => {
     const res = await userSignup(data).unwrap();
-    console.log(res);
 
     if (res?.statusCode == 200) {
       if (!res.data?.isEmailVerified) {

@@ -2,29 +2,26 @@ import { IReview } from "@/Interface/service";
 import {
   useGetReviewQuery,
   useSubmitServiceReviewMutation,
-} from "@/Redux/api/serviceApi";
+} from "@/Redux/api/review&ratingApi";
 import { FormEvent } from "react";
 import { FaRegCircleUser } from "react-icons/fa6";
 
 const Review = ({ id }: { id: string }) => {
-  const { data: reviewDatas } = useGetReviewQuery(id);
   // redux
+  const { data: reviewDatas } = useGetReviewQuery(id);
   const [reviewSubmitMutation] = useSubmitServiceReviewMutation();
 
+  //   handle submit review
   const handleSubmitReview = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     const form = event.target as HTMLFormElement;
     const review = (event.target as HTMLFormElement)?.review?.value;
-
     if (review) {
       const reviewData = {
         service: `${id}`,
         review: review,
       };
-
       const res = await reviewSubmitMutation(reviewData);
-
       form.reset();
     }
   };

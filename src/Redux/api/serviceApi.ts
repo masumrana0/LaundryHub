@@ -15,28 +15,7 @@ const serviceApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
-    submitServiceReview: build.mutation({
-      query: (review: { review: IReview }) => ({
-        url: `/review`,
-        method: "POST",
-        data: review,
-      }),
-      invalidatesTags: ["review"],
-    }),
-
-    getReview: build.query({
-      query: (id) => ({
-        url: `/review/${id}`,
-        method: "GET",
-      }),
-      providesTags: ["review"],
-    }),
   }),
 });
 
-export const {
-  useGetAllServiceQuery,
-  useGetOneServiceQuery,
-  useSubmitServiceReviewMutation,
-  useGetReviewQuery,
-} = serviceApi;
+export const { useGetAllServiceQuery, useGetOneServiceQuery } = serviceApi;

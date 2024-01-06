@@ -134,7 +134,7 @@ const ServiceDetails = () => {
 
                   {/* ratings section */}
                   <div className="lg:w-[35%]">
-                    <Ratings />
+                    <Ratings id={`${id}`} />
                   </div>
                   {/* end   */}
                 </div>

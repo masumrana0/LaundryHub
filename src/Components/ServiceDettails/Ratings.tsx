@@ -1,9 +1,35 @@
 import { FaRegStar, FaStar } from "react-icons/fa6";
 import StarRating from "../Shared/HomeUi/StarRating";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import {
+  useGetRatingsQuery,
+  useSubmitRatingMutation,
+} from "@/Redux/api/review&ratingApi";
+import { AwardIcon } from "lucide-react";
+import { IRatingData } from "@/Interface/rating&review";
 
-const Ratings = () => {
+const Ratings = ({ id }: { id: string }) => {
   const [star, setStar] = useState<number>(0);
+
+  // redux
+  const [submitRating] = useSubmitRatingMutation();
+  const { data } = useGetRatingsQuery(id);
+  const rating: IRatingData = data?.data;
+
+  // handle submitinğ rating
+  useEffect(() => {
+    const ratingData = {
+      service: `${id}`,
+      rating: star,
+    };
+    const submitRatingAsync = async () => {
+      if (star >= 1) {
+        await submitRating(ratingData);
+      }
+    };
+    submitRatingAsync();
+  }, [star]);
+
   return (
     <div>
       <div className="  bg-white shadow-4xl shadow-gray-200 p-10 rounded-2xl">
@@ -13,14 +39,14 @@ const Ratings = () => {
             Average Ratings
           </h2>
           <div className="bg-gray-100 mx-5 rounded-xl shadow-lg py-1 mt-5 ">
-            <StarRating stars={3} starsize="text-5xl" />
+            <StarRating stars={rating.averageRating} starsize="text-5xl" />
           </div>
         </div>
 
         {/* customer ratings  */}
         <div className="mt-3">
           <h3 className="text-xl font-thin text-gray-500 text-center">
-            100 Customer ratings
+            {rating?.totalGiveCustomerRating} Customer ratings
           </h3>
           <div className="mt-3">
             {/* 5 star  */}
