@@ -1,5 +1,6 @@
 import RootLayout from "@/Components/Layout/RootLayout";
 import Ratings from "@/Components/ServiceDettails/Ratings";
+import Review from "@/Components/ServiceDettails/Review";
 import StarRating from "@/Components/Shared/HomeUi/StarRating";
 import { IReview } from "@/Interface/service";
 import {
@@ -145,9 +146,14 @@ const ServiceDetails = () => {
             </div>
           ) : (
             <div className=" mx-auto bg-gray-100 mt-5  rounded-xl">
-              <div>
-                <div className="flex justify-center items-center">
-                 
+              <div className="p-5">
+                <h3 className="lg:text-3xl text-xl font-extrabold text-gray-700 mb-5 shadow-xl  border-2 py-1 px-4 border-gray-100   ">
+                  Review & Ratings
+                </h3>
+                <div className="flex justify-center  ">
+                  <div className="lg:w-[65%]">
+                    <Review id={`${id}`} />
+                  </div>
                   {/* ratings section */}
                   <div className="lg:w-[35%]">
                     <Ratings />

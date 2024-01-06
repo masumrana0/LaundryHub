@@ -6,7 +6,7 @@ const Ratings = () => {
   const [star, setStar] = useState<number>(0);
   return (
     <div>
-      <div className="  bg-white shadow-4xl shadow-gray-200 p-10 rounded">
+      <div className="  bg-white shadow-4xl shadow-gray-200 p-10 rounded-2xl">
         {/* average rating */}
         <div>
           <h2 className="lg:text-4xl text-3xl font-bold font-momo text-center">
