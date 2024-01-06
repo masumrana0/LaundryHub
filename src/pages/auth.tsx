@@ -7,32 +7,34 @@ import Signin from "@/Components/Loginui/Signin";
 import { FaLessThanEqual } from "react-icons/fa6";
 import { Provider, useDispatch } from "react-redux";
 import { RootState, store } from "@/Redux/store";
-import { loginStateCore } from "@/Redux/features/login/loginSlice";
+
 import Signup from "@/Components/Loginui/Signup";
 import { useAppDispatch, useAppSelector } from "@/Redux/hook";
 import { isLoggedIn } from "@/services/auth.service";
 import VerificationWaitingUi from "@/Components/Loginui/VerifyUi";
+import { setAuthState } from "@/Redux/features/auth/authSlice";
 
-const Login = () => {
+const Authentication = () => {
   const dispatch = useAppDispatch();
   const [isSignup, setSignup] = useState(false);
-  const loginState = useAppSelector((state) => state.loginState.loginState);
-  const { isLoading } = useAppSelector((state) => state.loadingState);
+  const authState = useAppSelector((state) => state.auth.authState);
+  const isEmailVerified = useAppSelector((state) => state.auth.isEmailVerified);
+  console.log(isEmailVerified, authState);
 
   return (
     <div>
-      {isLoading ? (
+      {isEmailVerified ? (
         <VerificationWaitingUi />
       ) : (
         <div className={`${style.main}`}>
           <div
             className={` bg-green-500 w-[500px] h-[500px] lg:w-[70%] lg:h-[1300px]  rounded-full absolute  lg:top-[-200px]  flex justify-center items-start lg:justify-end lg:items-center ${
-              loginState
+              authState
                 ? "top-[550px] right-[-60px]  lg:right-[-300px]"
                 : "top-[450px] left-[-60px]  lg:left-[-300px] "
             }`}
           >
-            {loginState ? (
+            {authState ? (
               <div className="flex items-center">
                 <div className="text-center text-white lg:me-[100px] lg:mt-[50px]">
                   <h2 className="font-bold text-2xl mt-1 lg:mt-0 lg:text-4xl">
@@ -40,8 +42,8 @@ const Login = () => {
                   </h2>
                   <p className="lg:text-2xl">Already have an account</p>
                   <button
-                    onClick={() => dispatch(loginStateCore())}
-                    className="border border-white px-10 py-2 font-bold rounded-lg mt-3 bg-200 hover:bg-blue-700"
+                    onClick={() => dispatch(setAuthState())}
+                    className="border-2 border-white shadow-lg shadow-white   px-10 py-2 font-bold rounded hover:bg-green-700 transition-colors duration-300 mt-3 "
                   >
                     Signin
                   </button>
@@ -69,8 +71,8 @@ const Login = () => {
                   </h2>
                   <p className="lg:text-2xl">Welcome to LaundryHub</p>
                   <button
-                    onClick={() => dispatch(loginStateCore())}
-                    className="border border-white px-10 py-2 font-bold rounded-lg mt-3 bg-200 hover:bg-blue-700"
+                    onClick={() => dispatch(setAuthState())}
+                    className="border-2 border-white shadow-lg shadow-white   px-10 py-2 font-bold rounded hover:bg-green-700 transition-colors duration-300 mt-3 "
                   >
                     Signup
                   </button>
@@ -89,4 +91,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Authentication;

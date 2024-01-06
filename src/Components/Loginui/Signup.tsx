@@ -1,31 +1,28 @@
 /**
  * Title: 'Signup Form'
- * Description: 'This Login page Component.'
+ * Description: 'This authentication page Component.'
  * Author: 'Masum Rana'
  * Date: 07-12-2023
  *
  */
 
-import { FaEye, FaEyeSlash } from "react-icons/fa6";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import style from "../style/Loginui.module.css";
-import { useSelector } from "react-redux";
-import { RootState } from "@/Redux/store";
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
+import toast from "react-hot-toast";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useUserSignupMutation } from "@/Redux/api/authApi";
 import { useAppDispatch, useAppSelector } from "@/Redux/hook";
-import { loginStateCore } from "@/Redux/features/login/loginSlice";
 import { AuthValidations } from "@/Schema/Schema";
 import { storeLocalStorageInfo } from "@/services/auth.service";
-import { setIsLoading } from "@/Redux/features/Loading/loadingSlice";
 import { authKey } from "@/constants/storageKey";
-import toast from "react-hot-toast";
+import { setAuthState } from "@/Redux/features/auth/authSlice";
 
 const Signup = () => {
   // Login State come to redux store
   const dispatch = useAppDispatch();
-  const loginState = useAppSelector((state) => state.loginState.loginState);
+  const authState = useAppSelector((state) => state.auth.authState);
   // const loadingState = useAppSelector((state) => state.loadingState.isLoading);
   const [userSignup, { isLoading }] = useUserSignupMutation();
   // essential Component state
@@ -47,7 +44,7 @@ const Signup = () => {
     const res = await userSignup(data).unwrap();
 
     if (res?.statusCode == 200) {
-      dispatch(setIsLoading(true));
+      dispatch(setAuthState());
       storeLocalStorageInfo("isEmailVerified", res?.data?.isEmailVerified);
       storeLocalStorageInfo(authKey, res.data?.accessToken);
     }
@@ -55,7 +52,7 @@ const Signup = () => {
   return (
     <div
       className={`border lg:absolute  ${
-        loginState ? "left-40" : "left-[-2000px] hidden lg:block"
+        authState ? "left-40" : "left-[-2000px] hidden lg:block"
       }  lg:top-10  lg:my-10 rounded-lg shadow-lg ${
         style.form
       } w-[90%] mx-auto  lg:w-[30%] lg:p-16 p-5 `}
@@ -189,9 +186,8 @@ const Signup = () => {
 
             <div className="flex justify-center  lg:mt-5">
               <button
-                // onClick={() => )}
                 type="submit"
-                className="border px-10 rounded bg-green-400 shadow-lg  shadow-green-200 hover:text-white font-semibold text-lg  py-2 hover:bg-green-500 transition-colors duration-300"
+                className="  px-10 rounded bg-green-400 shadow-lg   shadow-gray-400 hover:text-white font-semibold text-lg  py-2 hover:bg-green-700 transition-colors duration-300 text-white "
               >
                 Signup
               </button>

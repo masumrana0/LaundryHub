@@ -1,13 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { loginReducer } from "./features/login/loginSlice";
+
 import { baseApi } from "./api/baseApi";
 import orderRuducer from "./features/order/orderSlice";
-import { LoadingReducer } from "./features/Loading/loadingSlice";
+import { AuthReducer } from "./features/auth/authSlice";
 
 export const store = configureStore({
   reducer: {
-    loginState: loginReducer,
-    loadingState: LoadingReducer,
+    auth: AuthReducer,
     order: orderRuducer,
     [baseApi.reducerPath]: baseApi.reducer,
   },

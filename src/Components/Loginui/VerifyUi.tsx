@@ -1,6 +1,6 @@
 import { useSendVerificationEmailQuery } from "@/Redux/api/authApi";
 import { useGetProfileQuery } from "@/Redux/api/profileApi";
-import { setIsLoading } from "@/Redux/features/Loading/loadingSlice";
+import { setIsEmailVerified } from "@/Redux/features/auth/authSlice";
 import { useAppDispatch } from "@/Redux/hook";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -11,9 +11,7 @@ import toast from "react-hot-toast";
 const VerificationWaitingUi: React.FC = () => {
   const router = useRouter();
   const dispath = useAppDispatch();
-  // console.log("fast", isEmailVerified);
   const usersendVerificationEmailRequest = useSendVerificationEmailQuery(null);
-
   const { data } = useGetProfileQuery(null, {
     refetchOnMountOrArgChange: true,
     pollingInterval: 2000,
@@ -26,7 +24,7 @@ const VerificationWaitingUi: React.FC = () => {
 
   useEffect(() => {
     if (data?.data?.isEmailVerified) {
-      dispath(setIsLoading(false));
+      dispath(setIsEmailVerified(false));
       router.push("/");
     }
   }, [data?.data?.isEmailVerified]);
@@ -62,7 +60,6 @@ const VerificationWaitingUi: React.FC = () => {
       clearTimeout(countdown);
     };
   }, []);
-  // console.log("last", isEmailVerified);
 
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;

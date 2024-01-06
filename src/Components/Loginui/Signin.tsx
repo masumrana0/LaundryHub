@@ -11,17 +11,13 @@ import { useUserSigninMutation } from "@/Redux/api/authApi";
 import { useRouter } from "next/navigation";
 import { authKey } from "@/constants/storageKey";
 import { useAppSelector } from "@/Redux/hook";
-
-type ISigninData = {
-  email: string;
-  password: string;
-};
+import toast from "react-hot-toast";
+import { ISigninData } from "@/Interface/auth";
 
 const Signin = () => {
   // redux
   const [userSignin] = useUserSigninMutation();
-  const loginState = useAppSelector((state) => state.loginState.loginState);
-
+  const authState = useAppSelector((state) => state.auth.authState);
   const [isViewPass, setIsViewPass] = useState(false);
   const [password, setPassword] = useState("");
   const router = useRouter();
@@ -40,6 +36,11 @@ const Signin = () => {
   const onSubmit = async (data: ISigninData) => {
     const res = await userSignin(data).unwrap();
     if (res?.data?.accessToken) {
+      // if(res.isEmailVerified){
+
+      // }
+      console.log(res.data.isEmailVerified);
+      toast.success("You are Login successfully");
       router.push("/");
     }
     storeLocalStorageInfo(authKey, res?.data?.accessToken);
@@ -47,7 +48,7 @@ const Signin = () => {
   return (
     <div
       className={`border lg:absolute ${
-        loginState ? "right-[-2000px] hidden lg:block" : "right-40 "
+        authState ? "right-[-2000px] hidden lg:block" : "right-40 "
       }  top-52 my-10 rounded-lg shadow-lg  lg:p-24 lg:w-[30%] w-[90%] mx-auto p-10`}
     >
       <h2 className="font-bold text-3xl text-center mb-5 ">Sign In</h2>
@@ -99,7 +100,7 @@ const Signin = () => {
             <div className="flex justify-center  mt-5">
               <button
                 type="submit"
-                className="border px-10 rounded bg-green-400 shadow-lg  shadow-green-200 hover:text-white font-semibold text-lg  py-2 hover:bg-green-500 transition-colors duration-300"
+                className="border px-10 rounded bg-green-400 shadow-lg   shadow-gray-400 hover:text-white font-semibold text-lg  py-2 hover:bg-green-700 transition-colors duration-300 text-white "
               >
                 SignIn
               </button>
