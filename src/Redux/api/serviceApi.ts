@@ -1,5 +1,6 @@
 import { IReview } from "@/Interface/service";
 import { baseApi } from "./baseApi";
+import { url } from "inspector";
 
 const serviceApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
@@ -14,22 +15,29 @@ const serviceApi = baseApi.injectEndpoints({
         url: `/service/${id}`,
         method: "GET",
       }),
-      providesTags: ["service"],
     }),
     submitServiceReview: build.mutation({
-      query: ({ id, review }: { id: any; review: IReview }) => ({
-        url: `/service/review/${id}`,
+      query: (review: { review: IReview }) => ({
+        url: `/review`,
         method: "POST",
         data: review,
       }),
-      invalidatesTags: ["service"],
+      invalidatesTags: ["review"],
+    }),
+
+    getReview: build.query({
+      query: (id) => ({
+        url: `/review/${id}`,
+        method: "GET",
+      }),
+      providesTags: ["review"],
     }),
   }),
-  overrideExisting: false,
 });
 
 export const {
   useGetAllServiceQuery,
   useGetOneServiceQuery,
   useSubmitServiceReviewMutation,
+  useGetReviewQuery,
 } = serviceApi;

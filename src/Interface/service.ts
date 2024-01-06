@@ -1,7 +1,7 @@
 import { IUser } from "./user";
 
 export type IReview = {
-  user?: IUser;
+  service: string;
   review: string;
 };
 
