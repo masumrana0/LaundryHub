@@ -3,11 +3,7 @@ import Ratings from "@/Components/ServiceDettails/Ratings";
 import Review from "@/Components/ServiceDettails/Review";
 import StarRating from "@/Components/Shared/HomeUi/StarRating";
 import { IReview } from "@/Interface/service";
-import {
-  useGetOneServiceQuery,
-  useGetReviewQuery,
-  useSubmitServiceReviewMutation,
-} from "@/Redux/api/serviceApi";
+import { useGetOneServiceQuery } from "@/Redux/api/serviceApi";
 import { AwardIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -19,7 +15,6 @@ import { FaRegStar, FaStar, FaCircleUser } from "react-icons/fa6";
 const ServiceDetails = () => {
   const router = useRouter();
   const id = router.query.serviceId;
-
   const { data, isError, isLoading } = useGetOneServiceQuery(id as string);
 
   //   service

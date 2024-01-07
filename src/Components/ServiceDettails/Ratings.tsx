@@ -39,7 +39,7 @@ const Ratings = ({ id }: { id: string }) => {
             Average Ratings
           </h2>
           <div className="bg-gray-100 mx-5 rounded-xl shadow-lg py-1 mt-5 ">
-            <StarRating stars={rating.averageRating} starsize="text-5xl" />
+            <StarRating stars={rating?.averageRating} starsize="text-5xl" />
           </div>
         </div>
 

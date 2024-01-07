@@ -4,8 +4,8 @@ import { baseApi } from "./baseApi";
 const serviceApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     getAllService: build.query({
-      query: () => ({
-        url: "/service",
+      query: ({ searchTerm, page }: { searchTerm: string; page: number }) => ({
+        url: `/service?searchTerm=${searchTerm}&page=${page}&limit=${4}`,
         method: "GET",
       }),
     }),
