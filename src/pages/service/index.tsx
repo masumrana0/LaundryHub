@@ -10,13 +10,20 @@ import React, { ReactElement, useEffect, useState } from "react";
 
 const Service = () => {
   const [page, setPage] = useState<number>(1);
+  const [services, setServices] = useState<IService[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
+  console.log(services.length);
 
   const { data, error, isLoading } = useGetAllServiceQuery({
     searchTerm,
     page,
   });
-  // console.log(isLoading);
+
+  useEffect(() => {
+    if (data?.statusCode == 200) {
+      setServices(data.data);
+    }
+  }, [data]);
 
   return (
     <div className="bg-green-100">
@@ -25,8 +32,7 @@ const Service = () => {
           <input
             onChange={(e) => setSearchTerm(e.target.value)}
             type="text"
-            name=""
-            id=""
+            placeholder="Enter your service name"
             className="border-2 rounded-lg border-green-400 shadow-md  w-[30%] p-2  outline-green-500     bg-green-100  "
           />
           {/* <button className="rounded px-5 py-2 shadow-lg font-semibold bg-green-300 transition-colors duration-300 hover:bg-green-500 hover:text-white text-gray-600">
@@ -39,9 +45,15 @@ const Service = () => {
             <LoadingSpinner />
           ) : (
             <>
-              {data?.data?.map((service: IService) => (
-                <ServiceCard key={service?._id} service={service} />
-              ))}
+              {services?.length >= 1 ? (
+                services.map((service: IService) => (
+                  <ServiceCard key={service?._id} service={service} />
+                ))
+              ) : (
+                <div>
+                  <h3>Service not found</h3>
+                </div>
+              )}
             </>
           )}
         </div>
@@ -49,7 +61,7 @@ const Service = () => {
         {/* pagination */}
         <div className="flex justify-center mt-10">
           <Pagination
-            defaultCurrent={3}
+            defaultCurrent={1}
             total={50}
             onChange={(page) => setPage(page)}
           />
