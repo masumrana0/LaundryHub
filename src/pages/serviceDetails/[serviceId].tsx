@@ -4,7 +4,6 @@ import Review from "@/Components/ServiceDettails/Review";
 import StarRating from "@/Components/Shared/HomeUi/StarRating";
 import { IReview } from "@/Interface/service";
 import { useGetOneServiceQuery } from "@/Redux/api/serviceApi";
-import { AwardIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -17,7 +16,7 @@ const ServiceDetails = () => {
   const id = router.query.serviceId;
   const { data, isError, isLoading } = useGetOneServiceQuery(id as string);
 
-  //   service
+  //service
   const service = data?.data;
 
   const [isReviewOpen, setReviewOpen] = useState(false);

@@ -1,14 +1,16 @@
-// /**
-//  * Title: 'Laoundry service provide or sevice order page'
-//  * Description: ''
-//  * Author: 'Masum Rana'
-//  * Date: 07-12-2023
-//  *
-//  */
+/**
+ * Title: 'laundry service and booking ui'
+ * Description: ''
+ * Author: 'Masum Rana'
+ * Date: 07-01-2024
+ *
+ */
+
 import Accordion from "@/Components/Laundryui/Accordian";
 import UserAddressSection from "@/Components/Laundryui/OrderAddress";
 import OrderSection from "@/Components/Laundryui/OrderSection";
 import RootLayout from "@/Components/Layout/RootLayout";
+import { useGetAllServiceWithAnyTermQuery } from "@/Redux/api/serviceApi";
 import { useAppSelector } from "@/Redux/hook";
 import fetchData from "@/fetchData(CSR)/fetchData";
 import { isLoggedIn } from "@/services/auth.service";
@@ -17,9 +19,13 @@ import React, { useState, useEffect, ReactElement } from "react";
 
 const Laundry = () => {
   const router = useRouter();
-  const [service, setService] = useState<string>("Wash & Iron Service");
+  const [service, setService] = useState("Wash & Iron Service");
+
   const [isOrderUserDettails, setOrderUserDettails] = useState<boolean>(false);
   const { laundryProducts } = useAppSelector((state) => state.order);
+
+  const { data } = useGetAllServiceWithAnyTermQuery(null);
+  const serviceTitles = data?.data;
 
   useEffect(() => {
     const isLogged = isLoggedIn();
@@ -37,10 +43,10 @@ const Laundry = () => {
         } `}
       >
         <div>
-          <p className="mt-5 font-semibold text-lg text-blue-500">
+          <p className="mt-5 font-semibold text-lg text-green-500">
             We Clean Eeverything
           </p>
-          <h3 className="text-3xl font-semibold text-blue-500">{service}</h3>
+          <h3 className="text-3xl font-semibold text-green-500">{service}</h3>
         </div>
 
         <div className="flex flex-col lg:flex-row lg:items-center gap-1 lg:gap-5">
@@ -51,14 +57,13 @@ const Laundry = () => {
             name="cars"
             id="carSelect"
             onChange={(e) => setService(e.target.value)}
-            className="border bg-blue-400 text-white font-semibold rounded-lg border-blue-400 px-4 py-2"
+            className="border-1 border-white bg-green-500 text-white font-semibold rounded  px-4 py-2"
           >
-            <option value="Wash & Iron Service">Wash & Iron Service</option>
-            <option value="Iron & Fold">Iron & Fold</option>
-            <option value="Dry Cleaning">Dry Cleaning</option>
-            <option value="Deep Cleaning and Iron Service">
-              Deep Cleaning and Iron Service
-            </option>
+            {serviceTitles?.map((title: { title: string; _id: string }) => (
+              <option key={title?._id} value={title?.title}>
+                {title?.title}
+              </option>
+            ))}
           </select>
         </div>
       </div>

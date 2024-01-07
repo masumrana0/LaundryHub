@@ -7,7 +7,6 @@
  */
 
 import { IAccordionItem, ILaundryProduct } from "@/Interface/types";
-import fetchData from "@/fetchData(CSR)/fetchData";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
@@ -79,7 +78,7 @@ const Accordion = ({ service }: { service: string }) => {
         >
           {/* accrodian head  */}
           <div
-            className="flex items-center justify-between p-4 bg-blue-200 cursor-pointer"
+            className="flex items-center justify-between p-4 bg-green-200 cursor-pointer"
             onClick={() => toggleAccordion(accordion.id)}
           >
             <div className="flex items-center space-x-2">
@@ -107,12 +106,12 @@ const Accordion = ({ service }: { service: string }) => {
             {accordion.contents.map((content: ILaundryProduct) => (
               <div
                 key={content?._id}
-                className="p-4 bg-white border   border-b-2 border-blue-200"
+                className="p-4 bg-white border   border-b-2 border-green-200 "
               >
                 <h2 className="text-lg font-semibold ">{content.name}</h2>
                 <div className="mt-4 flex justify-between items-center">
                   <p>
-                    <span className="text-lg font-extrabold text-blue-400">
+                    <span className="text-lg font-extrabold text-green-400">
                       &#2547;
                       <span className="font-semibold text-md">
                         {" "}
@@ -122,7 +121,7 @@ const Accordion = ({ service }: { service: string }) => {
                   </p>
 
                   {isExistedData(content, laundryProducts) ? (
-                    <div className="shadow-lg border border-blue-500 flex  items-center gap-6 text-xl   px-2 py-1 rounded-full">
+                    <div className="shadow-lg border-2 border-green-500 flex  items-center gap-6 text-xl   px-2 py-1 rounded-full">
                       <button
                         className="font-extrabold text-xl"
                         onClick={() => handleAddToOrder(content)}
@@ -140,7 +139,7 @@ const Accordion = ({ service }: { service: string }) => {
                   ) : (
                     <button
                       onClick={() => handleAddToOrder(content)}
-                      className="border px-3 py-2 rounded-lg bg-blue-500  hover:bg-blue-900 text-white font-bold"
+                      className="border px-3 py-2 rounded-xl bg-green-500  hover:bg-green-900 text-white font-thin transition-colors duration-300"
                     >
                       Add To order
                     </button>

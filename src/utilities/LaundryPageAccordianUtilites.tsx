@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import menImg from "../../public/laundrypageimg/men.png";
 import womenImg from "../../public/laundrypageimg/woman.png";
 import homeImg from "../../public/laundrypageimg/home.png";
+import { useGetAllCleaningProductQuery } from "@/Redux/api/serviceApi";
 
 export const AccrodianContent = () => {
   // data collections
@@ -21,11 +22,13 @@ export const AccrodianContent = () => {
   const [womanCollection, setWomanCollection] = useState<ILaundryProduct[]>([]);
   const [homeCollection, setHomeCollection] = useState<ILaundryProduct[]>([]);
 
-  //  data fetching with CSR
-
+  const { data } = useGetAllCleaningProductQuery(null);
+  const cleaningProducts = data?.data;
   useEffect(() => {
-    fetchData(`http://localhost:4000/api/v1/cloth`, setData);
-  }, []);
+    if (data?.statusCode === 200) {
+      setData(cleaningProducts);
+    }
+  }, [data]);
 
   // create new separte data collections
   if (datas) {

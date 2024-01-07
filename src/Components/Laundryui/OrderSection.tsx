@@ -14,6 +14,8 @@ const OrderSection = ({
 
   const [deliveryCost, setDeliveryCost] = useState(0);
   const { laundryProducts } = useAppSelector((state) => state.order);
+  console.log(laundryProducts);
+
   const subTotal = laundryProducts.reduce(
     (accumulator, laundryProduct) => accumulator + laundryProduct.price,
     0
@@ -37,7 +39,7 @@ const OrderSection = ({
 
   return (
     <div>
-      <div className="text-center border-b-2 mb-1  bg-blue-400 py-6 text-white ">
+      <div className="text-center border-b-2 mb-1  bg-green-400 py-6 text-white ">
         <h2 className="font-bold   text-3xl">Your Order</h2>
         <p className="mb-2 text-lg">Total Item: {laundryProducts.length}</p>
       </div>
@@ -48,7 +50,7 @@ const OrderSection = ({
         <div>
           {laundryProducts?.map((laundryProduct) => (
             <div
-              className="border-2 rounded shadow-lg shadow-blue-400    mb-2"
+              className="border-2 rounded shadow-lg shadow-green-400    mb-2"
               key={laundryProduct._id}
             >
               <p className="text-center font-semibold text-lg text-gray-600">
@@ -68,7 +70,7 @@ const OrderSection = ({
                   </h2>
                 </div>
                 <p>
-                  <span className="text-xl font-extrabold  text-blue-400">
+                  <span className="text-xl font-extrabold  text-green-400">
                     &#2547;
                     <span className="font-semibold text-md">
                       {" "}
@@ -86,7 +88,7 @@ const OrderSection = ({
         <div className="">
           <div className="flex justify-between items-center mb-5 ">
             <h3 className="font-bold">Sub Total</h3>
-            <span className="text-lg font-extrabold text-blue-400">
+            <span className="text-lg font-extrabold text-green-400">
               &#2547;
               <span className="font-semibold text-md"> {subTotal}</span>
             </span>
@@ -94,7 +96,7 @@ const OrderSection = ({
 
           <div className="flex justify-between items-center mb-5 ">
             <h3 className="font-bold">Delivery Charge</h3>
-            <span className="text-lg font-extrabold text-blue-400">
+            <span className="text-lg font-extrabold text-green-400">
               &#2547;
               <span className="font-semibold text-md"> {deliveryCost}</span>
             </span>
@@ -102,7 +104,7 @@ const OrderSection = ({
 
           <div className="flex justify-between  items-center">
             <h3 className="font-bold">Grand Total</h3>{" "}
-            <span className="text-lg font-extrabold text-blue-400">
+            <span className="text-lg font-extrabold text-green-400">
               &#2547;
               <span className="font-semibold text-md"> {grandTotal}</span>
             </span>
@@ -116,10 +118,10 @@ const OrderSection = ({
             >
               <button
                 disabled={laundryProducts.length === 0}
-                className={`border px-9 py-2  font-bold text-white rounded-lg ${
+                className={`border px-10 py-2 rounded-xl    hover:bg-green-900 text-white  font-bold transition-colors duration-300 ${
                   laundryProducts.length === 0
                     ? " bg-gray-500 text-gray-300"
-                    : "bg-blue-400"
+                    : "bg-green-500"
                 }`}
                 onClick={() => setOrderUserDettails(!isOrderUserDettails)}
               >
