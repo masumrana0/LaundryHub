@@ -1,4 +1,5 @@
 import RootLayout from "@/Components/Layout/RootLayout";
+import LoadingSpinner from "@/Components/Shared/Loading";
 import ServiceCard from "@/Components/service/ServiceCard";
 import { IService } from "@/Interface/service";
 import { useGetAllServiceQuery } from "@/Redux/api/serviceApi";
@@ -34,10 +35,17 @@ const Service = () => {
         </div>
 
         <div className="mt-12 flex justify-center flex-wrap gap-10">
-          {data?.data?.map((service: IService) => (
-            <ServiceCard key={service?._id} service={service}></ServiceCard>
-          ))}
+          {isLoading ? (
+            <LoadingSpinner />
+          ) : (
+            <>
+              {data?.data?.map((service: IService) => (
+                <ServiceCard key={service?._id} service={service} />
+              ))}
+            </>
+          )}
         </div>
+
         {/* pagination */}
         <div className="flex justify-center mt-10">
           <Pagination
