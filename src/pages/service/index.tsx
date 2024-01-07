@@ -4,7 +4,6 @@ import ServiceCard from "@/Components/service/ServiceCard";
 import { IService } from "@/Interface/service";
 import { useGetAllServiceQuery } from "@/Redux/api/serviceApi";
 import { Pagination } from "antd";
-import clsx from "clsx";
 import { pages } from "next/dist/build/templates/app-page";
 import React, { ReactElement, useEffect, useState } from "react";
 
@@ -12,7 +11,6 @@ const Service = () => {
   const [page, setPage] = useState<number>(1);
   const [services, setServices] = useState<IService[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
-  console.log(services.length);
 
   const { data, error, isLoading } = useGetAllServiceQuery({
     searchTerm,
