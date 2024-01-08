@@ -22,7 +22,6 @@ const Laundry = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const selectedService = useAppSelector((state) => state.order.service);
-  // const [service, setService] = useState<ISelectService>(selectedService);
   const [isOrderUserDettails, setOrderUserDettails] = useState<boolean>(false);
   const { laundryProducts } = useAppSelector((state) => state.order);
   const { data } = useGetAllServiceWithAnyTermQuery(null);

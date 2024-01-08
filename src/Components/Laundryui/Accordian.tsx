@@ -8,7 +8,7 @@
 
 import { IAccordionItem, ILaundryProduct } from "@/Interface/types";
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
 import { useAppDispatch, useAppSelector } from "@/Redux/hook";
 import {
@@ -17,17 +17,13 @@ import {
 } from "@/Redux/features/order/orderSlice";
 import { AccrodianContent } from "@/utilities/LaundryPageAccordianUtilites";
 import { isExistedData } from "@/utilities/common/common";
-import { ISelectService } from "@/Interface/booking";
 
-const Accordion = ({ service }: ISelectService) => {
-  const selectedService = useAppSelector((state) => state.order.service);
-  // console.log(selectedService);
+const Accordion = () => {
   // State to track the quantity of each product in the order
   const [productQuantities, setProductQuantity] = useState<{
     [key: string]: number;
   }>({});
 
-  //  accordion's data /content
   const [accordions, setAccordions] = useState<IAccordionItem[]>(
     AccrodianContent()
   );
@@ -35,6 +31,7 @@ const Accordion = ({ service }: ISelectService) => {
   //  redux
   const dispath = useAppDispatch();
   const { laundryProducts } = useAppSelector((state) => state.order);
+  const selectedService = useAppSelector((state) => state.order.service);
 
   // Toogle Accrodian
   const toggleAccordion = (id: number) => {
