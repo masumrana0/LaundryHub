@@ -71,7 +71,7 @@ const UserAddressSection = () => {
       toast.success("Your booking request has been sent successfully");
       reset();
     }
-    console.log(res)
+
     setBookingResultData({
       success: res?.data?.success,
       orderId: res?.data?.data?._id,
@@ -149,20 +149,6 @@ const UserAddressSection = () => {
                   required
                   placeholder="0180000000"
                   id="number"
-                />
-              </div>
-
-              {/* Email Input */}
-              <div className="mb-5">
-                <h3 className="mb-1 font-bold">E-mail</h3>
-                <input
-                  {...register("email")}
-                  className="w-full border hover:border-green-400 p-2 outline-none focus:outline-none"
-                  type="email"
-                  name="email"
-                  required
-                  placeholder="example@gmail.com"
-                  id="email"
                 />
               </div>
 
