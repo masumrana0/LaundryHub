@@ -1,14 +1,21 @@
+import { ISelectService } from "@/Interface/booking";
 import { ILaundryProduct } from "@/Interface/types";
-import Laundry from "@/pages/laundry";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 interface IinitialState {
   laundryProducts: ILaundryProduct[];
+  grandPrice: number;
+  service: ISelectService;
 }
 
 const initialState: IinitialState = {
   laundryProducts: [],
+  grandPrice: 0,
+  service: {
+    title: "Ironing and Pressing",
+    service: "65982aa7eed34ae0a2063ebc",
+  },
 };
 
 const orderSlice = createSlice({
@@ -55,10 +62,21 @@ const orderSlice = createSlice({
         state.laundryProducts = removeProduct;
       }
     },
+    addGrandPrice: (state, action: PayloadAction<number>) => {
+      state.grandPrice = action.payload;
+    },
+    selectService: (state, action: PayloadAction<ISelectService>) => {
+      state.service = action.payload;
+    },
   },
 });
 
-export const { addToOrder, removeOneToOrder, removeToOrder } =
-  orderSlice.actions;
+export const {
+  addToOrder,
+  removeOneToOrder,
+  removeToOrder,
+  addGrandPrice,
+  selectService,
+} = orderSlice.actions;
 
 export default orderSlice.reducer;

@@ -1,9 +1,20 @@
+import { ISelectService } from "@/Interface/booking";
 import { IService } from "@/Interface/service";
+import { selectService } from "@/Redux/features/order/orderSlice";
+import { useAppDispatch } from "@/Redux/hook";
 import Image from "next/image";
 import Link from "next/link";
 
 const ServiceCard = ({ service }: { service: IService }) => {
-  //   console.log(service);
+  const dispatch = useAppDispatch();
+  const handleSelectService = () => {
+    const selectedService: ISelectService = {
+      service: service?._id as string,
+      title: service.title,
+    };
+    dispatch(selectService(selectedService));
+  };
+
   return (
     <div className="border border-black w-[300px] h-[400px] p-1 rounded-lg">
       <Image
@@ -23,14 +34,10 @@ const ServiceCard = ({ service }: { service: IService }) => {
         </p>
         <div className="flex justify-center gap-5 mt-1">
           <button className="rounded px-10 py-2 shadow-lg font-semibold bg-green-300 transition-colors duration-300 hover:bg-green-500 hover:text-white text-gray-600">
-            <Link href="/login" scroll={false}>
-              Select
-            </Link>
+            <Link href="/laundry">Select</Link>
           </button>
           <button className="rounded px-10 py-2 shadow-lg font-semibold bg-green-300 transition-colors duration-300 hover:bg-green-500 hover:text-white text-gray-600">
-            <Link href={`serviceDetails/${service?._id}`} scroll={false}>
-              dettail
-            </Link>
+            <Link href={`serviceDetails/${service?._id}`}>dettail</Link>
           </button>
         </div>
       </div>

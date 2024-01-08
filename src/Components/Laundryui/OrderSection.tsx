@@ -1,4 +1,7 @@
-import { removeToOrder } from "@/Redux/features/order/orderSlice";
+import {
+  addGrandPrice,
+  removeToOrder,
+} from "@/Redux/features/order/orderSlice";
 import { useAppDispatch, useAppSelector } from "@/Redux/hook";
 import { useEffect, useState } from "react";
 import { FaTrashCan } from "react-icons/fa6";
@@ -14,7 +17,6 @@ const OrderSection = ({
 
   const [deliveryCost, setDeliveryCost] = useState(0);
   const { laundryProducts } = useAppSelector((state) => state.order);
-  console.log(laundryProducts);
 
   const subTotal = laundryProducts.reduce(
     (accumulator, laundryProduct) => accumulator + laundryProduct.price,
@@ -35,6 +37,7 @@ const OrderSection = ({
     } else if (laundryProducts.length === 0) {
       setOrderUserDettails(false);
     }
+    dispatch(addGrandPrice(grandTotal));
   }, [laundryProducts]);
 
   return (

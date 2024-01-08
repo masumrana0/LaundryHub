@@ -1,26 +1,16 @@
-import { IReview } from "@/Interface/service";
 import { baseApi } from "./baseApi";
-import { url } from "inspector";
+import { IBooking, IBookingResponse } from "@/Interface/booking";
 
 const bookingApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
-    // getAllService: build.query({
-    //   query: ({ searchTerm, page }: { searchTerm: string; page: number }) => ({
-    //     url: `/service?searchTerm=${searchTerm}&page=${page}&limit=${8}`,
-    //     method: "GET",
-    //   }),
-    // }),
-    // getOneService: build.query({
-    //   query: (id: string) => ({
-    //     url: `/service/${id}`,
-    //     method: "GET",
-    //   }),
-    // }),
-
-    // submitBooking:build.mutation({
-    //     query:()
-    // })
+    submitBookingRequet: build.mutation<IBookingResponse, unknown>({
+      query: (data: IBooking) => ({
+        url: `/booking`,
+        method: "POST",
+        data: data,
+      }),
+    }),
   }),
 });
 
-// export const { useGetAllCleaningProductQuery } = bookingApi;
+export const { useSubmitBookingRequetMutation } = bookingApi;

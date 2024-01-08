@@ -3,13 +3,19 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useAppSelector } from "@/Redux/hook";
 import { useState } from "react";
 import { IBooking, IBookingService } from "@/Interface/booking";
+import { useSubmitBookingRequetMutation } from "@/Redux/api/bookingApi";
+import { AwardIcon } from "lucide-react";
+import toast from "react-hot-toast";
 
 const UserAddressSection = () => {
-  const { register, handleSubmit } = useForm();
-  // const [services, setServices] = useState<IBookingService[]>([]);
+  const { register, handleSubmit, reset } = useForm();
   const selectedServiceData = useAppSelector(
     (state) => state.order.laundryProducts
   );
+  const grandPrice = useAppSelector((state) => state.order.grandPrice);
+
+  const [bookingRequest, { isLoading, isError }] =
+    useSubmitBookingRequetMutation();
 
   const services: IBookingService[] = [];
   if (selectedServiceData.length >= 1) {
@@ -22,13 +28,26 @@ const UserAddressSection = () => {
       services.push(modifiyBookingService);
     }
   }
-  // console.log(services);
 
-  const handleSubmitBooking = (data: Partial<IBookingService>) => {
-    const booking:IBooking = { ...data, services: services };
-    console.log(booking);
-    // console.log(form)
+  const handleSubmitBooking = async (data: {
+    deliveryDate: Date;
+    pickupDate: Date;
+    address: string;
+    email: string;
+    phoneNumber: string;
+  }) => {
+    const booking: IBooking = {
+      ...data,
+      grandPrice: grandPrice,
+      services: services,
+    };
+    const res = await bookingRequest(booking);
+    if (res?.data?.statusCode == 200) {
+      toast.success("Your booking requst has been send successfuly");
+      reset();
+    }
   };
+
   return (
     <div>
       {/* header section  */}
@@ -61,7 +80,7 @@ const UserAddressSection = () => {
               <input
                 {...register("pickupDate")}
                 type="date"
-                id="datePicker"
+                id="pickupDate"
                 name="pickupDate"
                 required
                 className="border-b-2 border-green-500  rounded pb-2 outline-none"
@@ -72,7 +91,7 @@ const UserAddressSection = () => {
               <input
                 {...register("deliveryDate")}
                 type="date"
-                id="datePicker"
+                id="deliveryDate"
                 name="deliveryDate"
                 required
                 className=" rounded border-b-2 border-green-500 pb-2 outline-none"
