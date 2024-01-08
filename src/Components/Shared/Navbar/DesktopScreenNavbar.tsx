@@ -1,7 +1,6 @@
 import Image from "next/image";
 import logo from "../../../../public/logo.png";
 import Link from "next/link";
-
 import { useState } from "react";
 import { UserOutlined, SettingOutlined, HomeOutlined } from "@ant-design/icons";
 import { Avatar, Space } from "antd";
@@ -12,6 +11,7 @@ import {
   FaQuestion,
   FaPhone,
   FaBloggerB,
+  FaCartArrowDown,
 } from "react-icons/fa6";
 
 const DesktopScreenNavbar = () => {
@@ -54,13 +54,7 @@ const DesktopScreenNavbar = () => {
             </Link>
           </div>
           <div>
-            <Link
-              className="hover:text-green-600 transition-colors duration-300 flex items-center "
-              href="/contactus"
-            >
-              <FaQuestion />
-              Have any questions
-            </Link>
+            <FaCartArrowDown />
           </div>
         </div>
       </div>

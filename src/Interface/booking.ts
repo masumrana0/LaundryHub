@@ -8,6 +8,14 @@ export interface IBookingService {
   cleaningProductItem: number;
 }
 
+export interface IBookingForm {
+  deliveryDate: Date;
+  pickupDate: Date;
+  address: string;
+  email: string;
+  phoneNumber: string;
+}
+
 export interface ISelectService {
   service?: string;
   title: string;
