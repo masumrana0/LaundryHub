@@ -4,7 +4,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 interface IinitialState {
-  map(arg0: (laundryProduct: any) => import("react").JSX.Element): import("react").ReactNode;
   laundryProducts: ILaundryProduct[];
 }
 
@@ -19,9 +18,21 @@ const cartSlice = createSlice({
     addToOrCart: (state, action: PayloadAction<ILaundryProduct[]>) => {
       state.laundryProducts = action.payload;
     },
+    removeToCart: (state, action: PayloadAction<ILaundryProduct>) => {
+      const doesExist = state.laundryProducts.find(
+        (product) => product?._id === action.payload?._id
+      );
+
+      if (doesExist) {
+        const removeProduct = state.laundryProducts.filter(
+          (product) => product?._id !== action.payload?._id
+        );
+        state.laundryProducts = removeProduct;
+      }
+    },
   },
 });
 
-export const { addToOrCart } = cartSlice.actions;
+export const { addToOrCart, removeToCart } = cartSlice.actions;
 
 export const cartReducer = cartSlice.reducer;

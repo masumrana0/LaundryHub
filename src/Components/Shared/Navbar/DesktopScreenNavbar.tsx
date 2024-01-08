@@ -13,6 +13,7 @@ import {
   FaBloggerB,
   FaCartArrowDown,
 } from "react-icons/fa6";
+import Cart from "@/Components/Cart/Cart";
 
 const DesktopScreenNavbar = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -54,7 +55,7 @@ const DesktopScreenNavbar = () => {
             </Link>
           </div>
           <div>
-            <FaCartArrowDown />
+           <Cart/>
           </div>
         </div>
       </div>

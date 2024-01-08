@@ -3,11 +3,12 @@ import { Button, Drawer, Space } from "antd";
 import type { DrawerProps } from "antd/es/drawer";
 import { FaCartShopping, FaTrashCan } from "react-icons/fa6";
 import { useAppDispatch, useAppSelector } from "@/Redux/hook";
+import { removeToCart } from "@/Redux/features/Cart/addToCart";
 
-const App: React.FC = () => {
+const Cart: React.FC = () => {
   const [open, setOpen] = useState(false);
-  const laundryProducts = useAppSelector((state) => state.cart);
-  console.log(laundryProducts)
+  const dispatch = useAppDispatch();
+  const { laundryProducts } = useAppSelector((state) => state.cart);
 
   const showDefaultDrawer = () => {
     setOpen(true);
@@ -28,14 +29,10 @@ const App: React.FC = () => {
           <FaCartShopping className="text-2xl" />
         </Button>
       </Space>
-      <Drawer
-        title={`large Drawer`}
-        placement="right"
-        size="large"
-        onClose={onClose}
-        open={open}
-      >
-        {/* <div>
+      <Drawer placement="right" size="large" onClose={onClose} open={open}>
+        <div>
+          <div className="flex justify-center items-center"></div>
+          <div className="h-2 my-4 w-full rounded-xl bg-green-400 "></div>
           {laundryProducts?.map((laundryProduct) => (
             <div
               className="border-2 rounded shadow-lg shadow-green-400    mb-2"
@@ -48,7 +45,7 @@ const App: React.FC = () => {
               <div className="py-2 px-4 flex justify-between item-center">
                 <div className="flex items-center gap-4">
                   <button
-                    // onClick={() => dispatch(removeToOrder(laundryProduct))}
+                    onClick={() => dispatch(removeToCart(laundryProduct))}
                   >
                     {" "}
                     <FaTrashCan className="text-2xl hover:text-red-500  " />
@@ -69,10 +66,10 @@ const App: React.FC = () => {
               </div>
             </div>
           ))}
-        </div> */}
+        </div>
       </Drawer>
     </>
   );
 };
 
-export default App;
+export default Cart;
