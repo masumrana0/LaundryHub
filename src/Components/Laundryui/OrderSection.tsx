@@ -114,25 +114,33 @@ const OrderSection = ({
             </span>
           </div>
 
-          {
-            <div
-              className={`mt-5 ${
-                isOrderUserDettails ? "hidden" : " "
-              } flex justify-center`}
-            >
+          <div className="flex justify-center gap-4 ">
+            <div className={`mt-5 ${isOrderUserDettails ? "hidden" : " "}  `}>
               <button
                 disabled={laundryProducts.length === 0}
-                className={`border px-10 py-2 rounded-xl    hover:bg-green-900 text-white  font-bold transition-colors duration-300 ${
+                className={`border px-10 py-2 rounded-xl     text-white  font-bold transition-colors duration-300 ${
                   laundryProducts.length === 0
                     ? " bg-gray-500 text-gray-300"
-                    : "bg-green-500"
+                    : "bg-green-500 hover:bg-green-900"
                 }`}
                 onClick={() => setOrderUserDettails(!isOrderUserDettails)}
               >
                 Next
               </button>
             </div>
-          }
+            <div className={`mt-5 `}>
+              <button
+                disabled={laundryProducts.length === 0}
+                className={`border px-10 py-2 rounded-xl     text-white  font-bold transition-colors duration-300 ${
+                  laundryProducts.length === 0
+                    ? " bg-gray-500 text-gray-300"
+                    : "bg-green-500 hover:bg-green-900"
+                }`}
+              >
+                add To Cart
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

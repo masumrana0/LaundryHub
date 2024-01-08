@@ -55,3 +55,8 @@ export interface IBookingResponse {
     id: string;
   };
 }
+
+export interface IBookingResult {
+  orderId?: string;
+  success: boolean;
+}
