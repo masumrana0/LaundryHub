@@ -6,6 +6,8 @@ import { IBooking, IBookingService } from "@/Interface/booking";
 import { useSubmitBookingRequetMutation } from "@/Redux/api/bookingApi";
 import { AwardIcon } from "lucide-react";
 import toast from "react-hot-toast";
+import clsx from "clsx";
+import { log } from "console";
 
 const UserAddressSection = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -21,10 +23,11 @@ const UserAddressSection = () => {
   if (selectedServiceData.length >= 1) {
     for (const bookingService of selectedServiceData) {
       const modifiyBookingService: IBookingService = {
-        service: bookingService?.service as string,
+        service: bookingService?.service?.service as string,
         cleaningProduct: bookingService?._id as string,
         cleaningProductItem: bookingService?.quntity as number,
       };
+
       services.push(modifiyBookingService);
     }
   }
@@ -41,6 +44,7 @@ const UserAddressSection = () => {
       grandPrice: grandPrice,
       services: services,
     };
+
     const res = await bookingRequest(booking);
     if (res?.data?.statusCode == 200) {
       toast.success("Your booking requst has been send successfuly");

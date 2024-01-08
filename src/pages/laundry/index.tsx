@@ -67,7 +67,8 @@ const Laundry = () => {
             name="cars"
             id="carSelect"
             onChange={(e) => handleAddService(e.target.value)}
-            className="border-1 border-white bg-green-500 text-white font-semibold rounded  px-4 py-2"
+            value={selectedService.title}
+            className="border-1 border-white bg-green-500 text-white font-semibold rounded px-4 py-2 transition-all duration-300 focus:border-green-700 focus:outline-none hover:bg-green-700 hover:border-green-700"
           >
             {serviceTitles?.map((title: { title: string; _id: string }) => (
               <option key={title?._id} value={title?.title}>
