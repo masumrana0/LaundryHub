@@ -2,7 +2,6 @@ import RootLayout from "@/Components/Layout/RootLayout";
 import Ratings from "@/Components/ServiceDettails/Ratings";
 import Review from "@/Components/ServiceDettails/Review";
 import { ISelectService } from "@/Interface/booking";
-
 import { useGetOneServiceQuery } from "@/Redux/api/serviceApi";
 import { addSelectService } from "@/Redux/features/order/orderSlice";
 import Image from "next/image";
@@ -77,7 +76,10 @@ const ServiceDetails = () => {
 
             <div className="mt-2">
               <div className="flex justify-center gap-5 mt-1">
-                <button className="rounded px-10 py-2 shadow-lg font-semibold bg-green-300 transition-colors duration-300 hover:bg-green-500 hover:text-white text-gray-600">
+                <button
+                  onClick={handleSelectService}
+                  className="rounded px-10 py-2 shadow-lg font-semibold bg-green-300 transition-colors duration-300 hover:bg-green-500 hover:text-white text-gray-600"
+                >
                   <Link href="/laundry" scroll={false}>
                     Select
                   </Link>
