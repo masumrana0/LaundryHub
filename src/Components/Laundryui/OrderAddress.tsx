@@ -71,8 +71,9 @@ const UserAddressSection = () => {
       toast.success("Your booking request has been sent successfully");
       reset();
     }
+    console.log(res)
     setBookingResultData({
-      success: res?.success,
+      success: res?.data?.success,
       orderId: res?.data?.data?._id,
     });
   };

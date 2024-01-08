@@ -4,6 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 interface IinitialState {
+  map(arg0: (laundryProduct: any) => import("react").JSX.Element): import("react").ReactNode;
   laundryProducts: ILaundryProduct[];
 }
 
@@ -15,21 +16,12 @@ const cartSlice = createSlice({
   name: "Cart",
   initialState,
   reducers: {
-    addToOrCard: (state, action: PayloadAction<ILaundryProduct>) => {
-      const doesExist = state.laundryProducts.find(
-        (product: ILaundryProduct) => product?._id === action.payload?._id
-      );
-
-      if (doesExist && doesExist.quntity! >= 1) {
-        doesExist.quntity = doesExist.quntity! + 1;
-        doesExist.price = doesExist.price + action.payload.price;
-      } else {
-        state.laundryProducts.push({ ...action.payload, quntity: 1 });
-      }
+    addToOrCart: (state, action: PayloadAction<ILaundryProduct[]>) => {
+      state.laundryProducts = action.payload;
     },
   },
 });
 
-export const { addToOrCard } = cartSlice.actions;
+export const { addToOrCart } = cartSlice.actions;
 
-export default cartSlice.reducer;
+export const cartReducer = cartSlice.reducer;

@@ -17,12 +17,14 @@ const BookingResult = ({
       subTitle={`Booking number: ${orderId}. Your booking is being reviewed by our team, typically taking 1-5 minutes. Please wait. Thank you.`}
       extra={[
         <Link href="/" key="homeLink">
-          <Button type="primary" key="homeButton">
+          <Button className=" bg-green-400" type="primary" key="homeButton">
             Go Home
           </Button>
         </Link>,
         <Link href="/laundry" key="bookingLink">
-          <Button key="bookingButton">Book Again</Button>
+          <Button className=" bg-green-400" type="primary" key="bookingButton">
+            Book Again
+          </Button>
         </Link>,
       ]}
     />
@@ -32,7 +34,7 @@ const BookingResult = ({
       title="There are some problems with your operation."
       extra={
         <Link href="/" key="homeLink">
-          <Button type="primary" key="homeButton">
+          <Button className="bg-green-400" type="primary" key="homeButton">
             Go Home
           </Button>
         </Link>

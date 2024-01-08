@@ -1,3 +1,4 @@
+import addToCart, { addToOrCart } from "@/Redux/features/Cart/addToCart";
 import {
   addGrandPrice,
   removeToOrder,
@@ -130,6 +131,7 @@ const OrderSection = ({
             </div>
             <div className={`mt-5 `}>
               <button
+                onClick={() => dispatch(addToOrCart(laundryProducts))}
                 disabled={laundryProducts.length === 0}
                 className={`border px-10 py-2 rounded-xl     text-white  font-bold transition-colors duration-300 ${
                   laundryProducts.length === 0
