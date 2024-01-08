@@ -65,7 +65,7 @@ const orderSlice = createSlice({
     addGrandPrice: (state, action: PayloadAction<number>) => {
       state.grandPrice = action.payload;
     },
-    selectService: (state, action: PayloadAction<ISelectService>) => {
+    addSelectService: (state, action: PayloadAction<ISelectService>) => {
       state.service = action.payload;
     },
   },
@@ -76,7 +76,7 @@ export const {
   removeOneToOrder,
   removeToOrder,
   addGrandPrice,
-  selectService,
+  addSelectService,
 } = orderSlice.actions;
 
 export default orderSlice.reducer;

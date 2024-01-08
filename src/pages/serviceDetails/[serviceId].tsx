@@ -1,17 +1,19 @@
 import RootLayout from "@/Components/Layout/RootLayout";
 import Ratings from "@/Components/ServiceDettails/Ratings";
 import Review from "@/Components/ServiceDettails/Review";
-import StarRating from "@/Components/Shared/HomeUi/StarRating";
-import { IReview } from "@/Interface/service";
+import { ISelectService } from "@/Interface/booking";
+
 import { useGetOneServiceQuery } from "@/Redux/api/serviceApi";
+import { addSelectService } from "@/Redux/features/order/orderSlice";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { FormEvent, ReactElement, ReactHTML, useState } from "react";
+import { ReactElement, useState } from "react";
 import { BiLogoFacebook, BiSave, BiAddToQueue } from "react-icons/bi";
-import { FaRegStar, FaStar, FaCircleUser } from "react-icons/fa6";
+import { useDispatch } from "react-redux";
 
 const ServiceDetails = () => {
+  const dispatch = useDispatch();
   const router = useRouter();
   const id = router.query.serviceId;
   const { data, isError, isLoading } = useGetOneServiceQuery(id as string);
@@ -32,6 +34,13 @@ const ServiceDetails = () => {
     setReviewOpen(true);
   };
 
+  const handleSelectService = () => {
+    const selectedService: ISelectService = {
+      service: service?._id as string,
+      title: service.title,
+    };
+    dispatch(addSelectService(selectedService));
+  };
   return (
     <div className="mt-20">
       <div className="container mx-auto ">
@@ -69,7 +78,7 @@ const ServiceDetails = () => {
             <div className="mt-2">
               <div className="flex justify-center gap-5 mt-1">
                 <button className="rounded px-10 py-2 shadow-lg font-semibold bg-green-300 transition-colors duration-300 hover:bg-green-500 hover:text-white text-gray-600">
-                  <Link href="/login" scroll={false}>
+                  <Link href="/laundry" scroll={false}>
                     Select
                   </Link>
                 </button>

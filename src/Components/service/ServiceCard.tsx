@@ -1,6 +1,7 @@
 import { ISelectService } from "@/Interface/booking";
 import { IService } from "@/Interface/service";
-import { selectService } from "@/Redux/features/order/orderSlice";
+import { addSelectService } from "@/Redux/features/order/orderSlice";
+
 import { useAppDispatch } from "@/Redux/hook";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,7 +13,7 @@ const ServiceCard = ({ service }: { service: IService }) => {
       service: service?._id as string,
       title: service.title,
     };
-    dispatch(selectService(selectedService));
+    dispatch(addSelectService(selectedService));
   };
 
   return (

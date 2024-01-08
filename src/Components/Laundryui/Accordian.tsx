@@ -10,9 +10,6 @@ import { IAccordionItem, ILaundryProduct } from "@/Interface/types";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
-import menImg from "../../../public/laundrypageimg/men.png";
-import womenImg from "../../../public/laundrypageimg/woman.png";
-import homeImg from "../../../public/laundrypageimg/home.png";
 import { useAppDispatch, useAppSelector } from "@/Redux/hook";
 import {
   addToOrder,
@@ -20,8 +17,10 @@ import {
 } from "@/Redux/features/order/orderSlice";
 import { AccrodianContent } from "@/utilities/LaundryPageAccordianUtilites";
 import { isExistedData } from "@/utilities/common/common";
+import { ISelectService } from "@/Interface/booking";
 
-const Accordion = ({ service }: { service: string }) => {
+const Accordion = ({ service }: ISelectService) => {
+  const selectedService = useAppSelector((state) => state.order.service);
   // State to track the quantity of each product in the order
   const [productQuantities, setProductQuantity] = useState<{
     [key: string]: number;
@@ -47,14 +46,15 @@ const Accordion = ({ service }: { service: string }) => {
   };
 
   // Function to handle adding a product to the order with its quantity
-  const handleAddToOrder = (order: ILaundryProduct): void => {
+  const handleAddToOrder = (order: any): void => {
     const updatedPrductQuantities = {
       ...productQuantities,
       [order?._id!]: (productQuantities[order?._id!] || 0) + 1,
     };
     setProductQuantity(updatedPrductQuantities);
-    const orderdata = { ...order, service: service };
-    dispath(addToOrder(orderdata));
+    const bookingData: ILaundryProduct = { ...order, service: selectedService };
+
+    dispath(addToOrder(bookingData));
   };
 
   // Function to handle removing a product from the order with its quantity
