@@ -22,6 +22,9 @@ const orderSlice = createSlice({
   name: "laundryProduct",
   initialState,
   reducers: {
+    setCartToOrder: (state, action: PayloadAction<ILaundryProduct[]>) => {
+      state.laundryProducts = action.payload;
+    },
     addToOrder: (state, action: PayloadAction<ILaundryProduct>) => {
       const doesExist = state.laundryProducts.find(
         (product: ILaundryProduct) => product?._id === action.payload?._id
@@ -77,6 +80,7 @@ export const {
   removeToOrder,
   addGrandPrice,
   addSelectService,
+  setCartToOrder,
 } = orderSlice.actions;
 
 export default orderSlice.reducer;

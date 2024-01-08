@@ -1,4 +1,4 @@
-import addToCart, { addToOrCart } from "@/Redux/features/Cart/addToCart";
+import { addToOrCart } from "@/Redux/features/Cart/addToCart";
 import {
   addGrandPrice,
   removeToOrder,
@@ -18,7 +18,6 @@ const OrderSection = ({
 
   const [deliveryCost, setDeliveryCost] = useState<number>(0);
   const { laundryProducts } = useAppSelector((state) => state.order);
-  // console.log(laundryProducts);
 
   const subTotal = laundryProducts.reduce(
     (accumulator, laundryProduct) => accumulator + laundryProduct.price,

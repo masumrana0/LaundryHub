@@ -7,8 +7,15 @@ import { removeToCart } from "@/Redux/features/Cart/addToCart";
 
 const Cart: React.FC = () => {
   const [open, setOpen] = useState(false);
+  const [deliveryCost, setDeliveryCost] = useState<number>(0);
   const dispatch = useAppDispatch();
   const { laundryProducts } = useAppSelector((state) => state.cart);
+
+  const subTotal = laundryProducts.reduce(
+    (accumulator, laundryProduct) => accumulator + laundryProduct.price,
+    0
+  );
+  const grandTotal = subTotal + deliveryCost;
 
   const showDefaultDrawer = () => {
     setOpen(true);
@@ -31,7 +38,15 @@ const Cart: React.FC = () => {
       </Space>
       <Drawer placement="right" size="large" onClose={onClose} open={open}>
         <div>
-          <div className="flex justify-center items-center"></div>
+          <div className="flex justify-center items-center">
+            <p>
+              <span className="font-bold text-lg">TotalCost:</span>{" "}
+              <span className="text-xl font-extrabold  text-green-400">
+                &#2547;
+                <span className="font-semibold text-md"> {grandTotal}</span>
+              </span>
+            </p>
+          </div>
           <div className="h-2 my-4 w-full rounded-xl bg-green-400 "></div>
           {laundryProducts?.map((laundryProduct) => (
             <div
