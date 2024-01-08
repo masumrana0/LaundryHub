@@ -1,15 +1,5 @@
-import {
-  FaPhoneVolume,
-  FaEnvelopeOpen,
-  FaFacebookF,
-  FaInstagram,
-  FaYoutube,
-  FaLinkedin,
-} from "react-icons/fa6";
-import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IFeedback } from "@/Interface/feedback";
-import { FieldError } from "react-hook-form";
 import RootLayout from "@/Components/Layout/RootLayout";
 import { ReactElement } from "react";
 import ContactUs from "@/Components/Shared/HomeUi/ContactUs";
@@ -22,7 +12,7 @@ const FeedBack = () => {
   } = useForm<IFeedback>();
 
   const onSubmit: SubmitHandler<IFeedback> = (data) => {
-    console.log(data); // Replace this with your form submission logic
+    console.log(data);
   };
 
   return (
