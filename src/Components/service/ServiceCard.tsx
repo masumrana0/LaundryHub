@@ -5,15 +5,18 @@ import { addSelectService } from "@/Redux/features/order/orderSlice";
 import { useAppDispatch } from "@/Redux/hook";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const ServiceCard = ({ service }: { service: IService }) => {
   const dispatch = useAppDispatch();
+  const router = useRouter();
   const handleSelectService = () => {
     const selectedService: ISelectService = {
       service: service?._id as string,
       title: service.title,
     };
     dispatch(addSelectService(selectedService));
+    router.push("/laundry");
   };
 
   return (
@@ -34,8 +37,11 @@ const ServiceCard = ({ service }: { service: IService }) => {
           </Link>
         </p>
         <div className="flex justify-center gap-5 mt-1">
-          <button className="rounded px-10 py-2 shadow-lg font-semibold bg-green-300 transition-colors duration-300 hover:bg-green-500 hover:text-white text-gray-600">
-            <Link href="/laundry">Select</Link>
+          <button
+            onClick={handleSelectService}
+            className="rounded px-10 py-2 shadow-lg font-semibold bg-green-300 transition-colors duration-300 hover:bg-green-500 hover:text-white text-gray-600"
+          >
+            Select
           </button>
           <button className="rounded px-10 py-2 shadow-lg font-semibold bg-green-300 transition-colors duration-300 hover:bg-green-500 hover:text-white text-gray-600">
             <Link href={`serviceDetails/${service?._id}`}>dettail</Link>

@@ -21,6 +21,7 @@ import { ISelectService } from "@/Interface/booking";
 
 const Accordion = ({ service }: ISelectService) => {
   const selectedService = useAppSelector((state) => state.order.service);
+  // console.log(selectedService);
   // State to track the quantity of each product in the order
   const [productQuantities, setProductQuantity] = useState<{
     [key: string]: number;
