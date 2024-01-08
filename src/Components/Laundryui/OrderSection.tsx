@@ -1,23 +1,20 @@
+import { ILaundryProduct } from "@/Interface/types";
 import { addToOrCart } from "@/Redux/features/Cart/addToCart";
 import {
   addGrandPrice,
   removeToOrder,
+  setBookingState,
 } from "@/Redux/features/order/orderSlice";
 import { useAppDispatch, useAppSelector } from "@/Redux/hook";
 import { useEffect, useState } from "react";
 import { FaTrashCan } from "react-icons/fa6";
 
-const OrderSection = ({
-  isOrderUserDettails,
-  setOrderUserDettails,
-}: {
-  isOrderUserDettails: boolean;
-  setOrderUserDettails: (arg0: boolean) => void;
-}) => {
+const OrderSection = () => {
   const dispatch = useAppDispatch();
 
   const [deliveryCost, setDeliveryCost] = useState<number>(0);
   const { laundryProducts } = useAppSelector((state) => state.order);
+  const bookingState = useAppSelector((state) => state.order.bookingState);
 
   const subTotal = laundryProducts.reduce(
     (accumulator, laundryProduct) => accumulator + laundryProduct.price,
@@ -36,7 +33,7 @@ const OrderSection = ({
     } else if (3 < laundryProducts.length) {
       setDeliveryCost(100);
     } else if (laundryProducts.length === 0) {
-      setOrderUserDettails(false);
+      dispatch(setBookingState());
     }
     dispatch(addGrandPrice(grandTotal));
   }, [laundryProducts]);
@@ -52,7 +49,7 @@ const OrderSection = ({
         className={`  overflow-y-auto   h-[300px] lg:h-[400px]   transition-height duration-300 ease-in-out   border  `}
       >
         <div>
-          {laundryProducts?.map((laundryProduct) => (
+          {laundryProducts?.map((laundryProduct: ILaundryProduct) => (
             <div
               className="border-2 rounded shadow-lg shadow-green-400    mb-2"
               key={laundryProduct._id}
@@ -88,8 +85,8 @@ const OrderSection = ({
         </div>
       </div>
 
-      <div className=" p-10   ">
-        <div className="">
+      <div className="p-10">
+        <div>
           <div className="flex justify-between items-center mb-5 ">
             <h3 className="font-bold">Sub Total</h3>
             <span className="text-lg font-extrabold text-green-400">
@@ -115,7 +112,7 @@ const OrderSection = ({
           </div>
 
           <div className="flex justify-center gap-4 ">
-            <div className={`mt-5 ${isOrderUserDettails ? "hidden" : " "}  `}>
+            <div className={`mt-5 ${bookingState ? "hidden" : " "}  `}>
               <button
                 disabled={laundryProducts.length === 0}
                 className={`border px-10 py-2 rounded-xl     text-white  font-bold transition-colors duration-300 ${
@@ -123,7 +120,7 @@ const OrderSection = ({
                     ? " bg-gray-500 text-gray-300"
                     : "bg-green-500 hover:bg-green-900"
                 }`}
-                onClick={() => setOrderUserDettails(!isOrderUserDettails)}
+                onClick={() => dispatch(setBookingState(true))}
               >
                 Next
               </button>

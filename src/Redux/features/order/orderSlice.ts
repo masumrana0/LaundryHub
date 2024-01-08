@@ -7,6 +7,7 @@ interface IinitialState {
   laundryProducts: ILaundryProduct[];
   grandPrice: number;
   service: ISelectService;
+  bookingState: boolean;
 }
 
 const initialState: IinitialState = {
@@ -16,6 +17,7 @@ const initialState: IinitialState = {
     title: "Ironing and Pressing",
     service: "65982aa7eed34ae0a2063ebc",
   },
+  bookingState: false,
 };
 
 const orderSlice = createSlice({
@@ -23,7 +25,8 @@ const orderSlice = createSlice({
   initialState,
   reducers: {
     setCartToOrder: (state, action: PayloadAction<ILaundryProduct[]>) => {
-      state.laundryProducts = action.payload;
+      const data = [...state.laundryProducts, ...action.payload];
+      state.laundryProducts = data;
     },
     addToOrder: (state, action: PayloadAction<ILaundryProduct>) => {
       const doesExist = state.laundryProducts.find(
@@ -71,6 +74,9 @@ const orderSlice = createSlice({
     addSelectService: (state, action: PayloadAction<ISelectService>) => {
       state.service = action.payload;
     },
+    setBookingState: (state, action: PayloadAction<boolean>) => {
+      state.bookingState = action.payload;
+    },
   },
 });
 
@@ -81,6 +87,7 @@ export const {
   addGrandPrice,
   addSelectService,
   setCartToOrder,
+  setBookingState,
 } = orderSlice.actions;
 
 export default orderSlice.reducer;

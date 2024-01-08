@@ -22,7 +22,8 @@ const Laundry = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const selectedService = useAppSelector((state) => state.order.service);
-  const [isOrderUserDettails, setOrderUserDettails] = useState<boolean>(false);
+  const bookingState = useAppSelector((state) => state.order.bookingState);
+  // const [isOrderUserDettails, setOrderUserDettails] = useState<boolean>(false);
   const { laundryProducts } = useAppSelector((state) => state.order);
   const { data } = useGetAllServiceWithAnyTermQuery(null);
   const serviceTitles = data?.data;
@@ -47,7 +48,7 @@ const Laundry = () => {
       {/* Heading of the page  */}
       <div
         className={`lg:my-10 my-5 flex flex-col lg:flex-row lg:justify-between items-center ${
-          isOrderUserDettails ? "hidden" : ""
+          bookingState ? "hidden" : ""
         } `}
       >
         <div>
@@ -84,22 +85,19 @@ const Laundry = () => {
         {/* accordian section */}
         <div
           className={`${
-            isOrderUserDettails ? "lg:w-[50%]" : "lg:w-[55%]"
+            bookingState ? "lg:w-[50%]" : "lg:w-[55%]"
           }     p-5  lg:p-10`}
         >
-          {isOrderUserDettails ? <UserAddressSection /> : <Accordion />}
+          {bookingState ? <UserAddressSection /> : <Accordion />}
         </div>
 
         {/* order section  */}
         <div
           className={`${
-            isOrderUserDettails ? "lg:w-[55%]" : "lg:w-[45%]"
+            bookingState ? "lg:w-[55%]" : "lg:w-[45%]"
           }  shadow-lg p-4 lg:p-0 mt-5  `}
         >
-          <OrderSection
-            setOrderUserDettails={setOrderUserDettails}
-            isOrderUserDettails={isOrderUserDettails}
-          />
+          <OrderSection />
         </div>
       </div>
     </div>
