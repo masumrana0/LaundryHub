@@ -38,7 +38,7 @@ const Cart: React.FC = () => {
   const handleDispatching = () => {
     dispatch(setCartToOrder(laundryProducts));
     dispatch(setBookingState(true));
-    setOpen(false)
+    setOpen(false);
   };
 
   return (
@@ -61,6 +61,7 @@ const Cart: React.FC = () => {
           </div>
           <div className="h-2 my-4 w-full rounded-xl bg-green-400 "></div>
           <div className="overflow-y-auto h-[73vh] border-2">
+            {/* if has Emty Cart  */}
             {laundryProducts.length == 0 ? (
               <div className="flex flex-col justify-center items-center h-full">
                 <h2 className="font-bold text-xl ">No Booking service added</h2>

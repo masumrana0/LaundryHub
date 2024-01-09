@@ -1,9 +1,4 @@
-import {
-  FaClipboard,
-  FaLock,
-  FaRegCircleUser,
-  FaUserGear,
-} from "react-icons/fa6";
+import { FaClipboard, FaRegCircleUser, FaUserGear } from "react-icons/fa6";
 import HomeProfile from "@/Components/profile/HomeProfile";
 import { ReactElement, use, useState } from "react";
 import ProfilePersonInfo from "@/Components/profile/ProfilePersonInfo";
@@ -18,6 +13,7 @@ import { useGetProfileQuery } from "@/Redux/api/profileApi";
 import ChangeEmail from "@/Components/profile/ChangeEmail";
 import ChangePhoneNumber from "@/Components/profile/ChangeNumber";
 import ChangePassword from "@/Components/profile/ChangePassoword";
+import BookingDeashBoard from "@/Components/profile/BookingDeashBoard";
 
 const Profile = () => {
   // redux
@@ -35,6 +31,7 @@ const Profile = () => {
   return (
     <div>
       <div className=" flex ">
+        {/* profile page navigation bar  */}
         <div className="w-[15%] flex flex-col mt-8">
           <button
             onClick={() => dispatch(changeProfileUiSection(1))}
@@ -68,21 +65,12 @@ const Profile = () => {
             <FaClipboard />
             Booking DashBoard
           </button>
-
-          <button
-            onClick={() => dispatch(changeProfileUiSection(4))}
-            className={`${
-              profileUiSectionNo == 4 && "bg-green-200"
-            } rounded-e-2xl p-3 text-xl text-semibold flex justify-start items-center gap-1.5`}
-          >
-            {" "}
-            <FaLock />
-            Security
-          </button>
         </div>
+        {/* conditional rendering contents /pages */}
         <div className=" w-[80%] mt-10">
           {profileUiSectionNo == 1 && <HomeProfile />}
           {profileUiSectionNo == 2 && <ProfilePersonInfo />}
+          {profileUiSectionNo == 3 && <BookingDeashBoard />}
           <div>
             <div>
               {profileUiSectionNo == 11 && <ChangeName />}
