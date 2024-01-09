@@ -9,6 +9,15 @@ const bookingApi = baseApi.injectEndpoints({
         method: "POST",
         data: data,
       }),
+      invalidatesTags: ["booking"],
+    }),
+
+    getUserBookingHistory: build.query({
+      query: () => ({
+        url: "/booking/userbookinghistory",
+        method: "GET",
+      }),
+      providesTags: ["booking"],
     }),
   }),
 });

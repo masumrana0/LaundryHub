@@ -1,7 +1,11 @@
 import type { CollapseProps } from "antd";
 import { Collapse } from "antd";
 
-const BookingDeashBoard = (items: CollapseProps["items"]) => {
+interface UseCollapseProps {
+  items: CollapseProps["items"];
+}
+
+const UseCollapse = ({ items }: UseCollapseProps) => {
   return (
     <div className="container">
       <Collapse items={items} defaultActiveKey={["1"]} />;
@@ -9,4 +13,4 @@ const BookingDeashBoard = (items: CollapseProps["items"]) => {
   );
 };
 
-export default BookingDeashBoard;
+export default UseCollapse;

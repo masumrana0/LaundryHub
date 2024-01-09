@@ -1,11 +1,12 @@
 import type { CollapseProps } from "antd";
 import { Collapse } from "antd";
 import DashBoardDataItem from "./BookingDashBoardItem";
+import UseCollapse from "../Shared/Collapse/Collapse";
 
 const BookingDeashBoard = () => {
   return (
     <div className="container">
-      <Collapse items={DashBoardDataItem} defaultActiveKey={["1"]} />;
+      <UseCollapse items={DashBoardDataItem} />
     </div>
   );
 };
