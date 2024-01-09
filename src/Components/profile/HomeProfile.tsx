@@ -6,20 +6,19 @@ import privecyimg from "/public/profile/privecy.png";
 import verifiedimg from "/public/profile/isVerified.png";
 import { FaCircleXmark } from "react-icons/fa6";
 import Link from "next/link";
-import { IUser } from "@/Interface/user";
 
-const name = {
-  firstName: "Masum",
-  lastName: "Rana",
-};
-const isEmailVerified = true;
-const HomeProfile = (user: IUser) => {
+import { useAppSelector } from "@/Redux/hook";
+
+const HomeProfile = () => {
+  const profile = useAppSelector((state) => state.profile.profile);
+  const isEmailVerified = profile?.isEmailVerified;
+
   return (
     <div>
       <div className="flex justify-center items-center flex-col gap-1  ">
         <Avatar size={64} icon={<UserOutlined />} />
         <h2 className="text-2xl font-bold  ">
-          WelCome, <FullName name={name} />
+          WelCome, <FullName name={profile?.name} />
         </h2>
         <p className="text-gray-500">
           Manage your info, privacy and security to make LaundryHub work better

@@ -8,7 +8,7 @@ import { isLoggedIn, logOut } from "@/services/auth.service";
 import { Button, Dropdown } from "antd";
 import { FaRegBell, FaComments, FaPhone, FaBloggerB } from "react-icons/fa6";
 import Cart from "@/Components/Cart/Cart";
-import { items, profileMenu } from "@/Components/profile/Profile";
+import { items } from "@/Components/profile/Profile";
 
 const DesktopScreenNavbar = () => {
   const isLoggedin = isLoggedIn();

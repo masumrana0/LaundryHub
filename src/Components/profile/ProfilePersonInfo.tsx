@@ -2,11 +2,13 @@ import Image from "next/image";
 import infoimg from "/public/profile/info.png";
 import UploadProfilePicture from "./ProfilePicUpload";
 import { FaPencil } from "react-icons/fa6";
-import { useAppDispatch } from "@/Redux/hook";
+import { useAppDispatch, useAppSelector } from "@/Redux/hook";
 import { changeProfileUiSection } from "@/Redux/features/profile/profileSlice";
+import FullName from "../Shared/FullName";
 
 const ProfilePersonInfo = () => {
   const dispatch = useAppDispatch();
+  const profile = useAppSelector((state) => state.profile.profile);
   return (
     <div className="container">
       <div>
@@ -51,7 +53,9 @@ const ProfilePersonInfo = () => {
           <div className="flex justify-between items-center border-b-2 shadow py-5">
             <p className="font-semibold text-xl ">Your Name</p>
             <div className="flex  items-center  gap-10  ">
-              <p className="flex-shrink-0 text-lg font-bold ">Masum Rana</p>
+              <p className="flex-shrink-0 text-lg font-bold ">
+                <FullName name={profile?.name} />
+              </p>
 
               <button onClick={() => dispatch(changeProfileUiSection(11))}>
                 <FaPencil />
@@ -64,7 +68,7 @@ const ProfilePersonInfo = () => {
             <p className="font-semibold text-xl ">Your Email</p>
             <div className="flex  items-center  gap-10  ">
               <p className="flex-shrink-0 text-lg font-bold ">
-                masum.rana6267@gmail.com
+                {profile?.email}
               </p>
 
               <button>
@@ -79,7 +83,7 @@ const ProfilePersonInfo = () => {
             <div className="flex  items-center  gap-10  ">
               <p className="flex-shrink-0 text-lg font-bold ">
                 {" "}
-                +8801644626735
+                +88{profile?.phoneNumber}
               </p>
 
               <button>

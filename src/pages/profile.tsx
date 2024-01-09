@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   FaClipboard,
   FaLock,
@@ -6,11 +5,14 @@ import {
   FaUserGear,
 } from "react-icons/fa6";
 import HomeProfile from "@/Components/profile/HomeProfile";
-import { ReactElement, useState } from "react";
+import { ReactElement, use, useState } from "react";
 import ProfilePersonInfo from "@/Components/profile/ProfilePersonInfo";
 import ChangeName from "@/Components/profile/ChangeNam";
 import { useAppDispatch, useAppSelector } from "@/Redux/hook";
-import { changeProfileUiSection } from "@/Redux/features/profile/profileSlice";
+import {
+  changeProfileUiSection,
+  setProfile,
+} from "@/Redux/features/profile/profileSlice";
 import RootLayout from "@/Components/Layout/RootLayout";
 import { useGetProfileQuery } from "@/Redux/api/profileApi";
 
@@ -21,8 +23,10 @@ const Profile = () => {
     (state) => state.profile.profileSectionNo
   );
   const { data } = useGetProfileQuery(null);
+
   if (data?.statusCode == 200) {
     const user = data?.data;
+    dispatch(setProfile(user));
   }
 
   return (
@@ -76,10 +80,8 @@ const Profile = () => {
         <div className=" w-[80%]   mt-10">
           {profileUiSectionNo == 1 && <HomeProfile />}
           {profileUiSectionNo == 2 && <ProfilePersonInfo />}
-          <div className="flex justify-center ">
-            <div className="w-[30%] p-10 border shadow-xl shadow-green-300    ">
-              {profileUiSectionNo == 11 && <ChangeName />}
-            </div>
+          <div>
+            <div>{profileUiSectionNo == 11 && <ChangeName />}</div>
           </div>
         </div>
       </div>
