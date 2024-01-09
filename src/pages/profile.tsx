@@ -8,20 +8,25 @@ import {
 import HomeProfile from "@/Components/profile/HomeProfile";
 import Footer from "@/Components/Shared/Footer";
 import Navbar from "@/Components/Shared/Navbar/Navbar";
+import { useState } from "react";
 
 const Profile = () => {
+  const [profileSection, setProfileSection] = useState<number>(1);
   return (
     <div>
       <Navbar />
       <div className="h-[40vh] flex ">
         <div className="w-[15%] flex flex-col mt-8">
-          <Link className=" bg-green-200 rounded-e-2xl p-3 text-xl" href="/">
-            <button className="text-semibold flex justify-center items-center gap-1.5">
-              {" "}
-              <FaRegCircleUser />
-              Profile Home
-            </button>
-          </Link>
+          <button
+            onClick={() => setProfileSection(1)}
+            className={`${
+              profileSection == 1 && " bg-green-200"
+            }  rounded-e-2xl p-3 text-xl text-semibold flex justify-start items-center gap-1.5`}
+          >
+            {" "}
+            <FaRegCircleUser />
+            Profile Home
+          </button>
 
           <Link className=" bg-green-200 rounded-e-2xl p-3 text-xl" href="/">
             <button className="text-semibold flex justify-center items-center gap-1.5">
@@ -46,7 +51,7 @@ const Profile = () => {
           </Link>
         </div>
         <div className=" w-[80%]   mt-10">
-          <HomeProfile />
+          {profileSection == 1 && <HomeProfile />}
         </div>
       </div>
       <Footer />

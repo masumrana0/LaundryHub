@@ -6,12 +6,14 @@ import privecyimg from "/public/profile/privecy.png";
 import verifiedimg from "/public/profile/isVerified.png";
 import { FaCircleXmark } from "react-icons/fa6";
 import Link from "next/link";
+import { IUser } from "@/Interface/user";
 
 const name = {
   firstName: "Masum",
   lastName: "Rana",
 };
-const HomeProfile = () => {
+const isEmailVerified = true;
+const HomeProfile = (user: IUser) => {
   return (
     <div>
       <div className="flex justify-center items-center flex-col gap-1  ">
@@ -38,18 +40,22 @@ const HomeProfile = () => {
           </div>
         </div>
         {/* card 2 */}
-        <div className="w-[30%] h-[200px] border bg-gray-100 p-7 rounded ">
-          <h3 className="text-4xl font-thin mb-4">Your account is Verified</h3>
-          <div className="flex  justify-start items-center">
-            <p>
-              LaundryHub provide User verification ensures identity
-              authenticity, enhancing security and trust. It validates users'
-              legitimacy.
-            </p>
-            <Image src={verifiedimg} width={100} alt="privecy" />
+
+        {isEmailVerified ? (
+          <div className="w-[30%] h-[200px] border bg-gray-100 p-7 rounded ">
+            <h3 className="text-4xl font-thin mb-4">
+              Your account is Verified
+            </h3>
+            <div className="flex  justify-start items-center">
+              <p>
+                LaundryHub provide User verification ensures identity
+                authenticity, enhancing security and trust. It validates users'
+                legitimacy.
+              </p>
+              <Image src={verifiedimg} width={100} alt="privecy" />
+            </div>
           </div>
-        </div>
-        {
+        ) : (
           <div className="w-[30%] h-[200px] border bg-gray-100 p-7 rounded ">
             <h3 className="text-4xl font-thin ">
               Your account is{" "}
@@ -66,7 +72,7 @@ const HomeProfile = () => {
               <FaCircleXmark className="text-8xl text-red-500 " />
             </div>
           </div>
-        }
+        )}
       </div>
     </div>
   );
