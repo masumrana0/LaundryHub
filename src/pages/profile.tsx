@@ -15,6 +15,9 @@ import {
 } from "@/Redux/features/profile/profileSlice";
 import RootLayout from "@/Components/Layout/RootLayout";
 import { useGetProfileQuery } from "@/Redux/api/profileApi";
+import ChangeEmail from "@/Components/profile/ChangeEmail";
+import ChangePhoneNumber from "@/Components/profile/ChangeNumber";
+import ChangePassword from "@/Components/profile/ChangePassoword";
 
 const Profile = () => {
   // redux
@@ -77,11 +80,16 @@ const Profile = () => {
             Security
           </button>
         </div>
-        <div className=" w-[80%]   mt-10">
+        <div className=" w-[80%] mt-10">
           {profileUiSectionNo == 1 && <HomeProfile />}
           {profileUiSectionNo == 2 && <ProfilePersonInfo />}
           <div>
-            <div>{profileUiSectionNo == 11 && <ChangeName />}</div>
+            <div>
+              {profileUiSectionNo == 11 && <ChangeName />}
+              {profileUiSectionNo == 22 && <ChangeEmail />}
+              {profileUiSectionNo == 33 && <ChangePhoneNumber />}
+              {profileUiSectionNo == 44 && <ChangePassword />}
+            </div>
           </div>
         </div>
       </div>

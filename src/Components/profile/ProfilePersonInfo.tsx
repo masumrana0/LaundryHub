@@ -71,7 +71,7 @@ const ProfilePersonInfo = () => {
                 {profile?.email}
               </p>
 
-              <button>
+              <button onClick={() => dispatch(changeProfileUiSection(22))}>
                 <FaPencil />
               </button>
             </div>
@@ -86,7 +86,7 @@ const ProfilePersonInfo = () => {
                 +88{profile?.phoneNumber}
               </p>
 
-              <button>
+              <button onClick={() => dispatch(changeProfileUiSection(33))}>
                 <FaPencil />
               </button>
             </div>
@@ -99,7 +99,7 @@ const ProfilePersonInfo = () => {
                 Change Password
               </p>
 
-              <button>
+              <button onClick={() => dispatch(changeProfileUiSection(44))}>
                 <FaPencil />
               </button>
             </div>
