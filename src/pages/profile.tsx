@@ -10,18 +10,24 @@ import Footer from "@/Components/Shared/Footer";
 import Navbar from "@/Components/Shared/Navbar/Navbar";
 import { useState } from "react";
 import ProfilePersonInfo from "@/Components/profile/ProfilePersonInfo";
+import ChangeName from "@/Components/profile/ChangeNam";
+import { useAppDispatch, useAppSelector } from "@/Redux/hook";
+import { changeProfileUiSection } from "@/Redux/features/profile/profileSlice";
 
 const Profile = () => {
-  const [profileSection, setProfileSection] = useState<number>(1);
+  const dispatch = useAppDispatch();
+  const profileUiSectionNo = useAppSelector(
+    (state) => state.profile.profileSectionNo
+  );
   return (
     <div>
       <Navbar />
       <div className=" flex ">
         <div className="w-[15%] flex flex-col mt-8">
           <button
-            onClick={() => setProfileSection(1)}
+            onClick={() => dispatch(changeProfileUiSection(1))}
             className={`${
-              profileSection == 1 && " bg-green-200"
+              profileUiSectionNo == 1 && " bg-green-200"
             }  rounded-e-2xl p-3 text-xl text-semibold flex justify-start items-center gap-1.5`}
           >
             {" "}
@@ -30,9 +36,9 @@ const Profile = () => {
           </button>
 
           <button
-            onClick={() => setProfileSection(2)}
+            onClick={() => dispatch(changeProfileUiSection(2))}
             className={`${
-              profileSection == 2 && "bg-green-200 "
+              profileUiSectionNo == 2 && "bg-green-200 "
             } rounded-e-2xl p-3 text-xl text-semibold flex justify-start items-center gap-1.5`}
           >
             {" "}
@@ -41,9 +47,9 @@ const Profile = () => {
           </button>
 
           <button
-            onClick={() => setProfileSection(3)}
+            onClick={() => dispatch(changeProfileUiSection(3))}
             className={`${
-              profileSection == 3 && "bg-green-200"
+              profileUiSectionNo == 3 && "bg-green-200"
             }  rounded-e-2xl p-3 text-xl text-semibold flex justify-start items-center gap-1.5`}
           >
             {" "}
@@ -52,9 +58,9 @@ const Profile = () => {
           </button>
 
           <button
-            onClick={() => setProfileSection(4)}
+            onClick={() => dispatch(changeProfileUiSection(4))}
             className={`${
-              profileSection == 4 && "bg-green-200"
+              profileUiSectionNo == 4 && "bg-green-200"
             } rounded-e-2xl p-3 text-xl text-semibold flex justify-start items-center gap-1.5`}
           >
             {" "}
@@ -63,8 +69,9 @@ const Profile = () => {
           </button>
         </div>
         <div className=" w-[80%]   mt-10">
-          {profileSection == 1 && <HomeProfile />}
-          {profileSection == 2 && <ProfilePersonInfo />}
+          {profileUiSectionNo == 1 && <HomeProfile />}
+          {profileUiSectionNo == 2 && <ProfilePersonInfo />}
+          {profileUiSectionNo == 1 && <ChangeName />}
         </div>
       </div>
       <Footer />

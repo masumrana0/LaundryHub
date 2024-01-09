@@ -84,6 +84,19 @@ const ProfilePersonInfo = () => {
               </button>
             </div>
           </div>
+          {/*  Password section */}
+          <div className="flex justify-between items-center border-b-2 shadow py-5">
+            <p className="font-semibold text-xl "> Password</p>
+            <div className="flex  items-center  gap-10  ">
+              <p className="flex-shrink-0 text-lg font-bold ">
+                Change Password
+              </p>
+
+              <button>
+                <FaPencil />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
