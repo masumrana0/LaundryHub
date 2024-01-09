@@ -5,6 +5,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 interface IinitialState {
   laundryProducts: ILaundryProduct[];
+  userBookingHistory: ILaundryProduct[];
   grandPrice: number;
   service: ISelectService;
   bookingState: boolean;
@@ -12,6 +13,7 @@ interface IinitialState {
 
 const initialState: IinitialState = {
   laundryProducts: [],
+  userBookingHistory: [],
   grandPrice: 0,
   service: {
     title: "Ironing and Pressing",
@@ -77,6 +79,12 @@ const orderSlice = createSlice({
     setBookingState: (state, action: PayloadAction<boolean>) => {
       state.bookingState = action.payload;
     },
+    setUserBookingHistory: (
+      state,
+      action: PayloadAction<ILaundryProduct[]>
+    ) => {
+      state.userBookingHistory = action.payload;
+    },
   },
 });
 
@@ -88,6 +96,7 @@ export const {
   addSelectService,
   setCartToOrder,
   setBookingState,
+  setUserBookingHistory,
 } = orderSlice.actions;
 
 export default orderSlice.reducer;

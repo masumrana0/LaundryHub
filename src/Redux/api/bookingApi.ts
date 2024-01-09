@@ -22,4 +22,5 @@ const bookingApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useSubmitBookingRequetMutation } = bookingApi;
+export const { useSubmitBookingRequetMutation, useGetUserBookingHistoryQuery } =
+  bookingApi;
