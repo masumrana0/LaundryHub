@@ -16,7 +16,7 @@ const Profile = () => {
   return (
     <div>
       <Navbar />
-      <div className="h-[40vh] flex ">
+      <div className=" flex ">
         <div className="w-[15%] flex flex-col mt-8">
           <button
             onClick={() => setProfileSection(1)}
