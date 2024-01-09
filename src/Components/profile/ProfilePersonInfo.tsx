@@ -2,8 +2,11 @@ import Image from "next/image";
 import infoimg from "/public/profile/info.png";
 import UploadProfilePicture from "./ProfilePicUpload";
 import { FaPencil } from "react-icons/fa6";
+import { useAppDispatch } from "@/Redux/hook";
+import { changeProfileUiSection } from "@/Redux/features/profile/profileSlice";
 
 const ProfilePersonInfo = () => {
+  const dispatch = useAppDispatch();
   return (
     <div className="container">
       <div>
@@ -50,7 +53,7 @@ const ProfilePersonInfo = () => {
             <div className="flex  items-center  gap-10  ">
               <p className="flex-shrink-0 text-lg font-bold ">Masum Rana</p>
 
-              <button>
+              <button onClick={() => dispatch(changeProfileUiSection(11))}>
                 <FaPencil />
               </button>
             </div>

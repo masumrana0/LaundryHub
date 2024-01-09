@@ -11,16 +11,7 @@ import Cart from "@/Components/Cart/Cart";
 import { items, profileMenu } from "@/Components/profile/Profile";
 
 const DesktopScreenNavbar = () => {
-  const [isDropdownOpen, setDropdownOpen] = useState(false);
   const isLoggedin = isLoggedIn();
-
-  const toggleDropdown = () => {
-    setDropdownOpen(!isDropdownOpen);
-  };
-
-  const closeDropdown = () => {
-    setDropdownOpen(false);
-  };
 
   const name = {
     firstName: "Masum ",

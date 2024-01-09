@@ -18,18 +18,7 @@ import ThirdSwiperData from "@/Components/headSwiper/homwSwiperContent/ThirdSwip
 import HomeHeaderSwiper from "@/Components/headSwiper/HomeSwiper";
 import HowItsWorkSectionTwo from "@/Components/Shared/HomeUi/HowItsWorkSectionTwo";
 
-const HomePage = ({ reviews }: any) => {
-  // const elementStyle = {
-  //  ".headText"{
-  //  display:"none"
-  //  }
-
-  //  ".img"{
-  //   display:"none",
-
-  //  }
-
-  // };
+const HomePage = () => {
   return (
     <div>
       {/* introduce-section  */}
@@ -107,13 +96,6 @@ const HomePage = ({ reviews }: any) => {
 };
 
 export default HomePage;
-
-// export async function getStaticProps() {
-//   const res = await fetch(`http://localhost:4000/api/v1/reviews`);
-//   const reviews = await res.json();
-
-//   return { props: { reviews } };
-// }
 
 HomePage.getLayout = function getLayout(page: ReactElement) {
   return <RootLayout>{page}</RootLayout>;
