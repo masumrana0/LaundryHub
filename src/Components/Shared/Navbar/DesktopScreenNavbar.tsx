@@ -3,17 +3,12 @@ import logo from "../../../../public/logo.png";
 import Link from "next/link";
 import { useState } from "react";
 import { UserOutlined, SettingOutlined, HomeOutlined } from "@ant-design/icons";
-import { Avatar, Space } from "antd";
+import { Avatar, MenuProps, Space } from "antd";
 import { isLoggedIn, logOut } from "@/services/auth.service";
-import {
-  FaRegBell,
-  FaComments,
-  FaQuestion,
-  FaPhone,
-  FaBloggerB,
-  FaCartArrowDown,
-} from "react-icons/fa6";
+import { Button, Dropdown } from "antd";
+import { FaRegBell, FaComments, FaPhone, FaBloggerB } from "react-icons/fa6";
 import Cart from "@/Components/Cart/Cart";
+import { items, profileMenu } from "@/Components/profile/Profile";
 
 const DesktopScreenNavbar = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -27,12 +22,11 @@ const DesktopScreenNavbar = () => {
     setDropdownOpen(false);
   };
 
-  const handleLogout = () => {
-    logOut();
-    setDropdownOpen(false);
+  const name = {
+    firstName: "Masum ",
+    lastName: "Rana",
   };
 
-  // logOut();
   return (
     <div className="hidden lg:block container mx-auto   bg-[#edfaff]">
       <div className=" border-b-2  py-3">
@@ -55,7 +49,7 @@ const DesktopScreenNavbar = () => {
             </Link>
           </div>
           <div>
-           <Cart/>
+            <Cart />
           </div>
         </div>
       </div>
@@ -133,37 +127,18 @@ const DesktopScreenNavbar = () => {
         <div>
           {isLoggedIn() ? (
             <div className="relative inline-block text-left">
-              <button
-                onClick={toggleDropdown}
-                // onBlur={closeDropdown}
-                className="hover:border-1 border-amber-200 flex items-center gap-2"
-              >
-                <Space wrap size={16}>
-                  <Avatar size="large" icon={<UserOutlined />} />
-                </Space>
-              </button>
-              {isDropdownOpen && (
-                <div className="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-10 z-10">
-                  <div className="py-1">
-                    <h3 className="text-black text-center">Masum Rana</h3>
-                    <button className="block mx-auto px-10 py-2 text-sm text-gray-700 hover:bg-gray-200">
-                      Profile
-                    </button>
-
-                    <button
-                      className="block    mx-auto px-10 py-2 text-sm text-gray-700 hover:bg-gray-200"
-                      onClick={handleLogout}
-                    >
-                      Logout
-                    </button>
-                  </div>
-                </div>
-              )}
+              <Dropdown menu={{ items }} placement="bottom">
+                <button>
+                  <Space wrap size={16}>
+                    <Avatar size="large" icon={<UserOutlined />} />
+                  </Space>
+                </button>
+              </Dropdown>
             </div>
           ) : (
             <button className="rounded px-5 py-2 shadow-lg font-semibold bg-green-300 transition-colors duration-300 hover:bg-green-500 hover:text-white text-gray-600">
-              <Link href="/login" scroll={false}>
-                LOGIN
+              <Link href="/auth" scroll={false}>
+                Account
               </Link>
             </button>
           )}

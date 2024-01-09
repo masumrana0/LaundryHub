@@ -17,12 +17,14 @@ const serviceApi = baseApi.injectEndpoints({
         url: `/service?searchTerm=${searchTerm}&page=${page}&limit=${4}`,
         method: "GET",
       }),
+      providesTags: ["service"],
     }),
     getAllServiceWithAnyTerm: build.query({
       query: () => ({
         url: `/service/all`,
         method: "GET",
       }),
+      providesTags: ["service"],
     }),
     getOneService: build.query({
       query: (id: string) => ({
