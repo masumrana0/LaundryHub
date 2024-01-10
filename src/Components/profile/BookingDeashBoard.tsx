@@ -40,6 +40,6 @@ const BookingDeashBoard = () => {
       )}
     </div>
   );
-};
+}
 
 export default BookingDeashBoard;
