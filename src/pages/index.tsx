@@ -1,5 +1,6 @@
 import ChooseSection from "@/Components/HomeUi/ChooseSection";
 import ContactUs from "@/Components/HomeUi/ContactUs";
+import FQA from "@/Components/HomeUi/FQA";
 import HowItsWorkSectiont from "@/Components/HomeUi/HowItsWorkSection";
 import IntroduceService from "@/Components/HomeUi/IntroduceServices/IntroduceService";
 import ServicesSection from "@/Components/HomeUi/servicesSection";
@@ -67,6 +68,10 @@ const HomePage = () => {
         <div className="container mx-auto">
           {/* <ReviewSection reviews={reviews.data} /> */}
         </div>
+      </div>
+
+      <div>
+        <FQA />
       </div>
 
       {/* contact us section  */}

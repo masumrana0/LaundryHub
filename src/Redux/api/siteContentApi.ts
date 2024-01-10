@@ -1,4 +1,3 @@
-import { IUser } from "@/Interface/user";
 import { baseApi } from "./baseApi";
 
 const siteContentApi = baseApi.injectEndpoints({
