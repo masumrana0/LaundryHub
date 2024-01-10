@@ -1,6 +1,11 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { IName } from "@/Interface/user";
-import { useAppSelector } from "@/Redux/hook";
+import { useAppDispatch, useAppSelector } from "@/Redux/hook";
+import { useUpdateProfileMutation } from "@/Redux/api/profileApi";
+import { changeProfileUiSection } from "@/Redux/features/profile/profileSlice";
+import Notification from "../Shared/Notification/Notification";
+import { useRouter } from "next/navigation";
+import { logOut } from "@/services/auth.service";
 
 interface IEmail {
   email: string;
@@ -12,11 +17,25 @@ const ChangeEmail = () => {
     formState: { errors },
   } = useForm<IEmail>();
 
-  // redux
-  const profile = useAppSelector((state) => state.profile.profile);
+  // route
+  const router = useRouter();
 
-  const onSubmit: SubmitHandler<IEmail> = (data) => {
-    console.log(data);
+  // redux
+  const dispatch = useAppDispatch();
+  const profile = useAppSelector((state) => state.profile.profile);
+  const [profileUpdateMutation] = useUpdateProfileMutation();
+
+  const onSubmit: SubmitHandler<IEmail> = async (data) => {
+    const updatedProfile = await profileUpdateMutation(data);
+    if (updatedProfile?.data?.data) {
+      dispatch(changeProfileUiSection(2));
+      logOut();
+      router.push("/");
+      Notification({
+        description: "Your name has Changed. Please Login Again",
+        placement: "topLeft",
+      });
+    }
   };
 
   return (
