@@ -1,23 +1,32 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { IName } from "@/Interface/user";
-import { useAppSelector } from "@/Redux/hook";
+import { useAppDispatch, useAppSelector } from "@/Redux/hook";
+import { IChangePassword } from "@/Interface/auth";
+import { useUpdatePasswordMutation } from "@/Redux/api/profileApi";
+import { changeProfileUiSection } from "@/Redux/features/profile/profileSlice";
+import Notification from "../Shared/Notification/Notification";
 
-interface IPassword {
-  oldPassword: string;
-  newPassword: string;
-}
 const ChangePassword = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IPassword>();
+  } = useForm<IChangePassword>();
 
   // redux
+  const dispatch = useAppDispatch();
+  const [passwordUpdateMutation] = useUpdatePasswordMutation();
   const profile = useAppSelector((state) => state.profile.profile);
 
-  const onSubmit: SubmitHandler<IPassword> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<IChangePassword> = async (data) => {
+    const updatedPassword = await passwordUpdateMutation(data);
+    if (updatedPassword?.data?.data) {
+      dispatch(changeProfileUiSection(2));
+      Notification({
+        description: "Your Password has Changed Successfully!.",
+        placement: "topLeft",
+      });
+    }
   };
 
   return (

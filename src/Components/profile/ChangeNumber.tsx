@@ -1,6 +1,9 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { IName } from "@/Interface/user";
-import { useAppSelector } from "@/Redux/hook";
+import { useAppDispatch, useAppSelector } from "@/Redux/hook";
+import { useUpdateProfileMutation } from "@/Redux/api/profileApi";
+import Notification from "../Shared/Notification/Notification";
+import { changeProfileUiSection } from "@/Redux/features/profile/profileSlice";
 
 interface INumber {
   phoneNumber: string;
@@ -13,12 +16,20 @@ const ChangePhoneNumber = () => {
   } = useForm<INumber>();
 
   // redux
+  const dispatch = useAppDispatch();
+  const [profileUpdateMutation] = useUpdateProfileMutation();
   const profile = useAppSelector((state) => state.profile.profile);
 
-  const onSubmit: SubmitHandler<INumber> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<INumber> = async (data) => {
+    const updatedProfile = await profileUpdateMutation(data);
+    if (updatedProfile?.data?.data) {
+      dispatch(changeProfileUiSection(2));
+      Notification({
+        description: "Your Phone Number has Changed.",
+        placement: "topLeft",
+      });
+    }
   };
-  console.log(errors.phoneNumber?.message)
 
   return (
     <div className="mx-auto  w-[30%] p-10 border shadow-xl shadow-green-300 ">
@@ -28,12 +39,22 @@ const ChangePhoneNumber = () => {
           <h3 className="lg:text-xl text-md">PhoneNumber</h3>
           <div className="border hover:border-blue-400 py-2 px-4 rounded-lg focus:border-blue-500 focus:outline-none m">
             <input
-              {...register("phoneNumber", { required:"phoneNumber is required", maxLength: 11 })}
+              {...register("phoneNumber", {
+                required: "Phone number is required",
+                minLength: {
+                  value: 11,
+                  message: "Phone number should be at least 11 digits",
+                },
+                maxLength: {
+                  value: 11,
+                  message: "Phone number should be exactly 11 digits",
+                },
+              })}
               className="w-full outline-none focus:outline-none"
               type="number"
               name="phoneNumber"
-              placeholder="Enter your first name"
-              id="firstName"
+              placeholder="Enter your phone number"
+              id="phoneNumber"
               defaultValue={profile?.phoneNumber}
             />
           </div>
