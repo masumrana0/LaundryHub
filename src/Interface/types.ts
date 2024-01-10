@@ -9,10 +9,13 @@ export interface IAccordionItem {
 }
 
 export interface ILaundryProduct {
+  grandPrice: number;
+  isDelivered: boolean;
+  isApproved: boolean;
   _id?: string;
   category: "men" | "woman" | "home";
   name: string;
   price: number;
-  service?: ISelectService;
+  services?: ISelectService;
   quntity?: number;
 }

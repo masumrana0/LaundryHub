@@ -1,10 +1,11 @@
 import { IBooking } from "@/Interface/booking";
 
-const isApproved = false;
-const isDelivered = false;
-
-const DashboardLabel = () => {
-  //   console.log(booking);
+interface IBookingProps {
+  booking: IBooking;
+}
+const DashboardLabel = ({ booking }: IBookingProps) => {
+  const isApproved = booking?.isApproved;
+  const isDelivered = booking?.isDelivered;
   return (
     <div className="flex justify-between">
       <div>
@@ -12,7 +13,10 @@ const DashboardLabel = () => {
           <span className="font-bold text-lg">TotalCost:</span>{" "}
           <span className="text-xl font-extrabold text-green-400">
             &#2547;
-            <span className="font-semibold text-md"> 3002</span>
+            <span className="font-semibold text-md">
+              {" "}
+              {booking?.grandPrice}
+            </span>
           </span>
         </p>
       </div>

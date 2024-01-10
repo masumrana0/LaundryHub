@@ -21,15 +21,16 @@ export interface ISelectService {
   title: string;
 }
 
-export interface IBooking {
-  user?: string | IUser;
+export type IBooking = {
+  user: string;
   services: IBookingService[];
   grandPrice: number;
-  pickupDate: Date;
+  pickupDate?: Date;
   deliveryDate: Date;
   address: string;
-}
-
+  isApproved: boolean;
+  isDelivered: boolean;
+};
 export interface IBookingResponse {
   statusCode: number;
   success: boolean;
