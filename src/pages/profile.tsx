@@ -1,6 +1,6 @@
 import { FaClipboard, FaRegCircleUser, FaUserGear } from "react-icons/fa6";
 import HomeProfile from "@/Components/profile/HomeProfile";
-import { ReactElement, use, useState } from "react";
+import { ReactElement, use, useEffect, useState } from "react";
 import ProfilePersonInfo from "@/Components/profile/ProfilePersonInfo";
 import ChangeName from "@/Components/profile/ChangeNam";
 import { useAppDispatch, useAppSelector } from "@/Redux/hook";
@@ -14,8 +14,19 @@ import ChangeEmail from "@/Components/profile/ChangeEmail";
 import ChangePhoneNumber from "@/Components/profile/ChangeNumber";
 import ChangePassword from "@/Components/profile/ChangePassoword";
 import BookingDeashBoard from "@/Components/profile/BookingDeashBoard";
+import { isLoggedIn } from "@/services/auth.service";
+import { useRouter } from "next/navigation";
 
 const Profile = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    const isLogged = isLoggedIn();
+    if (!isLogged) {
+      router.push("/auth");
+    }
+  }, [router]);
+
   // redux
   const dispatch = useAppDispatch();
   const profileUiSectionNo = useAppSelector(

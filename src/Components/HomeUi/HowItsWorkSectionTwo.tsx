@@ -8,7 +8,7 @@
 
 import Image from "next/image";
 import style from "../../../Components/style/Homeui.Sectiontwo.module.css";
-import icon1 from "../../../../public/icons/icon1.png";
+import icon1 from "/public/icons/icon1.png";
 import { useEffect, useState } from "react";
 import { gsap } from "gsap";
 

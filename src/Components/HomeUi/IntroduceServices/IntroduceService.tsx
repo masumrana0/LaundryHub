@@ -8,7 +8,7 @@ const IntroduceService = () => {
       <div className="w-full lg:w-1/2">
         <h2 className="text-2xl lg:text-4xl font-semibold">
           High-Quality
-          <span className="text-[#3f6bae]">
+          <span className="text-green-400">
             {" "}
             Laundry and Ironing Service
           </span>{" "}
@@ -23,7 +23,7 @@ const IntroduceService = () => {
           service is tailored to meet your laundry needs with the utmost care
           and quality.
         </p>
-        <button className="mt-3 bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">
+        <button className="mt-3 bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded">
           View Services
         </button>
       </div>

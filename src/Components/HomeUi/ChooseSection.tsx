@@ -1,4 +1,4 @@
-import style from "../../style/Homeui.module.css";
+import style from "../style/Homeui.module.css";
 import {
   FaCar,
   FaMoneyBill1Wave,
@@ -24,7 +24,7 @@ const ChooseSection = () => {
   return (
     <div className="container mx-auto mt-32">
       <div className="flex justify-center lg:mb-20  mb-10">
-        <h2 className="inline-block border-b-4 border-blue-500 font-bold lg:text-4xl text-3xl ">
+        <h2 className="inline-block border-b-4 border-green-500 font-bold lg:text-4xl text-3xl ">
           Why We&apos;re Your Top Choice
         </h2>
       </div>
@@ -40,7 +40,7 @@ const ChooseSection = () => {
           <div
             className={`flex justify-center items-center w-[105px] h-[110px] mx-auto rounded-full  bg-gray-100  ${style.circle}`}
           >
-            <FaStreetView className={`  text-blue-400 ${style.icon}`} />
+            <FaStreetView className={`  text-green-400 ${style.icon}`} />
           </div>
           <h2
             className="text-2xl my-3 font-semibold"
@@ -69,7 +69,7 @@ const ChooseSection = () => {
           <div
             className={`flex justify-center items-center w-[105px] h-[110px] mx-auto rounded-full  bg-gray-100  ${style.circle}`}
           >
-            <FaCar className={`  text-blue-400 ${style.icon}`} />
+            <FaCar className={`  text-green-400 ${style.icon}`} />
           </div>
           <h2
             data-aos="fade-right"
@@ -97,7 +97,7 @@ const ChooseSection = () => {
           <div
             className={`flex justify-center items-center w-[105px] h-[110px] mx-auto rounded-full  bg-gray-100  ${style.circle}`}
           >
-            <FaHandHoldingDollar className={`  text-blue-400 ${style.icon}`} />
+            <FaHandHoldingDollar className={`  text-green-400 ${style.icon}`} />
           </div>
           <h2
             data-aos="fade-right"
@@ -126,7 +126,7 @@ const ChooseSection = () => {
           <div
             className={`flex justify-center items-center w-[105px] h-[110px] mx-auto rounded-full  bg-gray-100  ${style.circle}`}
           >
-            <FaMoneyBill1Wave className={` text-blue-400 ${style.icon}`} />
+            <FaMoneyBill1Wave className={` text-green-400 ${style.icon}`} />
           </div>
           <h2
             data-aos="fade-right"
@@ -155,7 +155,7 @@ const ChooseSection = () => {
           <div
             className={`flex justify-center items-center w-[105px] h-[110px] mx-auto rounded-full  bg-gray-100  ${style.circle}`}
           >
-            <FaLeaf className={`  text-blue-400 ${style.icon}`} />
+            <FaLeaf className={`  text-green-400 ${style.icon}`} />
           </div>
           <h2
             data-aos="fade-right"
@@ -183,7 +183,7 @@ const ChooseSection = () => {
           <div
             className={`flex justify-center items-center w-[105px] h-[110px] mx-auto rounded-full  bg-gray-100  ${style.circle}`}
           >
-            <FaMedal className={` text-blue-400 ${style.icon}`} />
+            <FaMedal className={` text-green-400 ${style.icon}`} />
           </div>
           <h2
             className="text-2xl my-3 font-semibold"

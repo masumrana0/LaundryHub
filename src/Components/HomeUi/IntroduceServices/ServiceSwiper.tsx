@@ -3,12 +3,12 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay } from "swiper/modules";
-import banner1 from "../../../../../public/banner-1.png"
-import banner2 from "../../../../../public/banner-2.png"
-import banner3 from "../../../../../public/banner-3.png"
-import banner4 from "../../../../../public/banner-4.png"
-import banner5 from "../../../../../public/banner-5.png"
- 
+import banner1 from "/public/banner-1.png";
+import banner2 from "/public/banner-2.png";
+import banner3 from "/public/banner-3.png";
+import banner4 from "/public/banner-4.png";
+import banner5 from "/public/banner-5.png";
+
 import Image from "next/image";
 
 export default function ServiceSwiper() {

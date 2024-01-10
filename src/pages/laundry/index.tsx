@@ -19,8 +19,17 @@ import { useRouter } from "next/navigation";
 import React, { useState, useEffect, ReactElement } from "react";
 
 const Laundry = () => {
-  const dispatch = useAppDispatch();
+  // handle private page
   const router = useRouter();
+  useEffect(() => {
+    const isLogged = isLoggedIn();
+    if (!isLogged) {
+      router.push("/auth");
+    }
+  }, [router]);
+
+  // redux
+  const dispatch = useAppDispatch();
   const selectedService = useAppSelector((state) => state.order.service);
   const bookingState = useAppSelector((state) => state.order.bookingState);
   // const [isOrderUserDettails, setOrderUserDettails] = useState<boolean>(false);
@@ -35,13 +44,6 @@ const Laundry = () => {
     );
     dispatch(addSelectService(selectedService));
   };
-
-  useEffect(() => {
-    const isLogged = isLoggedIn();
-    if (!isLogged) {
-      router.push("/login");
-    }
-  }, [router]);
 
   return (
     <div className="container mx-auto">

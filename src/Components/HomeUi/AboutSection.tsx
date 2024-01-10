@@ -1,5 +1,5 @@
 import Image from "next/image";
-import aboutBanner from "../../../../public/assets/pexels-max-avans-5087727.jpg";
+import aboutBanner from "/public/assets/pexels-max-avans-5087727.jpg";
 
 const AboutSection = () => {
   return (
