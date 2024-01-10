@@ -1,4 +1,4 @@
-import { ProfileResponse } from "@/Interface/user";
+import { IUser, ProfileResponse } from "@/Interface/user";
 import { baseApi } from "./baseApi";
 
 const profileApi = baseApi.injectEndpoints({
@@ -12,9 +12,10 @@ const profileApi = baseApi.injectEndpoints({
     }),
 
     updateProfile: build.mutation<ProfileResponse, unknown>({
-      query: () => ({
-        url: "profile",
+      query: (data: Partial<IUser>) => ({
+        url: "/profile",
         method: "PATCH",
+        data: data,
       }),
       invalidatesTags: ["user"],
     }),

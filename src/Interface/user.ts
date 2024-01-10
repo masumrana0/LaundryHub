@@ -2,6 +2,12 @@ export type IName = {
   firstName: string;
   lastName?: string;
 };
+export type IUpdateName = {
+  name: {
+    firstName: string;
+    lastName?: string;
+  };
+};
 
 export type IUser = {
   _id?: string;

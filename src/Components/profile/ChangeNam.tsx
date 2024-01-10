@@ -1,19 +1,35 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import { IName } from "@/Interface/user";
-import { useAppSelector } from "@/Redux/hook";
+import { IUpdateName } from "@/Interface/user";
+import { useAppDispatch, useAppSelector } from "@/Redux/hook";
+import { useUpdateProfileMutation } from "@/Redux/api/profileApi";
+import {
+  changeProfileUiSection,
+  setProfile,
+} from "@/Redux/features/profile/profileSlice";
+import Notification from "../Shared/Notification/Notification";
 
 const ChangeName = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IName>();
+  } = useForm<IUpdateName>();
 
   // redux
+  const dispatch = useAppDispatch();
+  const [profileUpdateMutation] = useUpdateProfileMutation();
   const profile = useAppSelector((state) => state.profile.profile);
   const name = profile?.name;
-  const onSubmit: SubmitHandler<IName> = (data) => {
-    // console.log(name);
+
+  const onSubmit: SubmitHandler<IUpdateName> = async (data) => {
+    const updatedProfile = await profileUpdateMutation(data);
+    if (updatedProfile?.data?.data) {
+      dispatch(changeProfileUiSection(2));
+      Notification({
+        description: "Your name has Changed.",
+        placement: "topLeft",
+      });
+    }
   };
 
   return (
@@ -24,16 +40,20 @@ const ChangeName = () => {
           <h3 className="lg:text-xl text-md">First Name</h3>
           <div className="border hover:border-blue-400 py-2 px-4 rounded-lg focus:border-blue-500 focus:outline-none m">
             <input
-              {...register("firstName", { required: "First name is required" })}
+              {...register("name.firstName", {
+                required: "First name is required",
+              })}
               className="w-full outline-none focus:outline-none"
               type="text"
-              name="firstName"
+              name="name.firstName"
               placeholder="Enter your first name"
               id="firstName"
               defaultValue={name?.firstName}
             />
           </div>
-          <p className="text-red-500 ms-2">{errors?.firstName?.message}</p>
+          <p className="text-red-500 ms-2">
+            {errors?.name?.firstName?.message}
+          </p>
         </div>
 
         {/* lastName */}
@@ -41,16 +61,18 @@ const ChangeName = () => {
           <h3 className="lg:text-xl text-md">Last Name</h3>
           <div className="border hover:border-blue-400 py-2 px-4 rounded-lg focus:border-blue-500 focus:outline-none m">
             <input
-              {...register("lastName", { required: "Last name is required" })}
+              {...register("name.lastName", {
+                required: "Last name is required",
+              })}
               className="w-full outline-none focus:outline-none"
               type="text"
-              name="lastName"
+              name="name.lastName"
               placeholder="Enter your last name"
               id="lastName"
               defaultValue={name?.lastName}
             />
           </div>
-          <p className="text-red-500 ms-2">{errors?.lastName?.message}</p>
+          <p className="text-red-500 ms-2">{errors?.name?.lastName?.message}</p>
         </div>
 
         <div className="flex justify-center lg:mt-5">
