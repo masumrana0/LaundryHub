@@ -6,9 +6,9 @@
  *
  */
 
-import React, { useEffect } from "react";
-import { firstSwiperConentStyle as imageStyle } from "../styles";
 import { gsap } from "gsap";
+import { useEffect } from "react";
+import { firstSwiperConentStyle as imageStyle } from "../styles";
 
 const FirstSwiperData = ({ isActive }: { isActive: boolean }) => {
   useEffect(() => {
@@ -72,7 +72,7 @@ const FirstSwiperData = ({ isActive }: { isActive: boolean }) => {
         <div className="firstCUnderLine absolute top-[27rem] left-[7.4rem] border-b-4 border-green-400 w-20 mb-4 hidden "></div>
 
         <h3 className="firstCBottomText absolute top-[25rem] left-[20rem] text-3xl text-white font-bold mb-5 hidden">
-          Call us @ <span className="text-blue-400">01644626735</span>
+          Call us @ <span className="text-green-400">01644626735</span>
         </h3>
         <button className="firstCButton absolute top-[31rem] left-[7.5rem] rounded px-10 py-2 shadow-lg font-semibold  transition-colors duration-300 bg-green-500  text-white hover:bg-green-700  hidden">
           Get Clean

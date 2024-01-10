@@ -6,22 +6,17 @@
  *
  */
 
-import { useState } from "react";
-import style from "../style/Loginui.module.css";
-import { FaEye, FaEyeSlash } from "react-icons/fa6";
-import toast from "react-hot-toast";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { useUserSignupMutation } from "@/Redux/api/authApi";
+import { setIsEmailVerified } from "@/Redux/features/auth/authSlice";
 import { useAppDispatch, useAppSelector } from "@/Redux/hook";
 import { AuthValidations } from "@/Schema/Schema";
+import { authKey } from "@/constants/storageKey";
 import { storeLocalStorageInfo } from "@/services/auth.service";
-import { authKey, isVerifiedKey } from "@/constants/storageKey";
-import {
-  setAuthState,
-  setIsEmailVerified,
-} from "@/Redux/features/auth/authSlice";
-import { Turtle } from "lucide-react";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
+import style from "../style/Loginui.module.css";
 
 const Signup = () => {
   // Login State come to redux store
@@ -73,7 +68,7 @@ const Signup = () => {
             {/* firstName  */}
             <div className="lg:mb-3">
               <h3 className="lg:text-xl text-md">First Name</h3>
-              <div className="border hover:border-blue-400 py-2  px-4   rounded-lg focus:border-blue-500 focus:outline-none m">
+              <div className="border hover:border-green-400 py-2  px-4   rounded-lg focus:border-green-500 focus:outline-none m">
                 <input
                   {...register("name.firstName")}
                   className="  w-full  outline-none focus:outline-none"
@@ -91,7 +86,7 @@ const Signup = () => {
             {/* lastName  */}
             <div className="lg:mb-3">
               <h3 className="lg:text-xl text-md">Last Name</h3>
-              <div className="border hover:border-blue-400 py-2  px-4   rounded-lg focus:border-blue-500 focus:outline-none m">
+              <div className="border hover:border-green-400 py-2  px-4   rounded-lg focus:border-green-500 focus:outline-none m">
                 <input
                   {...register("name.lastName")}
                   className="  w-full  outline-none focus:outline-none"
@@ -109,7 +104,7 @@ const Signup = () => {
             {/* Phone Number  */}
             <div className="lg:mb-3">
               <h3 className="lg:text-xl text-md">Phone Number</h3>
-              <div className="border hover:border-blue-400 py-2  px-4   rounded-lg focus:border-blue-500 focus:outline-none m">
+              <div className="border hover:border-green-400 py-2  px-4   rounded-lg focus:border-green-500 focus:outline-none m">
                 <input
                   {...register("phoneNumber")}
                   className="  w-full  outline-none focus:outline-none"
@@ -125,7 +120,7 @@ const Signup = () => {
             {/* emial  */}
             <div className="lg:mb-3">
               <h3 className="lg:text-xl text-md">Email</h3>
-              <div className="border hover:border-blue-400 py-2  px-4   rounded-lg focus:border-blue-500 focus:outline-none m">
+              <div className="border hover:border-green-400 py-2  px-4   rounded-lg focus:border-green-500 focus:outline-none m">
                 <input
                   {...register("email")}
                   className="  w-full  outline-none focus:outline-none"
@@ -141,7 +136,7 @@ const Signup = () => {
             {/* password  */}
             <div className="lg:mb-3">
               <h3 className="text-xl">Password</h3>
-              <div className="flex items-center  border rounded-lg px-3 hover:border-blue-500 ">
+              <div className="flex items-center  border rounded-lg px-3 hover:border-green-500 ">
                 <input
                   {...register("password")}
                   className="  w-full py-2    outline-none focus:outline-none   "
@@ -166,7 +161,7 @@ const Signup = () => {
             {/* confirmPassword  */}
             <div className="lg:mb-3">
               <h3 className="text-xl">Confirm Password</h3>
-              <div className="flex items-center  border rounded-lg px-3 hover:border-blue-500 ">
+              <div className="flex items-center  border rounded-lg px-3 hover:border-green-500 ">
                 <input
                   {...register("confirmPassword")}
                   className="w-full py-2  outline-none focus:outline-none"

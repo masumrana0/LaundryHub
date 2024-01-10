@@ -1,4 +1,4 @@
-/* w-[1100px] h-[1000px] rounded-full bg-blue-500 absolute left-[-400px] top-[-399px] overflow-hidden flex justify-end items-center */
+/* w-[1100px] h-[1000px] rounded-full bg-green-500 absolute left-[-400px] top-[-399px] overflow-hidden flex justify-end items-center */
 
 .main {
   position: relative;
@@ -7,9 +7,7 @@
 }
 
 .circle {
- 
 }
 
 .afiterClickCircle {
-  ;
 }

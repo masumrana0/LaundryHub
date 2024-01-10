@@ -1,20 +1,12 @@
-import { useSelector } from "react-redux";
-import { RootState } from "@/Redux/store";
-import Image from "next/image";
-import contactBanner from "../../public/assets/contact_us-two.jpg";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { ReactElement, useEffect } from "react";
-import RootLayout from "@/Components/Layout/RootLayout";
-import ThirdSwiperData from "@/Components/headSwiper/homwSwiperContent/ThirdSwiperData";
-import HomeHeaderSwiper from "@/Components/headSwiper/HomeSwiper";
-import HowItsWorkSectionTwo from "@/Components/HomeUi/HowItsWorkSectionTwo";
-import IntroduceService from "@/Components/HomeUi/IntroduceServices/IntroduceService";
-import ServicesSection from "@/Components/HomeUi/servicesSection";
 import ChooseSection from "@/Components/HomeUi/ChooseSection";
 import ContactUs from "@/Components/HomeUi/ContactUs";
-import AboutSection from "@/Components/HomeUi/AboutSection";
 import HowItsWorkSectiont from "@/Components/HomeUi/HowItsWorkSection";
+import IntroduceService from "@/Components/HomeUi/IntroduceServices/IntroduceService";
+import ServicesSection from "@/Components/HomeUi/servicesSection";
+import RootLayout from "@/Components/Layout/RootLayout";
+import HomeHeaderSwiper from "@/Components/headSwiper/HomeSwiper";
+import "aos/dist/aos.css";
+import { ReactElement } from "react";
 
 const HomePage = () => {
   return (
@@ -24,9 +16,7 @@ const HomePage = () => {
         <HomeHeaderSwiper />
       </div>
 
-      <div>
-        {/* <HowItsWorkSectionTwo /> */}
-      </div>
+      <div>{/* <HowItsWorkSectionTwo /> */}</div>
 
       <div
         className="mt-8 px-5"
@@ -70,7 +60,7 @@ const HomePage = () => {
         data-aos-duration="2000"
       >
         {/* <div className="flex justify-center">
-          <h2 className="inline-block border-b-4 border-blue-500 font-bold lg:text-5xl text-3xl my-20">
+          <h2 className="inline-block border-b-4 border-green-500 font-bold lg:text-5xl text-3xl my-20">
             Review & Rating
           </h2>
         </div> */}

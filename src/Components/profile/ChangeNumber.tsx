@@ -1,9 +1,8 @@
-import { useForm, SubmitHandler } from "react-hook-form";
-import { IName } from "@/Interface/user";
-import { useAppDispatch, useAppSelector } from "@/Redux/hook";
 import { useUpdateProfileMutation } from "@/Redux/api/profileApi";
-import Notification from "../Shared/Notification/Notification";
 import { changeProfileUiSection } from "@/Redux/features/profile/profileSlice";
+import { useAppDispatch, useAppSelector } from "@/Redux/hook";
+import { SubmitHandler, useForm } from "react-hook-form";
+import Notification from "../Shared/Notification/Notification";
 
 interface INumber {
   phoneNumber: string;
@@ -37,7 +36,7 @@ const ChangePhoneNumber = () => {
         {/* Phone Number */}
         <div className="lg:mb-3">
           <h3 className="lg:text-xl text-md">PhoneNumber</h3>
-          <div className="border hover:border-blue-400 py-2 px-4 rounded-lg focus:border-blue-500 focus:outline-none m">
+          <div className="border hover:border-green-400 py-2 px-4 rounded-lg focus:border-green-500 focus:outline-none m">
             <input
               {...register("phoneNumber", {
                 required: "Phone number is required",

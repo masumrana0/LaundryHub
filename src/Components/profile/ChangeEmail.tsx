@@ -1,11 +1,10 @@
-import { useForm, SubmitHandler } from "react-hook-form";
-import { IName } from "@/Interface/user";
-import { useAppDispatch, useAppSelector } from "@/Redux/hook";
 import { useUpdateProfileMutation } from "@/Redux/api/profileApi";
 import { changeProfileUiSection } from "@/Redux/features/profile/profileSlice";
-import Notification from "../Shared/Notification/Notification";
-import { useRouter } from "next/navigation";
+import { useAppDispatch, useAppSelector } from "@/Redux/hook";
 import { logOut } from "@/services/auth.service";
+import { useRouter } from "next/navigation";
+import { SubmitHandler, useForm } from "react-hook-form";
+import Notification from "../Shared/Notification/Notification";
 
 interface IEmail {
   email: string;
@@ -44,7 +43,7 @@ const ChangeEmail = () => {
         {/* Email */}
         <div className="lg:mb-3">
           <h3 className="lg:text-xl text-md">Email</h3>
-          <div className="border hover:border-blue-400 py-2 px-4 rounded-lg focus:border-blue-500 focus:outline-none m">
+          <div className="border hover:border-green-400 py-2 px-4 rounded-lg focus:border-green-500 focus:outline-none m">
             <input
               {...register("email", { required: "Email is required" })}
               className="w-full outline-none focus:outline-none"

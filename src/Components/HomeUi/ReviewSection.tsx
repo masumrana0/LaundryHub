@@ -1,9 +1,8 @@
-import React from "react";
 import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 import StarRating from "./StarRating";
 
 const ReviewSection = ({ reviews }: any) => {
@@ -52,7 +51,7 @@ const ReviewSection = ({ reviews }: any) => {
                 height="400"
                 alt="contact us img"
               />
-              <h2 className="font-bold text-xl text-center text-blue-400 ">
+              <h2 className="font-bold text-xl text-center text-green-400 ">
                 {review?.userName}
               </h2>
               <h6 className="text-gray-400 ">{review?.profession}</h6>

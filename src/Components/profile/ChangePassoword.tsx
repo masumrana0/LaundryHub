@@ -1,9 +1,8 @@
-import { useForm, SubmitHandler } from "react-hook-form";
-import { IName } from "@/Interface/user";
-import { useAppDispatch, useAppSelector } from "@/Redux/hook";
 import { IChangePassword } from "@/Interface/auth";
 import { useUpdatePasswordMutation } from "@/Redux/api/profileApi";
 import { changeProfileUiSection } from "@/Redux/features/profile/profileSlice";
+import { useAppDispatch, useAppSelector } from "@/Redux/hook";
+import { SubmitHandler, useForm } from "react-hook-form";
 import Notification from "../Shared/Notification/Notification";
 
 const ChangePassword = () => {
@@ -35,7 +34,7 @@ const ChangePassword = () => {
         {/* Phone Number */}
         <div className="lg:mb-3">
           <h3 className="lg:text-xl text-md">OldPassword</h3>
-          <div className="border hover:border-blue-400 py-2 px-4 rounded-lg focus:border-blue-500 focus:outline-none m">
+          <div className="border hover:border-green-400 py-2 px-4 rounded-lg focus:border-green-500 focus:outline-none m">
             <input
               {...register("oldPassword", {
                 required: "old password is required",
@@ -51,7 +50,7 @@ const ChangePassword = () => {
         </div>
         <div className="lg:mb-3">
           <h3 className="lg:text-xl text-md">newPassword</h3>
-          <div className="border hover:border-blue-400 py-2 px-4 rounded-lg focus:border-blue-500 focus:outline-none m">
+          <div className="border hover:border-green-400 py-2 px-4 rounded-lg focus:border-green-500 focus:outline-none m">
             <input
               {...register("newPassword", {
                 required: "new password is required",

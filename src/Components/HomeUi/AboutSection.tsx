@@ -5,7 +5,7 @@ const AboutSection = () => {
   return (
     <div className="container mx-auto relative">
       <div className="  bg-[#005477] text-white lg:w-1/2 lg:h-[500px] lg:p-20 p-5 ">
-        <h2 className="font-bold lg:text-6xl lg:mb-5 text-5xl lg:text-start    mt-60 lg:mt-0 border-b-4 inline-block border-blue-500 ">
+        <h2 className="font-bold lg:text-6xl lg:mb-5 text-5xl lg:text-start    mt-60 lg:mt-0 border-b-4 inline-block border-green-500 ">
           About
         </h2>
         <p className="lg:w-[90%] lg:text-lg lg:mt-0 mt-3 ">

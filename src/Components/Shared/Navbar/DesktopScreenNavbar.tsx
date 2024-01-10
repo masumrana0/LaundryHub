@@ -13,11 +13,6 @@ import { items } from "@/Components/profile/Profile";
 const DesktopScreenNavbar = () => {
   const isLoggedin = isLoggedIn();
 
-  const name = {
-    firstName: "Masum ",
-    lastName: "Rana",
-  };
-
   return (
     <div className="hidden lg:block container mx-auto   bg-[#edfaff]">
       <div className=" border-b-2  py-3">

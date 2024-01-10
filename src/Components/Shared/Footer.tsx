@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import logo from "../../../public/logo.png";
 import {
   FaFacebookF,
   FaInstagram,
-  FaYoutube,
   FaLinkedin,
+  FaYoutube,
 } from "react-icons/fa6";
+import logo from "../../../public/logo.png";
 
 const Footer = () => {
   return (
@@ -34,16 +34,16 @@ const Footer = () => {
           <h2 className="text-2xl "> </h2>
           <div className="flex flex-col gap-2">
             <h2 className="font-bold text-2xl">Quick Link</h2>
-            <Link className="hover:text-blue-500 text-xl" href="/service">
+            <Link className="hover:text-green-500 text-xl" href="/service">
               Home
             </Link>
-            <Link className="hover:text-blue-500 text-xl" href="/service">
+            <Link className="hover:text-green-500 text-xl" href="/service">
               Service
             </Link>
-            <Link className="hover:text-blue-500 text-xl" href="/profile">
+            <Link className="hover:text-green-500 text-xl" href="/profile">
               Profile
             </Link>
-            <a className="hover:text-blue-500 text-xl" href="#about">
+            <a className="hover:text-green-500 text-xl" href="#about">
               About
             </a>
           </div>
@@ -54,28 +54,28 @@ const Footer = () => {
         <div>
           <h2 className="font-bold text-2xl mb-3">Social Media</h2>
           <Link
-            className="mb-2 flex items-center text-xl gap-2 hover:text-blue-400"
+            className="mb-2 flex items-center text-xl gap-2 hover:text-green-400"
             href="https://www.facebook.com/masumrana02/"
           >
             {" "}
             <FaFacebookF /> Facebook
           </Link>
           <Link
-            className="mb-2 flex items-center text-xl gap-2 hover:text-blue-400"
+            className="mb-2 flex items-center text-xl gap-2 hover:text-green-400"
             href="https://www.facebook.com/masumrana02/"
           >
             {" "}
             <FaInstagram /> Instagram
           </Link>
           <Link
-            className="mb-2 flex items-center text-xl gap-2 hover:text-blue-400"
+            className="mb-2 flex items-center text-xl gap-2 hover:text-green-400"
             href="https://www.facebook.com/masumrana02/"
           >
             {" "}
             <FaLinkedin /> Linkedin
           </Link>
           <Link
-            className="mb-2 flex items-center text-xl gap-2 hover:text-blue-400"
+            className="mb-2 flex items-center text-xl gap-2 hover:text-green-400"
             href="https://www.facebook.com/masumrana02/"
           >
             {" "}

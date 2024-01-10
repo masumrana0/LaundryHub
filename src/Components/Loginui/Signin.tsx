@@ -1,18 +1,13 @@
-import { FaEye, FaEyeSlash } from "react-icons/fa6";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { useState, useEffect } from "react";
-import style from "../style/Loginui.module.css";
-import {
-  getUserInfo,
-  isLoggedIn,
-  storeLocalStorageInfo,
-} from "@/services/auth.service";
-import { useUserSigninMutation } from "@/Redux/api/authApi";
-import { useRouter } from "next/navigation";
-import { authKey } from "@/constants/storageKey";
-import { useAppSelector } from "@/Redux/hook";
-import toast from "react-hot-toast";
 import { ISigninData } from "@/Interface/auth";
+import { useUserSigninMutation } from "@/Redux/api/authApi";
+import { useAppSelector } from "@/Redux/hook";
+import { authKey } from "@/constants/storageKey";
+import { storeLocalStorageInfo } from "@/services/auth.service";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
 
 const Signin = () => {
   // redux
@@ -58,7 +53,7 @@ const Signin = () => {
           <div>
             <div className="mb-3">
               <h3 className="text-xl">Email</h3>
-              <div className="border hover:border-blue-400 py-2  px-4   rounded-lg focus:border-blue-500 focus:outline-none ">
+              <div className="border hover:border-green-400 py-2  px-4   rounded-lg focus:border-green-500 focus:outline-none ">
                 <input
                   {...register("email", { required: "email is required" })}
                   className="  w-full  outline-none focus:outline-none"
@@ -73,7 +68,7 @@ const Signin = () => {
 
             <div>
               <h3 className="text-xl">Password</h3>
-              <div className="flex items-center  border rounded-lg px-3 hover:border-blue-500 ">
+              <div className="flex items-center  border rounded-lg px-3 hover:border-green-500 ">
                 <input
                   {...register("password", {
                     required: "password is required",

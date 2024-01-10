@@ -1,11 +1,8 @@
-import { useForm, SubmitHandler } from "react-hook-form";
 import { IUpdateName } from "@/Interface/user";
-import { useAppDispatch, useAppSelector } from "@/Redux/hook";
 import { useUpdateProfileMutation } from "@/Redux/api/profileApi";
-import {
-  changeProfileUiSection,
-  setProfile,
-} from "@/Redux/features/profile/profileSlice";
+import { changeProfileUiSection } from "@/Redux/features/profile/profileSlice";
+import { useAppDispatch, useAppSelector } from "@/Redux/hook";
+import { SubmitHandler, useForm } from "react-hook-form";
 import Notification from "../Shared/Notification/Notification";
 
 const ChangeName = () => {
@@ -38,7 +35,7 @@ const ChangeName = () => {
         {/* firstName */}
         <div className="lg:mb-3">
           <h3 className="lg:text-xl text-md">First Name</h3>
-          <div className="border hover:border-blue-400 py-2 px-4 rounded-lg focus:border-blue-500 focus:outline-none m">
+          <div className="border hover:border-green-400 py-2 px-4 rounded-lg focus:border-green-500 focus:outline-none m">
             <input
               {...register("name.firstName", {
                 required: "First name is required",
@@ -59,7 +56,7 @@ const ChangeName = () => {
         {/* lastName */}
         <div className="lg:mb-3">
           <h3 className="lg:text-xl text-md">Last Name</h3>
-          <div className="border hover:border-blue-400 py-2 px-4 rounded-lg focus:border-blue-500 focus:outline-none m">
+          <div className="border hover:border-green-400 py-2 px-4 rounded-lg focus:border-green-500 focus:outline-none m">
             <input
               {...register("name.lastName", {
                 required: "Last name is required",
