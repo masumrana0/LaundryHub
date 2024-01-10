@@ -26,7 +26,8 @@ const ChangeEmail = () => {
 
   const onSubmit: SubmitHandler<IEmail> = async (data) => {
     const updatedProfile = await profileUpdateMutation(data);
-    if (updatedProfile?.data?.data) {
+
+    if (updatedProfile) {
       dispatch(changeProfileUiSection(2));
       logOut();
       router.push("/");

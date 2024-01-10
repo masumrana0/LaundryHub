@@ -19,7 +19,7 @@ const ChangePassword = () => {
 
   const onSubmit: SubmitHandler<IChangePassword> = async (data) => {
     const updatedPassword = await passwordUpdateMutation(data);
-    if (updatedPassword?.data?.data) {
+    if (updatedPassword) {
       dispatch(changeProfileUiSection(2));
       Notification({
         description: "Your Password has Changed Successfully!.",

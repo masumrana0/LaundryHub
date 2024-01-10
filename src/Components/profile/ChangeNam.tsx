@@ -20,7 +20,7 @@ const ChangeName = () => {
 
   const onSubmit: SubmitHandler<IUpdateName> = async (data) => {
     const updatedProfile = await profileUpdateMutation(data);
-    if (updatedProfile?.data?.data) {
+    if (updatedProfile) {
       dispatch(changeProfileUiSection(2));
       Notification({
         description: "Your name has Changed.",

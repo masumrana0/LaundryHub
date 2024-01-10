@@ -55,7 +55,7 @@ const ReviewSection = ({ reviews }: any) => {
                 {review?.userName}
               </h2>
               <h6 className="text-gray-400 ">{review?.profession}</h6>
-              <StarRating stars={parseInt(review?.star) || 0} />
+              <StarRating stars={parseInt(review?.star) || 0} starsize="text-xl" />
               <p className="text-gray-500">{review?.review}</p>
             </div>
           </SwiperSlide>

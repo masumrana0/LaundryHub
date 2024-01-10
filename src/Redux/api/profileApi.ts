@@ -1,5 +1,6 @@
 import { IUser, ProfileResponse } from "@/Interface/user";
 import { baseApi } from "./baseApi";
+import { IChangePassword } from "@/Interface/auth";
 
 const profileApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
@@ -11,7 +12,7 @@ const profileApi = baseApi.injectEndpoints({
       providesTags: ["user"],
     }),
 
-    updateProfile: build.mutation<ProfileResponse, unknown>({
+    updateProfile: build.mutation({
       query: (data: Partial<IUser>) => ({
         url: "/profile",
         method: "PATCH",
@@ -19,8 +20,8 @@ const profileApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["user"],
     }),
-    updatePassword: build.mutation<ProfileResponse, unknown>({
-      query: (data: Partial<IUser>) => ({
+    updatePassword: build.mutation({
+      query: (data: IChangePassword) => ({
         url: "/auth/change-password",
         method: "POST",
         data: data,

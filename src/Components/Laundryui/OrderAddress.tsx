@@ -33,6 +33,8 @@ const UserAddressSection = () => {
   const selectedServiceData = useAppSelector(
     (state) => state.order.laundryProducts
   );
+
+  // console.log(selectedServiceData);
   const grandPrice = useAppSelector((state) => state.order.grandPrice);
 
   // Mutation Hook for Submitting Booking Request
@@ -45,8 +47,9 @@ const UserAddressSection = () => {
   // Iterate through selected service data to create booking services array
   if (selectedServiceData.length >= 1) {
     for (const bookingService of selectedServiceData) {
-      const modifiedBookingService: IBookingService = {
-        service: bookingService?.service?.service as string,
+      // console.log(bookingService);
+      const modifiedBookingService = {
+        service: bookingService.service.service,
         cleaningProduct: bookingService?._id as string,
         cleaningProductItem: bookingService?.quntity as number,
       };
@@ -59,14 +62,17 @@ const UserAddressSection = () => {
   // Handle form submission for booking
   const handleSubmitBooking = async (data: IBookingForm) => {
     // Create booking data object
-    const booking: IBooking = {
+    const booking = {
       ...data,
       grandPrice: grandPrice,
-      services: services,
+      services,
     };
+    console.log(booking);
+    // console.log(booking);
 
     // Send booking request and handle response
     const res: IBookingResponse | any = await bookingRequest(booking);
+    console.log(res);
     if (res?.data?.statusCode === 200) {
       toast.success("Your booking request has been sent successfully");
       reset();

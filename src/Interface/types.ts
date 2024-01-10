@@ -9,6 +9,7 @@ export interface IAccordionItem {
 }
 
 export interface ILaundryProduct {
+  service: any;
   grandPrice: number;
   isDelivered: boolean;
   isApproved: boolean;

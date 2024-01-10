@@ -33,7 +33,7 @@ const OrderSection = () => {
     } else if (3 < laundryProducts.length) {
       setDeliveryCost(100);
     } else if (laundryProducts.length === 0) {
-      dispatch(setBookingState());
+      dispatch(setBookingState(false));
     }
     dispatch(addGrandPrice(grandTotal));
   }, [laundryProducts]);
