@@ -83,7 +83,7 @@ const Cart: React.FC = () => {
                     key={laundryProduct._id}
                   >
                     <p className="text-center font-semibold text-lg text-gray-600">
-                      {laundryProduct.service?.title}
+                      {laundryProduct?.services?.title}
                     </p>
 
                     <div className="py-2 px-4 flex justify-between item-center">

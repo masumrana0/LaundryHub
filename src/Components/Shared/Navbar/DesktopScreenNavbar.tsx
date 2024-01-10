@@ -27,7 +27,7 @@ const DesktopScreenNavbar = () => {
             <span className="border mx-5"></span>
             <Link
               className="hover:text-green-600 transition-colors duration-300 flex items-center gap-2"
-              href="/contactus"
+              href="/feedback"
             >
               {" "}
               <FaComments />
@@ -88,7 +88,7 @@ const DesktopScreenNavbar = () => {
 
           <Link
             className="relative flex items-center gap-0.5  text-md font-semibold transition-all duration-300 group"
-            href="/"
+            href="/about"
           >
             <span>
               <FaBloggerB />

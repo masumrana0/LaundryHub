@@ -11,9 +11,10 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { IFeedback } from "@/Interface/feedback";
 import RootLayout from "@/Components/Layout/RootLayout";
 import { ReactElement } from "react";
-import ContactUs from "@/Components/Shared/HomeUi/ContactUs";
+
 import { useSubmitFeedbackApiMutation } from "@/Redux/api/feedbackApi";
 import Notification from "@/Components/Shared/Notification/Notification";
+import ContactUs from "@/Components/HomeUi/ContactUs";
 
 const FeedBack = () => {
   // react hook form

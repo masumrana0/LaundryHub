@@ -43,7 +43,7 @@ const ServiceCard = ({ service }: { service: IService }) => {
             Select
           </button>
           <button className="rounded px-10 py-2 shadow-lg font-semibold bg-green-300 transition-colors duration-300 hover:bg-green-500 hover:text-white text-gray-600">
-            <Link href={`serviceDetails/${service?._id}`}>dettail</Link>
+            <Link href={`serviceDetails/${service?._id}`}>Details</Link>
           </button>
         </div>
       </div>

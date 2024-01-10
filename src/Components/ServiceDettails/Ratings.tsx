@@ -1,5 +1,5 @@
 import { FaRegStar, FaStar } from "react-icons/fa6";
-import StarRating from "../Shared/HomeUi/StarRating";
+
 import { useEffect, useState } from "react";
 import {
   useGetRatingsQuery,
@@ -7,6 +7,7 @@ import {
 } from "@/Redux/api/review&ratingApi";
 import { AwardIcon } from "lucide-react";
 import { IRatingData } from "@/Interface/rating&review";
+import StarRating from "../HomeUi/StarRating";
 
 const Ratings = ({ id }: { id: string }) => {
   const [star, setStar] = useState<number>(0);
