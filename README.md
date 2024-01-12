@@ -68,7 +68,3 @@ LaundryHub leverages the following technologies:
 - **Database:** MongoDB
 - **Authentication:** JSON Web Tokens (JWT)
 - **Additional Libraries:** Redux (for state management), Axios (for API requests)
-
-## Contact
-
-For any questions or support, please reach out to our team at support@laundryhub.com.
