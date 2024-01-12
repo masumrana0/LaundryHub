@@ -1,4 +1,4 @@
-# LaundryHub
+# LaundryHub_Frontend
 
 LaundryHub is a user-friendly platform that simplifies and enhances the laundry service experience. Whether you're a busy professional, a student, or someone looking for quality laundry services, LaundryHub has you covered.
 
@@ -65,6 +65,6 @@ LaundryHub leverages the following technologies:
 
 - **Frontend:** Next.js, Tailwind css, and Ant Design.
 - **Backend:** Node.js, Express.js,Mongoose.
-- **Database:** MongoDB
-- **Authentication:** JSON Web Tokens (JWT)
-- **Additional Libraries:** Redux (for state management), Axios (for API requests)
+- **Database:** MongoDB.
+- **Authentication:** JSON Web Tokens (JWT).
+- **Additional Libraries:** Redux (for state management), Axios (for API requests).
