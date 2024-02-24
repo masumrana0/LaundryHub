@@ -2,7 +2,10 @@ import RootLayout from "@/Components/Layout/RootLayout";
 import LoadingSpinner from "@/Components/Shared/Loading";
 import ServiceCard from "@/Components/service/ServiceCard";
 import { IService } from "@/Interface/service";
-import { useGetAllServiceQuery } from "@/Redux/api/serviceApi";
+import {
+  useGetAllServiceQuery,
+  useGetAllServiceWithAnyTermQuery,
+} from "@/Redux/api/serviceApi";
 import { Pagination } from "antd";
 import { pages } from "next/dist/build/templates/app-page";
 import React, { ReactElement, useEffect, useState } from "react";
@@ -12,16 +15,13 @@ const Service = () => {
   const [services, setServices] = useState<IService[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
 
-  const { data, error, isLoading } = useGetAllServiceQuery({
-    searchTerm,
-    page,
-  });
+  const { data, error, isLoading } = useGetAllServiceQuery(null);
+  console.log(data);
 
   useEffect(() => {
-    if (data?.statusCode == 200) {
-      setServices(data.data);
-    }
+    setServices(data);
   }, [data]);
+  console.log(services);
 
   return (
     <div className="bg-green-100">
@@ -56,14 +56,14 @@ const Service = () => {
           )}
         </div>
 
-        {/* pagination */}
+        {/* pagination
         <div className="flex justify-center mt-10">
           <Pagination
             defaultCurrent={1}
             total={50}
             onChange={(page) => setPage(page)}
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );

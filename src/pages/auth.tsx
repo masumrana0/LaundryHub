@@ -4,16 +4,10 @@ import signin from "../../public/login/signin.png";
 import signup from "../../public/login/signup.png";
 import { useEffect, useState } from "react";
 import Signin from "@/Components/Loginui/Signin";
-import { FaLessThanEqual } from "react-icons/fa6";
-import { Provider, useDispatch } from "react-redux";
-import { RootState, store } from "@/Redux/store";
 import Signup from "@/Components/Loginui/Signup";
 import { useAppDispatch, useAppSelector } from "@/Redux/hook";
 import VerificationWaitingUi from "@/Components/Loginui/VerifyUi";
-import {
-  setAuthState,
-  setIsEmailVerified,
-} from "@/Redux/features/auth/authSlice";
+import { setAuthState } from "@/Redux/features/auth/authSlice";
 
 const Authentication = () => {
   const dispatch = useAppDispatch();

@@ -4,24 +4,31 @@ import { url } from "inspector";
 
 const serviceApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
-    getAllService: build.query({
-      query: ({
-        searchTerm,
-        page,
-        limit,
-      }: {
-        searchTerm?: string;
-        page?: number;
-        limit?: number;
-      }) => ({
-        url: `/service?searchTerm=${searchTerm}&page=${page}&limit=${4}`,
+    // getAllService: build.query({
+    //   query: ({
+    //     searchTerm,
+    //     page,
+    //     limit,
+    //   }: {
+    //     searchTerm?: string;
+    //     page?: number;
+    //     limit?: number;
+    //   }) => ({
+    //     url: `/service?searchTerm=${searchTerm}&page=${page}&limit=${4}`,
+    //     method: "GET",
+    //   }),
+    //   providesTags: ["service"],
+    // }),
+    getAllServiceWithAnyTerm: build.query({
+      query: () => ({
+        url: `/service/all`,
         method: "GET",
       }),
       providesTags: ["service"],
     }),
-    getAllServiceWithAnyTerm: build.query({
+    getAllService: build.query({
       query: () => ({
-        url: `/service/all`,
+        url: `/service`,
         method: "GET",
       }),
       providesTags: ["service"],

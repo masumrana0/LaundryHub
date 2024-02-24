@@ -1,3 +1,6 @@
+import { instance } from "@/helper/axios/axiosInstance";
+import { getBaseUrl } from "@/helper/config/envConfig";
+
 export const setLocalStorage = (key: string, value: string) => {
   if (!key || typeof window === "undefined") {
     return "";
@@ -23,4 +26,13 @@ export const removeFromLocalStorage = (key: string) => {
     return "";
   }
   return localStorage.removeItem(key);
+};
+
+export const getRefreshToken = async () => {
+  return await instance({
+    url: ` ${getBaseUrl()}/auth/refresh-token`,
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    withCredentials: true,
+  });
 };
