@@ -1,4 +1,5 @@
 import { ISigninData } from "@/Interface/auth";
+import { IValidationResponse } from "@/Interface/shared";
 import { useUserSigninMutation } from "@/Redux/api/authApi";
 import { useAppSelector } from "@/Redux/hook";
 import { authKey } from "@/constants/storageKey";
@@ -10,36 +11,44 @@ import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 
 const Signin = () => {
+  // essential state
+  const [validationResponse, setValidationResponse] =
+    useState<IValidationResponse>({});
   // redux
   const [userSignin] = useUserSigninMutation();
   const authState = useAppSelector((state) => state.auth.authState);
   const [isViewPass, setIsViewPass] = useState(false);
-  const [password, setPassword] = useState("");
   const router = useRouter();
 
+  // handle form hook
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<ISigninData>();
 
+  // toogle visibility
   const togglePasswordVisibility = () => {
     setIsViewPass(!isViewPass);
   };
 
-  const onSubmit = async (data: ISigninData) => {
-    const res = await userSignin(data).unwrap();
-    if (res?.data?.accessToken) {
-      // if(res.isEmailVerified){
-
-      // }
-      console.log(res.data.isEmailVerified);
-      toast.success("You are Login successfully");
+  // handle  submit form
+  const onSubmit = async (signInData: ISigninData) => {
+    const res = await userSignin(signInData).unwrap();
+    // handling validation response and setup accessToken
+    if ("validationResponse" in res?.data) {
+      setValidationResponse(res?.data?.validationResponse);
+    } else if ("accessToken" in res?.data) {
+      storeLocalStorageInfo(authKey, res?.data?.accessToken);
+      toast.success("You are Sigin successfully");
       router.push("/");
     }
-    storeLocalStorageInfo(authKey, res?.data?.accessToken);
   };
+
+  // validationMessage
+  const validationMessage =
+    Object.keys(validationResponse).length > 0 && validationResponse?.message;
+
   return (
     <div
       className={`border lg:absolute ${
@@ -57,9 +66,10 @@ const Signin = () => {
                 <input
                   {...register("email", { required: "email is required" })}
                   className="  w-full  outline-none focus:outline-none"
+                  defaultValue={"masum.rana6267@gmail.com"}
                   type="email"
                   name="email"
-                  placeholder="example@gmail.com"
+                  placeholder="enter your email"
                   id="email"
                 />
               </div>
@@ -75,11 +85,10 @@ const Signin = () => {
                   })}
                   className="w-full py-2 outline-none focus:outline-none"
                   type={isViewPass ? "text" : "password"}
+                  defaultValue={"123456"}
                   name="password"
                   placeholder="enter your password"
                   id="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <button type="button" onClick={togglePasswordVisibility}>
                   {isViewPass ? (
@@ -89,7 +98,8 @@ const Signin = () => {
                   )}
                 </button>
               </div>
-              <p className="text-red-500 ms-2">{errors.password?.message}</p>
+              <p className="text-red-500 ms-2"> {errors.password?.message}</p>
+              <p className="text-red-500 ms-2"> {validationMessage}</p>
             </div>
 
             <div className="flex justify-center  mt-5">

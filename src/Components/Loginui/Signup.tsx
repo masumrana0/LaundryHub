@@ -25,8 +25,7 @@ const Signup = () => {
   // Login State come to redux store
   const dispatch = useAppDispatch();
   const authState = useAppSelector((state) => state.auth.authState);
-  const [userSignup, { isLoading, isSuccess, isError, error }] =
-    useUserSignupMutation();
+  const [userSignup, { isLoading }] = useUserSignupMutation();
   // essential Component state
   const [isViewPass, setIsViewPass] = useState(false);
   const [password, setPassword] = useState("");
@@ -44,21 +43,13 @@ const Signup = () => {
   };
 
   // handling registration
-  const onSubmit = async (data: any) => {
-    const res = await userSignup(data).unwrap();
-    // console.log(isSuccess);
+  const onSubmit = async (signupData: any) => {
+    // console.log(signupData);
 
+    const res = await userSignup(signupData).unwrap();
     if (res?.accessToken) {
       storeLocalStorageInfo(authKey, res.accessToken);
       storeLocalStorageInfo("isEmailVerified", res.isEmailVerified);
-
-      message.success({
-        content: "User registration successful.",
-        style: {
-          fontSize: "16px", // You can adjust the font size to your preference
-        },
-      });
-    } else {
     }
   };
 

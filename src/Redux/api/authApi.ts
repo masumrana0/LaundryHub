@@ -1,14 +1,16 @@
 import { IUser } from "@/Interface/user";
 import { baseApi } from "./baseApi";
+import { ISigninData } from "@/Interface/auth";
 
 const authApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     userSignin: build.mutation({
-      query: (signInData) => ({
+      query: (signInData: ISigninData) => ({
         url: "/auth/login",
         method: "POST",
-        data: signInData,
+        body: signInData,
       }),
+
       invalidatesTags: ["user"],
     }),
 
@@ -19,6 +21,7 @@ const authApi = baseApi.injectEndpoints({
         data: signupData,
       }),
     }),
+
     sendVerificationEmail: build.query({
       query: () => ({
         url: "/auth/verification/client",

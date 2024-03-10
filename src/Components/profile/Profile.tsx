@@ -4,6 +4,7 @@ import Link from "next/link";
 
 const handleLogout = () => {
   logOut();
+  console.log("hello");
 };
 export const items: MenuProps["items"] = [
   {

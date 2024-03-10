@@ -5,7 +5,14 @@ import {
   removeFromLocalStorage,
   setLocalStorage,
 } from "@/utilities/local-storage";
+// import { removeUserInfo } from "@/services/auth.service";
 
+// import { IGenericErrorResponse, ResponseSuccessType } from "@/types";
+// import {
+//   getFromLocalStorage,
+//   getRefreshToken,
+//   setToLocalStorage,
+// } from "@/utils/local-storage";
 import axios from "axios";
 
 const instance = axios.create();
@@ -54,7 +61,7 @@ instance.interceptors.response.use(
       setLocalStorage(authKey, accessToken);
       return instance(config);
     } else {
-      // console.log(error);
+      console.log(error);
       if (error?.response?.status === 403 || error?.response?.status === 401) {
         removeFromLocalStorage(authKey);
       }
