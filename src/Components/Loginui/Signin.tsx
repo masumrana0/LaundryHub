@@ -9,6 +9,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
+import LoadingSpinner from "../ui/LoadingSpinner";
+import Button from "../ui/button";
 
 const Signin = () => {
   // essential state
@@ -58,8 +60,10 @@ const Signin = () => {
       <h2 className="font-bold text-3xl text-center mb-5 ">Sign In</h2>
 
       <div>
+        {/* sigin form  */}
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
+            {/* email  */}
             <div className="mb-3">
               <h3 className="text-xl">Email</h3>
               <div className="border hover:border-green-400 py-2  px-4   rounded-lg focus:border-green-500 focus:outline-none ">
@@ -75,7 +79,7 @@ const Signin = () => {
               </div>
               <p className="text-red-500 ms-2">{errors.email?.message}</p>
             </div>
-
+            {/* password  */}
             <div>
               <h3 className="text-xl">Password</h3>
               <div className="flex items-center  border rounded-lg px-3 hover:border-green-500 ">
@@ -101,14 +105,9 @@ const Signin = () => {
               <p className="text-red-500 ms-2"> {errors.password?.message}</p>
               <p className="text-red-500 ms-2"> {validationMessage}</p>
             </div>
-
+            {/* button  */}
             <div className="flex justify-center  mt-5">
-              <button
-                type="submit"
-                className="border px-10 rounded bg-green-400 shadow-lg   shadow-gray-400 hover:text-white font-semibold text-lg  py-2 hover:bg-green-700 transition-colors duration-300 text-white "
-              >
-                SignIn
-              </button>
+              <Button className="w-32 rounded-lg ">Signin</Button>
             </div>
           </div>
         </form>
