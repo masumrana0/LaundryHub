@@ -17,8 +17,6 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import ThirdSwiperData from "./homwSwiperContent/ThirdSwiperData";
 import SecondSwiperData from "./homwSwiperContent/SecondSwiperData";
 import FirstSwiperData from "./homwSwiperContent/FirstSwiperData";
-import { Col } from "antd";
-import { FaLessThanEqual } from "react-icons/fa6";
 
 export default function HomeHeaderSwiper() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -46,12 +44,12 @@ export default function HomeHeaderSwiper() {
         <SwiperSlide>
           <ThirdSwiperData isActive={activeIndex === 0} />
         </SwiperSlide>
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <SecondSwiperData isActive={activeIndex === 1} />
         </SwiperSlide>
         <SwiperSlide>
           <FirstSwiperData isActive={activeIndex === 2} />
-        </SwiperSlide>
+        </SwiperSlide> */}
       </Swiper>
     </div>
   );

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logo from "../../../../public/logo.png";
+
 import Link from "next/link";
 import { useState } from "react";
 import {
@@ -9,89 +9,113 @@ import {
   DownOutlined,
   UpOutlined,
 } from "@ant-design/icons";
-import { Avatar, Space } from "antd";
+import { Avatar, Dropdown, Space } from "antd";
+import { FaBloggerB, FaComments, FaPhone, FaRegBell } from "react-icons/fa6";
+import Cart from "@/Components/Cart/Cart";
+import { BsList, BsXLg } from "react-icons/bs";
+import logo from "/public/logo.png";
+import { isLoggedIn } from "@/services/auth.service";
+import { items } from "@/Components/profile/Profile";
 
 const MobileScreenNavbar = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isMobileDropdown, setMobileDropdownOpen] = useState(false);
 
-  const toggleMobileDropdown = () => {
-    setMobileDropdownOpen(!isMobileDropdown);
-  };
-  const toggleDropdown = () => {
-    setDropdownOpen(!isDropdownOpen);
-  };
-
-  const closeDropdown = () => {
-    setDropdownOpen(false);
-  };
   return (
-    <div className=" container mx-auto flex justify-between items-center py-4 px-5   ">
-      <div className="">
-        <div className="flex items-center gap-1">
-          <Image src={logo} width="50" height="50" alt="logo" />
-          <h2 className="  text-white">LAUNDRY HUB</h2>
-          <button
-            onClick={toggleMobileDropdown}
-            className="px-4 ease-in-out duration-300 "
-          >
-            {isMobileDropdown ? (
-              <DownOutlined className="text-3xl" />
-            ) : (
-              <UpOutlined className="text-3xl" />
-            )}
+    <div className="w-full px-3 py-2  bg-slate-200  ">
+      {/* upper part  */}
+      <div className="w-full flex justify-between items-center">
+        {/* logo */}
+        <Image src={logo} width={50} height={50} alt="logo" />
+        {/* Dropdown toogle button */}
+        <div className="text-3xl transition-all duration-300">
+          <button onClick={() => setDropdownOpen(!isDropdownOpen)}>
+            {isDropdownOpen ? <BsXLg /> : <BsList />}
           </button>
         </div>
-        {isMobileDropdown && (
-          <div className="flex flex-col gap-2  mt-5 ">
-            <Link
-              className="flex items-center hover:text-amber-500 "
-              href="/services"
-            >
-              {" "}
-              <HomeOutlined /> HOME
-            </Link>
-            <Link
-              className="flex items-center hover:text-amber-500 "
-              href="/services"
-            >
-              {" "}
-              <SettingOutlined className="animate-spin  " /> SERVICES
-            </Link>
+      </div>
+      {/* <hr className="mt-3" /> */}
+      <div>
+        {isDropdownOpen && (
+          <div className="flex justify-between ">
+            <div className="mt-5 flex flex-col gap-3">
+              <div className="w-full flex justify-between  ">
+                <Link
+                  className="relative flex items-center gap-0.5  text-md font-semibold transition-all duration-300 group"
+                  href="/"
+                >
+                  <span>
+                    <HomeOutlined />
+                  </span>
+                  HOME
+                  <span className="absolute bottom-0 top-6 left-0 w-[70px] h-1 bg-green-400 transform scale-x-0 transition-transform group-hover:scale-x-100 duration-300"></span>
+                </Link>
+              </div>
+              <Link
+                className="relative flex items-center gap-0.5  text-md font-semibold transition-all duration-300 group"
+                href="/service"
+              >
+                <span>
+                  <SettingOutlined className="animate-spin  " />
+                </span>
+                SERVICES
+                <span className="absolute bottom-0 top-6 left-0 w-[85px] h-1 bg-green-400 transform scale-x-0 transition-transform group-hover:scale-x-100 duration-300"></span>
+              </Link>
+
+              <Link
+                className="relative flex items-center gap-0.5  text-md font-semibold transition-all duration-300 group"
+                href="/laundry"
+              >
+                <span>{/* <FaBloggerB /> */}</span>
+                LAUNDRY
+                <span className="absolute bottom-0 top-6 left-0 w-[75px] h-1 bg-green-400 transform scale-x-0 transition-transform group-hover:scale-x-100 duration-300"></span>
+              </Link>
+
+              <Link
+                className="relative flex items-center gap-0.5  text-md font-semibold transition-all duration-300 group"
+                href="/about"
+              >
+                <span>
+                  <FaBloggerB />
+                </span>
+                ABOUT
+                <span className="absolute bottom-0 top-6 left-0 w-[75px] h-1 bg-green-400 transform scale-x-0 transition-transform group-hover:scale-x-100 duration-300"></span>
+              </Link>
+
+              <Link
+                className="relative flex items-center gap-0.5  text-md font-semibold transition-all duration-300 group"
+                href="/"
+              >
+                <span>
+                  <FaPhone />
+                </span>
+                CONTACT
+                <span className="absolute bottom-0 top-6 left-0 w-[88px] h-1 bg-green-400 transform scale-x-0 transition-transform group-hover:scale-x-100 duration-300"></span>
+              </Link>
+            </div>
+
+            {/* login part  / Avatar part */}
+            <div className=" mt-2 ">
+              {isLoggedIn() ? (
+                <div className="relative inline-block text-left">
+                  <Dropdown menu={{ items }} placement="bottom">
+                    <button>
+                      <Space wrap size={16}>
+                        <Avatar size="large" icon={<UserOutlined />} />
+                      </Space>
+                    </button>
+                  </Dropdown>
+                </div>
+              ) : (
+                <button className="rounded px-5 py-2 shadow-lg font-semibold bg-green-300 transition-colors duration-300 hover:bg-green-500 hover:text-white text-gray-600">
+                  <Link href="/auth" scroll={false}>
+                    Account
+                  </Link>
+                </button>
+              )}
+            </div>
           </div>
         )}
-      </div>
-      <div className="flex justify-around items-center  text-lg ">
-        <div className="relative inline-block text-left">
-          <button
-            onClick={toggleDropdown}
-            onBlur={closeDropdown}
-            className="hover:border-1 border-amber-200 flex items-center gap-2"
-          >
-            <Space wrap size={16}>
-              <Avatar size="large" icon={<UserOutlined />} />
-            </Space>
-          </button>
-          {isDropdownOpen && (
-            <div className="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-              <div className="py-1">
-                <h3 className="text-black text-center">Masum Rana</h3>
-                <button
-                  className="block mx-auto px-10 py-2 text-sm text-gray-700 hover:bg-gray-200"
-                  onClick={closeDropdown}
-                >
-                  Profile
-                </button>
-                <button
-                  className="block  mx-auto px-10 py-2 text-sm text-gray-700 hover:bg-gray-200"
-                  onClick={closeDropdown}
-                >
-                  Logout
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
       </div>
     </div>
   );

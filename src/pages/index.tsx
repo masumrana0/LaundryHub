@@ -11,11 +11,9 @@ import { ReactElement } from "react";
 
 const HomePage = () => {
   return (
-    <div>
+    <div className="lg:container">
       {/* introduce-section  */}
-      <div className="container">
-        <HomeHeaderSwiper />
-      </div>
+      <div>{/* <HomeHeaderSwiper /> */}</div>
 
       <div>{/* <HowItsWorkSectionTwo /> */}</div>
 
@@ -24,7 +22,7 @@ const HomePage = () => {
         data-aos="zoom-in-right"
         data-aos-duration="2000"
       >
-        <IntroduceService />
+        {/* <IntroduceService /> */}
       </div>
 
       {/* about Section  */}
@@ -38,17 +36,17 @@ const HomePage = () => {
       </div> */}
 
       {/* service section  */}
-      <div className="container mx-auto">
+      {/* <div className="container mx-auto">
         <ServicesSection />
-      </div>
+      </div> */}
       {/* how to work section  */}
-      <div data-aos="flip-right" data-aos-duration="2000">
+      {/* <div data-aos="flip-right" data-aos-duration="2000">
         <HowItsWorkSectiont />
-      </div>
+      </div> */}
 
       {/* why choose use section*/}
       <div data-aos="zoom-in-left" data-aos-duration="2000">
-        <ChooseSection />
+        {/* <ChooseSection /> */}
       </div>
 
       {/* review and rating section */}
@@ -82,7 +80,7 @@ const HomePage = () => {
         data-aos-easing="ease-in-sine"
         data-aos-duration="1000"
       >
-        <ContactUs />
+        {/* <ContactUs /> */}
       </div>
     </div>
   );

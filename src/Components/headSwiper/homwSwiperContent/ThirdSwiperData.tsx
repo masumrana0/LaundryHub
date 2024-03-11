@@ -42,22 +42,22 @@ const ThirdSwiperData = ({ isActive }: { isActive: boolean }) => {
     <div className="font-sans" style={imageStyle}>
       <div className=" ">
         {/* top part  */}
-        <div className="thirdCTextFirstPart absolute right-[35rem] mt-32 hidden">
-          <p className=" lg:text-5xl tracking-tighter font-thin mb-3">
+        <div className="thirdCTextFirstPart absolute right-[35rem] mt-32 hidden lg:block">
+          <p className="lg:text-5xl tracking-tighter font-thin mb-3">
             The Better Solution
           </p>
-          <p className="  font-bold  lg:text-5xl  mb-7">
+          <p className="font-bold lg:text-5xl mb-7">
             for <span className="text-green-600">DryCleaners</span>
           </p>
         </div>
 
         {/* botom part  */}
-        <div className="bottomCTextSecond absolute right-[-35rem] top-[10rem] mt-32 hidden">
+        <div className="bottomCTextSecond absolute right-[-35rem] top-[10rem] mt-32 hidden lg:block">
           {/* first  */}
-          <div className="flex  items-center gap-3 mb-5">
+          <div className="flex items-center gap-3 mb-5">
             <Image className="" src={icon1} alt="icon" />
-            <div className="    border-l-4 border-green-400 pl-2 ">
-              <p className="lg:text-xl font-thin text-gray-200  ">
+            <div className="border-l-4 border-green-400 pl-2">
+              <p className="lg:text-xl font-thin text-gray-200">
                 01.So Fast Delivery
               </p>
               <h3 className="font-semibold text-2xl text-[#ffc908]">
@@ -68,10 +68,10 @@ const ThirdSwiperData = ({ isActive }: { isActive: boolean }) => {
           </div>
 
           {/* second */}
-          <div className="flex  items-center gap-3 mb-5">
+          <div className="flex items-center gap-3 mb-5">
             <Image className=" " src={icon2} alt="icon" />
-            <div className="   border-l-4 border-green-400 pl-2    ">
-              <p className="lg:text-xl tracking-tighter font-thin text-gray-300  ">
+            <div className="border-l-4 border-green-400 pl-2">
+              <p className="lg:text-xl tracking-tighter font-thin text-gray-300">
                 02.Memberships
               </p>
               <h3 className="font-semibold text-2xl text-[#8dd7f7]">
@@ -82,7 +82,7 @@ const ThirdSwiperData = ({ isActive }: { isActive: boolean }) => {
           </div>
 
           {/* Third */}
-          <div className="flex  items-center gap-3 mb-5">
+          <div className="flex items-center gap-3 mb-5">
             <Image className="" src={icon3} alt="icon" />
             <div className="border-l-4 border-green-400 pl-2">
               <p className="lg:text-lg tracking-tighter font-thin text-gray-300">
@@ -94,6 +94,11 @@ const ThirdSwiperData = ({ isActive }: { isActive: boolean }) => {
               </h3>
             </div>
           </div>
+        </div>
+
+        {/* Responsive for tablet and phone */}
+        <div className="lg:hidden">
+          {/* Include the content you want to show on smaller screens */}
         </div>
       </div>
     </div>

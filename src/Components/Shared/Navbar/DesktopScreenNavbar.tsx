@@ -1,11 +1,10 @@
 import Image from "next/image";
 import logo from "../../../../public/logo.png";
 import Link from "next/link";
-import { useState } from "react";
 import { UserOutlined, SettingOutlined, HomeOutlined } from "@ant-design/icons";
-import { Avatar, MenuProps, Space } from "antd";
+import { Avatar, Space } from "antd";
 import { isLoggedIn, logOut } from "@/services/auth.service";
-import { Button, Dropdown } from "antd";
+import { Dropdown } from "antd";
 import { FaRegBell, FaComments, FaPhone, FaBloggerB } from "react-icons/fa6";
 import Cart from "@/Components/Cart/Cart";
 import { items } from "@/Components/profile/Profile";
@@ -14,10 +13,10 @@ const DesktopScreenNavbar = () => {
   const isLoggedin = isLoggedIn();
 
   return (
-    <div className="hidden lg:block container mx-auto   bg-[#edfaff]">
+    <div className="hidden lg:block container mx-auto  bg-slate-100   ">
       <div className=" border-b-2  py-3">
-        <div className="flex justify-between">
-          <div className="flex">
+        <div className="flex justify-between bg-green-400 p-3  px-4 rounded text-white">
+          <div className="flex  ">
             <Link
               className="hover:text-green-600 transition-colors duration-300 flex items-center gap-2"
               href="/laundry"
@@ -34,13 +33,14 @@ const DesktopScreenNavbar = () => {
               FeedBack
             </Link>
           </div>
+
           <div>
             <Cart />
           </div>
         </div>
       </div>
 
-      <div className="mt-5 flex justify-between items-center">
+      <div className="mt-5 flex justify-between items-center  p-4">
         {/* logo part  */}
         <div className="flex items-center gap-1  ">
           <Image src={logo} width="70" height="50" alt="logo" />

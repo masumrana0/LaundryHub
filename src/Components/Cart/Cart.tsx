@@ -23,10 +23,6 @@ const Cart: React.FC = () => {
   );
   const grandTotal = subTotal + deliveryCost;
 
-  const showDefaultDrawer = () => {
-    setOpen(true);
-  };
-
   const showLargeDrawer = () => {
     setOpen(true);
   };
@@ -44,9 +40,9 @@ const Cart: React.FC = () => {
   return (
     <>
       <Space>
-        <Button onClick={showLargeDrawer}>
-          <FaCartShopping className="text-2xl" />
-        </Button>
+        <button onClick={showLargeDrawer}>
+          <FaCartShopping className="text-2xl text-white" />
+        </button>
       </Space>
       <Drawer placement="right" size="large" onClose={onClose} open={open}>
         <div>
