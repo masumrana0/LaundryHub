@@ -63,9 +63,9 @@ const Signup = () => {
     Object.keys(validationResponse).length > 0 && validationResponse?.message;
 
   return (
-    <div className="lg:w-[450px]  mt-8 lg:p- p-10   rounded-md shadow-lg ">
+    <div className="lg:w-[450px]  mt-8  p-10  rounded-md shadow-lg ">
       <div>
-        <h2 className="font-bold text-2xl lg:text-3xl text-center lg:mb-5 ">
+        <h2 className="font-bold text-2xl lg:text-3xl text-center mb-10 ">
           Sign Up
         </h2>
 
@@ -74,7 +74,7 @@ const Signup = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-3">
               {/* firstName  */}
-              <div className="">
+              <div>
                 <div className="border hover:border-green-400 py-2  px-4   rounded-xl focus:border-green-500 focus:outline-none border-gray-400 ">
                   <input
                     {...register("name.firstName")}

@@ -9,9 +9,10 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
-import Button from "../ui/button";
+
 import LoadingSpinner from "../Shared/Loading";
 import { setAuthState } from "@/Redux/features/auth/authSlice";
+import Button from "../ui/button";
 
 const Signin = () => {
   const isRegisterModalOpen = useAppSelector((state) => state.auth.authState);
@@ -55,7 +56,7 @@ const Signin = () => {
     Object.keys(validationResponse).length > 0 && validationResponse?.message;
 
   return (
-    <div className="w-[34rem] border p-20 shadow-sm rounded">
+    <div className="w-full lg:p-20 px-10 shadow-xl shadow-green-100 rounded">
       <h2 className="font-bold text-3xl text-center mb-5 ">Sign In</h2>
 
       <div>
@@ -66,16 +67,16 @@ const Signin = () => {
             <div className="mb-3">
               <h3 className="text-xl">Email</h3>
               {isLoading && (
-                <div className="flex justify-center">
+                <div className="fixed inset-0 bg-black bg-opacity-20 flex items-center justify-center">
                   <div className="absolute">
                     {true && <LoadingSpinner size="regular" />}
                   </div>
                 </div>
               )}
-              <div className="border hover:border-green-400 py-2  px-4   rounded-lg focus:border-green-500 focus:outline-none ">
+              <div className="border hover:border-green-400 py-2  px-4   rounded-xl focus:border-green-500 focus:outline-none border-gray-400 ">
                 <input
                   {...register("email", { required: "email is required" })}
-                  className="  w-full  outline-none focus:outline-none"
+                  className="  w-full  outline-none focus:outline-none  bg-slate-50 "
                   defaultValue={"masum.rana6267@gmail.com"}
                   type="email"
                   name="email"
@@ -89,12 +90,12 @@ const Signin = () => {
             {/* password  */}
             <div>
               <h3 className="text-xl">Password</h3>
-              <div className="flex items-center  border rounded-lg px-3 hover:border-green-500 ">
+              <div className="flex items-center border hover:border-green-400 py-2  px-4   rounded-xl focus:border-green-500 focus:outline-none border-gray-400 ">
                 <input
                   {...register("password", {
                     required: "password is required",
                   })}
-                  className="w-full py-2 outline-none focus:outline-none"
+                  className="  w-full  outline-none focus:outline-none  bg-slate-50 "
                   type={isViewPass ? "text" : "password"}
                   defaultValue={"123456"}
                   name="password"
