@@ -1,12 +1,15 @@
 import * as yup from "yup";
 
+const bdPhoneNumberRegExp = /^(\+88)?01[3456789]\d{8}$/;
 const userSignupSchema = yup.object({
   name: yup.object({
     firstName: yup.string().required("First Name is required."),
     lastName: yup.string().optional(),
   }),
   email: yup.string().required("email is required").email("Invalid email"),
-  phoneNumber: yup.string().required("phoneNumber is required"),
+  phoneNumber: yup
+    .string()
+    .matches(bdPhoneNumberRegExp, "Invalid Bangladesh phone number"),
   password: yup
     .string()
     .required("Password is requred")

@@ -1,7 +1,7 @@
 import { ISigninData } from "@/Interface/auth";
 import { IValidationResponse } from "@/Interface/shared";
 import { useUserSigninMutation } from "@/Redux/api/authApi";
-import { useAppSelector } from "@/Redux/hook";
+import { useAppDispatch, useAppSelector } from "@/Redux/hook";
 import { authKey } from "@/constants/storageKey";
 import { storeLocalStorageInfo } from "@/services/auth.service";
 import { useRouter } from "next/navigation";
@@ -9,15 +9,18 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
-import LoadingSpinner from "../ui/LoadingSpinner";
 import Button from "../ui/button";
+import LoadingSpinner from "../Shared/Loading";
+import { setAuthState } from "@/Redux/features/auth/authSlice";
 
 const Signin = () => {
+  const isRegisterModalOpen = useAppSelector((state) => state.auth.authState);
+  const dispatch = useAppDispatch();
   // essential state
   const [validationResponse, setValidationResponse] =
     useState<IValidationResponse>({});
   // redux
-  const [userSignin] = useUserSigninMutation();
+  const [userSignin, { isLoading }] = useUserSigninMutation();
   const authState = useAppSelector((state) => state.auth.authState);
   const [isViewPass, setIsViewPass] = useState(false);
   const router = useRouter();
@@ -52,11 +55,7 @@ const Signin = () => {
     Object.keys(validationResponse).length > 0 && validationResponse?.message;
 
   return (
-    <div
-      className={`border lg:absolute ${
-        authState ? "right-[-2000px] hidden lg:block" : "right-40 "
-      }  top-52 my-10 rounded-lg shadow-lg  lg:p-24 lg:w-[30%] w-[90%] mx-auto p-10`}
-    >
+    <div className="w-[34rem] border p-20 shadow-sm rounded">
       <h2 className="font-bold text-3xl text-center mb-5 ">Sign In</h2>
 
       <div>
@@ -66,6 +65,13 @@ const Signin = () => {
             {/* email  */}
             <div className="mb-3">
               <h3 className="text-xl">Email</h3>
+              {isLoading && (
+                <div className="flex justify-center">
+                  <div className="absolute">
+                    {true && <LoadingSpinner size="regular" />}
+                  </div>
+                </div>
+              )}
               <div className="border hover:border-green-400 py-2  px-4   rounded-lg focus:border-green-500 focus:outline-none ">
                 <input
                   {...register("email", { required: "email is required" })}
@@ -79,6 +85,7 @@ const Signin = () => {
               </div>
               <p className="text-red-500 ms-2">{errors.email?.message}</p>
             </div>
+
             {/* password  */}
             <div>
               <h3 className="text-xl">Password</h3>
@@ -106,11 +113,25 @@ const Signin = () => {
               <p className="text-red-500 ms-2"> {validationMessage}</p>
             </div>
             {/* button  */}
-            <div className="flex justify-center  mt-5">
-              <Button className="w-32 rounded-lg ">Signin</Button>
+            <div className="flex justify-center  mt-5  ">
+              <Button
+                isLoading={isLoading}
+                className=" rounded-[4px] hover:shadow-lg  "
+              >
+                Sign in
+              </Button>
             </div>
           </div>
         </form>
+        <h3 className="py-3 font-thin text-lg">
+          Don't have an account?{" "}
+          <button
+            onClick={() => dispatch(setAuthState())}
+            className="text-xl  text-blue-500  rounded"
+          >
+            Signup
+          </button>
+        </h3>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import { IUser } from "@/Interface/user";
 import { baseApi } from "./baseApi";
-import { ISigninData } from "@/Interface/auth";
+import { ISigninData, ISignupData } from "@/Interface/auth";
 
 const authApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
@@ -15,10 +15,10 @@ const authApi = baseApi.injectEndpoints({
     }),
 
     userSignup: build.mutation({
-      query: (signupData) => ({
+      query: (signupData: ISignupData) => ({
         url: "/auth/customer/register",
         method: "POST",
-        data: signupData,
+        body: signupData,
       }),
     }),
 

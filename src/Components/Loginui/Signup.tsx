@@ -6,30 +6,37 @@
  *
  */
 
-import { useUserSignupMutation } from "@/Redux/api/authApi";
-import { setIsEmailVerified } from "@/Redux/features/auth/authSlice";
-import { useAppDispatch, useAppSelector } from "@/Redux/hook";
-import { AuthValidations } from "@/Schema/Schema";
-import { authKey } from "@/constants/storageKey";
-import { Button, message, Space } from "antd";
-import { storeLocalStorageInfo } from "@/services/auth.service";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
+import { useUserSignupMutation } from "@/Redux/api/authApi";
+import { yupResolver } from "@hookform/resolvers/yup";
+import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
-import style from "../style/Loginui.module.css";
-import Loading from "@/pages/loading";
+import { useAppDispatch } from "@/Redux/hook";
+
+// custom componnet
+import Button from "../ui/button";
+import { setAuthState } from "@/Redux/features/auth/authSlice";
+import { AuthValidations } from "@/Schema/Schema";
+import { authKey } from "@/constants/storageKey";
+import { storeLocalStorageInfo } from "@/services/auth.service";
+import { IValidationResponse } from "@/Interface/shared";
+import LoadingSpinner from "../Shared/Loading";
 
 const Signup = () => {
-  const [messageApi, contextHolder] = message.useMessage();
-  // Login State come to redux store
+  // essential state
+  const [validationResponse, setValidationResponse] =
+    useState<IValidationResponse>({});
+  // password visivility state
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
+    useState(false);
+
+  // redux
   const dispatch = useAppDispatch();
-  const authState = useAppSelector((state) => state.auth.authState);
+  const router = useRouter();
   const [userSignup, { isLoading }] = useUserSignupMutation();
-  // essential Component state
-  const [isViewPass, setIsViewPass] = useState(false);
-  const [password, setPassword] = useState("");
-  const [conPassword, setConPassword] = useState("");
 
   // React Form hook handler
   const {
@@ -38,47 +45,43 @@ const Signup = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(AuthValidations.userSignupSchema) });
 
-  const togglePasswordVisibility = () => {
-    setIsViewPass(!isViewPass);
-  };
-
   // handling registration
   const onSubmit = async (signupData: any) => {
-    // console.log(signupData);
-
     const res = await userSignup(signupData).unwrap();
-    if (res?.accessToken) {
-      storeLocalStorageInfo(authKey, res.accessToken);
-      storeLocalStorageInfo("isEmailVerified", res.isEmailVerified);
+
+    if ("validationResponse" in res?.data) {
+      setValidationResponse(res?.data?.validationResponse);
+    } else if ("accessToken" in res?.data) {
+      storeLocalStorageInfo(authKey, res?.data?.accessToken);
+      toast.success("Signup successful! Check your email for verification.");
+      router.push("/");
     }
   };
 
+  // validationMessage
+  const validationMessage =
+    Object.keys(validationResponse).length > 0 && validationResponse?.message;
+
   return (
-    <div className="relative">
-      <div
-        className={`border lg:absolute  ${
-          authState ? "left-40" : "left-[-2000px] hidden lg:block"
-        }  lg:top-10  lg:my-10 rounded-lg shadow-lg ${
-          style.form
-        } w-[90%] mx-auto  lg:w-[30%] lg:p-16 p-5 `}
-      >
+    <div className="lg:w-[450px]  mt-8 lg:p- p-10   rounded-md shadow-lg ">
+      <div>
         <h2 className="font-bold text-2xl lg:text-3xl text-center lg:mb-5 ">
           Sign Up
         </h2>
 
         <div>
+          {/* sign up form */}
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div>
+            <div className="flex flex-col gap-3">
               {/* firstName  */}
-              <div className="lg:mb-3">
-                <h3 className="lg:text-xl text-md">First Name</h3>
-                <div className="border hover:border-green-400 py-2  px-4   rounded-lg focus:border-green-500 focus:outline-none m">
+              <div className="">
+                <div className="border hover:border-green-400 py-2  px-4   rounded-xl focus:border-green-500 focus:outline-none border-gray-400 ">
                   <input
                     {...register("name.firstName")}
-                    className="  w-full  outline-none focus:outline-none"
+                    className="  w-full  outline-none focus:outline-none  bg-slate-50 "
                     type="text"
                     name="name.firstName"
-                    placeholder="enter your firstName"
+                    placeholder="First Name"
                     id="firstName"
                   />
                 </div>
@@ -88,15 +91,14 @@ const Signup = () => {
               </div>
 
               {/* lastName  */}
-              <div className="lg:mb-3">
-                <h3 className="lg:text-xl text-md">Last Name</h3>
-                <div className="border hover:border-green-400 py-2  px-4   rounded-lg focus:border-green-500 focus:outline-none m">
+              <div className="">
+                <div className="border border-gray-400 hover:border-green-400 py-2  px-4   rounded-xl focus:border-green-500 focus:outline-none m">
                   <input
                     {...register("name.lastName")}
-                    className="  w-full  outline-none focus:outline-none"
+                    className="  w-full  outline-none focus:outline-none bg-slate-50"
                     type="text"
                     name="name.lastName"
-                    placeholder="enter your lastName"
+                    placeholder="Last Name"
                     id="lastName"
                   />
                 </div>
@@ -105,16 +107,24 @@ const Signup = () => {
                 </p>
               </div>
 
+              {/* loading state  */}
+              {isLoading && (
+                <div className="fixed inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                  <div className="absolute">
+                    <LoadingSpinner size="regular" />
+                  </div>
+                </div>
+              )}
+
               {/* Phone Number  */}
-              <div className="lg:mb-3">
-                <h3 className="lg:text-xl text-md">Phone Number</h3>
-                <div className="border hover:border-green-400 py-2  px-4   rounded-lg focus:border-green-500 focus:outline-none m">
+              <div className="">
+                <div className="border border-gray-400 hover:border-green-400 py-2  px-4   rounded-xl focus:border-green-500 focus:outline-none m">
                   <input
                     {...register("phoneNumber")}
-                    className="  w-full  outline-none focus:outline-none"
+                    className="  w-full  outline-none focus:outline-none bg-slate-50"
                     type="number"
                     name="phoneNumber"
-                    placeholder="phoneNumber"
+                    placeholder="Phone Number"
                     id="phoneNumber"
                   />
                 </div>
@@ -124,15 +134,14 @@ const Signup = () => {
               </div>
 
               {/* emial  */}
-              <div className="lg:mb-3">
-                <h3 className="lg:text-xl text-md">Email</h3>
-                <div className="border hover:border-green-400 py-2  px-4   rounded-lg focus:border-green-500 focus:outline-none m">
+              <div className="">
+                <div className="border border-gray-400 hover:border-green-400  py-2  px-4   rounded-xl focus:border-green-500 focus:outline-none m">
                   <input
                     {...register("email")}
-                    className="  w-full  outline-none focus:outline-none"
+                    className="  w-full  outline-none focus:outline-none bg-slate-50"
                     type="email"
                     name="email"
-                    placeholder="example@gmail.com"
+                    placeholder="Email"
                     id="email"
                   />
                 </div>
@@ -140,21 +149,21 @@ const Signup = () => {
               </div>
 
               {/* password  */}
-              <div className="lg:mb-3">
-                <h3 className="text-xl">Password</h3>
-                <div className="flex items-center  border rounded-lg px-3 hover:border-green-500 ">
+              <div className="">
+                <div className="flex items-center  border border-gray-400 rounded-xl px-3 hover:border-green-500 ">
                   <input
                     {...register("password")}
-                    className="  w-full py-2    outline-none focus:outline-none   "
-                    type={isViewPass ? "text" : "password"}
+                    className="  w-full py-2  outline-none focus:outline-none bg-slate-50  "
+                    type={isPasswordVisible ? "text" : "password"}
                     name="password"
-                    placeholder="enter your password"
+                    placeholder=" Password"
                     id="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
                   />
-                  <button type="button" onClick={togglePasswordVisibility}>
-                    {isViewPass ? (
+                  <button
+                    type="button"
+                    onClick={() => setIsPasswordVisible(!isPasswordVisible)}
+                  >
+                    {isPasswordVisible ? (
                       <FaEyeSlash className="cursor-pointer" />
                     ) : (
                       <FaEye className="cursor-pointer" />
@@ -165,21 +174,23 @@ const Signup = () => {
               </div>
 
               {/* confirmPassword  */}
-              <div className="lg:mb-3">
-                <h3 className="text-xl">Confirm Password</h3>
-                <div className="flex items-center  border rounded-lg px-3 hover:border-green-500 ">
+              <div className="">
+                <div className="flex items-center  border border-gray-400  rounded-xl px-3 hover:border-green-500 ">
                   <input
                     {...register("confirmPassword")}
-                    className="w-full py-2  outline-none focus:outline-none"
-                    type={isViewPass ? "text" : "password"}
+                    className="w-full py-2  outline-none focus:outline-none bg-slate-50"
+                    type={isConfirmPasswordVisible ? "text" : "password"}
                     name="confirmPassword"
-                    placeholder="enter your confirm password"
+                    placeholder="Confirm Password"
                     id="confirmPassword"
-                    value={conPassword}
-                    onChange={(e) => setConPassword(e.target.value)}
                   />
-                  <button type="button" onClick={togglePasswordVisibility}>
-                    {isViewPass ? (
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setIsConfirmPasswordVisible(!isConfirmPasswordVisible)
+                    }
+                  >
+                    {isConfirmPasswordVisible ? (
                       <FaEyeSlash className="cursor-pointer" />
                     ) : (
                       <FaEye className="cursor-pointer" />
@@ -190,21 +201,23 @@ const Signup = () => {
                   {errors.confirmPassword?.message}
                 </p>
               </div>
-
-              <div className="flex justify-center  lg:mt-5">
-                <button
-                  type="submit"
-                  className="  px-10 rounded bg-green-400 shadow-lg   shadow-gray-400 hover:text-white font-semibold text-lg  py-2 hover:bg-green-700 transition-colors duration-300 text-white "
-                >
-                  Signup
-                </button>
+              {/* submit button */}
+              <p className="text-red-500 ms-2"> {validationMessage}</p>
+              <div className="flex justify-center ">
+                <Button className="rounded-[5px] p-1 ">Signup</Button>
               </div>
             </div>
           </form>
+          <h3 className="py-3 font-thin text-lg">
+            Already have an account?{" "}
+            <button
+              onClick={() => dispatch(setAuthState())}
+              className="text-xl  text-blue-500  rounded"
+            >
+              Signin
+            </button>
+          </h3>
         </div>
-      </div>
-      <div className="absolute lg:left-[22%] left-[47%] lg:top-[25rem]  top-[16rem]">
-        {isLoading && <Loading />}
       </div>
     </div>
   );
