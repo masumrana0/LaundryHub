@@ -9,7 +9,6 @@ import {
   setBookingState,
   setCartToOrder,
 } from "@/Redux/features/order/orderSlice";
-import { Turtle } from "lucide-react";
 
 const Cart: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -41,7 +40,7 @@ const Cart: React.FC = () => {
     <>
       <Space>
         <button onClick={showLargeDrawer}>
-          <FaCartShopping className="text-2xl text-white" />
+          <FaCartShopping className="text-xl hover:text-green-600  " />
         </button>
       </Space>
       <Drawer placement="right" size="large" onClose={onClose} open={open}>

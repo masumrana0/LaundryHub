@@ -7,7 +7,7 @@ import { isLoggedIn, logOut } from "@/services/auth.service";
 import { Dropdown } from "antd";
 import { FaRegBell, FaComments, FaPhone, FaBloggerB } from "react-icons/fa6";
 import Cart from "@/Components/Cart/Cart";
-import { items } from "@/Components/profile/Profile";
+import { profileItems } from "@/Components/dropdowns/Items/ProfileItems";
 
 const DesktopScreenNavbar = () => {
   const isLoggedin = isLoggedIn();
@@ -15,7 +15,7 @@ const DesktopScreenNavbar = () => {
   return (
     <div className="hidden lg:block container mx-auto  bg-slate-100   ">
       <div className=" border-b-2  py-3">
-        <div className="flex justify-between bg-green-400 p-3  px-4 rounded text-white">
+        <div className="flex justify-between   p-3  px-4 rounded text-gray-800">
           <div className="flex  ">
             <Link
               className="hover:text-green-600 transition-colors duration-300 flex items-center gap-2"
@@ -113,7 +113,7 @@ const DesktopScreenNavbar = () => {
         <div>
           {isLoggedIn() ? (
             <div className="relative inline-block text-left">
-              <Dropdown menu={{ items }} placement="bottom">
+              <Dropdown menu={{ items: profileItems }} placement="bottom">
                 <button>
                   <Space wrap size={16}>
                     <Avatar size="large" icon={<UserOutlined />} />

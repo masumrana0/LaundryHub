@@ -15,7 +15,7 @@ import Cart from "@/Components/Cart/Cart";
 import { BsList, BsXLg } from "react-icons/bs";
 import logo from "/public/logo.png";
 import { isLoggedIn } from "@/services/auth.service";
-import { items } from "@/Components/profile/Profile";
+import { profileItems } from "@/Components/dropdowns/Items/ProfileItems";
 
 const MobileScreenNavbar = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -25,8 +25,19 @@ const MobileScreenNavbar = () => {
     <div className="w-full px-3 py-2  bg-slate-200  ">
       {/* upper part  */}
       <div className="w-full flex justify-between items-center">
-        {/* logo */}
-        <Image src={logo} width={50} height={50} alt="logo" />
+        {/* logo part  */}
+        <div className="flex items-center gap-1  ">
+          <Image src={logo} width="50" height="50" alt="logo" />
+          <div>
+            <h2 className="text-md font-bold ">
+              <span className="text-green-400 tracking-wide">LAUNDRY</span> HUB
+            </h2>
+            <span className="text-gray-500 font-thin  ">
+              We Clean Everything
+            </span>
+          </div>
+        </div>
+
         {/* Dropdown toogle button */}
         <div className="text-3xl transition-all duration-300">
           <button onClick={() => setDropdownOpen(!isDropdownOpen)}>
@@ -38,6 +49,7 @@ const MobileScreenNavbar = () => {
       <div>
         {isDropdownOpen && (
           <div className="flex justify-between ">
+            {/* navigation part */}
             <div className="mt-5 flex flex-col gap-3">
               <div className="w-full flex justify-between  ">
                 <Link
@@ -98,7 +110,7 @@ const MobileScreenNavbar = () => {
             <div className=" mt-2 ">
               {isLoggedIn() ? (
                 <div className="relative inline-block text-left">
-                  <Dropdown menu={{ items }} placement="bottom">
+                  <Dropdown menu={{ items: profileItems }} placement="bottom">
                     <button>
                       <Space wrap size={16}>
                         <Avatar size="large" icon={<UserOutlined />} />
