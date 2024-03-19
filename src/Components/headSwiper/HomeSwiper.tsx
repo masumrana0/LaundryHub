@@ -23,7 +23,7 @@ export default function HomeHeaderSwiper() {
   const [isActive, setAcive] = useState(false);
 
   return (
-    <div className="container px-0  mx-auto">
+    <div className=" ">
       <Swiper
         onSlideChange={(swiper) => {
           setActiveIndex(swiper.activeIndex);
@@ -41,15 +41,15 @@ export default function HomeHeaderSwiper() {
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <ThirdSwiperData isActive={activeIndex === 0} />
-        </SwiperSlide>
         {/* <SwiperSlide>
-          <SecondSwiperData isActive={activeIndex === 1} />
+          <ThirdSwiperData isActive={activeIndex === 0} />
+        </SwiperSlide> */}
+        <SwiperSlide>
+          {/* <SecondSwiperData isActive={activeIndex === 1} /> */}
         </SwiperSlide>
         <SwiperSlide>
           <FirstSwiperData isActive={activeIndex === 2} />
-        </SwiperSlide> */}
+        </SwiperSlide>
       </Swiper>
     </div>
   );
