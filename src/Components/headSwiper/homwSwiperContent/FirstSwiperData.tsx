@@ -73,22 +73,22 @@ const FirstSwiperData = ({ isActive }: { isActive: boolean }) => {
 
         {/* text  */}
         <div className=" ">
-          <p className="firstCFirstText hidden   absolute top-[-3%] left-[10%] text-lg sm:text-xl md:2xl tracking-tighter font-thin text-white    ">
+          <p className="firstCFirstText hidden   absolute top-[-3.4%] left-[10%]  sm:top-[10%] sm:left-[13%] md:left-[15%] text-lg sm:text-2xl md:text-3xl tracking-tighter font-thin text-white    ">
             We provide Best Cleaning Services
           </p>
-          <p className="firstCSecondText hidden  absolute top-[6rem] left-[16rem] font-bold text-white      text-xl   ">
+          <p className="firstCSecondText hidden  absolute top-[6rem] left-[16rem] sm:top-[36%] sm:left-[46%] md:left-[20%] font-bold text-white    sm:text-4xl  text-xl   ">
             with{" "}
             <span className="text-green-400">
               EcoDrive<span className="text-black">&trade;</span>
             </span>
           </p>
 
-          <div className=" firstCUnderLine hidden  absolute top-[11rem] left-[2.6rem]   border-b-4 border-green-400 w-20 mb-4   "></div>
+          <div className=" firstCUnderLine hidden  absolute top-[11rem] left-[2.6rem] sm:top-[58.5%] sm:left-[13%] border-b-4 border-green-400 w-20 mb-4   "></div>
 
-          <h3 className=" firstCBottomText hidden  absolute top-[8.3rem] left-[15rem] text-sm text-white font-bold mb-5 ">
+          <h3 className=" firstCBottomText hidden  absolute top-[8.3rem] left-[15rem] sm:top-[49%] sm:left-[44%]  text-white font-bold mb-5 text-xl sm:text-2xl ">
             Call us @ <span className="text-green-400">01644626735</span>
           </h3>
-          <button className="firstCButton hidden  absolute top-[12.5rem] left-[2.5rem] rounded px-3 py-2 shadow-lg font-semibold  transition-colors duration-300 bg-green-500  text-white hover:bg-green-700  ">
+          <button className="firstCButton hidden  absolute top-[12.5rem] left-[2.5rem] sm:top-[69%] sm:left-[13%] px-3 py-2 sm:px-5 sm:py-3 text-md sm:text-xl rounded  shadow-lg font-semibold  transition-colors duration-300 bg-green-500  text-white hover:bg-green-700  ">
             Get Clean
           </button>
         </div>
