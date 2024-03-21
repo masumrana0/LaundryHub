@@ -6,7 +6,7 @@ const IntroduceService = () => {
         <ServiceSwiper />
       </div>
       <div className="w-full lg:w-1/2">
-        <h2 className="text-2xl lg:text-4xl font-semibold">
+        <h2 className="text-xl lg:text-3xl font-semibold">
           High-Quality
           <span className="text-green-400">
             {" "}

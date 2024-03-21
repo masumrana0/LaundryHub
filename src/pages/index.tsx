@@ -18,7 +18,7 @@ import { ReactElement, useEffect } from "react";
 const HomePage = () => {
   useEffect(() => {
     AOS.init();
-    AOS.refresh();
+    // AOS.refresh();
   }, []);
   return (
     <div className="bg-gray-50">
@@ -33,18 +33,25 @@ const HomePage = () => {
           data-aos="zoom-in-down"
           data-aos-duration="2000"
         >
-          {/* <IntroduceService /> */}
+          <IntroduceService />
         </div>
 
         <div data-aos="zoom-out-up" data-aos-duration="2000">
-          {/* <HowItsWorkSectionTwo /> */}
+          <HowItsWorkSectionTwo />
         </div>
 
         {/* service section  */}
-        <div className="container mx-auto">{/* <ServicesSection /> */}</div>
+        <div
+          data-aos="fade-up"
+          data-aos-anchor-placement="bottom-bottom"
+          data-aos-duration="2000"
+          className="container mx-auto"
+        >
+          <ServicesSection />
+        </div>
         {/* how to work section  */}
         <div data-aos="flip-right" data-aos-duration="2000">
-          {/* <HowItsWorkSectiont /> */}
+          <HowItsWorkSectiont />
         </div>
 
         {/* why choose use section*/}
@@ -61,17 +68,12 @@ const HomePage = () => {
           data-aos-easing="ease-in-sine"
           data-aos-duration="2000"
         >
-          <div className="flex justify-center">
-            <h2 className="inline-block border-b-4 border-green-500 font-bold lg:text-5xl text-3xl my-20">
-              Review & Rating
-            </h2>
-          </div>
           <div className="container mx-auto">
             <ReviewSection />
           </div>
         </div>
 
-        <div>
+        <div data-aos="zoom-out" data-aos-duration="1000">
           <FQA />
         </div>
 
@@ -83,7 +85,7 @@ const HomePage = () => {
           data-aos-easing="ease-in-sine"
           data-aos-duration="1000"
         >
-          {/* <ContactUs /> */}
+          <ContactUs />
         </div>
       </div>
     </div>

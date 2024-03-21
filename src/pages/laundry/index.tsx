@@ -35,7 +35,7 @@ const Laundry = () => {
   // const [isOrderUserDettails, setOrderUserDettails] = useState<boolean>(false);
   const { laundryProducts } = useAppSelector((state) => state.order);
   const { data } = useGetAllServiceWithAnyTermQuery(null);
-  const serviceTitles = data;
+  const serviceTitles = data?.data;
 
   // console.log(service);
   const handleAddService = (data: string) => {

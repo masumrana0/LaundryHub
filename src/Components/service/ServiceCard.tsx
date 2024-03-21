@@ -19,32 +19,39 @@ const ServiceCard = ({ service }: { service: IService }) => {
   };
 
   return (
-    <div className="border border-black w-[300px] h-[400px] p-1 rounded-lg">
-      <Image
-        width={300}
-        className="h-[50%]"
-        height={100}
-        src={service.images[0]}
-        alt="service img"
-      />
-      <div className="mt-3">
-        <h2 className="text-2xl font-bold text-center">{service.title}</h2>
-        <p className="text-center font-thin ">
-          {service.details[0].slice(0, 120)}...
-          <Link className="text-violet-400" href="/service/details">
-            more
-          </Link>
-        </p>
-        <div className="flex justify-center gap-5 mt-1">
-          <button
-            onClick={handleSelectService}
-            className="rounded px-10 py-2 shadow-lg font-semibold bg-green-300 transition-colors duration-300 hover:bg-green-500 hover:text-white text-gray-600"
-          >
-            Select
-          </button>
-          <button className="rounded px-10 py-2 shadow-lg font-semibold bg-green-300 transition-colors duration-300 hover:bg-green-500 hover:text-white text-gray-600">
-            <Link href={`serviceDetails/${service?._id}`}>Details</Link>
-          </button>
+    <div className="hover:scale-[1.2] transition-transform duration-1000 ease-in-out max-w-md  mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-xl md:h-50">
+      <div className="md:flex border-2 ">
+        <div className="md:shrink-0">
+          <Image
+            className=" h-48 w-full   object-cover   md:w-48"
+            width={500}
+            height={500}
+            src={service.images[2]}
+            alt="Modern building architecture"
+          />
+        </div>
+        <div className="p-8">
+          <div className="uppercase tracking-wide text-lg text-green-500 font-semibold">
+            {service?.title}
+          </div>
+
+          <p className=" font-thin ">
+            {service.details[0].slice(0, 120)}...
+            <Link className="text-violet-400" href="/service/details">
+              more
+            </Link>
+          </p>
+          <div className="flex justify-center gap-5 mt-3">
+            <button
+              onClick={handleSelectService}
+              className="rounded px-5 py-1 shadow-lg font-semibold bg-green-400 transition-colors duration-300 hover:bg-green-500  text-white  "
+            >
+              Select
+            </button>
+            <button className="rounded px-5  py-1  shadow-lg font-semibold bg-green-400 transition-colors duration-300 hover:bg-green-500  text-white  ">
+              <Link href={`serviceDetails/${service?._id}`}>Details</Link>
+            </button>
+          </div>
         </div>
       </div>
     </div>

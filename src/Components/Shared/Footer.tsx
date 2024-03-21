@@ -10,7 +10,7 @@ import logo from "../../../public/logo.png";
 
 const Footer = () => {
   return (
-    <div className=" bg-[#121921] mt-20 text-gray-200">
+    <div className=" bg-[#121921]   text-gray-200">
       <div className="container flex flex-col lg:flex-row gap-10 lg:gap-0 justify-around mx-auto p-10 lg:p-20">
         {/* about site  */}
         <div className="lg:w-[35%]">

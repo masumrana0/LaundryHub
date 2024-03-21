@@ -15,7 +15,10 @@ const ServiceDetails = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const id = router.query.serviceId;
+  console.log(id);
+
   const { data, isError, isLoading } = useGetOneServiceQuery(id as string);
+  console.log(data);
 
   //service
   const service = data?.data;

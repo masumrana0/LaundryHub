@@ -13,14 +13,17 @@ const HowItsWorkSectiont = () => {
     boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.35)",
   };
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto  mt-32 lg:mt-52">
       <div>
-        <div className="text-center mt-20">
-          <h2 className="inline-block border-b-4 border-green-500 font-bold lg:text-5xl text-3xl my-20">
-            How It&apos;s work
-          </h2>
+        <div className=" my-12 ">
+          <p className="text-xl text-center font-thin tracking-tighter">
+            We Clean EveryThing
+          </p>
+          <h3 className="text-3xl text-center font-semibold">
+            Our <span className="font-bold">Working Process</span>
+          </h3>
         </div>
-        <div className="mt-10  lg:flex lg:flex-row flex-col justify-center items-center  ">
+        <div className="  lg:flex lg:flex-row flex-col justify-center items-center  ">
           <div className="lg:w-1/2 flex flex-col gap-2">
             <div className="flex gap-3 justify-center items-center">
               <div className="  lg:w-[250px]  w-[140px]"> </div>

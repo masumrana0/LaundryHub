@@ -16,7 +16,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { useAppDispatch } from "@/Redux/hook";
 
 // custom componnet
-import Button from "../ui/button";
+import Button from "../ui/Button";
 import { setAuthState } from "@/Redux/features/auth/authSlice";
 import { AuthValidations } from "@/Schema/Schema";
 import { authKey } from "@/constants/storageKey";

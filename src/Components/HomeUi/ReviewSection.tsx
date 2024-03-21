@@ -116,6 +116,14 @@ const ReviewSection = () => {
 
   return (
     <>
+      <div className=" my-12 ">
+        <p className="text-xl text-center font-thin tracking-tighter">
+          We Clean EveryThing
+        </p>
+        <h3 className="text-3xl text-center font-semibold">
+          Our Customers <span className="font-bold">Reviews and Ratings</span>
+        </h3>
+      </div>
       <Swiper
         spaceBetween={30}
         breakpoints={{

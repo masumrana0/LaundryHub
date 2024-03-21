@@ -23,9 +23,9 @@ const FQA = () => {
   });
 
   return (
-    <div className=" container mx auto my-5 mb-20">
+    <div className=" md:container  auto my-5 mb-20">
       <div className="flex justify-center">
-        <h3 className="text-center font-bold text-4xl my-16 border-b-4 inline-block border-green-400 text-gray-700 ">
+        <h3 className="text-center font-bold text-2xl my-8 lg:text-4xl lg:my-16 border-b-4 inline-block border-green-400 text-gray-700 ">
           {" "}
           Frequently Asked Questions
         </h3>

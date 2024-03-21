@@ -12,7 +12,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa6";
 
 import LoadingSpinner from "../Shared/Loading";
 import { setAuthState } from "@/Redux/features/auth/authSlice";
-import Button from "../ui/button";
+import Button from "../ui/Button";
 
 const Signin = () => {
   const isRegisterModalOpen = useAppSelector((state) => state.auth.authState);
