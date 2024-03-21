@@ -9,31 +9,36 @@ import ReviewSection from "@/Components/HomeUi/ReviewSection";
 import ServicesSection from "@/Components/HomeUi/servicesSection";
 import RootLayout from "@/Components/Layout/RootLayout";
 import HomeHeaderSwiper from "@/Components/headSwiper/HomeSwiper";
+import AOS from "aos";
 
 import "aos/dist/aos.css";
 
-import { ReactElement } from "react";
+import { ReactElement, useEffect } from "react";
 
 const HomePage = () => {
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
   return (
     <div className="bg-gray-50">
       <div className="lg:container">
-        {/* introduce-section  */}
         <div>
           <HomeHeaderSwiper />
         </div>
 
-        <div>
-          <HowItsWorkSectionTwo />
-        </div>
-
-        {/* <div
-          className="mt-8 px-5"
-          data-aos="zoom-in-right"
+        {/* introduce-section  */}
+        <div
+          className="mt-20 px-5"
+          data-aos="zoom-in-down"
           data-aos-duration="2000"
         >
-          <IntroduceService />
-        </div> */}
+          {/* <IntroduceService /> */}
+        </div>
+
+        <div data-aos="zoom-out-up" data-aos-duration="2000">
+          {/* <HowItsWorkSectionTwo /> */}
+        </div>
 
         {/* service section  */}
         <div className="container mx-auto">{/* <ServicesSection /> */}</div>
@@ -44,7 +49,7 @@ const HomePage = () => {
 
         {/* why choose use section*/}
         <div data-aos="zoom-in-left" data-aos-duration="2000">
-          {/* <ChooseSection /> */}
+          <ChooseSection />
         </div>
 
         {/* review and rating section */}
@@ -62,7 +67,7 @@ const HomePage = () => {
             </h2>
           </div>
           <div className="container mx-auto">
-            {/* <ReviewSection reviews={reviews.data} /> */}
+            <ReviewSection />
           </div>
         </div>
 

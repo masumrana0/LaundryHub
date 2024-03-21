@@ -26,8 +26,6 @@ const ThirdSwiperData = ({ isActive }: { isActive: boolean }) => {
         delay: 1,
         display: "block",
       });
-
-       
     }
 
     setAnimation(true);
@@ -48,7 +46,7 @@ const ThirdSwiperData = ({ isActive }: { isActive: boolean }) => {
 
         {/* content */}
 
-        <div className="thirdCTextFirstPart  absolute top-4 sm:top-[16%] lg:top-[14%]        ">
+        <div className="thirdCTextFirstPart hidden  absolute top-4 sm:top-[16%] lg:top-[14%]        ">
           {/* top part  */}
           <div className=" tracking-tighter text-lg md:text-2xl lg:text-4xl lg:mb-4 ">
             <p className="  font-extrabold    text-gray-200 lg:mb-2  ">
