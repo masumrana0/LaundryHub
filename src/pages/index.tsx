@@ -9,11 +9,9 @@ import ReviewSection from "@/Components/HomeUi/ReviewSection";
 import ServicesSection from "@/Components/HomeUi/servicesSection";
 import RootLayout from "@/Components/Layout/RootLayout";
 import HomeHeaderSwiper from "@/Components/headSwiper/HomeSwiper";
-import FirstSwiperData from "@/Components/headSwiper/homwSwiperContent/FirstSwiperData";
-import SecondSwiperData from "@/Components/headSwiper/homwSwiperContent/SecondSwiperData";
-import ThirdSwiperData from "@/Components/headSwiper/homwSwiperContent/ThirdSwiperData";
+
 import "aos/dist/aos.css";
-import { Turtle } from "lucide-react";
+
 import { ReactElement } from "react";
 
 const HomePage = () => {
@@ -25,15 +23,17 @@ const HomePage = () => {
           <HomeHeaderSwiper />
         </div>
 
-        <div>{/* <HowItsWorkSectionTwo /> */}</div>
+        <div>
+          <HowItsWorkSectionTwo />
+        </div>
 
-        <div
+        {/* <div
           className="mt-8 px-5"
           data-aos="zoom-in-right"
           data-aos-duration="2000"
         >
-          {/* <IntroduceService /> */}
-        </div>
+          <IntroduceService />
+        </div> */}
 
         {/* service section  */}
         <div className="container mx-auto">{/* <ServicesSection /> */}</div>
