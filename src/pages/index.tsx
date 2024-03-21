@@ -10,8 +10,10 @@ import ServicesSection from "@/Components/HomeUi/servicesSection";
 import RootLayout from "@/Components/Layout/RootLayout";
 import HomeHeaderSwiper from "@/Components/headSwiper/HomeSwiper";
 import FirstSwiperData from "@/Components/headSwiper/homwSwiperContent/FirstSwiperData";
+import SecondSwiperData from "@/Components/headSwiper/homwSwiperContent/SecondSwiperData";
 import ThirdSwiperData from "@/Components/headSwiper/homwSwiperContent/ThirdSwiperData";
 import "aos/dist/aos.css";
+import { Turtle } from "lucide-react";
 import { ReactElement } from "react";
 
 const HomePage = () => {
@@ -20,9 +22,7 @@ const HomePage = () => {
       <div className="lg:container">
         {/* introduce-section  */}
         <div>
-          {/* <HomeHeaderSwiper /> */}
-          <FirstSwiperData isActive={true} />
-          {/* <ThirdSwiperData isActive={true} /> */}
+          <HomeHeaderSwiper />
         </div>
 
         <div>{/* <HowItsWorkSectionTwo /> */}</div>

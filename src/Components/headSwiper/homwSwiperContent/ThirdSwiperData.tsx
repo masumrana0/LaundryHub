@@ -27,19 +27,14 @@ const ThirdSwiperData = ({ isActive }: { isActive: boolean }) => {
         display: "block",
       });
 
-      gsap.to(".bottomCTextSecond", {
-        duration: 3,
-        x: -725,
-        delay: 2,
-        display: "block",
-      });
+       
     }
 
     setAnimation(true);
   }, [isActive]);
 
   return (
-    <div className=" lg:h-[600px] w-full  text-sm md:text-lg lg:text-xl xl:text-xl  ">
+    <div className=" lg:h-[700px] w-full  text-sm md:text-lg lg:text-xl xl:text-xl  ">
       <div className="relative  ">
         {/* banner gradient and background image */}
         <div className="absolute inset-0 bg-gradient-to-r from-gray-600 to-transparent"></div>
@@ -53,7 +48,7 @@ const ThirdSwiperData = ({ isActive }: { isActive: boolean }) => {
 
         {/* content */}
 
-        <div className="thirdCTextFirstPart  absolute  top-8   sm:top-[30%] md:top-[35%] lg:top-[30%]    ">
+        <div className="thirdCTextFirstPart  absolute top-4 sm:top-[16%] lg:top-[14%]        ">
           {/* top part  */}
           <div className=" tracking-tighter text-lg md:text-2xl lg:text-4xl lg:mb-4 ">
             <p className="  font-extrabold    text-gray-200 lg:mb-2  ">

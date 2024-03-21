@@ -8,19 +8,12 @@
 
 import { gsap } from "gsap";
 import { useEffect } from "react";
-import { firstSwiperConentStyle as imageStyle } from "../styles";
 import Image from "next/image";
 import banner from "/public/HeaderSwiper/photo-4.jpg";
 
 const FirstSwiperData = ({ isActive }: { isActive: boolean }) => {
   useEffect(() => {
     if (isActive) {
-      // gsap.to(".firstCFirstText", {
-      //   duration: 3,
-      //   y: "10%",
-      //   display: "block",
-      // });
-
       gsap.to(".firstCSecondText", {
         duration: 5,
         x: 79,

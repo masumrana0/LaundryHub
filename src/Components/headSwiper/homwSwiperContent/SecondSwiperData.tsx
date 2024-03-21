@@ -10,136 +10,113 @@ import Image from "next/image";
 import icon1 from "../../../../public/HeaderSwiper/icons/slide-icon1.png";
 import icon2 from "../../../../public/HeaderSwiper/icons/slide-icon2.png";
 import icon3 from "../../../../public/HeaderSwiper/icons/slide-icon3.png";
+import banner from "/public/HeaderSwiper/photo-3.jpg";
 import { gsap } from "gsap";
-import { useEffect, useState } from "react";
-import { secondSwiperConentStyle as imageStyle } from "../styles";
+import { useEffect } from "react";
 
 const SecondSwiperData = ({ isActive }: { isActive: boolean }) => {
   // for text animation
   useEffect(() => {
     if (isActive) {
-      // C means Conent
-      // text1
-      gsap.to(".secondCText1", {
-        duration: 2,
-        x: -350,
+      gsap.to(".textAnimation", {
+        duration: 3,
+        x: "15%",
         delay: 1,
         display: "block",
-      });
-
-      // text2
-      gsap.to(".secondCText2", {
-        duration: 2,
-        x: 179,
-        delay: 1,
-        display: "block",
-      });
-
-      // icons
-      gsap.to(".secondCIcons", {
-        duration: 2,
-        y: -40,
-        display: "block",
-        delay: 2,
-      });
-
-      // botom text
-      gsap.to(".secondCBottomText", {
-        duration: 2,
-        x: -148,
-        display: "block",
-        delay: 3,
-      });
-
-      //bottom text
-      gsap.to(".secondCBottomButton", {
-        duration: 2,
-        y: -85,
-        display: "block",
-        delay: 4,
       });
     }
   }, [isActive]);
 
   return (
-    <div className="  font-sans" style={imageStyle}>
-      <div>
+    <div className="relative lg:h-[700px] w-full  text-sm md:text-lg lg:text-xl xl:text-xl">
+      <div className="absolute inset-0 bg-gradient-to-br from-sky-300 to-transparent"></div>
+
+      <Image
+        src={banner}
+        width={1000}
+        height={1000}
+        className="w-full h-full object-cover"
+        alt="banner img"
+      />
+
+      <div className="textAnimation hidden absolute top-[10%]  md:top-[20%] left-[8%] ">
         <div>
-          <p className="secondCText1 absolute top-40 left-[35rem] hidden  lg:text-5xl tracking-tighter font-thin  mb-3">
-            Providing an environment
-          </p>
-          <p className="secondCText2 absolute top-[13.5rem] left-[2rem] hidden  font-bold  text-3xl font-sans mb-3">
-            Friendly{" "}
-            <span className="text-green-700">
-              Laundry Service<span className="text-black">&trade;</span>
-            </span>
-          </p>
+          {/* header text  */}
+          <div className="md:mb-4">
+            <p className="text-sm md:text-3xl lg:text-4xl">
+              Providing an environment
+            </p>
+            <p className="text-sm md:text-3xl lg:text-4xl font-bold">
+              Friendly{" "}
+              <span className="text-green-600">
+                Laundry Service<span className="text-black">&trade;</span>
+              </span>
+            </p>
+          </div>
+
+          <div className="flex flex-col items-start  gap-0 mt-2">
+            {/* First */}
+            <div className="flex items-center gap-2 mb-5">
+              <Image
+                className="w-5 h-5 md:w-10 md:h-10"
+                src={icon1}
+                alt="icon"
+                width={50}
+                height={50}
+              />
+              <div className="border-l-2 md:border-l-4  border-green-600 md:pl-2 pl-1">
+                <p className="text-[12px] md:text-xl font-thin text-gray-800">
+                  Optimize Your Clothing's Cleanliness with
+                </p>
+                <h3 className="font-semibold text-sm md:text-2xl">
+                  Cutting-Edge Equipment
+                </h3>
+              </div>
+            </div>
+
+            {/* Second */}
+            <div className="flex items-center gap-2 mb-5">
+              <Image
+                className="w-5 h-5 md:w-10 md:h-10"
+                src={icon2}
+                alt="icon"
+                width={50}
+                height={50}
+              />
+              <div className="border-l-2 md:border-l-4  border-green-600 md:pl-2 pl-1">
+                <p className="text-[12px] md:text-xl font-thin text-gray-800">
+                  We Use Products That Are
+                </p>
+                <h3 className="font-semibold text-sm md:text-2xl">
+                  Eco Friendly
+                </h3>
+              </div>
+            </div>
+
+            {/* Third */}
+            <div className="flex items-center gap-2">
+              <Image
+                className="w-5 h-5 md:w-10 md:h-10"
+                src={icon3}
+                alt="icon"
+                width={50}
+                height={50}
+              />
+              <div className="border-l-2 md:border-l-4  border-green-600 md:pl-2 pl-1">
+                <p className="text-[12px] md:text-xl font-thin text-gray-800">
+                  We Use Products That Are
+                </p>
+                <h3 className="font-semibold text-sm md:text-2xl">
+                  Eco Friendly
+                </h3>
+              </div>
+            </div>
+          </div>
+
+          <button className="hidden md:block rounded px-2 py-1 md:px-4 md:py-2 mt-2 ml-11 lg:mt-4 shadow-lg font-semibold transition-colors duration-300 bg-green-500 text-white hover:bg-green-700">
+            Get Clean
+          </button>
         </div>
-
-        <div className="  ">
-          {/* first  */}
-          <div className="flex  items-center gap-2 mb-5">
-            <Image
-              className={` secondCIcons
-                absolute left-[13rem] top-[20rem] hidden`}
-              src={icon1}
-              alt="icon"
-            />
-            <div
-              className={` secondCBottomText absolute left-[26rem] top-[17rem] border-l-4 border-green-400 pl-2 hidden`}
-            >
-              <p className="lg:text-lg tracking-tighter text-gray-700">
-                Optimize Your Clothing's Cleanliness with
-              </p>
-              <h3 className="font-semibold text-2xl">
-                {" "}
-                Cutting-Edge Equipment
-              </h3>
-            </div>
-          </div>
-
-          {/* second */}
-          <div className="flex  items-center gap-2">
-            <Image
-              className={` secondCIcons
-              absolute left-[13rem] top-[26rem] hidden`}
-              src={icon2}
-              alt="Photo 7"
-            />
-            <div
-              className={`secondCBottomText
-                absolute left-[26rem] top-[23rem] border-l-4 border-green-400 pl-2 hidden`}
-            >
-              <p className="lg:text-lg tracking-tighter text-gray-700">
-                We Use Product Which Are
-              </p>
-              <h3 className="font-semibold text-2xl"> Eco Friendly</h3>
-            </div>
-          </div>
-
-          {/* Third */}
-          <div className={`flex  items-center gap-2 mt-5 mb-5`}>
-            <Image
-              className={` secondCIcons absolute left-[13rem] top-[32rem] hidden`}
-              src={icon3}
-              alt="Photo 7"
-            />
-            <div
-              className={`secondCBottomText
-               absolute left-[26rem] top-[29rem] border-l-4 border-green-400 pl-2 hidden`}
-            >
-              <p className="lg:text-lg tracking-tighter text-gray-700">
-                We Use Product Which Are
-              </p>
-              <h3 className="font-semibold text-2xl"> Eco Friendly</h3>
-            </div>
-          </div>
-        </div>
-
-        {/* <div className="bottom-0 border-b-4 border-green-400 w-20 mb-4 "></div> */}
-        <button className="secondCBottomButton rounded px-10 py-2 shadow-lg font-semibold  transition-colors duration-300 bg-green-500  text-white hover:bg-green-700 absolute left-[13rem] top-[39rem] hidden ">
-          Get Clean
-        </button>
       </div>
     </div>
   );

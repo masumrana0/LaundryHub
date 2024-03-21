@@ -20,14 +20,12 @@ import FirstSwiperData from "./homwSwiperContent/FirstSwiperData";
 
 export default function HomeHeaderSwiper() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isActive, setAcive] = useState(false);
 
   return (
     <div className=" ">
       <Swiper
         onSlideChange={(swiper) => {
           setActiveIndex(swiper.activeIndex);
-          //   setAcive(swiper?.enable);
         }}
         centeredSlides={true}
         autoplay={{
@@ -41,11 +39,11 @@ export default function HomeHeaderSwiper() {
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
-        {/* <SwiperSlide>
-          <ThirdSwiperData isActive={activeIndex === 0} />
-        </SwiperSlide> */}
         <SwiperSlide>
-          {/* <SecondSwiperData isActive={activeIndex === 1} /> */}
+          <ThirdSwiperData isActive={activeIndex === 0} />
+        </SwiperSlide>
+        <SwiperSlide>
+          <SecondSwiperData isActive={activeIndex === 1} />
         </SwiperSlide>
         <SwiperSlide>
           <FirstSwiperData isActive={activeIndex === 2} />
