@@ -27,7 +27,9 @@ const ChooseSection = () => {
       {/* card  */}
       <div className="flex flex-wrap  gap-10   ">
         {/* card 1 */}
-        <div className={`w-[350px] border p-6 group  mx-auto `}>
+        <div
+          className={`w-[350px] border p-6 group  mx-auto shadow-lg rounded `}
+        >
           {/* icon section */}
           <div className="flex justify-center items-center w-[105px] h-[110px] mx-auto rounded-full  bg-gray-100">
             <FaStreetView className=" text-green-400 text-[50px] group-hover:scale-[2] transition-transform duration-700 ease-in-out" />
@@ -56,7 +58,7 @@ const ChooseSection = () => {
         <div
           // data-aos="flip-left"
           // data-aos-duration="2000"
-          className={`w-[350px] border p-6 group mx-auto  `}
+          className={`w-[350px] border p-6 group  mx-auto shadow-lg rounded `}
         >
           {/* icon section */}
           <div
@@ -89,7 +91,7 @@ const ChooseSection = () => {
         <div
           // data-aos="flip-up"
           // data-aos-duration="2000"
-          className={`w-[350px] border p-6 group  mx-auto `}
+          className={`w-[350px] border p-6 group  mx-auto shadow-lg rounded `}
         >
           {/* icon section */}
           <div
@@ -124,7 +126,7 @@ const ChooseSection = () => {
         <div
           // data-aos="flip-up"
           // data-aos-duration="2000"
-          className={`w-[350px] border p-6 group  mx-auto `}
+          className={`w-[350px] border p-6 group  mx-auto shadow-lg rounded `}
         >
           {/* icon section */}
           <div
@@ -159,7 +161,7 @@ const ChooseSection = () => {
         <div
           // data-aos="flip-up"
           // data-aos-duration="2000"
-          className={`w-[350px] border p-6 group  mx-auto `}
+          className={`w-[350px] border p-6 group  mx-auto shadow-lg rounded `}
         >
           {/* icon section */}
           <div
@@ -193,7 +195,7 @@ const ChooseSection = () => {
         <div
           // data-aos="flip-up"
           // data-aos-duration="2000"
-          className={`w-[350px] border p-6 group  mx-auto `}
+          className={`w-[350px] border p-6 group  mx-auto shadow-lg rounded `}
         >
           {/* icon section */}
           <div
