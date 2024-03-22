@@ -23,11 +23,11 @@ const VerificationWaitingUi: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState<number>(120);
 
   useEffect(() => {
-    if (data?.data?.isEmailVerified) {
+    if (data?.isEmailVerified) {
       dispath(setIsEmailVerified(false));
       router.push("/");
     }
-  }, [data?.data?.isEmailVerified]);
+  }, [data?.isEmailVerified]);                                 
 
   // for showing  toast
   useEffect(() => {

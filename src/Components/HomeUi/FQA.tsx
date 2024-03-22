@@ -6,7 +6,7 @@ import UseCollapse from "../Shared/Collapse/Collapse";
 
 const FQA = () => {
   const { data } = useGetFQAQuery(null);
-  const fqas: IFQA[] = data?.data;
+  const fqas: IFQA[] = data;
 
   const FQAItems: CollapseProps["items"] = [];
 
