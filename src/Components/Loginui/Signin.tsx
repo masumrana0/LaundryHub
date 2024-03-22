@@ -22,7 +22,7 @@ const Signin = () => {
     useState<IValidationResponse>({});
   // redux
   const [userSignin, { isLoading }] = useUserSigninMutation();
-  const authState = useAppSelector((state) => state.auth.authState);
+
   const [isViewPass, setIsViewPass] = useState(false);
   const router = useRouter();
 
@@ -40,12 +40,16 @@ const Signin = () => {
 
   // handle  submit form
   const onSubmit = async (signInData: ISigninData) => {
+    // console.log(signInData);
+
     const res = await userSignin(signInData).unwrap();
+    console.log(res);
+
     // handling validation response and setup accessToken
-    if ("validationResponse" in res?.data) {
-      setValidationResponse(res?.data?.validationResponse);
-    } else if ("accessToken" in res?.data) {
-      storeLocalStorageInfo(authKey, res?.data?.accessToken);
+    if ("validationResponse" in res) {
+      setValidationResponse(res?.validationResponse);
+    } else if ("accessToken" in res) {
+      storeLocalStorageInfo(authKey, res?.accessToken);
       toast.success("You are Sigin successfully");
       router.push("/");
     }
@@ -97,7 +101,7 @@ const Signin = () => {
                   })}
                   className="  w-full  outline-none focus:outline-none  bg-slate-50 "
                   type={isViewPass ? "text" : "password"}
-                  defaultValue={"123456"}
+                  defaultValue={"Mr@2122#"}
                   name="password"
                   placeholder="enter your password"
                   id="password"

@@ -23,6 +23,7 @@ import { authKey } from "@/constants/storageKey";
 import { storeLocalStorageInfo } from "@/services/auth.service";
 import { IValidationResponse } from "@/Interface/shared";
 import LoadingSpinner from "../Shared/Loading";
+// import { ISignupData } from "@/Interface/auth";
 
 const Signup = () => {
   // essential state
@@ -49,10 +50,10 @@ const Signup = () => {
   const onSubmit = async (signupData: any) => {
     const res = await userSignup(signupData).unwrap();
 
-    if ("validationResponse" in res?.data) {
-      setValidationResponse(res?.data?.validationResponse);
-    } else if ("accessToken" in res?.data) {
-      storeLocalStorageInfo(authKey, res?.data?.accessToken);
+    if ("validationResponse" in res) {
+      setValidationResponse(res?.validationResponse);
+    } else if ("accessToken" in res) {
+      storeLocalStorageInfo(authKey, res?.accessToken);
       toast.success("Signup successful! Check your email for verification.");
       router.push("/");
     }

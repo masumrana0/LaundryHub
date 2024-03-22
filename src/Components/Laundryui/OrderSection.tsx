@@ -40,7 +40,7 @@ const OrderSection = () => {
 
   return (
     <div>
-      <div className="text-center border-b-2 mb-1  bg-green-400 py-6 text-white ">
+      <div className="text-center border-b-2 mb-1  bg-green-400 py-3 text-white ">
         <h2 className="font-bold   text-3xl">Your Order</h2>
         <p className="mb-2 text-lg">Total Item: {laundryProducts.length}</p>
       </div>
@@ -51,7 +51,7 @@ const OrderSection = () => {
         <div>
           {laundryProducts?.map((laundryProduct: ILaundryProduct) => (
             <div
-              className="border-2 rounded shadow-lg shadow-green-400    mb-2"
+              className="border-2 rounded    px-2 py-2    mb-2"
               key={laundryProduct._id}
             >
               <p className="text-center font-semibold text-lg text-gray-600">

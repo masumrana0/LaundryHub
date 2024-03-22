@@ -1,4 +1,3 @@
-import { IUser } from "@/Interface/user";
 import { baseApi } from "./baseApi";
 import { ISigninData, ISignupData } from "@/Interface/auth";
 
@@ -8,7 +7,7 @@ const authApi = baseApi.injectEndpoints({
       query: (signInData: ISigninData) => ({
         url: "/auth/login",
         method: "POST",
-        body: signInData,
+        data: signInData,
       }),
 
       invalidatesTags: ["user"],
@@ -18,7 +17,7 @@ const authApi = baseApi.injectEndpoints({
       query: (signupData: ISignupData) => ({
         url: "/auth/customer/register",
         method: "POST",
-        body: signupData,
+        data: signupData,
       }),
     }),
 

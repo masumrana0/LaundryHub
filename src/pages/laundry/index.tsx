@@ -71,7 +71,7 @@ const Laundry = () => {
             id="carSelect"
             onChange={(e) => handleAddService(e.target.value)}
             value={selectedService.title}
-            className="border-1 border-white bg-green-500 text-white font-semibold rounded px-4 py-2 transition-all duration-300 focus:border-green-700 focus:outline-none hover:bg-green-700 hover:border-green-700"
+            className="w-50 border-1 border-white bg-green-500 text-white font-semibold rounded px-4 py-2 transition-all duration-300 focus:border-green-700 focus:outline-none hover:bg-green-700 hover:border-green-700"
           >
             {serviceTitles?.map((title: { title: string; _id: string }) => (
               <option key={title?._id} value={title?.title}>
@@ -88,7 +88,7 @@ const Laundry = () => {
         <div
           className={`${
             bookingState ? "lg:w-[50%]" : "lg:w-[55%]"
-          }     p-5  lg:p-10`}
+          }     p-1 lg:p-10 `}
         >
           {bookingState ? <UserAddressSection /> : <Accordion />}
         </div>
@@ -97,7 +97,7 @@ const Laundry = () => {
         <div
           className={`${
             bookingState ? "lg:w-[55%]" : "lg:w-[45%]"
-          }  shadow-lg p-4 lg:p-0 mt-5  `}
+          }  shadow-lg    mt-5  `}
         >
           <OrderSection />
         </div>

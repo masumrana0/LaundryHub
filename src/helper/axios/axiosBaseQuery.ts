@@ -1,7 +1,8 @@
 import type { BaseQueryFn } from "@reduxjs/toolkit/query";
 import type { AxiosRequestConfig, AxiosError } from "axios";
 import { instance as axiosInstance } from "./axiosInstance";
-import { IMeta } from "@/utilities/common/common";
+import { getFromLocalStorage } from "@/utilities/local-storage";
+import { authKey } from "@/constants/storageKey";
 
 export const axiosBaseQuery =
   (
@@ -12,7 +13,6 @@ export const axiosBaseQuery =
       method: AxiosRequestConfig["method"];
       data?: AxiosRequestConfig["data"];
       params?: AxiosRequestConfig["params"];
-      meta?: IMeta;
       contentType?: string;
     },
     unknown,
@@ -30,6 +30,8 @@ export const axiosBaseQuery =
         },
         withCredentials: true,
       });
+      console.log(data);
+
       return result;
     } catch (axiosError) {
       let err = axiosError as AxiosError & {

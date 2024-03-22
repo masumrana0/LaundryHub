@@ -74,7 +74,7 @@ const Cart: React.FC = () => {
               <div>
                 {laundryProducts?.map((laundryProduct) => (
                   <div
-                    className="border-2 rounded shadow-lg shadow-green-400    mb-2"
+                    className="border-2 rounded shadow-lg  py-2   mb-3"
                     key={laundryProduct._id}
                   >
                     <p className="text-center font-semibold text-lg text-gray-600">

@@ -6,12 +6,12 @@ interface StarRatingProps {
   starsize: string;
 }
 
-const StarRating: React.FC<StarRatingProps> = ({ stars, starsize }) => {
+const StarRating: React.FC<StarRatingProps> = ({ stars, starsize = "xl" }) => {
   const filledStars = Array.from({ length: stars }, (index) => (
-    <FaStar className={`${starsize}`} key={index} color="#ffc107" />
+    <FaStar className={`text-${starsize} `} key={index} color="#ffc107" />
   ));
   const emptyStars = Array.from({ length: 5 - stars }, (index) => (
-    <FaRegStar className={`${starsize}`} key={index} color="#ffc107" />
+    <FaRegStar className={`text-${starsize} `} key={index} color="#ffc107" />
   ));
 
   return (

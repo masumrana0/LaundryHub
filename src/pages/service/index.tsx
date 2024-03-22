@@ -3,7 +3,6 @@ import LoadingSpinner from "@/Components/Shared/Loading";
 import ServiceCard from "@/Components/service/ServiceCard";
 import { IService } from "@/Interface/service";
 import { useGetAllServiceQuery } from "@/Redux/api/serviceApi";
-
 import React, { ReactElement, useEffect, useState } from "react";
 
 const Service = () => {
@@ -11,7 +10,7 @@ const Service = () => {
   const { data, isLoading } = useGetAllServiceQuery(null);
 
   useEffect(() => {
-    setServices(data?.data);
+    setServices(data);
   }, [data]);
 
   return (

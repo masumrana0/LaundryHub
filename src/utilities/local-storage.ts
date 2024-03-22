@@ -1,7 +1,7 @@
 import { instance } from "@/helper/axios/axiosInstance";
 import { getBaseUrl } from "@/helper/config/envConfig";
 
-export const setLocalStorage = (key: string, value: string) => {
+export const setToLocalStorage = (key: string, value: string) => {
   if (!key || typeof window === "undefined") {
     return "";
   }

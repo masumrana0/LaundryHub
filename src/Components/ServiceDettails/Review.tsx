@@ -3,6 +3,8 @@ import {
   useGetReviewQuery,
   useSubmitServiceReviewMutation,
 } from "@/Redux/api/review&ratingApi";
+import { authKey } from "@/constants/storageKey";
+import { getFromLocalStorage } from "@/utilities/local-storage";
 import { FormEvent } from "react";
 import { FaRegCircleUser } from "react-icons/fa6";
 
@@ -21,13 +23,16 @@ const Review = ({ id }: { id: string }) => {
         service: `${id}`,
         review: review,
       };
+      // console.log(reviewData);
+
       const res = await reviewSubmitMutation(reviewData);
       form.reset();
     }
   };
   return (
     <div>
-      <div className=" h-96 overflow-y-auto border-2 border-gray-300 rounded-xl ">
+      {/* reviews section */}
+      <div className=" h-96 overflow-y-auto   border-gray-300 rounded-xl ">
         {reviewDatas?.data?.map((Review: IReview) => (
           <div className="shadaw-lg border-2  p-3 mx-5 rounded-2xl shadow-lg  mb-3 bg-white ">
             <div className="flex items-center gap-2 mb-3  ">
@@ -47,17 +52,17 @@ const Review = ({ id }: { id: string }) => {
         ))}
       </div>
       {/* submit review section */}
-      <div>
+      <div className="mb-20">
         <form onSubmit={handleSubmitReview}>
-          <div className="h-40  ">
+          <div className="h-12  mx-5   ">
             <textarea
               required
               name="review"
               placeholder="Enter Your Opinion in this service"
-              className="w-full h-full outline-green-500  border  border-gray-300 bg-white rounded-2xl py-2 px-5 text-xl "
+              className="md:w-1/2 w-full  h-full outline-green-500  border  border-gray-300 bg-white rounded-[5px] py-2 px-5 text-sm "
             ></textarea>
-            <div className="">
-              <button className="border-2 border-white shadow-lg shadow-white px-10 py-2 font-bold  bg-green-400 text-white hover:bg-green-700 transition-colors duration-300  rounded-xl ">
+            <div>
+              <button className="border-2 border-white shadow-lg shadow-white px-3 py-2 font-bold  bg-green-400 text-white hover:bg-green-700 transition-colors duration-300  rounded-xl ">
                 Submit
               </button>
             </div>
