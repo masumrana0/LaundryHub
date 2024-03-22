@@ -21,6 +21,7 @@ const ServiceDetails = () => {
 
   //service
   const service = data;
+ 
 
   const handleSelectService = () => {
     const selectedService: ISelectService = {
@@ -94,7 +95,7 @@ const ServiceDetails = () => {
 
           {/* rating part */}
           <div className="mt-5">
-            <Ratings id="ldsajflkjsdalkfjsdkljf" />
+            <Ratings id={`${id}`} />
           </div>
           {/* review */}
           <div>

@@ -3,14 +3,14 @@ import {
   useGetReviewQuery,
   useSubmitServiceReviewMutation,
 } from "@/Redux/api/review&ratingApi";
-import { authKey } from "@/constants/storageKey";
-import { getFromLocalStorage } from "@/utilities/local-storage";
 import { FormEvent } from "react";
 import { FaRegCircleUser } from "react-icons/fa6";
 
 const Review = ({ id }: { id: string }) => {
   // redux
   const { data: reviewDatas } = useGetReviewQuery(id);
+  // console.log(reviewDatas);
+
   const [reviewSubmitMutation] = useSubmitServiceReviewMutation();
 
   //   handle submit review
@@ -26,14 +26,19 @@ const Review = ({ id }: { id: string }) => {
       // console.log(reviewData);
 
       const res = await reviewSubmitMutation(reviewData);
+
       form.reset();
     }
   };
   return (
     <div>
       {/* reviews section */}
-      <div className=" h-96 overflow-y-auto   border-gray-300 rounded-xl ">
-        {reviewDatas?.data?.map((Review: IReview) => (
+      <div
+        className={`${
+          reviewDatas?.length > 0 && "h-96"
+        }  overflow-y-auto my-10   border-gray-300 rounded-xl`}
+      >
+        {reviewDatas?.map((Review: IReview) => (
           <div className="shadaw-lg border-2  p-3 mx-5 rounded-2xl shadow-lg  mb-3 bg-white ">
             <div className="flex items-center gap-2 mb-3  ">
               {
