@@ -10,17 +10,18 @@ const ProfilePersonInfo = () => {
   const dispatch = useAppDispatch();
   const profile = useAppSelector((state) => state.profile.profile);
   return (
-    <div className="container">
+    <div className="lg:container mx-auto md:mt-5 mt-10">
+      {/*  */}
       <div>
         <div className="flex justify-center items-center flex-col gap-1  ">
           <h2 className="text-3xl font-bold  ">Personal Info</h2>
-          <p className="text-gray-500">
+          <p className="text-gray-500 text-center">
             Info About you and your preferennnnces aross Laundry Services
           </p>
         </div>
-        <div className="container mx-auto flex justify-center items-center mt-5">
+        <div className="container mx-auto md:flex justify-center items-center mt-5 hidden">
           <div className="w-[37%]">
-            <h2 className="text-2xl  font-bold mb-2">
+            <h2 className="lg:text-2xl  font-bold mb-2">
               Your profile info in Laundry services
             </h2>
             <p className="text-gray-500">
@@ -32,28 +33,28 @@ const ProfilePersonInfo = () => {
           <Image src={infoimg} width={500} alt="info img" />
         </div>
       </div>
-      <div className="mt-5 border-2 shadow w-[80%] mx-auto rounded-xl ">
+      <div className=" mt-8   border-2 shadow lg:w-[80%]   mx-auto rounded-xl ">
         <h2 className="font-bold text-2xl p-5 ">Basic Info</h2>
 
         {/*  */}
-        <div className="p-10">
+        <div className="lg:p-10 p-2">
           {/* profile picture */}
-          <div className="flex justify-between items-center border-b-2 ">
+          {/* <div className="flex justify-between items-center border-b-2 ">
             <p className="font-semibold text-xl ">Profile picture</p>
             <div className="flex  items-center  gap-10  ">
-              <p className="flex-shrink-0 text-lg font-thin ">
+              <p className="flex-shrink-0 text-lg font-thin  hidden lg:block">
                 A profile picture helps personalize your account
               </p>
 
               <UploadProfilePicture />
             </div>
-          </div>
+          </div> */}
 
           {/* name section */}
           <div className="flex justify-between items-center border-b-2 shadow py-5">
-            <p className="font-semibold text-xl ">Your Name</p>
+            <p className="font-semibold md:text-xl text-sm ">Your Name</p>
             <div className="flex  items-center  gap-10  ">
-              <p className="flex-shrink-0 text-lg font-bold ">
+              <p className="flex-shrink-0 md:text-lg text-sm font-bold ">
                 <FullName name={profile?.name} />
               </p>
 
@@ -65,9 +66,9 @@ const ProfilePersonInfo = () => {
 
           {/* Email section */}
           <div className="flex justify-between items-center border-b-2 shadow py-5">
-            <p className="font-semibold text-xl ">Your Email</p>
+            <p className="font-semibold text-sm  md:text-xl  ">Your Email</p>
             <div className="flex  items-center  gap-10  ">
-              <p className="flex-shrink-0 text-lg font-bold ">
+              <p className="flex-shrink-0 md:text-lg text-sm font-bold ">
                 {profile?.email}
               </p>
 
@@ -79,9 +80,11 @@ const ProfilePersonInfo = () => {
 
           {/* PhoneNumber section */}
           <div className="flex justify-between items-center border-b-2 shadow py-5">
-            <p className="font-semibold text-xl ">Your Phone Number</p>
+            <p className="font-semibold md:text-xl  text-sm">
+              Your Phone Number
+            </p>
             <div className="flex  items-center  gap-10  ">
-              <p className="flex-shrink-0 text-lg font-bold ">
+              <p className="flex-shrink-0 md:text-lg text-sm font-bold   ">
                 {" "}
                 +88{profile?.phoneNumber}
               </p>
@@ -91,11 +94,12 @@ const ProfilePersonInfo = () => {
               </button>
             </div>
           </div>
+
           {/*  Password section */}
           <div className="flex justify-between items-center border-b-2 shadow py-5">
-            <p className="font-semibold text-xl "> Password</p>
+            <p className="font-semibold md:text-xl text-sm "> Password</p>
             <div className="flex  items-center  gap-10  ">
-              <p className="flex-shrink-0 text-lg font-bold ">
+              <p className="flex-shrink-0 md:text-lg text-sm font-bold ">
                 Change Password
               </p>
 
