@@ -67,24 +67,23 @@ const UserAddressSection = () => {
       grandPrice: grandPrice,
       services,
     };
-    console.log(booking);
+
     // console.log(booking);
 
     // Send booking request and handle response
     const res: IBookingResponse | any = await bookingRequest(booking);
-    console.log(res);
-    if (res?.data?.statusCode === 200) {
+
+    if (res) {
       toast.success("Your booking request has been sent successfully");
       reset();
     }
 
     setBookingResultData({
-      success: res?.data?.success,
-      orderId: res?.data?.data?._id,
+      success: res?.data,
+      orderId: res?.data?._id,
     });
   };
 
-  // JSX for User Address Section
   return (
     <div>
       {bookingResultData ? (

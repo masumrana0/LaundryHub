@@ -30,7 +30,6 @@ export const axiosBaseQuery =
         },
         withCredentials: true,
       });
-      console.log(data);
 
       return result;
     } catch (axiosError) {

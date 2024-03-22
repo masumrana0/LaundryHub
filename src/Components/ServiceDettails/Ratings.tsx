@@ -16,7 +16,7 @@ const Ratings = ({ id }: { id: string }) => {
   // redux
   const [submitRating] = useSubmitRatingMutation();
   const { data } = useGetRatingsQuery(id);
-  const rating: IRatingData = data?.data;
+  const rating: IRatingData = data;
 
   // handle submitinğ rating
   useEffect(() => {
@@ -41,6 +41,7 @@ const Ratings = ({ id }: { id: string }) => {
           <div className="w-full bg-gray-300 h-5 rounded-xl">
             <div className="w-full bg-amber-300 h-5  rounded-xl"></div>
           </div>
+          <h5 className=" text-violet-500  ">{rating?.totalFiveRating}</h5>
         </div>
         {/* 4 star  */}
         <div className="w-full flex items-center justify-center gap-2 mb-1">
@@ -48,6 +49,7 @@ const Ratings = ({ id }: { id: string }) => {
           <div className="w-full bg-gray-300 h-5 rounded-xl">
             <div className="w-[80%] bg-amber-300 h-5  rounded-xl"></div>
           </div>
+          <h5 className=" text-violet-500  ">{rating?.totalFourRating}</h5>
         </div>
         {/* 3 star  */}
         <div className="w-full flex items-center justify-center gap-2 mb-1">
@@ -55,6 +57,7 @@ const Ratings = ({ id }: { id: string }) => {
           <div className="w-full bg-gray-300 h-5 rounded-xl">
             <div className="w-[60%] bg-amber-300 h-5  rounded-xl"></div>
           </div>
+          <h5 className=" text-violet-500  ">{rating?.totalThreeRating}</h5>
         </div>
         {/* 2 star  */}
         <div className="w-full flex items-center justify-center gap-2 mb-1">
@@ -62,18 +65,22 @@ const Ratings = ({ id }: { id: string }) => {
           <div className="w-full bg-gray-300 h-5 rounded-xl">
             <div className="w-[40%] bg-amber-300 h-5  rounded-xl"></div>
           </div>
+          <h5 className=" text-violet-500  ">{rating?.totalTwoRating}</h5>
         </div>
-        {/* 2 star  */}
+        {/* 1 star  */}
         <div className="w-full flex items-center justify-center gap-2 mb-1">
           <h5 className=" text-violet-500  ">1star</h5>
           <div className="w-full bg-gray-300 h-5 rounded-xl">
             <div className="w-[20%] bg-amber-300 h-5  rounded-xl"></div>
           </div>
+          <h5 className=" text-violet-500  ">{rating?.totalOneRating}</h5>
         </div>
       </div>
       {/* ratings */}
       <div>
-        <h3 className="text-center font-bold text-5xl md:text-8xl text-slate-600">3.0</h3>
+        <h3 className="text-center font-bold text-5xl md:text-8xl text-slate-600">
+          {rating?.averageRating}.0
+        </h3>
         <div className="flex justify-center   mt-2">
           <button onClick={() => setStar(1)}>
             {star >= 1 ? (
@@ -112,7 +119,7 @@ const Ratings = ({ id }: { id: string }) => {
           </button>
         </div>
         <h3 className="text-xl font-thin text-gray-500 text-center">
-          3 Average ratings
+          {rating?.totalGiveCustomerRating} Customer ratings
         </h3>
       </div>
     </div>

@@ -16,7 +16,7 @@ import { addSelectService } from "@/Redux/features/order/orderSlice";
 import { useAppDispatch, useAppSelector } from "@/Redux/hook";
 import { isLoggedIn } from "@/services/auth.service";
 import { useRouter } from "next/navigation";
-import React, { useState, useEffect, ReactElement } from "react";
+import React, { useEffect, ReactElement } from "react";
 
 const Laundry = () => {
   // handle private page
@@ -35,7 +35,7 @@ const Laundry = () => {
   // const [isOrderUserDettails, setOrderUserDettails] = useState<boolean>(false);
   const { laundryProducts } = useAppSelector((state) => state.order);
   const { data } = useGetAllServiceWithAnyTermQuery(null);
-  const serviceTitles = data?.data;
+  const serviceTitles = data;
 
   // console.log(service);
   const handleAddService = (data: string) => {

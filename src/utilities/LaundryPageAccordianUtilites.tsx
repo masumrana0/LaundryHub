@@ -23,9 +23,10 @@ export const AccrodianContent = () => {
   const [homeCollection, setHomeCollection] = useState<ILaundryProduct[]>([]);
 
   const { data } = useGetAllCleaningProductQuery(null);
-  const cleaningProducts = data?.data;
+
+  const cleaningProducts = data;
   useEffect(() => {
-    if (data?.statusCode === 200) {
+    if (data?.length) {
       setData(cleaningProducts);
     }
   }, [data]);

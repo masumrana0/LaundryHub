@@ -21,7 +21,6 @@ const ServiceDetails = () => {
 
   //service
   const service = data;
- 
 
   const handleSelectService = () => {
     const selectedService: ISelectService = {
@@ -92,7 +91,9 @@ const ServiceDetails = () => {
 
           {/* lower part */}
           <div className="w-full h-2 rounded-full   bg-green-400"></div>
-
+          <h2 className="font-bold text-2xl md:text-3xl  lg:text-4xl py-2 text-slate-600 ">
+            Reviews and Ratings
+          </h2>
           {/* rating part */}
           <div className="mt-5">
             <Ratings id={`${id}`} />

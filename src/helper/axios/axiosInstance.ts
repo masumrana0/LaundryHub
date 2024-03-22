@@ -35,7 +35,7 @@ instance.interceptors.response.use(
     const responseObject: any = {
       data: response?.data?.data,
       meta: response?.data?.meta,
-      // success:response?.data?.success,
+      success:response?.data?.success,
     };
     return responseObject;
   },
