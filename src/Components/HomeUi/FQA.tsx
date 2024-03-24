@@ -18,7 +18,7 @@ const FQA = () => {
           <p className="font-bold text-sm md:text-lg  ">{fqa.question}</p>
         </div>
       ),
-      children: <p className="font-semibold text-sm  px-5">{fqa.answer}</p>,
+      children: <p className="font-semibold text-sm md:text-lg  px-5">{fqa.answer}</p>,
     });
   });
 

@@ -9,16 +9,14 @@ import ReviewSection from "@/Components/HomeUi/ReviewSection";
 import ServicesSection from "@/Components/HomeUi/servicesSection";
 import RootLayout from "@/Components/Layout/RootLayout";
 import HomeHeaderSwiper from "@/Components/headSwiper/HomeSwiper";
-import AOS from "aos";
-
-import "aos/dist/aos.css";
-
 import { ReactElement, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const HomePage = () => {
   useEffect(() => {
     AOS.init();
-    // AOS.refresh();
+    AOS.refresh();
   }, []);
   return (
     <div className="bg-gray-50">
@@ -29,58 +27,55 @@ const HomePage = () => {
 
         {/* introduce-section  */}
         <div
-          className="mt-20 px-5"
-          // data-aos="zoom-in-down"
-          // data-aos-duration="2000"
+          data-aos="fade-right"
+          data-aos-duration="1500"
+          className="mt-20 px-5 green box"
         >
           <IntroduceService />
         </div>
 
-        <div>
+        <div data-aos="zoom-in-up" data-aos-duration="1500">
           <HowItsWorkSectionTwo />
         </div>
 
         {/* service section  */}
-        <div
-          data-aos="fade-up"
-          data-aos-anchor-placement="bottom-bottom"
-          data-aos-duration="2000"
+        {/* <div
+         
           className="md:container md:mx-auto mx-5 "
         >
           <ServicesSection />
-        </div>
+        </div> */}
         {/* how to work section  */}
-        <div data-aos="flip-right" data-aos-duration="2000">
+        <div data-aos="zoom-in" data-aos-duration="1500">
           <HowItsWorkSectiont />
         </div>
 
         {/* why choose use section*/}
-        <div>
+        <div data-aos="zoom-in-down" data-aos-duration="1500">
           <ChooseSection />
         </div>
 
         {/* review and rating section */}
 
         <div
+          data-aos="fade-down"
+          data-aos-duration="1500"
           className="mx-auto py-10"
-          data-aos="fade-right"
-          data-aos-offset="300"
-          data-aos-easing="ease-in-sine"
-          data-aos-duration="2000"
         >
-          <div className="lg:container mx-auto"><ReviewSection /></div>
+          <div className="lg:container mx-auto">
+            <ReviewSection />
+          </div>
         </div>
 
-        <div data-aos="fade-right" data-aos-duration="1000">
+        <div data-aos="zoom-out" data-aos-duration="1500" className="mx-3">
           <FQA />
         </div>
 
         {/* contact us section  */}
         <div
+          data-aos="zoom-in-right"
+          data-aos-duration="1500"
           className="md:container  md:mx-auto mx-3 "
-          // data-aos="fade-left"
-          // data-aos-offset="300"
-          // data-aos-duration="1000"
         >
           <ContactUs />
         </div>

@@ -121,7 +121,10 @@ const ReviewSection = () => {
           We Clean EveryThing
         </p>
         <h3 className=" text-lg md:text-xl lg:text-3xl text-center font-semibold">
-          Our Customers <span className="font-bold">Reviews and Ratings</span>
+          Our Customers{" "}
+          <span className="font-bold  text-lg md:text-xl lg:text-3xl">
+            Reviews and Ratings
+          </span>
         </h3>
       </div>
       <Swiper

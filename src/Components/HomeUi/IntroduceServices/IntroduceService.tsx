@@ -1,12 +1,17 @@
 import ServiceSwiper from "./ServiceSwiper";
+import { useEffect } from "react";
+
 const IntroduceService = () => {
   return (
-    <div className="lg:container mx-auto  lg:flex  lg:flex-row-reverse  lg:justify-center lg:items-center ">
+    <div
+      data-aos="fade-right"
+      className="lg:container mx-auto  lg:flex  lg:flex-row-reverse  lg:justify-center lg:items-center "
+    >
       <div className="w-full lg:w-1/2">
         <ServiceSwiper />
       </div>
       <div className="w-full lg:w-1/2">
-        <h2 className="text-lg md:text-xl font-semibold">
+        <h2 className="text-lg md:text-2xl font-semibold">
           High-Quality
           <span className="text-green-400">
             {" "}

@@ -54,9 +54,9 @@ const ServicesSection = () => {
                 className="w-full   h-[150px]"
               />
               <div
-                className={`flex justify-center items-center w-[50px] h-[50px] md:w-[60px] md:h-[60px] mx-auto rounded-full  bg-green-300  absolute    top-[8rem] ${style.homeEmojiCircle}`}
+                className={`flex justify-center items-center w-[50px] h-[50px]  mx-auto rounded-full  bg-green-300  absolute    top-[8rem] ${style.homeEmojiCircle}`}
               >
-                <FaFaceSmile className="text-xl md:text-2xl text-white " />
+                <FaFaceSmile className="text-xl   text-white " />
               </div>
               <div className=" p-2">
                 <h2 className="font-bold text-md sm:text-lg md:text-xl   mb-2 mt-5  ">
@@ -82,9 +82,9 @@ const ServicesSection = () => {
                 className="w-full  h-[150px]"
               />
               <div
-                className={`flex justify-center items-center w-[50px] h-[50px] md:w-[60px] md:h-[60px] mx-auto rounded-full  bg-green-300  absolute    top-[8rem] ${style.homeEmojiCircle}`}
+                className={`flex justify-center items-center w-[50px] h-[50px]  mx-auto rounded-full  bg-green-300  absolute    top-[8rem] ${style.homeEmojiCircle}`}
               >
-                <FaFaceSmile className="text-xl md:text-2xl text-white " />
+                <FaFaceSmile className="text-xl   text-white " />
               </div>
               <div className="p-2">
                 <h2 className="font-bold text-md sm:text-lg md:text-xl   mb-2 mt-5  ">
@@ -111,9 +111,9 @@ const ServicesSection = () => {
                 className="w-full   h-[150px]"
               />
               <div
-                className={`flex justify-center items-center w-[50px] h-[50px] md:w-[60px] md:h-[60px] mx-auto rounded-full  bg-green-300  absolute    top-[8rem] ${style.homeEmojiCircle}`}
+                className={`flex justify-center items-center w-[50px] h-[50px]  mx-auto rounded-full  bg-green-300  absolute    top-[8rem] ${style.homeEmojiCircle}`}
               >
-                <FaFaceSmile className="text-xl md:text-2xl text-white " />
+                <FaFaceSmile className="text-xl   text-white " />
               </div>
               <div className="p-2">
                 <h2 className="font-bold text-md sm:text-lg md:text-xl   mb-2 mt-5 ">
@@ -140,9 +140,9 @@ const ServicesSection = () => {
                 className="w-full   h-[150px]"
               />
               <div
-                className={`flex justify-center items-center w-[50px] h-[50px] md:w-[60px] md:h-[60px] mx-auto rounded-full  bg-green-300  absolute    top-[8rem] ${style.homeEmojiCircle}`}
+                className={`flex justify-center items-center w-[50px] h-[50px]   mx-auto rounded-full  bg-green-300  absolute    top-[8rem] ${style.homeEmojiCircle}`}
               >
-                <FaFaceSmile className="text-xl md:text-2xl text-white " />
+                <FaFaceSmile className="text-xl   text-white " />
               </div>
               <div className="p-2">
                 <h2 className="font-bold text-md sm:text-lg md:text-xl   mb-2 mt-5 ">
@@ -169,9 +169,9 @@ const ServicesSection = () => {
                 className="w-full   h-[150px]"
               />
               <div
-                className={`flex justify-center items-center w-[50px] h-[50px] md:w-[60px] md:h-[60px] mx-auto rounded-full  bg-green-300  absolute    top-[8rem] ${style.homeEmojiCircle}`}
+                className={`flex justify-center items-center w-[50px] h-[50px]   mx-auto rounded-full  bg-green-300  absolute    top-[8rem] ${style.homeEmojiCircle}`}
               >
-                <FaFaceSmile className="text-xl md:text-2xl text-white " />
+                <FaFaceSmile className="text-xl   text-white " />
               </div>
               <div className="p-2">
                 <h2 className="font-bold text-md sm:text-lg md:text-xl   mb-2 mt-5  ">
@@ -198,9 +198,9 @@ const ServicesSection = () => {
                 className="w-full   h-[150px]"
               />
               <div
-                className={`flex justify-center items-center w-[50px] h-[50px] md:w-[60px] md:h-[60px] mx-auto rounded-full  bg-green-300  absolute    top-[8rem] ${style.homeEmojiCircle}`}
+                className={`flex justify-center items-center w-[50px] h-[50px]  mx-auto rounded-full  bg-green-300  absolute    top-[8rem] ${style.homeEmojiCircle}`}
               >
-                <FaFaceSmile className="text-xl md:text-2xl text-white " />
+                <FaFaceSmile className="text-xl  text-white " />
               </div>
               <div className="p-2">
                 <h2 className="font-bold text-md sm:text-lg md:text-xl   mb-2 mt-5  ">
