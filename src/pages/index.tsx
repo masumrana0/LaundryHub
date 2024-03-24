@@ -9,17 +9,53 @@ import ReviewSection from "@/Components/HomeUi/ReviewSection";
 import ServicesSection from "@/Components/HomeUi/servicesSection";
 import RootLayout from "@/Components/Layout/RootLayout";
 import HomeHeaderSwiper from "@/Components/headSwiper/HomeSwiper";
-import { ReactElement, useEffect } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { FaArrowUp } from "react-icons/fa6";
+import { Link } from "react-scroll";
 
 const HomePage = () => {
+  const [isVisible, setIsVisible] = useState(true);
   useEffect(() => {
     AOS.init();
     AOS.refresh();
   }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollYPosition = window.scrollY;
+
+      setIsVisible(scrollYPosition > 300);
+    };
+
+    // Check if window is defined (running in the browser)
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", handleScroll);
+
+      // Cleanup function to remove event listener
+      return () => window.removeEventListener("scroll", handleScroll);
+    }
+  }, []);
+
   return (
     <div className="bg-gray-50 pb-20">
+      <Link
+        href="#top"
+        activeClass="active"
+        spy={true}
+        smooth={true}
+        duration={1000}
+        to="top"
+      >
+        <button
+          className={`fixed bottom-20 border-2 scale-100  right-8 md:right-10 bg-green-500 text-white p-4 rounded-full z-50 ${
+            isVisible ? "block" : "hidden"
+          }  `}
+        >
+          <FaArrowUp className="animate-bounce text-xl" />
+        </button>
+      </Link>
       <div className="lg:container">
         <div>
           <HomeHeaderSwiper />

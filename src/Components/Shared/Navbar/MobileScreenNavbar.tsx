@@ -21,7 +21,7 @@ const MobileScreenNavbar = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
   return (
-    <div className="w-full px-3 py-2  bg-slate-200 relative">
+    <div id="top" className="w-full px-3 py-2  bg-slate-200 relative">
       {/* upper part  */}
       <div className="  flex justify-between items-center">
         {/* logo part  */}

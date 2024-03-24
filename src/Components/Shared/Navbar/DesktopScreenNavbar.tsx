@@ -13,7 +13,10 @@ const DesktopScreenNavbar = () => {
   const isLoggedin = isLoggedIn();
 
   return (
-    <div className="hidden lg:block container mx-auto  bg-slate-100   ">
+    <div
+      id="top"
+      className="hidden lg:block container mx-auto  bg-slate-100   "
+    >
       <div className=" border-b-2  py-3">
         <div className="flex justify-between   p-3  px-4 rounded text-gray-800">
           <div className="flex  ">
