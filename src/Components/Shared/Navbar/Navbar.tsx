@@ -11,13 +11,13 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="bg-gray-100 text-black ease-in-out duration-300">
+    <nav className="bg-gray-100 w-full ">
       {isClient && (
         <>
           <div className="hidden md:block">
             <DesktopScreenNavbar />
           </div>
-          <div className="lg:hidden">
+          <div className="md:hidden">
             <MobileScreenNavbar />
           </div>
         </>

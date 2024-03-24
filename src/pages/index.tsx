@@ -19,7 +19,7 @@ const HomePage = () => {
     AOS.refresh();
   }, []);
   return (
-    <div className="bg-gray-50">
+    <div className="bg-gray-50 pb-20">
       <div className="lg:container">
         <div>
           <HomeHeaderSwiper />
