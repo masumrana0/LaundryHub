@@ -67,7 +67,7 @@ const HomePage = () => {
           </div>
         </div>
 
-        <div data-aos="zoom-out" data-aos-duration="1500" className="mx-3">
+        <div data-aos="fade-up" data-aos-duration="1500" className="mx-3">
           <FQA />
         </div>
 
