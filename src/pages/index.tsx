@@ -30,13 +30,13 @@ const HomePage = () => {
         {/* introduce-section  */}
         <div
           className="mt-20 px-5"
-          data-aos="zoom-in-down"
-          data-aos-duration="2000"
+          // data-aos="zoom-in-down"
+          // data-aos-duration="2000"
         >
           <IntroduceService />
         </div>
 
-        <div data-aos="zoom-out-up" data-aos-duration="2000">
+        <div>
           <HowItsWorkSectionTwo />
         </div>
 
@@ -45,7 +45,7 @@ const HomePage = () => {
           data-aos="fade-up"
           data-aos-anchor-placement="bottom-bottom"
           data-aos-duration="2000"
-          className="container mx-auto"
+          className="md:container md:mx-auto mx-5 "
         >
           <ServicesSection />
         </div>
@@ -55,7 +55,7 @@ const HomePage = () => {
         </div>
 
         {/* why choose use section*/}
-        <div data-aos="zoom-in-left" data-aos-duration="2000">
+        <div>
           <ChooseSection />
         </div>
 
@@ -68,22 +68,19 @@ const HomePage = () => {
           data-aos-easing="ease-in-sine"
           data-aos-duration="2000"
         >
-          <div className="container mx-auto">
-            <ReviewSection />
-          </div>
+          <div className="lg:container mx-auto"><ReviewSection /></div>
         </div>
 
-        <div data-aos="zoom-out" data-aos-duration="1000">
+        <div data-aos="fade-right" data-aos-duration="1000">
           <FQA />
         </div>
 
         {/* contact us section  */}
         <div
-          className="container mx-auto "
-          data-aos="fade-left"
-          data-aos-offset="300"
-          data-aos-easing="ease-in-sine"
-          data-aos-duration="1000"
+          className="md:container  md:mx-auto mx-3 "
+          // data-aos="fade-left"
+          // data-aos-offset="300"
+          // data-aos-duration="1000"
         >
           <ContactUs />
         </div>

@@ -21,7 +21,7 @@ const BookingDeashBoard = () => {
   const dispatch = useAppDispatch();
   const { data, isLoading } = useGetUserBookingHistoryQuery(null);
 
-  data?.data?.forEach((booking: IBooking, index: number) => {
+  data?.forEach((booking: IBooking, index: number) => {
     DashBoardDataItem.push({
       key: `${index + 1}`,
       label: <DashboardLabel booking={booking} />,
@@ -30,16 +30,16 @@ const BookingDeashBoard = () => {
   });
 
   return (
-    <div className="container">
+    <div className="lg:container w-full mt-20">
       {isLoading ? (
         <div className="flex justify-center items-center h-[70vh]">
-          <LoadingSpinner />
+          <LoadingSpinner size="regular" />
         </div>
       ) : (
         <UseCollapse items={DashBoardDataItem} />
       )}
     </div>
   );
-}
+};
 
 export default BookingDeashBoard;

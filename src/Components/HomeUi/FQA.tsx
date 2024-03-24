@@ -15,17 +15,17 @@ const FQA = () => {
       key: `${index + 1}`,
       label: (
         <div className="">
-          <p className="font-bold text-lg ">{fqa.question}</p>
+          <p className="font-bold text-sm md:text-lg  ">{fqa.question}</p>
         </div>
       ),
-      children: <p className="font-bold text-lg px-5">{fqa.answer}</p>,
+      children: <p className="font-semibold text-sm  px-5">{fqa.answer}</p>,
     });
   });
 
   return (
-    <div className=" md:container  auto my-5 mb-20">
+    <div className=" my-5 md:mb-20">
       <div className="flex justify-center">
-        <h3 className="text-center font-bold text-2xl my-8 lg:text-4xl lg:my-16 border-b-4 inline-block border-green-400 text-gray-700 ">
+        <h3 className="text-center font-bold sm:text-xl  md:text-2xl  lg:text-4xl lg:my-16 my-8 border-b-4 inline-block border-green-400 text-gray-700 ">
           {" "}
           Frequently Asked Questions
         </h3>

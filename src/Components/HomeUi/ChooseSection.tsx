@@ -11,10 +11,10 @@ const ChooseSection = () => {
   return (
     <div className="mx-auto mt-32 px-4 lg:px-7">
       <div className=" my-12 ">
-        <p className="text-xl text-center font-thin tracking-tighter">
+        <p className="text-sm text-center font-thin tracking-tighter">
           We Clean EveryThing
         </p>
-        <h3 className="text-3xl text-center font-semibold">
+        <h3 className="text-md md:text-xl lg:text-3xl text-center font-semibold">
           Why We're <span className="font-bold">Your Best Choice</span>
         </h3>
       </div>
@@ -29,15 +29,16 @@ const ChooseSection = () => {
           </div>
           {/* text section */}
           <div>
-            <h2 className="text-2xl my-3 font-semibold group-hover:text-green-400 transition-colors duration-700">
+            <h2 className="text-sm md:text-xl  lg:text-2xl my-2 font-semibold group-hover:text-green-400 transition-colors duration-700">
               Clean and Sanitary
             </h2>
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-sm md:text-md">
               Your clothing receives a hygienic washing, leaving them both
               germ-free and immaculate. It's a fresh approach to your laundry!
             </p>
           </div>
         </div>
+
         {/* card 2 */}
         <div className="w-full sm:w-1/2 lg:w-[350px] border p-6 group mx-auto shadow-lg rounded">
           {/* icon section */}
@@ -46,15 +47,16 @@ const ChooseSection = () => {
           </div>
           {/* text section */}
           <div>
-            <h2 className="text-2xl my-3 font-semibold group-hover:text-green-400 transition-colors duration-700">
+            <h2 className="text-sm md:text-xl  lg:text-2xl my-2 font-semibold group-hover:text-green-400 transition-colors duration-700">
               Free Pickup & Delivery
             </h2>
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-sm md:text-md">
               We offer convenient doorstep collection, and your clothing will be
               delivered punctually, as fresh as a daisy.
             </p>
           </div>
         </div>
+
         {/* card 3 */}
         <div className="w-full sm:w-1/2 lg:w-[350px] border p-6 group mx-auto shadow-lg rounded">
           {/* icon section */}
@@ -63,16 +65,17 @@ const ChooseSection = () => {
           </div>
           {/* text section */}
           <div>
-            <h2 className="text-2xl my-3 font-semibold group-hover:text-green-400 transition-colors duration-700">
+            <h2 className="text-sm md:text-xl  lg:text-2xl my-2 font-semibold group-hover:text-green-400 transition-colors duration-700">
               Affordable
             </h2>
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-sm md:text-md">
               At no extra cost, you pay the same price as set by your chosen
               laundry provider, ensuring affordability and convenience for your
               laundry needs.
             </p>
           </div>
         </div>
+
         {/* card 4 */}
         <div className="w-full sm:w-1/2 lg:w-[350px] border p-6 group mx-auto shadow-lg rounded">
           {/* icon section */}
@@ -81,16 +84,17 @@ const ChooseSection = () => {
           </div>
           {/* text section */}
           <div>
-            <h2 className="text-2xl my-3 font-semibold group-hover:text-green-400 transition-colors duration-700">
+            <h2 className="text-lg md:text-xl  lg:text-2xl my-2 font-semibold group-hover:text-green-400 transition-colors duration-700">
               Honest Pricing
             </h2>
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-sm md:text-md">
               At a budget-friendly rate, our services are competitively priced
               and often more affordable than other local laundry services in
               your vicinity.
             </p>
           </div>
         </div>
+
         {/* card 5 */}
         <div className="w-full sm:w-1/2 lg:w-[350px] border p-6 group mx-auto shadow-lg rounded">
           {/* icon section */}
@@ -99,10 +103,10 @@ const ChooseSection = () => {
           </div>
           {/* text section */}
           <div>
-            <h2 className="text-2xl my-3 font-semibold group-hover:text-green-400 transition-colors duration-700">
+            <h2 className="text-lg md:text-xl  lg:text-2xl my-2 font-semibold group-hover:text-green-400 transition-colors duration-700">
               Eco-Conscious
             </h2>
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-sm md:text-md">
               This version clarifies the relationship between local residents,
               the laundry services, and the positive sentiment.
             </p>
@@ -116,10 +120,10 @@ const ChooseSection = () => {
           </div>
           {/* text section */}
           <div>
-            <h2 className="text-2xl my-3 font-semibold group-hover:text-green-400 transition-colors duration-700">
+            <h2 className="text-lg md:text-xl  lg:text-2xl my-2 font-semibold group-hover:text-green-400 transition-colors duration-700">
               Satisfaction Guarantee
             </h2>
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-sm md:text-md">
               We are laundry industry experts, staying current with the latest
               technologies to provide you with the best service.
             </p>

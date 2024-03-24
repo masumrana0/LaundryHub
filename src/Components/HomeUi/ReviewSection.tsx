@@ -117,10 +117,10 @@ const ReviewSection = () => {
   return (
     <>
       <div className=" my-12 ">
-        <p className="text-xl text-center font-thin tracking-tighter">
+        <p className="text-sm md:text-lg lg:text-xl text-center font-thin tracking-tighter">
           We Clean EveryThing
         </p>
-        <h3 className="text-3xl text-center font-semibold">
+        <h3 className=" text-lg md:text-xl lg:text-3xl text-center font-semibold">
           Our Customers <span className="font-bold">Reviews and Ratings</span>
         </h3>
       </div>

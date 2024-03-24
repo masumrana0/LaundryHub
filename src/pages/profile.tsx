@@ -113,7 +113,7 @@ const Profile = () => {
           </button>
         </div>
         {/* conditional rendering contents /pages */}
-        <div className=" lg:w-[80%] px-5 md:px-0 my-10 md:my-20">
+        <div className=" flex justify-center items-center w-full px-5 md:px-0 my-10  md:my-20">
           {profileUiSectionNo == 1 && <HomeProfile />}
           {profileUiSectionNo == 2 && <ProfilePersonInfo />}
           {profileUiSectionNo == 3 && <BookingDeashBoard />}

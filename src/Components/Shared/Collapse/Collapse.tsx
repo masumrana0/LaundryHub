@@ -7,7 +7,7 @@ interface UseCollapseProps {
 
 const UseCollapse = ({ items }: UseCollapseProps) => {
   return (
-    <div className="container">
+    <div>
       <Collapse items={items} defaultActiveKey={["1"]} />
     </div>
   );

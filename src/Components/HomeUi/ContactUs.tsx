@@ -11,8 +11,10 @@ import Link from "next/link";
 const ContactUs = () => {
   return (
     <div>
-      <h2 className="text-2xl font-bold mb-4">Our Vision</h2>
-      <p className="text-gray-500 text-lg  ">
+      <h2 className="text-lg md:text-xl  lg:text-2xl font-bold lg:mb-4 mb-2">
+        Our Vision
+      </h2>
+      <p className="text-gray-500 md:text-lg text-sm  ">
         Our Vision: At Laundry Hub, we envision a future where laundry
         isn&apos;t just a chore but a rejuvenating experience. Our vision is to
         be the beacon of convenience and excellence, providing a Wash & Iron
@@ -22,15 +24,15 @@ const ContactUs = () => {
         customer-centricity propels us towards a brighter, cleaner, and more
         convenient tomorrow for all who entrust their clothes to us.
       </p>
-      <div className="flex   items-center text-xl my-2 gap-2 text-green-500">
+      <div className="flex   items-center text-sm sm:text-md md:text-lg lg:text-xl my-2 gap-2 text-green-500">
         <FaPhoneVolume />
         <p>+8801644626735</p>
       </div>
-      <div className="flex   items-center text-xl  gap-2 text-green-500">
+      <div className="flex   items-center text-sm sm:text-md md:text-lg lg:text-xl my-2 gap-2 text-green-500">
         <FaEnvelopeOpen />
         <p>laundryhub@info.com</p>
       </div>
-      <div className="flex  items-center text-lg my-5  gap-2 text-green-500">
+      <div className="flex   items-center text-sm sm:text-md md:text-lg lg:text-xl my-2 gap-2 text-green-500">
         <p>Follow us on</p>
         <Link href="https://www.facebook.com/masumrana02/">
           {" "}
