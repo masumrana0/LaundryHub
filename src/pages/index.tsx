@@ -41,7 +41,7 @@ const HomePage = () => {
   return (
     <div className="bg-gray-50 pb-20">
       <button
-        className={`fixed bottom-20 border-2 right-1 md:right-[12rem] bg-green-500 text-white p-4 rounded-full z-50 ${
+        className={`fixed bottom-20 border-2 left-1 md:left-[12rem] bg-green-500 text-white p-4 rounded-full z-50 ${
           isVisible ? "block" : "hidden"
         }`}
         onClick={() => {
