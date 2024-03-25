@@ -100,8 +100,41 @@ export const removeUserInfo = (key: string) => {
   return localStorage.removeItem(key);
 };
 
+function checkRefreshTokenExists() {
+  // Check if document object is defined (client-side environment)
+  if (typeof document !== "undefined") {
+    // Get all cookies
+    const cookies = document.cookie.split(";");
+    console.log(cookies);
+
+    // Loop through each cookie
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+
+      // Check if the cookie contains the refresh token
+      if (cookie.startsWith("refreshToken=")) {
+        return true; // Refresh token exists
+      }
+    }
+  }
+
+  return false; // Refresh token does not exist
+}
+
+// Example usage
+if (typeof document !== "undefined") {
+  document.addEventListener("DOMContentLoaded", function () {
+    // Your code here
+    if (checkRefreshTokenExists()) {
+      console.log("Refresh token exists in cookies.");
+    } else {
+      console.log("Refresh token does not exist in cookies.");
+    }
+  });
+}
+
 export const getNewAccessToken = async () => {
-  return await  instance({
+  return await instance({
     url: `${getBaseUrl()}/auth/refresh-token`,
     method: "POST",
     headers: { "Content-Type": "application/json" },

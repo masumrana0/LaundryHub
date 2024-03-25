@@ -39,7 +39,7 @@ const ProfilePersonInfo = () => {
         {/*  */}
         <div className="lg:p-10 p-2">
           {/* profile picture */}
-          {/* <div className="flex justify-between items-center border-b-2 ">
+          <div className="flex justify-between items-center border-b-2 ">
             <p className="font-semibold text-xl ">Profile picture</p>
             <div className="flex  items-center  gap-10  ">
               <p className="flex-shrink-0 text-lg font-thin  hidden lg:block">
@@ -48,7 +48,7 @@ const ProfilePersonInfo = () => {
 
               <UploadProfilePicture />
             </div>
-          </div> */}
+          </div>
 
           {/* name section */}
           <div className="flex justify-between items-center border-b-2 shadow py-5">

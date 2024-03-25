@@ -7,7 +7,7 @@
  */
 
 import { IAccordionItem, ILaundryProduct } from "@/Interface/types";
-import fetchData from "@/fetchData(CSR)/fetchData";
+// import fetchData from "@/fetchData(CSR)/fetchData";
 import { useEffect, useState } from "react";
 import menImg from "../../public/laundrypageimg/men.png";
 import womenImg from "../../public/laundrypageimg/woman.png";

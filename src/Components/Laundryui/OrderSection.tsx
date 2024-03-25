@@ -114,13 +114,19 @@ const OrderSection = () => {
           <div className="flex justify-center gap-4 ">
             <div className={`mt-5 ${bookingState ? "hidden" : " "}  `}>
               <button
+                onClick={() => {
+                  window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                  });
+                  dispatch(setBookingState(true));
+                }}
                 disabled={laundryProducts.length === 0}
-                className={`border px-10 py-2 rounded-xl     text-white  font-bold transition-colors duration-300 ${
+                className={`border  px-8 py-2 rounded-xl     e  font-bold transition-colors duration-300 ${
                   laundryProducts.length === 0
-                    ? " bg-gray-500 text-gray-300"
-                    : "bg-green-500 hover:bg-green-900"
+                    ? " bg-gray-500 text-gray-400 "
+                    : "bg-green-500 hover:bg-green-900 text-white"
                 }`}
-                onClick={() => dispatch(setBookingState(true))}
               >
                 Next
               </button>
@@ -129,13 +135,13 @@ const OrderSection = () => {
               <button
                 onClick={() => dispatch(addToOrCart(laundryProducts))}
                 disabled={laundryProducts.length === 0}
-                className={`border px-10 py-2 rounded-xl     text-white  font-bold transition-colors duration-300 ${
+                className={`border px-2  md:px-8 py-2 rounded-xl   font-semibold md:font-bold transition-colors duration-300 ${
                   laundryProducts.length === 0
-                    ? " bg-gray-500 text-gray-300"
-                    : "bg-green-500 hover:bg-green-900"
+                    ? " bg-gray-500 text-gray-400"
+                    : "bg-green-500 hover:bg-green-900 text-white"
                 }`}
               >
-                add To Cart
+                addToCart
               </button>
             </div>
           </div>

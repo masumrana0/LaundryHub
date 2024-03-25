@@ -21,7 +21,7 @@ const MobileScreenNavbar = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
   return (
-    <div id="top" className="w-full px-3 py-2  bg-slate-200 relative">
+    <div className="w-full px-3 py-2  bg-slate-200 relative">
       {/* upper part  */}
       <div className="  flex justify-between items-center">
         {/* logo part  */}
@@ -39,7 +39,11 @@ const MobileScreenNavbar = () => {
 
         {/* Dropdown toogle button */}
         <div className="text-3xl transition-all duration-300">
-          <button onClick={() => setDropdownOpen(!isDropdownOpen)}>
+          <button
+            
+            onMouseLeave={() => setDropdownOpen(false)}
+            onClick={() => setDropdownOpen(!isDropdownOpen)}
+          >
             {isDropdownOpen ? <BsXLg /> : <BsList />}
           </button>
         </div>
@@ -95,7 +99,7 @@ const MobileScreenNavbar = () => {
 
               <Link
                 className="relative flex items-center gap-0.5  text-md font-semibold transition-all duration-300 group"
-                href="/"
+                href="/feedback"
               >
                 <span>
                   <FaPhone />

@@ -154,7 +154,7 @@ const ReviewSection = () => {
         className="mySwiper"
       >
         {reviews?.map((review: any) => (
-          <SwiperSlide key={review?._id}>
+          <SwiperSlide key={review?.id}>
             <div
               style={boxShadowStyle}
               className="w-[370px] h-[370px] lg:w-[400px] lg:h-[390px] bg-white   text-center p-6"

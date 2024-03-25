@@ -34,8 +34,7 @@ instance.interceptors.response.use(
     // console.log("🚀 ~ response:", response);
     const responseObject: any = {
       data: response?.data?.data,
-      meta: response?.data?.meta,
-      success:response?.data?.success,
+      // meta: response?.data?.meta,
     };
     return responseObject;
   },
@@ -47,12 +46,16 @@ instance.interceptors.response.use(
       config.sent = true;
       const response = await getNewAccessToken();
       console.log(response);
+
+      // if (!response?.data) {
+      //   removeFromLocalStorage(authKey);
+      // }
+      console.log(response);
       const accessToken = response?.data?.accessToken;
       config.headers["Authorization"] = accessToken;
       setToLocalStorage(authKey, accessToken);
       return instance(config);
     } else {
-      // console.log(error);
       if (error?.response?.status === 403 || error?.response?.status === 401) {
         removeFromLocalStorage(authKey);
       }

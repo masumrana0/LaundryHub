@@ -13,6 +13,7 @@ import { ReactElement, useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { FaArrowUp } from "react-icons/fa6";
+import FacebookChat from "@/Components/FacebookChat/FacebookChat";
 
 const HomePage = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -40,7 +41,7 @@ const HomePage = () => {
   return (
     <div className="bg-gray-50 pb-20">
       <button
-        className={`fixed bottom-20 border-2 right-8 md:right-10 bg-green-500 text-white p-4 rounded-full z-50 ${
+        className={`fixed bottom-20 border-2 right-1 md:right-[12rem] bg-green-500 text-white p-4 rounded-full z-50 ${
           isVisible ? "block" : "hidden"
         }`}
         onClick={() => {
@@ -112,6 +113,7 @@ const HomePage = () => {
         >
           <ContactUs />
         </div>
+        <FacebookChat/>
       </div>
     </div>
   );
