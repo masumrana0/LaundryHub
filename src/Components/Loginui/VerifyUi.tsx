@@ -1,6 +1,6 @@
 import { useSendVerificationEmailQuery } from "@/Redux/api/authApi";
 import { useGetProfileQuery } from "@/Redux/api/profileApi";
-import { setIsEmailVerified } from "@/Redux/features/auth/authSlice";
+// import { setIsEmailVerified } from "@/Redux/features/auth/authSlice";
 import { useAppDispatch } from "@/Redux/hook";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
