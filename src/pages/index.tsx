@@ -26,7 +26,7 @@ const HomePage = () => {
     const handleScroll = () => {
       const scrollYPosition = window.scrollY;
 
-      setIsVisible(scrollYPosition > 300);
+      setIsVisible(scrollYPosition > 400);
     };
 
     // Check if window is defined (running in the browser)
@@ -40,20 +40,6 @@ const HomePage = () => {
 
   return (
     <div className="bg-gray-50 pb-20">
-      <button
-        className={`fixed bottom-20 border-2 left-1 md:left-[12rem] bg-green-500 text-white p-4 rounded-full z-50 ${
-          isVisible ? "block" : "hidden"
-        }`}
-        onClick={() => {
-          window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-          });
-        }}
-      >
-        <FaArrowUp className="animate-bounce text-xl" />
-      </button>
-
       <div id="top" className="lg:container">
         <div>
           <HomeHeaderSwiper />
@@ -113,8 +99,22 @@ const HomePage = () => {
         >
           <ContactUs />
         </div>
-        <FacebookChat/>
+        <FacebookChat />
       </div>
+
+      <button
+        className={`fixed bottom-20 border-2 left-1 md:left-[12rem] bg-green-500 text-white p-4 rounded-full z-50 ${
+          isVisible ? "block" : "hidden"
+        }`}
+        onClick={() => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        }}
+      >
+        <FaArrowUp className="animate-bounce text-xl" />
+      </button>
     </div>
   );
 };

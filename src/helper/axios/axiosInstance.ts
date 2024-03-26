@@ -1,3 +1,5 @@
+import { setIsLoggedIn } from "@/Redux/features/auth/authSlice";
+import { useAppDispatch } from "@/Redux/hook";
 import { authKey } from "@/constants/storageKey";
 import { getNewAccessToken, getUseAbleToken } from "@/services/auth.service";
 import {
@@ -7,6 +9,7 @@ import {
 } from "@/utilities/local-storage";
 
 import axios from "axios";
+ 
 
 const instance = axios.create();
 instance.defaults.headers.post["Content-Type"] = "application/json";
@@ -41,16 +44,13 @@ instance.interceptors.response.use(
 
   async function (error) {
     const config = error?.config;
-
+    console.log(error.response.data.message);
+    if (error.response.data.message == "Validation Error") {
+      removeFromLocalStorage(authKey);
+    }
     if (error?.response?.status === 403 && !config?.sent) {
       config.sent = true;
       const response = await getNewAccessToken();
-      console.log(response);
-
-      // if (!response?.data) {
-      //   removeFromLocalStorage(authKey);
-      // }
-      console.log(response);
       const accessToken = response?.data?.accessToken;
       config.headers["Authorization"] = accessToken;
       setToLocalStorage(authKey, accessToken);
