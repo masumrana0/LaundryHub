@@ -46,7 +46,7 @@ const Laundry = () => {
   };
 
   return (
-    <div className="container mx-auto">
+    <div className="md:container sm:mx-auto mx-5 pb-20 ">
       {/* Heading of the page  */}
       <div
         className={`lg:my-10 my-5 flex flex-col lg:flex-row lg:justify-between items-center ${

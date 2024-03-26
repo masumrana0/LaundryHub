@@ -12,13 +12,9 @@ import { selectIsLoggedIn } from "@/Redux/features/auth/authSlice";
 
 const DesktopScreenNavbar = () => {
   const isLoggedIn = useAppSelector(selectIsLoggedIn);
-  console.log(isLoggedIn)
 
   return (
-    <div
-      id="top"
-      className="hidden lg:block container mx-auto  bg-slate-100   "
-    >
+    <div className="container mx-auto  bg-slate-100   ">
       <div className=" border-b-2  py-3">
         <div className="flex justify-between   p-3  px-4 rounded text-gray-800">
           <div className="flex  ">

@@ -57,8 +57,6 @@ const UserAddressSection = () => {
     }
   }
 
-  let BookingResultData: IBookingResult | null = null;
-
   // Handle form submission for booking
   const handleSubmitBooking = async (data: IBookingForm) => {
     // Create booking data object
@@ -67,8 +65,6 @@ const UserAddressSection = () => {
       grandPrice: grandPrice,
       services,
     };
-
-    // console.log(booking);
 
     // Send booking request and handle response
     const res: IBookingResponse | any = await bookingRequest(booking);
@@ -92,14 +88,14 @@ const UserAddressSection = () => {
         <div>
           {/* Header Section */}
           <div className="mb-10">
-            <h2 className="text-center font-bold lg:text-xl mb-1 border-b-4 border-green-500 pb-3">
+            <h2 className="text-center font-bold text-sm  md:text-lg lg:text-xl   border-b-4 border-green-500  mt-3 py-1 md:pb-3">
               Modify Pickup & Drop-off Information
             </h2>
           </div>
 
           {/* Order Pickup to Delivery Date Section */}
           <div className="mb-5">
-            <div className="flex  items-center gap-5 border-b-2 mb-5 text-xl font-bold text-green-500">
+            <div className="flex  items-center gap-2 lg:gap-5 border-b-2 mb-5 text-lg lg:text-xl font-bold text-green-500">
               <h2 className="flex items-center  gap-1    ">
                 <FaCar /> Schedule
               </h2>
@@ -118,7 +114,7 @@ const UserAddressSection = () => {
           <div className="mb-10">
             <form onSubmit={handleSubmit(handleSubmitBooking)}>
               {/* Pickup and Delivery Date Inputs */}
-              <div className="inline-flex gap-10 mb-10">
+              <div className="inline-flex gap-3 lg:gap-10 mb-10">
                 <div>
                   <h3 className="text-gray-500 text-sm">Pickup Date</h3>
                   <input
