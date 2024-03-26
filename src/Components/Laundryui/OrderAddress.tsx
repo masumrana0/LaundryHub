@@ -114,7 +114,7 @@ const UserAddressSection = () => {
           <div className="mb-10">
             <form onSubmit={handleSubmit(handleSubmitBooking)}>
               {/* Pickup and Delivery Date Inputs */}
-              <div className="inline-flex gap-3 lg:gap-10 mb-10">
+              <div className="sm:inline-flex flex justify-between   lg:gap-10 mb-10">
                 <div>
                   <h3 className="text-gray-500 text-sm">Pickup Date</h3>
                   <input
@@ -123,7 +123,7 @@ const UserAddressSection = () => {
                     id="pickupDate"
                     name="pickupDate"
                     required
-                    className="border-b-2 border-green-500 rounded pb-2 outline-none"
+                    className="border-b-2 border-green-500 rounded pb-2 outline-none    text-sm"
                   />
                 </div>
                 <div>
@@ -134,7 +134,7 @@ const UserAddressSection = () => {
                     id="deliveryDate"
                     name="deliveryDate"
                     required
-                    className="rounded border-b-2 border-green-500 pb-2 outline-none"
+                    className="rounded border-b-2 border-green-500 pb-2 outline-none text-sm"
                   />
                 </div>
               </div>
@@ -144,7 +144,7 @@ const UserAddressSection = () => {
                 <h3 className="mb-1 font-bold">PhoneNumber</h3>
                 <input
                   {...register("phoneNumber")}
-                  className="w-full border me-5 hover:border-green-400 p-2 outline-none focus:outline-none"
+                  className="w-full border me-5 hover:border-green-400 p-2  outline-none focus:outline-none"
                   type="number"
                   name="phoneNumber"
                   required
