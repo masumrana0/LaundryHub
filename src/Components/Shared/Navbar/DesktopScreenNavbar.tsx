@@ -3,14 +3,16 @@ import logo from "../../../../public/logo.png";
 import Link from "next/link";
 import { UserOutlined, SettingOutlined, HomeOutlined } from "@ant-design/icons";
 import { Avatar, Space } from "antd";
-import { isLoggedIn, logOut } from "@/services/auth.service";
 import { Dropdown } from "antd";
 import { FaRegBell, FaComments, FaPhone, FaBloggerB } from "react-icons/fa6";
 import Cart from "@/Components/Cart/Cart";
 import { profileItems } from "@/Components/dropdowns/Items/ProfileItems";
+import { useAppSelector } from "@/Redux/hook";
+import { selectIsLoggedIn } from "@/Redux/features/auth/authSlice";
 
 const DesktopScreenNavbar = () => {
-  const isLoggedin = isLoggedIn();
+  const isLoggedIn = useAppSelector(selectIsLoggedIn);
+  console.log(isLoggedIn)
 
   return (
     <div
@@ -114,7 +116,7 @@ const DesktopScreenNavbar = () => {
 
         {/* login part  / Avatar part */}
         <div>
-          {isLoggedIn() ? (
+          {isLoggedIn ? (
             <div className="relative inline-block text-left">
               <Dropdown menu={{ items: profileItems }} placement="bottom">
                 <button>

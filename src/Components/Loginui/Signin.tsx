@@ -11,7 +11,7 @@ import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 
 import LoadingSpinner from "../Shared/Loading";
-import { setAuthState } from "@/Redux/features/auth/authSlice";
+import { setAuthState, setIsLoggedIn } from "@/Redux/features/auth/authSlice";
 import Button from "../ui/Button";
 
 const Signin = () => {
@@ -43,12 +43,12 @@ const Signin = () => {
     // console.log(signInData);
 
     const res = await userSignin(signInData).unwrap();
-    console.log(res);
 
     // handling validation response and setup accessToken
     if ("validationResponse" in res) {
       setValidationResponse(res?.validationResponse);
     } else if ("accessToken" in res) {
+      dispatch(setIsLoggedIn(true));
       storeLocalStorageInfo(authKey, res?.accessToken);
       toast.success("You are Sigin successfully");
       router.push("/");

@@ -20,6 +20,7 @@
     "axios": "^1.6.8",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "cookies-ts": "^1.0.5",
     "gsap": "^3.12.4",
     "jwt-decode": "^4.0.0",
     "lucide-react": "^0.300.0",

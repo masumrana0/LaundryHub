@@ -17,7 +17,7 @@ import { useAppDispatch } from "@/Redux/hook";
 
 // custom componnet
 import Button from "../ui/Button";
-import { setAuthState } from "@/Redux/features/auth/authSlice";
+import { setAuthState, setIsLoggedIn } from "@/Redux/features/auth/authSlice";
 import { AuthValidations } from "@/Schema/Schema";
 import { authKey } from "@/constants/storageKey";
 import { storeLocalStorageInfo } from "@/services/auth.service";
@@ -54,6 +54,7 @@ const Signup = () => {
       setValidationResponse(res?.validationResponse);
     } else if ("accessToken" in res) {
       storeLocalStorageInfo(authKey, res?.accessToken);
+      dispatch(setIsLoggedIn(true));
       toast.success("Signup successful! Check your email for verification.");
       router.push("/");
     }

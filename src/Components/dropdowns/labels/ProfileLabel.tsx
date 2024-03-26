@@ -1,4 +1,3 @@
-import { logOut } from "@/services/auth.service";
 import { Divider } from "antd";
 import Link from "next/link";
 import React from "react";
@@ -6,6 +5,8 @@ import { CgProfile } from "react-icons/cg";
 import { IoSettings } from "react-icons/io5";
 import { FaArrowRightFromBracket } from "react-icons/fa6";
 import Cart from "@/Components/Cart/Cart";
+import { useAppDispatch } from "@/Redux/hook";
+import { logOut } from "@/Redux/features/auth/authSlice";
 
 const ProfileLabel = () => {
   const handleSelectClick = (
@@ -19,6 +20,7 @@ const ProfileLabel = () => {
     logOut();
     console.log("hello");
   };
+  const dispatch = useAppDispatch();
 
   return (
     <div className="lg:w-40 w-32   rounded-md p-3 " onClick={handleSelectClick}>
@@ -78,7 +80,7 @@ const ProfileLabel = () => {
           <div className="flex hover:bg-slate-100 p-2 hover:text-green-400 rounded-md cursor-pointer  items-center gap-2">
             <FaArrowRightFromBracket className="text-md" />
             <button
-              onClick={() => logOut()}
+              onClick={() => dispatch(logOut())}
               className="text-sm hover:text-red-400"
             >
               Logout
