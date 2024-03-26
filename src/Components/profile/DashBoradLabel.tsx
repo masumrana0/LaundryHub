@@ -10,8 +10,10 @@ const DashboardLabel = ({ booking }: IBookingProps) => {
     <div className="flex justify-between">
       <div>
         <p>
-          <span className="font-bold text-lg">TotalCost:</span>{" "}
-          <span className="text-xl font-extrabold text-green-400">
+          <span className="font-bold text-[10px] sm:text-md md:text-[14px]">
+            TotalCost:
+          </span>{" "}
+          <span className="lg:text-md md:text-md sm:text-sm  text-[10px] font-extrabold text-gray-700">
             &#2547;
             <span className="font-semibold text-md">
               {" "}
@@ -23,15 +25,17 @@ const DashboardLabel = ({ booking }: IBookingProps) => {
       <div>
         {isApproved ? (
           isDelivered ? (
-            <h2 className="font-bold">Delivered</h2>
+            <h2 className="font-bold text-[10px] md:text-[12px]">Delivered</h2>
           ) : (
-            <h2 className="font-bold">Proccessing...</h2>
+            <h2 className="font-bold text-[10px] md:text-[12px]">
+              Proccessing...
+            </h2>
           )
         ) : (
           <div className="flex  items-center gap-6 ">
-            <h2 className="font-bold">Pending...</h2>
+            <h2 className="font-bold text-[10px] md:text-[12px]">Pending...</h2>
             <button
-              className={`border px-10 py-2 rounded-xl text-white font-bold transition-colors duration-300 bg-red-500 hover:bg-red-900`}
+              className={`border px-2 sm:px-5 md:px-5 lg:px-6 py-2 rounded-xl text-white   sm:font-semibold transition-colors duration-300 bg-red-500 hover:bg-red-900`}
             >
               Cancel
             </button>

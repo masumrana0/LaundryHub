@@ -77,7 +77,7 @@ const ChangeName = () => {
             </p>
           </div>
 
-          <div className="flex justify-center lg:mt-5">
+          <div className="flex justify-center mt-2 lg:mt-5">
             <button
               type="submit"
               className="px-3 rounded bg-green-400 shadow-lg shadow-gray-400 hover:text-white font-semibold text-lg py-2 hover:bg-green-700 transition-colors duration-300 text-white"

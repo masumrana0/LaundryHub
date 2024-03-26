@@ -18,34 +18,28 @@ const DashBoardItemChildren = ({ booking }: IBookingProps) => {
   return (
     <div className="">
       {booking?.services?.map((service: any, index: Key | null | undefined) => (
-        <div
-          key={index}
-          className="px-2 border-2 rounded shadow-lg shadow-green-400 mb-2"
-        >
-          <p className="text-center font-semibold text-lg text-gray-600">
-            <Link href={`serviceDetails/${service?.service}`}>
-              <button className="border px-5 rounded-xl text-white font-bold transition-colors duration-300 bg-green-500 hover:bg-green-900">
-                Service
-              </button>
-            </Link>
-          </p>
-
-          <div className="py-2 px-4 flex justify-between items-center">
-            <div className="flex items-center gap-4">
-              <h2 className="font-bold lg:text-xl">
-                {service?.cleaningProduct?.name}
-              </h2>
-            </div>
-            <p>
-              <span className="text-xl font-extrabold text-green-400">
-                &#2547;
-                <span className="font-semibold text-md">
-                  {service?.cleaningProduct?.price}
+        <Link href={`serviceDetails/${service?.service}`}>
+          <div
+            key={index}
+            className="px-2 border-2 rounded shadow-lg shadow-green-100 mb-2"
+          >
+            <div className="py-2 px-4 flex justify-between items-center">
+              <div className="flex items-center gap-4">
+                <h2 className="font-semibold text-[10px] md:text-md lg:text-[14px]">
+                  {service?.cleaningProduct?.name}
+                </h2>
+              </div>
+              <p>
+                <span className="lg:text-xl text-md font-extrabold text-gray-600">
+                  &#2547;
+                  <span className="font-semibold text-md">
+                    {service?.cleaningProduct?.price}
+                  </span>
                 </span>
-              </span>
-            </p>
+              </p>
+            </div>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );
