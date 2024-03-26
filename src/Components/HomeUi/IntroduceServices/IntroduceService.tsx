@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ServiceSwiper from "./ServiceSwiper";
 import { useEffect } from "react";
 
@@ -29,7 +30,7 @@ const IntroduceService = () => {
           and quality.
         </p>
         <button className="mt-3 text-[10px] md:text-lg  bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-3 rounded">
-          View Services
+          <Link href="/service">View Services</Link>
         </button>
       </div>
     </div>

@@ -17,16 +17,17 @@ import { addSelectService } from "@/Redux/features/order/orderSlice";
 import { useAppDispatch, useAppSelector } from "@/Redux/hook";
 import { isLoggedIn } from "@/services/auth.service";
 import { useRouter } from "next/navigation";
-import React, { useEffect, ReactElement } from "react";
+import React, { ReactElement, useEffect } from "react";
 
 const Laundry = () => {
   // handle private page
   const router = useRouter();
   const isLogged = useAppSelector(selectIsLoggedIn);
-
-  if (!isLogged) {
-    return router.push("/auth");
-  }
+  useEffect(() => {
+    if (!isLogged) {
+      return router.push("/auth");
+    }
+  }, [router]);
 
   // redux
   const dispatch = useAppDispatch();
