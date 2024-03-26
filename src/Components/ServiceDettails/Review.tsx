@@ -14,7 +14,6 @@ const Review = ({ id }: { id: string }) => {
   const isLoggedIn = useAppSelector(selectIsLoggedIn);
 
   const { data: reviewDatas } = useGetReviewQuery(id);
-  // console.log(reviewDatas);
 
   const [reviewSubmitMutation] = useSubmitServiceReviewMutation();
 
@@ -28,7 +27,6 @@ const Review = ({ id }: { id: string }) => {
         service: `${id}`,
         review: review,
       };
-      // console.log(reviewData);
 
       const res = await reviewSubmitMutation(reviewData);
 

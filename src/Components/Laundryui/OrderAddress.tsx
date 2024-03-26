@@ -34,7 +34,6 @@ const UserAddressSection = () => {
     (state) => state.order.laundryProducts
   );
 
-  // console.log(selectedServiceData);
   const grandPrice = useAppSelector((state) => state.order.grandPrice);
 
   // Mutation Hook for Submitting Booking Request
@@ -47,7 +46,6 @@ const UserAddressSection = () => {
   // Iterate through selected service data to create booking services array
   if (selectedServiceData.length >= 1) {
     for (const bookingService of selectedServiceData) {
-      // console.log(bookingService);
       const modifiedBookingService = {
         service: bookingService.service.service,
         cleaningProduct: bookingService?._id as string,

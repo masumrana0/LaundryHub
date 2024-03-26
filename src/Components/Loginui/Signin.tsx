@@ -50,8 +50,6 @@ const Signin = () => {
 
   // handle  submit form
   const onSubmit = async (signInData: ISigninData) => {
-    // console.log(signInData);
-
     const res = await userSignin(signInData).unwrap();
 
     // handling validation response and setup accessToken

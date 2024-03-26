@@ -16,10 +16,6 @@ const ProfileLabel = () => {
     e.stopPropagation();
   };
 
-  const handleLogout = () => {
-    logOut();
-    console.log("hello");
-  };
   const dispatch = useAppDispatch();
 
   return (

@@ -44,7 +44,7 @@ instance.interceptors.response.use(
 
   async function (error) {
     const config = error?.config;
-    console.log(error.response.data.message);
+    // console.log(error.response.data.message);
     if (error.response.data.message == "Validation Error") {
       removeFromLocalStorage(authKey);
     }
