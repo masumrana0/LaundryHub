@@ -14,6 +14,7 @@ import { useDispatch } from "react-redux";
 
 const ServiceDetails = () => {
   const dispatch = useDispatch();
+
   const router = useRouter();
   const id = router.query.serviceId;
 
@@ -74,7 +75,7 @@ const ServiceDetails = () => {
                   <div className="flex justify-center gap-5 mt-1">
                     <button
                       onClick={handleSelectService}
-                      className="rounded px-10 py-2 shadow-lg font-semibold bg-green-300 transition-colors duration-300 hover:bg-green-500 hover:text-white text-gray-600"
+                      className="rounded px-10 py-2 shadow-lg font-semibold bg-green-300 transition-colors duration-300 hover:bg-green-500 hover:text-gray-600 text-white-600"
                     >
                       <Link href="/laundry" scroll={false}>
                         Select

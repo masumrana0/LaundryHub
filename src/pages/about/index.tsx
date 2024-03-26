@@ -16,10 +16,6 @@ const AboutPage = () => {
         </h3>
       </div>
 
-      <div className=" mb-10">
-        <AboutSection />
-      </div>
-
       <div className="md:container flex items-center justify-center bg-gray-800   ">
         <div className="  flex flex-col md:flex-row w-full max-w-6xl gap-5 md:gap-0">
           <div className="md:w-1/2 h-[40rem]  pt-10">
@@ -32,6 +28,11 @@ const AboutPage = () => {
             />
           </div>
           <div className="md:w-1/2 flex flex-col justify-center px-6 py-5   text-left ">
+            <div>
+              <h2 className="text-white font-bold lg:text-6xl lg:mb-5 text-4xl lg:text-start    lg:mt-0 border-b-4 inline-block border-green-500 ">
+                About
+              </h2>
+            </div>
             <p className="text-md md:text-lg font-semibold text-white">
               Dry Cleaning is the latest dry cleaning & laundry service with
               many types of the quality cleaning process. It is a star laundry
@@ -45,6 +46,10 @@ const AboutPage = () => {
             </h2>
           </div>
         </div>
+      </div>
+
+      <div className=" mt-10">
+        <AboutSection />
       </div>
     </div>
   );

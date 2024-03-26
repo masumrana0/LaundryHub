@@ -100,7 +100,7 @@ const DesktopScreenNavbar = () => {
 
           <Link
             className="relative flex items-center gap-0.5  text-md font-semibold transition-all duration-300 group"
-            href="/"
+            href="/feedback"
           >
             <span>
               <FaPhone />

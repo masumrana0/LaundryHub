@@ -4,7 +4,7 @@ import { useUserSigninMutation } from "@/Redux/api/authApi";
 import { useAppDispatch, useAppSelector } from "@/Redux/hook";
 import { authKey } from "@/constants/storageKey";
 import { storeLocalStorageInfo } from "@/services/auth.service";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -25,6 +25,16 @@ const Signin = () => {
 
   const [isViewPass, setIsViewPass] = useState(false);
   const router = useRouter();
+  // console.log(router.query.from);
+
+  let intendedUrl = "/";
+  // if (Array.isArray(router.query.from)) {
+  //   intendedUrl = router.query.from.join("");
+  // } else if (typeof router.query.from === "string") {
+  //   intendedUrl = decodeURIComponent(router.query.from);
+  // }
+
+  // console.log(intendedUrl);
 
   // handle form hook
   const {
@@ -51,7 +61,7 @@ const Signin = () => {
       dispatch(setIsLoggedIn(true));
       storeLocalStorageInfo(authKey, res?.accessToken);
       toast.success("You are Sigin successfully");
-      router.push("/");
+      router.back();
     }
   };
 

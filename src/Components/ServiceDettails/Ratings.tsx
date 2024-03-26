@@ -9,11 +9,15 @@ import { AwardIcon } from "lucide-react";
 import { IRatingData } from "@/Interface/rating&review";
 import StarRating from "../HomeUi/StarRating";
 import Review from "./Review";
+import { useAppSelector } from "@/Redux/hook";
+import { selectIsLoggedIn } from "@/Redux/features/auth/authSlice";
 
 const Ratings = ({ id }: { id: string }) => {
   const [star, setStar] = useState<number>(0);
 
   // redux
+  const isLoggedIn = useAppSelector(selectIsLoggedIn);
+
   const [submitRating] = useSubmitRatingMutation();
   const { data } = useGetRatingsQuery(id);
   const rating: IRatingData = data;
@@ -81,46 +85,55 @@ const Ratings = ({ id }: { id: string }) => {
         <h3 className="text-center font-bold text-5xl md:text-8xl text-slate-600">
           {rating?.averageRating}.0
         </h3>
-        <div className="flex justify-center   mt-2">
-          <button onClick={() => setStar(1)}>
-            {star >= 1 ? (
-              <FaStar className="md:text-3xl text-2xl font-thin text-amber-400" />
-            ) : (
-              <FaRegStar className="md:text-3xl text-2xl font-thin text-amber-400" />
-            )}
-          </button>
-          <button onClick={() => setStar(2)}>
-            {star >= 2 ? (
-              <FaStar className="md:text-3xl text-2xl font-thin  text-amber-400" />
-            ) : (
-              <FaRegStar className="md:text-3xl text-2xl font-thin text-amber-400" />
-            )}
-          </button>
-          <button onClick={() => setStar(3)}>
-            {star >= 3 ? (
-              <FaStar className="md:text-3xl text-2xl font-thin text-amber-400" />
-            ) : (
-              <FaRegStar className="md:text-3xl text-2xl font-thin text-amber-400" />
-            )}
-          </button>
-          <button onClick={() => setStar(4)}>
-            {star >= 4 ? (
-              <FaStar className="md:text-3xl text-2xl font-thin text-amber-400" />
-            ) : (
-              <FaRegStar className="md:text-3xl text-2xl font-thin text-amber-400" />
-            )}
-          </button>
-          <button onClick={() => setStar(5)}>
-            {star == 5 ? (
-              <FaStar className="md:text-3xl text-2xl font-thin text-amber-400" />
-            ) : (
-              <FaRegStar className="md:text-3xl text-2xl font-thin text-amber-400" />
-            )}
-          </button>
+        <div>
+          <StarRating stars={rating?.averageRating} starsize="2xl"/>
         </div>
+
         <h3 className="text-xl font-thin text-gray-500 text-center">
           {rating?.totalGiveCustomerRating} Customer ratings
         </h3>
+        {/* giving rating section */}
+        <div>
+          {isLoggedIn && (
+            <div className="flex justify-center   mt-2">
+              <button onClick={() => setStar(1)}>
+                {star >= 1 ? (
+                  <FaStar className="md:text-3xl text-2xl font-thin text-amber-400" />
+                ) : (
+                  <FaRegStar className="md:text-3xl text-2xl font-thin text-amber-400" />
+                )}
+              </button>
+              <button onClick={() => setStar(2)}>
+                {star >= 2 ? (
+                  <FaStar className="md:text-3xl text-2xl font-thin  text-amber-400" />
+                ) : (
+                  <FaRegStar className="md:text-3xl text-2xl font-thin text-amber-400" />
+                )}
+              </button>
+              <button onClick={() => setStar(3)}>
+                {star >= 3 ? (
+                  <FaStar className="md:text-3xl text-2xl font-thin text-amber-400" />
+                ) : (
+                  <FaRegStar className="md:text-3xl text-2xl font-thin text-amber-400" />
+                )}
+              </button>
+              <button onClick={() => setStar(4)}>
+                {star >= 4 ? (
+                  <FaStar className="md:text-3xl text-2xl font-thin text-amber-400" />
+                ) : (
+                  <FaRegStar className="md:text-3xl text-2xl font-thin text-amber-400" />
+                )}
+              </button>
+              <button onClick={() => setStar(5)}>
+                {star == 5 ? (
+                  <FaStar className="md:text-3xl text-2xl font-thin text-amber-400" />
+                ) : (
+                  <FaRegStar className="md:text-3xl text-2xl font-thin text-amber-400" />
+                )}
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

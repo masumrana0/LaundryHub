@@ -12,6 +12,7 @@ import OrderSection from "@/Components/Laundryui/OrderSection";
 import RootLayout from "@/Components/Layout/RootLayout";
 import { ISelectService } from "@/Interface/booking";
 import { useGetAllServiceWithAnyTermQuery } from "@/Redux/api/serviceApi";
+import { selectIsLoggedIn } from "@/Redux/features/auth/authSlice";
 import { addSelectService } from "@/Redux/features/order/orderSlice";
 import { useAppDispatch, useAppSelector } from "@/Redux/hook";
 import { isLoggedIn } from "@/services/auth.service";
@@ -21,19 +22,17 @@ import React, { useEffect, ReactElement } from "react";
 const Laundry = () => {
   // handle private page
   const router = useRouter();
-  useEffect(() => {
-    const isLogged = isLoggedIn();
-    if (!isLogged) {
-      router.push("/auth");
-    }
-  }, [router]);
+  const isLogged = useAppSelector(selectIsLoggedIn);
+
+  if (!isLogged) {
+    return router.push("/auth");
+  }
 
   // redux
   const dispatch = useAppDispatch();
   const selectedService = useAppSelector((state) => state.order.service);
   const bookingState = useAppSelector((state) => state.order.bookingState);
-  // const [isOrderUserDettails, setOrderUserDettails] = useState<boolean>(false);
-  const { laundryProducts } = useAppSelector((state) => state.order);
+
   const { data } = useGetAllServiceWithAnyTermQuery(null);
   const serviceTitles = data;
 

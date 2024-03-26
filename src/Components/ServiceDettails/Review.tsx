@@ -3,11 +3,16 @@ import {
   useGetReviewQuery,
   useSubmitServiceReviewMutation,
 } from "@/Redux/api/review&ratingApi";
+import { selectIsLoggedIn } from "@/Redux/features/auth/authSlice";
+import { useAppSelector } from "@/Redux/hook";
 import { FormEvent } from "react";
 import { FaRegCircleUser } from "react-icons/fa6";
+import { LuSend } from "react-icons/lu";
 
 const Review = ({ id }: { id: string }) => {
   // redux
+  const isLoggedIn = useAppSelector(selectIsLoggedIn);
+
   const { data: reviewDatas } = useGetReviewQuery(id);
   // console.log(reviewDatas);
 
@@ -58,21 +63,23 @@ const Review = ({ id }: { id: string }) => {
       </div>
       {/* submit review section */}
       <div className="mb-20">
-        <form onSubmit={handleSubmitReview}>
-          <div className="h-12  mx-5   ">
-            <textarea
-              required
-              name="review"
-              placeholder="Enter Your Opinion in this service"
-              className="md:w-1/2 w-full  h-full outline-green-500  border  border-gray-300 bg-white rounded-[5px] py-2 px-5 text-sm "
-            ></textarea>
-            <div>
-              <button className="border-2 border-white shadow-lg shadow-white px-3 py-2 font-bold  bg-green-400 text-white hover:bg-green-700 transition-colors duration-300  rounded-xl ">
-                Submit
-              </button>
+        {isLoggedIn && (
+          <form onSubmit={handleSubmitReview}>
+            <div className="h-12  mx-5     ">
+              <textarea
+                required
+                name="review"
+                placeholder="Enter Your Opinion in this service"
+                className="md:w-1/2 w-full  h-full outline-green-500  border  border-gray-300 bg-white rounded-[5px] py-2 px-5 text-sm "
+              ></textarea>
+              <div>
+                <button className="border-2 border-white shadow-lg shadow-white px-3 py-2 font-bold  bg-green-400 text-white hover:bg-green-700 transition-colors duration-300  rounded-xl ">
+                  <LuSend className="text-2xl" />
+                </button>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        )}
       </div>
     </div>
   );
