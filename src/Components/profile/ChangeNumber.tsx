@@ -31,7 +31,7 @@ const ChangePhoneNumber = () => {
   };
 
   return (
-    <div className="mx-auto  w-[30%] p-10 border shadow-xl shadow-green-300 ">
+    <div className="mx-auto lg:w-[30rem] p-10 border shadow-xl shadow-green-300 ">
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* Phone Number */}
         <div className="lg:mb-3">
