@@ -11,7 +11,6 @@ import { FaLocationDot, FaCar, FaMoneyBill1 } from "react-icons/fa6";
 import { useForm } from "react-hook-form";
 import { useAppSelector } from "@/Redux/hook";
 import {
-  IBooking,
   IBookingForm,
   IBookingResponse,
   IBookingResult,
@@ -67,7 +66,7 @@ const UserAddressSection = () => {
     // Send booking request and handle response
     const res: IBookingResponse | any = await bookingRequest(booking);
 
-    if (res) {
+    if (bookingResultData) {
       toast.success("Your booking request has been sent successfully");
       reset();
     }
