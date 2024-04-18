@@ -25,16 +25,6 @@ const Signin = () => {
 
   const [isViewPass, setIsViewPass] = useState(false);
   const router = useRouter();
-  // console.log(router.query.from);
-
-  let intendedUrl = "/";
-  // if (Array.isArray(router.query.from)) {
-  //   intendedUrl = router.query.from.join("");
-  // } else if (typeof router.query.from === "string") {
-  //   intendedUrl = decodeURIComponent(router.query.from);
-  // }
-
-  // console.log(intendedUrl);
 
   // handle form hook
   const {
