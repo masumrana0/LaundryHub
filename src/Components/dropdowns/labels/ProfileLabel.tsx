@@ -30,36 +30,8 @@ const ProfileLabel = () => {
           <Divider className="my-2" />
         </div> */}
         {/* Profile  */}
-        <div>
-          <div className="flex hover:bg-slate-100 hover:text-green-400 p-2 rounded-md cursor-pointer items-center gap-2">
-            <CgProfile className="" />
-            <Link href="/profile" className="text-sm hover:text-green-400 ">
-              Profile
-            </Link>
-          </div>
-          <Divider className="my-2" />
-        </div>
+
         {/* Setting */}
-        <div>
-          <div className="flex hover:bg-slate-100 hover:text-green-400 p-2 rounded-md cursor-pointer items-center gap-2">
-            {" "}
-            <Cart />
-            {/* <Link href="/setting" className="text-sm hover:text-green-400">
-               
-            </Link> */}
-            <button>Cart</button>
-          </div>
-          <Divider className="my-2" />
-        </div>
-        <div>
-          <div className="flex hover:bg-slate-100 hover:text-green-400 p-2 rounded-md cursor-pointer items-center gap-2">
-            <IoSettings className="" />
-            <Link href="/setting" className="text-sm hover:text-green-400">
-              Setting
-            </Link>
-          </div>
-          <Divider className="my-2" />
-        </div>
 
         {/* Help */}
         {/* <div>
@@ -72,17 +44,6 @@ const ProfileLabel = () => {
           <Divider className="my-2" />
         </div> */}
         {/* Logout */}
-        <div>
-          <div className="flex hover:bg-slate-100 p-2 hover:text-green-400 rounded-md cursor-pointer  items-center gap-2">
-            <FaArrowRightFromBracket className="text-md" />
-            <button
-              onClick={() => dispatch(logOut())}
-              className="text-sm hover:text-red-400"
-            >
-              Logout
-            </button>
-          </div>
-        </div>
       </div>
     </div>
   );
