@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Button, Drawer, Space } from "antd";
-import type { DrawerProps } from "antd/es/drawer";
+import { Drawer, Space } from "antd";
+
 import { FaCartShopping, FaTrashCan } from "react-icons/fa6";
 import { useAppDispatch, useAppSelector } from "@/Redux/hook";
 import { removeToCart } from "@/Redux/features/Cart/addToCart";

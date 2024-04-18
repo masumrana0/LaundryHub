@@ -23,7 +23,6 @@ import { authKey } from "@/constants/storageKey";
 import { storeLocalStorageInfo } from "@/services/auth.service";
 import { IValidationResponse } from "@/Interface/shared";
 import LoadingSpinner from "../Shared/Loading";
-// import { ISignupData } from "@/Interface/auth";
 
 const Signup = () => {
   // essential state
