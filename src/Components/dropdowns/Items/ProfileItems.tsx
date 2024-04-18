@@ -1,11 +1,13 @@
-import { Divider, type MenuProps } from "antd";
-import { CgProfile } from "react-icons/cg";
+// essential imports
+import { type MenuProps } from "antd";
 import Link from "next/link";
 import Cart from "@/Components/Cart/Cart";
+import { logOut } from "@/Redux/features/auth/authSlice";
+// icons
 import { IoSettings } from "react-icons/io5";
+import { CgProfile } from "react-icons/cg";
 import { useAppDispatch } from "@/Redux/hook";
 import { FaArrowRightFromBracket } from "react-icons/fa6";
-import { logOut } from "@/Redux/features/auth/authSlice";
 
 const Profile = () => {
   return (
