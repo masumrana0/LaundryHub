@@ -1,21 +1,15 @@
+// essential import 
 import Image from "next/image";
-
 import Link from "next/link";
-import { useState } from "react";
-import {
-  UserOutlined,
-  SettingOutlined,
-  HomeOutlined,
-  DownOutlined,
-  UpOutlined,
-} from "@ant-design/icons";
-import { Avatar, Dropdown, Space } from "antd";
-import { FaBloggerB, FaComments, FaPhone, FaRegBell } from "react-icons/fa6";
-import Cart from "@/Components/Cart/Cart";
-import { BsList, BsXLg } from "react-icons/bs";
 import logo from "/public/logo.png";
-import { isLoggedIn } from "@/services/auth.service";
+import { useState } from "react";
 import { profileItems } from "@/Components/dropdowns/Items/ProfileItems";
+import { isLoggedIn } from "@/services/auth.service";
+// icons
+import { UserOutlined, SettingOutlined, HomeOutlined } from "@ant-design/icons";
+import { Avatar, Dropdown, Space } from "antd";
+import { FaBloggerB, FaPhone } from "react-icons/fa6";
+import { BsList, BsXLg } from "react-icons/bs";
 
 const MobileScreenNavbar = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -40,7 +34,6 @@ const MobileScreenNavbar = () => {
         {/* Dropdown toogle button */}
         <div className="text-3xl transition-all duration-300">
           <button
-            
             onMouseLeave={() => setDropdownOpen(false)}
             onClick={() => setDropdownOpen(!isDropdownOpen)}
           >
